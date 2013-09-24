@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79825E35-AA5B-479C-851D-56054F774581}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\WEB\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\CaiDan.cs" />
+    <Compile Include="Entities\CaiDan_GongNengDian.cs" />
+    <Compile Include="Entities\ChuJiaJiLu.cs" />
+    <Compile Include="Entities\DingDan.cs" />
+    <Compile Include="Entities\ErrorLog.cs" />
+    <Compile Include="Entities\Gg.cs" />
+    <Compile Include="Entities\GgType.cs" />
+    <Compile Include="Entities\GongNengDian.cs" />
+    <Compile Include="Entities\GsXX.cs" />
+    <Compile Include="Entities\GtTz.cs" />
+    <Compile Include="Entities\HfTz.cs" />
+    <Compile Include="Entities\HuiYuan.cs" />
+    <Compile Include="Entities\JueSe.cs" />
+    <Compile Include="Entities\PaiDianJl.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductImeg.cs" />
+    <Compile Include="Entities\ProductType.cs" />
+    <Compile Include="Entities\QuanXian.cs" />
+    <Compile Include="Entities\RenYuan.cs" />
+    <Compile Include="Entities\ShouHuoDZ.cs" />
+    <Compile Include="Entities\Tz.cs" />
+    <Compile Include="Entities\YongHu.cs" />
+    <Compile Include="Entities\YouQinLianJi.cs" />
+    <Compile Include="Mapping\CaiDanMap.cs" />
+    <Compile Include="Mapping\CaiDan_GongNengDianMap.cs" />
+    <Compile Include="Mapping\ChuJiaJiLuMap.cs" />
+    <Compile Include="Mapping\DingDanMap.cs" />
+    <Compile Include="Mapping\ErrorLogMap.cs" />
+    <Compile Include="Mapping\GgMap.cs" />
+    <Compile Include="Mapping\GgTypeMap.cs" />
+    <Compile Include="Mapping\GongNengDianMap.cs" />
+    <Compile Include="Mapping\GsXXMap.cs" />
+    <Compile Include="Mapping\GtTzMap.cs" />
+    <Compile Include="Mapping\HfTzMap.cs" />
+    <Compile Include="Mapping\HuiYuanMap.cs" />
+    <Compile Include="Mapping\JueSeMap.cs" />
+    <Compile Include="Mapping\PaiDianJlMap.cs" />
+    <Compile Include="Mapping\ProductImegMap.cs" />
+    <Compile Include="Mapping\ProductMap.cs" />
+    <Compile Include="Mapping\ProductTypeMap.cs" />
+    <Compile Include="Mapping\QuanXianMap.cs" />
+    <Compile Include="Mapping\RenYuanMap.cs" />
+    <Compile Include="Mapping\ShouHuoDZMap.cs" />
+    <Compile Include="Mapping\TzMap.cs" />
+    <Compile Include="Mapping\YongHuMap.cs" />
+    <Compile Include="Mapping\YouQinLianJiMap.cs" />
+    <Compile Include="PPWContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

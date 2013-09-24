@@ -1,0 +1,5 @@
+F:\JXC\jxcProte\Tools\bin\Release\Tools.dll
+F:\JXC\jxcProte\Tools\bin\Release\Tools.pdb
+F:\JXC\jxcProte\Tools\obj\Release\ResolveAssemblyReference.cache
+F:\JXC\jxcProte\Tools\obj\Release\Tools.dll
+F:\JXC\jxcProte\Tools\obj\Release\Tools.pdb

@@ -1,0 +1,104 @@
+F:\JXC\jxcProte\WEB\obj\Debug\ResolveAssemblyReference.cache
+F:\JXC\jxcProte\WEB\bin\WEB.dll
+F:\JXC\jxcProte\WEB\bin\WEB.pdb
+F:\JXC\jxcProte\WEB\bin\BLL.dll
+F:\JXC\jxcProte\WEB\bin\DocumentFormat.OpenXml.dll
+F:\JXC\jxcProte\WEB\bin\DocumentFormat.OpenXml.Extensions.dll
+F:\JXC\jxcProte\WEB\bin\EntityFramework.dll
+F:\JXC\jxcProte\WEB\bin\Ext.Net.dll
+F:\JXC\jxcProte\WEB\bin\Ext.Net.Utilities.dll
+F:\JXC\jxcProte\WEB\bin\LitJSON.dll
+F:\JXC\jxcProte\WEB\bin\Model.dll
+F:\JXC\jxcProte\WEB\bin\Newtonsoft.Json.dll
+F:\JXC\jxcProte\WEB\bin\Tools.dll
+F:\JXC\jxcProte\WEB\bin\Data.dll
+F:\JXC\jxcProte\WEB\bin\BLL.pdb
+F:\JXC\jxcProte\WEB\bin\Model.pdb
+F:\JXC\jxcProte\WEB\bin\Tools.pdb
+F:\JXC\jxcProte\WEB\bin\DocumentFormat.OpenXml.xml
+F:\JXC\jxcProte\WEB\bin\DocumentFormat.OpenXml.Extensions.xml
+F:\JXC\jxcProte\WEB\bin\EntityFramework.xml
+F:\JXC\jxcProte\WEB\bin\Ext.Net.xml
+F:\JXC\jxcProte\WEB\bin\Ext.Net.Utilities.xml
+F:\JXC\jxcProte\WEB\bin\Newtonsoft.Json.xml
+F:\JXC\jxcProte\WEB\bin\Data.pdb
+F:\JXC\jxcProte\WEB\obj\Debug\WEB.dll
+F:\JXC\jxcProte\WEB\obj\Debug\WEB.pdb
+F:\华海燕\MyPaiWang\PPwProject\WEB\obj\Debug\ResolveAssemblyReference.cache
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\WEB.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\WEB.pdb
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\BLL.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\EntityFramework.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Ext.Net.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Ext.Net.Utilities.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\LitJSON.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Model.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Newtonsoft.Json.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Tools.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Data.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\BLL.pdb
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Model.pdb
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Tools.pdb
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.xml
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.xml
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\EntityFramework.xml
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Ext.Net.xml
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Ext.Net.Utilities.xml
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Newtonsoft.Json.xml
+F:\华海燕\MyPaiWang\PPwProject\WEB\bin\Data.pdb
+F:\华海燕\MyPaiWang\PPwProject\WEB\obj\Debug\WEB.dll
+F:\华海燕\MyPaiWang\PPwProject\WEB\obj\Debug\WEB.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\WEB.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\WEB.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\BLL.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\EntityFramework.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Ext.Net.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Ext.Net.Utilities.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\LitJSON.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Model.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Newtonsoft.Json.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Tools.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Data.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\BLL.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Model.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Tools.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\EntityFramework.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Ext.Net.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Ext.Net.Utilities.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Newtonsoft.Json.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\bin\Data.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\obj\Debug\ResolveAssemblyReference.cache
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\obj\Debug\WEB.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\WEB\obj\Debug\WEB.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\WEB.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\WEB.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\BLL.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\EntityFramework.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Ext.Net.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Ext.Net.Utilities.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\LitJSON.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Model.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Newtonsoft.Json.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Tools.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Data.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\BLL.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Model.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Tools.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\EntityFramework.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Ext.Net.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Ext.Net.Utilities.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Newtonsoft.Json.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Data.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\obj\Debug\ResolveAssemblyReference.cache
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\obj\Debug\WEB.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\obj\Debug\WEB.pdb

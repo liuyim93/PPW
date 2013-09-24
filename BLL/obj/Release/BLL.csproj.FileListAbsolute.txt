@@ -1,0 +1,13 @@
+F:\JXC\jxcProte\BLL\bin\Release\BLL.dll
+F:\JXC\jxcProte\BLL\bin\Release\BLL.pdb
+F:\JXC\jxcProte\BLL\bin\Release\Data.dll
+F:\JXC\jxcProte\BLL\bin\Release\EntityFramework.dll
+F:\JXC\jxcProte\BLL\bin\Release\Model.dll
+F:\JXC\jxcProte\BLL\bin\Release\Tools.dll
+F:\JXC\jxcProte\BLL\bin\Release\Data.pdb
+F:\JXC\jxcProte\BLL\bin\Release\Model.pdb
+F:\JXC\jxcProte\BLL\bin\Release\Tools.pdb
+F:\JXC\jxcProte\BLL\bin\Release\EntityFramework.xml
+F:\JXC\jxcProte\BLL\obj\Release\ResolveAssemblyReference.cache
+F:\JXC\jxcProte\BLL\obj\Release\BLL.dll
+F:\JXC\jxcProte\BLL\obj\Release\BLL.pdb

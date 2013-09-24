@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="WEB.Auction.Main" %>
+<%@ Register TagName="Top" TagPrefix="uc1" Src="UserControl/Top.ascx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="Stylesheet" type="text/css" href="Styles/Style.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>    
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div>
+        <!--顶部--> 
+           <uc1:Top ID="Top1" runat="server" />  
+            <div style="width:1000px;margin:0 auto;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+                </asp:ContentPlaceHolder>
+            </div>
+    </div>
+    <!--底部-->
+    <div class="main_bottom">
+        <div class="footer">
+            <dl>
+                <dt>新手上路</dt>
+                <dd><a href="" target="_self">竞拍指南</a></dd>
+                <dd><a href="" target="_self">高手速成</a></dd>
+                <dd><a href="" target="_selft">常见问题</a></dd>
+            </dl>
+            <dl>
+                <dt>支付物流</dt>
+                <dd><a href="" target="_self">支付流程</a></dd>
+                <dd><a href="" target="_self">物流说明</a></dd>
+            </dl>
+            <dl>
+                <dt>售后服务</dt>
+                <dd><a href="" target="_self">服务总则</a></dd>
+                <dd><a href="" target="_self">关于发票</a></dd>
+            </dl>
+            <dl>
+                <dt>公平准则</dt>
+                <dd><a href="" target="_self">公平竞拍规则</a></dd>
+                <dd><a href="" target="_self">违规认定及处理</a></dd>
+                <dd><a href="" target="_self">如何处理争议</a></dd>
+                <dd><a href="" target="_self">隐私条款</a></dd>
+            </dl>
+            <dl>
+                <dt>公司信息</dt>
+                <dd><a href="" target="_self">关于我们</a></dd>
+                <dd><a href="" target="_self">联系我们</a></dd>
+                <dd><a href="" target="_self">人才招聘</a></dd>
+                <dd><a href="" target="_self">商务合作</a></dd>
+            </dl>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

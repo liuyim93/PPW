@@ -1,0 +1,42 @@
+F:\JXC\jxcProte\Data\bin\Debug\Data.dll
+F:\JXC\jxcProte\Data\bin\Debug\Data.pdb
+F:\JXC\jxcProte\Data\bin\Debug\Model.dll
+F:\JXC\jxcProte\Data\bin\Debug\EntityFramework.dll
+F:\JXC\jxcProte\Data\bin\Debug\Model.pdb
+F:\JXC\jxcProte\Data\bin\Debug\EntityFramework.xml
+F:\JXC\jxcProte\Data\obj\Debug\ResolveAssemblyReference.cache
+F:\JXC\jxcProte\Data\obj\Debug\Data.dll
+F:\JXC\jxcProte\Data\obj\Debug\Data.pdb
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\Data.dll
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\Data.pdb
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\Model.dll
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\EntityFramework.dll
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\Model.pdb
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\EntityFramework.xml
+F:\华海燕\MyPaiWang\PPwProject\Data\obj\Debug\ResolveAssemblyReference.cache
+F:\华海燕\MyPaiWang\PPwProject\Data\obj\Debug\Data.dll
+F:\华海燕\MyPaiWang\PPwProject\Data\obj\Debug\Data.pdb
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\Tools.dll
+F:\华海燕\MyPaiWang\PPwProject\Data\bin\Debug\Tools.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\Data.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\Data.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\Model.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\Tools.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\EntityFramework.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\Model.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\Tools.pdb
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\bin\Debug\EntityFramework.xml
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\obj\Debug\ResolveAssemblyReference.cache
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\obj\Debug\Data.dll
+F:\刘义铭\项目交接\MyPaiWang\PPwProject\Data\obj\Debug\Data.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\Data.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\Data.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\Model.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\Tools.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\EntityFramework.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\Model.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\Tools.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\bin\Debug\EntityFramework.xml
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\obj\Debug\ResolveAssemblyReference.cache
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\obj\Debug\Data.dll
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Data\obj\Debug\Data.pdb

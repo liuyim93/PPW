@@ -1,0 +1,81 @@
+﻿.tipCls
+{
+    color:Red;
+    font-size:15px;
+}
+.link
+{
+    text-decoration:none;
+    color:Blue;
+}
+.link_div
+{
+    font-size:13px;
+    margin-top:5px;
+}
+.clicka
+{
+    text-decoration:none;
+    color:Blue;
+    font-size:12px;
+}
+.Disabled
+{
+    background-color: Red;
+}
+.ThisCommand
+{
+    background-color: Green;
+}
+.LastCommand
+{
+    background-color: Yellow;
+}
+.Erro
+{
+	background-color:#CCCCCC;
+}
+.RiQiBiaoJi
+{
+    background-color:#FFFF99;
+}
+
+
+.fontsyst
+{
+	 font-size:30px;
+	 color:Red;
+	}
+	
+.noIme
+{
+    ime-mode: Disabled;
+}
+
+/*改变按钮字体大小*/
+.x-btn-text-icon .x-btn-icon-small-left .x-btn-text{
+    background-position: 0 center;/*默认*/
+    background-repeat: no-repeat;/*默认*/
+    padding-left:18px;/*默认*/
+    height:16px;/*默认*/
+    font-size:12px;/*字体大小设置*/
+}
+
+.ext-ie .x-btn-text-icon .x-btn-center .x-btn-text {  
+    padding:3px 0px 0px 0px; 
+}  
+/*改变GridPanel显示字体大小*/
+.x-grid3-hd-row td,.x-grid3-row td,.x-grid3-summary-row td{font:normal 12px arial,tahoma,helvetica,sans-serif;-moz-outline:none;-moz-user-focus:normal;}
+
+#x-debug-browser,.x-tree .x-tree-node a span{color:#272828;font-size:13px;padding-top:2px;font-family:"monotype","courier new",sans-serif;line-height:18px;}
+
+#x-debug-browser,.x-tree .x-tree-node .x-tree-selected a span{background:#c3daf9;}
+
+.x-panel-header{overflow:hidden;zoom:1;color:#15428b;font:bold 12px tahoma,arial,verdana,sans-serif;padding:5px 3px 4px 5px;border:1px solid #99bbe8;line-height:15px;background:transparent url(../Image/tile.jpg) repeat-x 0 -1px;}
+/*
+.x-grid3-topbar,.x-grid3-bottombar{font:normal 16px arial,tahoma,helvetica,sans-serif;overflow:hidden;display:none;zoom:1;position:relative;}
+
+.x-panel-tl .x-panel-header{color:#15428b;font:bold 12px tahoma,arial,verdana,sans-serif;padding:5px 0 4px 0;border:0 none;background:transparent;}
+*/
+
+.x-window-tl .x-window-header{color:#15428b;font:bold 12px tahoma,arial,verdana,sans-serif;padding:5px 0 4px 0;}

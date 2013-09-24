@@ -1,0 +1,9 @@
+F:\JXC\jxcProte\Data\bin\Release\Data.dll
+F:\JXC\jxcProte\Data\bin\Release\Data.pdb
+F:\JXC\jxcProte\Data\bin\Release\Model.dll
+F:\JXC\jxcProte\Data\bin\Release\EntityFramework.dll
+F:\JXC\jxcProte\Data\bin\Release\Model.pdb
+F:\JXC\jxcProte\Data\bin\Release\EntityFramework.xml
+F:\JXC\jxcProte\Data\obj\Release\ResolveAssemblyReference.cache
+F:\JXC\jxcProte\Data\obj\Release\Data.dll
+F:\JXC\jxcProte\Data\obj\Release\Data.pdb
