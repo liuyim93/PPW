@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxPro">
+      <HintPath>App_Data\AjaxPro.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\DocumentFormat.OpenXml.dll</HintPath>
@@ -86,6 +89,7 @@
   <ItemGroup>
     <Content Include="Auction\Index.aspx" />
     <Content Include="Auction\Register.aspx" />
+    <Content Include="Auction\Scripts\Main.js" />
     <Content Include="Auction\Styles\Style.css" />
     <Content Include="Auction\UserControl\Top.ascx" />
     <Content Include="Auction\UserLogin.aspx" />

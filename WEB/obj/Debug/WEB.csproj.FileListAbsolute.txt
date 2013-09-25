@@ -102,3 +102,4 @@ F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\Data.pdb
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\obj\Debug\ResolveAssemblyReference.cache
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\obj\Debug\WEB.dll
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\obj\Debug\WEB.pdb
+F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\WEB\bin\AjaxPro.dll

@@ -81,5 +81,20 @@ namespace BLL.SystemSeting
       {
           return dat.AddHuiYuan(hy);
       }
+
+      /// <summary>
+      /// 判断用户名是否已经注册
+      /// </summary>
+      /// <param name="username"></param>
+      /// <returns></returns>
+      public object IsUserNameAvailable(string username) 
+      {
+          return dat.IsUserNameAvailable(username);
+      }
+
+      public object IsEmailAvailable(string email) 
+      {
+          return dat.IsEmailAvailable(email);
+      }
     }
 }

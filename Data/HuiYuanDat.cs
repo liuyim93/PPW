@@ -117,5 +117,45 @@ namespace Data
                throw;
            }
        }
+
+       /// <summary>
+       /// 判断用户名是否已经注册
+       /// </summary>
+       /// <param name="username"></param>
+       /// <returns></returns>
+       public object IsUserNameAvailable( string username) 
+       {
+           string sql = "select * from HuiYuan where HuiYuanName=@HuiYuanName";
+           try
+           {
+               object obj = BLLdat.ExecuteScalar(CommandType.Text,sql,new SqlParameter("@HuiYuanName",username));
+               return obj;
+           }
+           catch (Exception)
+           {
+               
+               throw;
+           }
+       }
+
+       /// <summary>
+       /// 判断邮箱是否被使用
+       /// </summary>
+       /// <param name="email"></param>
+       /// <returns></returns>
+       public object IsEmailAvailable(string email) 
+       {
+           string sql = "select * from HuiYuan where email=@email";
+           try
+           {
+               object obj = BLLdat.ExecuteScalar(CommandType.Text,sql,new SqlParameter("@email",email));
+               return obj;
+           }
+           catch (Exception)
+           {
+               
+               throw;
+           }
+       }
     }
 }
