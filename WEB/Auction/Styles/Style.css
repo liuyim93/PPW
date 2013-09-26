@@ -135,10 +135,9 @@ ul{margin:0px;padding:0px;list-style:none;}
 .reg_main .text{font-size:14px;float:left; text-align:right; font-family:宋体; width:80px;}
 .reg_main .input{float:left;}
 .input_normal{float:left; width:200px;border:1px solid #cccccc;height:22px; line-height:22px;}
-.remark{float:left; margin-left:15px;}
-.remark .remind{height:22px;line-height:22px; border:1px solid #40b3ff;background:url("../images/info1.gif") no-repeat scroll 2px 2px;background-color:#e5f5ff;padding:0 5px 0 22px; display:none;}
-.remark .error{height:22px;line-height:22px;border:1px solid #ff8080; background:url("../images/err1.gif") no-repeat scroll 2px 2px; background-color:#fff2f2; padding:0 5px 0 22px; display:none;}
-.remark .right{height:22px; width:20px; background:url("../images/right1.gif") no-repeat scroll center center; display:none}
+.remind{float:left; margin-left:15px;height:22px;line-height:22px; border:1px solid #40b3ff;background:url("../images/info1.gif") no-repeat scroll 2px 2px;background-color:#e5f5ff;padding:0 5px 0 22px;}
+.error{float:left; margin-left:15px;height:22px;line-height:22px;border:1px solid #ff8080; background:url("../images/err1.gif") no-repeat scroll 2px 2px; background-color:#fff2f2; padding:0 5px 0 22px;}
+.right{float:left; margin-left:15px;height:22px; width:20px; background:url("../images/right1.gif") no-repeat scroll center center;}
 .reg_agreement{height:28px;line-height:28px;padding-left:80px; margin:10px auto;}
 .reg_agreement a{color:#3366cc;}
 .reg_submit{height:40px;padding-left:80px;line-height:40px;}

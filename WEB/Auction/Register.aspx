@@ -19,7 +19,7 @@
                 email_div.style.display = 'block';
                 email_div.innerHTML = '邮箱不能为空';
             } else {
-                if (!(email.match(/^[a-z]([a-z0-9])+@([a-z0-9])+[\.][a-z]{2,3}$/))) {
+                if (!(email.match(/^[^\.@]+@[^\.@]+\.[a-z]+$/))) {
                     email_div.style.display='block';
                     email_div.innerText = '邮箱格式不正确';
                     email_div.className = 'error';
@@ -31,8 +31,8 @@
                         email_div.className = 'right';
                         email_div.style.display = 'block';
                         email_div.innerHTML = '';
-                    } else {                 
-                        error.innerText = '邮箱已被注册';
+                    } else {
+                        email_div.innerText = '邮箱已被注册';
                         email_div.className = 'error';
                         email_div.style.display = 'block';                        
                      }
@@ -76,69 +76,48 @@
 
     /*用户名输入提示*/
     function remindusername() {
-        var remind = document.getElementById("username_remind");
-        var error = document.getElementById("username_error");
-        var right = document.getElementById("username_error");
-        remind.style.display = 'block';
-        error.style.display = 'none';
-        right.style.display = 'none';
+        var username_div = document.getElementById("username_div");
+        username_div.style.display = 'block';
+        username_div.className = 'remind';
+        username_div.innerHTML = '4-15个字符，一个汉字为两个字符';
     }
 
     /*邮箱输入提示*/
     function remindemail() {
-        var remind = document.getElementById("email_remind");
-        var error = document.getElementById("email_error");
-        var right = document.getElementById("email_right");
-        remind.style.display = 'block';
-        error.style.display = 'none';
-        right.style.display = 'none';
+        var email_div = document.getElementById("email_div");
+        email_div.className = "remind";
+        email_div.style.display = 'block';
+        email_div.innerHTML = '当密码遗失时凭此找回密码';
     }
 
     /*验证密码*/
     function validatepassword() {
         var password = document.getElementById('<%=txtPassword.ClientID %>').value;
-        var remind = document.getElementById("password_remind");
-        var error = document.getElementById("password_error");
-        var right = document.getElementById("password_right");
+        var password_div = document.getElementById("password_div");
         var chk = false;
         if (password == null || password == '') {
-            remind.style.display = 'none';
-            error.style.display = 'block';
-            right.style.display = 'none';
-            chk = false;
+            password_div.className = 'error';
+            password_div.style.display = 'block';
+            password_div.innerHTML = '密码不能为空';
         } else {
-        if (password.length < 6) {
-            remind.style.display = 'none';
-            error.style.display = 'block';
-            right.style.display = 'none';
-            error.innerText = '密码不能小于6个字符';
-            chk = false;
+            if (password.length < 6) {
+                password_div.style.display = 'block';
+                password_div.className = 'error';
+                password_div.innerText = '密码不能小于6个字符';
         } else {
-        if (password.length > 16) {
-            remind.style.display = 'none';
-            error.style.display = 'block';
-            right.style.display = 'none';
-            error.innerText = '密码不能大于16个字符';
-            chk = false;
+        if (password.length > 32) {
+            password_div.style.display = 'block';
+            password_div.className = 'error';
+            password_div.innerText = '密码不能大于32个字符';           
         } else {
-            remind.style.display = 'none';
-            error.style.display = 'none';
-            right.style.display = 'block';
+            password_div.style.display = 'block';
+            password_div.className = 'right';
+            password_div.innerHTML = '';
             chk = true;
          }
          }
 }
         return chk;
-    }
-
-    /*密码提示*/
-    function remindpassword() {
-        var remind = document.getElementById("password_remind");
-        var error = document.getElementById("password_error");
-        var right = document.getElementById("password_right");
-        remind.style.display = 'block';
-        error.style.display = 'none';
-        right.style.display = 'none';
     }
 
     /*验证确认密码*/
@@ -180,7 +159,47 @@ function remindpwdconfirm() {
 
 /*验证码*/
 function validateverifycode() {
-    var verifycode = document.getElementById('<%=txtVerifyCode.ClientID %>');
+    var verifycode = document.getElementById('<%=txtVerifyCode.ClientID %>').value;
+    var verifycode_div = document.getElementById("verifycode_div");
+    var chk = false;
+    if (verifycode == null || verifycode == '') {
+        verifycode_div.className = 'error';
+        verifycode_div.style.display = 'block';
+        verifycode_div.innerHTML = '请输入验证码';
+    } else {
+        if (verifycode.length<4) {
+            verifycode_div.className='error';
+            verifycode_div.style.display='block';
+            verifycode_div.innerHTML='请输入正确的验证码';
+        }else
+        {
+            verifycode_div.className = 'right';
+            verifycode_div.style.display = 'block';
+            verifycode_div.innerHTML = '';
+            chk = true;
+        }
+        
+    }
+    return chk;
+}
+/*更换验证码*/
+function changeverifycode() {
+    var verifycode = document.getElementById("imgverifycode");
+    verifycode.src = verifycode.src+'?';
+}
+/*提交表单*/
+function validateform() {
+    var v_username = ValidateUserName();
+    var v_email = ValidateEmail();
+    var v_password = validatepassword();
+    var v_pwdconfirm = validatepwdconfirm();
+    var v_verifycode = validateverifycode();
+    var chk_agreement = document.getElementById('<%=chkAgreement.ClientID %>');
+    if (v_username && v_email && v_password && v_pwdconfirm && v_verifycode && chk_agreement.checked) {
+        return true;
+    } else {
+        return false;
+     }
  }
     </script>
 </head>
@@ -197,21 +216,21 @@ function validateverifycode() {
                     <div class="text">用户名：</div>
                     <div class="input"><asp:TextBox id="txtUserName" runat="server" onblur="return ValidateUserName();" onfocus="remindusername();" CssClass="input_normal" ></asp:TextBox></div>
                     <div class="remark">
-                        <div id="username_div" class="remind">4-15个字符，一个汉字为两个字符</div>
+                        <div id="username_div" class="remind"></div>
                     </div>
                 </div>
                 <div class="reg_item">
                     <div class="text">邮箱：</div>
                     <div class="input"><asp:TextBox id="txtEmail" runat="server" onblur="ValidateEmail();" onfocus="remindemail();" CssClass="input_normal"></asp:TextBox></div>
                     <div class="remark">
-                        <div class="remind" id="email_div">当密码遗失时凭此邮箱找回密码</div>
+                        <div class="remind" id="email_div">当密码遗失时凭此找回密码</div>
                     </div>
                 </div>
                 <div class="reg_item">
                     <div class="text">密码：</div>
-                    <div class="input"><asp:TextBox ID="txtPassword" runat="server" onblur="validatepassword();" onfocus="remindpassword();" TextMode="Password" CssClass="input_normal" ></asp:TextBox></div>
+                    <div class="input"><asp:TextBox ID="txtPassword" runat="server" onblur="validatepassword();" TextMode="Password" CssClass="input_normal" ></asp:TextBox></div>
                     <div class="remark">
-                        <div class="remind" id="password_div">密码应在6-16个字符内</div>
+                        <div class="remind" id="password_div"></div>
                     </div>
                 </div>
                 <div class="reg_item">
@@ -224,9 +243,9 @@ function validateverifycode() {
                 <div class="reg_item">
                     <div class="text">验证码：</div>
                     <div class="input">
-                        <asp:TextBox ID="txtVerifyCode" runat="server" Width="50px" CssClass="input_normal" onblur="validateverifycode();" onfocus="remindverifycode();"></asp:TextBox>
-                        <img src="" alt="" />
-                        <a >看不清楚？换一张</a>
+                        <asp:TextBox ID="txtVerifyCode" runat="server" Width="50px" CssClass="input_normal" onblur="validateverifycode();"></asp:TextBox>&nbsp;
+                        <img id="imgverifycode" src="VerifyCode.aspx" alt="看不清，换一张" onclick="this.src=this.src+'?'" width="60px" height="22px" style="cursor:hand;"  />&nbsp;
+                        <a onclick="changeverifycode();" style="cursor:hand; text-decoration:none;color:#3366cc;">看不清楚？换一张</a>
                     </div>
                     <div class="remark">
                         <div id="verifycode_div"></div>
@@ -234,7 +253,7 @@ function validateverifycode() {
                 </div>
                 <div class="reg_agreement"><asp:CheckBox ID="chkAgreement" runat="server" Checked="true" />&nbsp;阅读并同意服务协议书<a href="" target="_blank">《拍拍网协议书》</a></div>
                 <div class="reg_submit"><asp:ImageButton ID="imgbtnReg" runat="server" 
-                        ImageUrl="images/register.jpg" onclick="imgbtnReg_Click" /></div>
+                        ImageUrl="images/register.jpg" onclick="imgbtnReg_Click" OnClientClick="return validateform();" /></div>
             </div>
         </div>
     </div>

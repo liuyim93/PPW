@@ -92,6 +92,11 @@ namespace BLL.SystemSeting
           return dat.IsUserNameAvailable(username);
       }
 
+      /// <summary>
+      /// 判断邮箱是否可用
+      /// </summary>
+      /// <param name="email"></param>
+      /// <returns></returns>
       public object IsEmailAvailable(string email) 
       {
           return dat.IsEmailAvailable(email);

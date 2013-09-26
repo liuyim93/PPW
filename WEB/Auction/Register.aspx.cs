@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL.SystemSeting;
-using Model;
+using Model.Entities;
+using Tools;
+using System.Web.Security;
 
 namespace WEB.Auction
 {
@@ -47,7 +49,41 @@ namespace WEB.Auction
         //注册
         protected void imgbtnReg_Click(object sender, ImageClickEventArgs e)
         {
+            if (txtUserName.Text == "")
+            {
+                MessageBox.Alert("用户名不能为空", this);
+                return;
+            }
+            if (txtEmail.Text=="")
+            {
+                MessageBox.Alert("邮箱不能为空",this);
+                return;
+            }
+            if (txtPassword.Text.Trim()=="")
+            {
+                MessageBox.Alert("密码不能为空",this);
+                return;
+            }
+            if (txtVerifyCode.Text.ToLower()!=Session["ValidateNum"].ToString().ToLower())
+            {
+                MessageBox.Alert("验证码错误",this);
+                return;
+            }
+            try
+            {
+                HuiYuan hy = new HuiYuan();
+                hy.HuiYuanName = txtUserName.Text.Trim();
+                hy.MM =FormsAuthentication.HashPasswordForStoringInConfigFile(txtPassword.Text.Trim(),"md5");
+                hy.email = txtEmail.Text.Trim();
+                hy.DJ = "普通会员";
+                hyBll.AddHuiYuan(hy);
+                MessageBox.Alert("注册成功",this);
+            }
+            catch (Exception)
+            {
 
+                MessageBox.Alert("注册失败",this);
+            }            
         }
     }
 }

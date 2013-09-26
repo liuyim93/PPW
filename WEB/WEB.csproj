@@ -93,6 +93,7 @@
     <Content Include="Auction\Styles\Style.css" />
     <Content Include="Auction\UserControl\Top.ascx" />
     <Content Include="Auction\UserLogin.aspx" />
+    <Content Include="Auction\VerifyCode.aspx" />
     <Content Include="ErrorMsg.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\butto.gif" />
@@ -440,6 +441,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auction\CheckCode.ashx.cs">
+      <DependentUpon>CheckCode.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Auction\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -474,6 +478,13 @@
     </Compile>
     <Compile Include="Auction\UserLogin.aspx.designer.cs">
       <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\VerifyCode.aspx.cs">
+      <DependentUpon>VerifyCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\VerifyCode.aspx.designer.cs">
+      <DependentUpon>VerifyCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -680,6 +691,7 @@
     <Content Include="kindeditor\asp.net\file_manager_json.ashx" />
     <Content Include="kindeditor\asp.net\upload_json.ashx" />
     <Content Include="Auction\Main.Master" />
+    <Content Include="Auction\CheckCode.ashx" />
     <None Include="kindeditor\jsp\demo.jsp" />
     <None Include="kindeditor\jsp\file_manager_json.jsp" />
     <None Include="kindeditor\jsp\upload_json.jsp" />

@@ -51,10 +51,10 @@ namespace Data
        public HuiYuan GetHuiYuanBySelect(string yhName,string mm) 
        {
            string sql = "select * from HuiYuan where HuiYuanName=@name and MM=@mm";
-           SqlParameter[] spr = { new SqlParameter("@yhm", yhName), new SqlParameter("@mm", mm) };
+           SqlParameter[] spr = { new SqlParameter("@name", yhName), new SqlParameter("@mm", mm) };
            DataSet dat=BLLdat.ExecuteDataSet(CommandType.Text, sql, spr);
            HuiYuan hy = null;
-           if (dat.Tables.Count>0)
+           if (dat.Tables[0].Rows.Count>0&&dat!=null)
            {
                hy = new HuiYuan();
                DataRow row=dat.Tables[0].Rows[0];
