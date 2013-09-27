@@ -20,15 +20,15 @@ namespace Data
        /// <returns></returns>
         public int AddChuJiaJiLu(ChuJiaJiLu cj) 
         {
-            string sql = "insert into ChuJiaJiLu ProductID=@ProductID,HuiYuanID=@HuiYuanID,Price=@Price,IPAdress=@IPAdress,AuctionPoint=@AuctionPoint,AuctionTime=@AuctionTime,Status=@Status,FreePoint=@FreePoint";
+            string sql = "insert into ChuJiaJiLu (ProductID,HuiYuanID,Price,IPAdress,AuctionPoint,AuctionTime,Status,FreePoint) values(@ProductID,@HuiYuanID,@Price,@IPAdress,@AuctionPoint,@AuctionTime,@Status,@FreePoint)";
             try
             {
                 return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ProductID",cj.ProductID),
                     new SqlParameter("@HuiYuanID", cj.HuiYuanID),
                     new SqlParameter("@Price",cj.Price),
                     new SqlParameter("@IPAdress",cj.IPAdress),
-                    new SqlParameter("@AuctionPoint",cj.AcutionPoint),
-                    new SqlParameter("@AuctionTime",cj.AcutionTime),
+                    new SqlParameter("@AuctionPoint",cj.AuctionPoint),
+                    new SqlParameter("@AuctionTime",cj.AuctionTime),
                     new SqlParameter("@Status",cj.Status),
                     new SqlParameter("@FreePoint",cj.FreePoint));
             }

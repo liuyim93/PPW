@@ -38,7 +38,7 @@ namespace Model.Entities
         public decimal ShipFee { get; set; }//运费
         public Nullable<System.DateTime> EndTime { get; set; }//竞拍结束时间
         public string Intro { get; set; }//产品简介
-        public Nullable<int> FreePoint { get; set; }//每次竞价需要的返点数
+        public int FreePoint { get; set; }//每次竞价需要的返点数
 	}
 }
 

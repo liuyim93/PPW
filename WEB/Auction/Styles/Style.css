@@ -97,7 +97,7 @@ ul{margin:0px;padding:0px;list-style:none;}
 /*主页*/
 .index_top{width:100%;height:400px;margin:10px auto; border:1px solid #cccccc;}
 .index_top .top_left{width:740px;height:400px;margin-right:10px; float:left;}
-.index_top .top_right{width:220px; height:100%; float:left;}
+.index_top .top_right{width:200px; height:400px; float:left;}
 .broadcast{height:30px;line-height:30px;width:100%;}
 .pic_baner{width:100%;height:auto;}
 .top_right .news{width:100%;height:200px;border:1px solid #cccccc; margin-bottom:5px;font-size:14px;padding:5px auto;}

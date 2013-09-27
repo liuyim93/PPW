@@ -68,17 +68,11 @@
     function validateform() {
         var v_username = checkusername();
         var v_password = checkpassword();
-        var pnlcheckcode = document.getElementById("pnlCheckCode");
-        if (pnlcheckcode==null && v_password && v_username) {
-            return true;
+        if (!(v_password) || !(v_username)) {
+            return false;
         } else {
-            var v_checkcode = validatecode();
-            if (v_checkcode && v_username && v_password) {
-                return true;
-            } else {
-                return false;
-             }
-         }       
+            return true;
+         }
      }
     </script>
 </head>
@@ -103,8 +97,8 @@
                     <div class="reg_item">
                     <div class="text">验证码：</div>
                     <div class="input">
-                        <asp:TextBox ID="txtCheckCode" runat="server" onblur="" Width="50px" CssClass="input_normal"></asp:TextBox>&nbsp;
-                        <img id="imgCheckCode" src="VerifyCode.aspx" alt="看不清，换一张" onclick="validatecode()" style="cursor:hand" />&nbsp;
+                        <asp:TextBox ID="txtCheckCode" runat="server" onblur="validatecode();" Width="50px" CssClass="input_normal"></asp:TextBox>&nbsp;
+                        <img id="imgCheckCode" src="VerifyCode.aspx" alt="看不清，换一张" onclick="changecode()" style="cursor:hand" />&nbsp;
                         <a onclick="changecode();" style="text-decoration:none; color:#3366cc; cursor:hand;">看不清？换一张</a>
                     </div>
                     <div id="checkcode_error"></div>
@@ -117,7 +111,7 @@
                     </div>
                 </div>
                 <div class="reg_submit">
-                    <asp:ImageButton ID="imgbtnLogin" runat="server" ImageUrl="" 
+                    <asp:ImageButton ID="imgbtnLogin" runat="server" ImageUrl="Images/login.jpg" 
                         OnClientClick="return validateform();" onclick="imgbtnLogin_Click" />
                 </div>
             </div>

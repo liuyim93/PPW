@@ -35,12 +35,12 @@ namespace WEB.Auction
         {
             if (txtUserName.Text.Trim()==""||txtUserName.Text.Trim()==null)
             {
-                MessageBox.Alert("用户名不能为空",Page);
+                //MessageBox.Alert("用户名不能为空",Page);
                 return;
             }
             if (txtPassword.Text.Trim()==""||txtPassword.Text.Trim()==null)
             {
-                MessageBox.Alert("请输入密码",Page);
+                //MessageBox.Alert("请输入密码",Page);
                 return;
             }
             if (pnlCheckCode.Visible==true&&txtCheckCode.Text.Trim().ToLower()!=Session["ValidateNum"].ToString().ToLower())

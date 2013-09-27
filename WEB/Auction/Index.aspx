@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="WEB.Auction.Index" %>
+﻿<%@ Page Title="" ValidateRequest="false" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="WEB.Auction.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/Style.css" rel="Stylesheet" type="text/css" />
 </asp:Content>
@@ -45,14 +45,13 @@
             <div class="content">
               <asp:UpdatePanel ID="updatepanel1" runat="server">
                 <ContentTemplate>
-                <asp:Timer ID="timer1" runat="server" Interval="1000"></asp:Timer>    
+                <asp:Timer ID="timer1" runat="server" Interval="1200" ontick="timer1_Tick"></asp:Timer>    
                 <asp:DataList ID="dlstProduct" runat="server" RepeatColumns="5" Width="100%" 
                     onitemcommand="dlstProduct_ItemCommand" 
                     onitemdatabound="dlstProduct_ItemDataBound">
                     <ItemTemplate>
                         <div class="product_area">
-                            <div class="product_name"><a href="" target="_self"><%#Eval("ProductName") %>&nbsp;<span style="color:Red"><%#Eval("Intro") %></span></a>
-                            <asp:HiddenField ID="hfProductName" runat="server" Value='<%#Eval("ProductName") %>' />
+                            <div class="product_name"><a href="" target="_self"><%#Eval("ProductName") %>&nbsp;<span style="color:Red"><%#Eval("Intro") %></span></a><asp:HiddenField ID="hfProductName" runat="server" Value='<%#Eval("ProductName") %>' />
                             <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' /> 
                            </div>
                            <div class="product_fullprice">
@@ -63,15 +62,17 @@
                            </div>
                             <div class="product_price">市场价：<span style="font-weight:bold;"><asp:Label ID="lblMarketPrice" runat="server">￥<%#Eval("productPrice") %></asp:Label></span></div>                       
                             <div class="product_price">拍卖价：<span style="color:Red;font-weight:bold;font-family:Arial;"><asp:Label ID="lblAuctionPrice" runat="server">￥<%#Eval("PmJGproduct") %></asp:Label></span></div>
-                            <div class="product_price">出价人：<span style="color:#00666b"><asp:Label ID="lblMemberName" runat="server" Text='<%#Eval("HuiYuanID") %>'></asp:Label></span></div>                                             
+                            <div class="product_price">出价人：<span style="color:#00666b"><asp:Label ID="lblMemberName" runat="server"></asp:Label><asp:HiddenField ID="hfMemberID" runat="server" Value='<%#Eval("HuiYuanID") %>' /></span></div>                                             
                             <div class="product_timer">
                                <asp:Label ID="lblTimer" runat="server" Text='<%#Eval("AuctionTime") %>'></asp:Label>
-                               <asp:HiddenField ID="hfTimePoint" runat="server" Value='<%#Eval("TimePoint") %>' />                                                                   
+                               <asp:HiddenField ID="hfTimePoint" runat="server" Value='<%#Eval("TimePoint") %>' />
+                               <asp:HiddenField ID="hfAuctionTime" runat="server" Value='<%#Eval("AuctionTime") %>' /> 
+                               <asp:HiddenField ID="hfStatus" runat="server" Value='<%#Eval("Status") %>' />                                                               
                             </div>                           
                             <div class="product_auction">
                                 <asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif" CommandName="auction" CommandArgument='<%#Eval("ProductID") %>' />
                                 <asp:HiddenField ID="hfAuctionPoint" runat="server" Value='<%#Eval("AuctionPoint") %>' />
-                                <asp:Button ID="btnSubmit" runat="server" Visible="false" CommandName="submit" />
+                                <asp:Button ID="btnSubmit" runat="server" Visible="false" CommandName="submit" CommandArgument='<%#Eval("ProductID") %>' />
                             </div>
                         </div>
                     </ItemTemplate>

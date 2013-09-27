@@ -148,8 +148,8 @@ namespace Data.SystemSeting
                    obj.productName = item["productName"] == null ? "" : item["productName"].ToString();
                    obj.productBrand = item["productBrand"] == null ? "" : item["productBrand"].ToString();
                    obj.productPrice = Convert.ToDecimal(item["productPrice"]);
-                   obj.PmJGproduct = Convert.ToDecimal(item["PmJGproduct"]);
-                   obj.HuiYuanID = item["HuiYuanID"].ToString();
+                   obj.PmJGproduct = item["PmJGproduct"]==null?0:Convert.ToDecimal(item["PmJGproduct"]);
+                   obj.HuiYuanID = item["HuiYuanID"]==null?"":item["HuiYuanID"].ToString();
                    obj.AuctionTime = item["AuctionTime"] == DBNull.Value ? null : item["AuctionTime"] as DateTime?;
                    obj.TimePoint = item["TimePoint"] == null ? null : item["TimePoint"] as int?;
                    obj.CreateTime = Convert.ToDateTime(item["CreateTime"]);
@@ -160,6 +160,7 @@ namespace Data.SystemSeting
                    obj.Intro = item["Intro"].ToString();
                    obj.Fee = Convert.ToDecimal(item["Fee"]);
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
+                   obj.FreePoint =Convert.ToInt32(item["FreePoint"]);
                    list.Add(obj);
                }
            }
@@ -175,7 +176,7 @@ namespace Data.SystemSeting
        {
            try
            {
-               string sql = "update product set PmJGproduct+=PriceAdd,HuiYuanID=@HuiYuanID,TimePoint=@TimePoint where ProductID=@ProductID";
+               string sql = "update product set PmJGproduct=PmJGproduct+PriceAdd,HuiYuanID=@HuiYuanID,TimePoint=@TimePoint where ProductID=@ProductID";
                return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",pro.HuiYuanID),
                    new SqlParameter("@TimePoint",pro.TimePoint),
                    new SqlParameter("@ProductID",pro.ProductID));
@@ -188,7 +189,7 @@ namespace Data.SystemSeting
        }
 
        /// <summary>
-       /// 修改产品状态
+       /// 修改产品状态（成交）
        /// </summary>
        /// <param name="pro"></param>
        /// <returns></returns>
@@ -200,6 +201,25 @@ namespace Data.SystemSeting
                return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@EndTime",DateTime.Now),
                    new SqlParameter("@ProductID",pro.ProductID),
                    new SqlParameter("@Status",pro.Status));
+           }
+           catch (Exception)
+           {
+               
+               throw;
+           }
+       }
+
+       /// <summary>
+       /// 出价倒计时
+       /// </summary>
+       /// <param name="productId"></param>
+       /// <returns></returns>
+       public int UpdateTimePoint(string productId) 
+       {
+           try
+           {
+               string sql = "update Product set TimePoint=TimePoint-1 where ProductID=@ProductID";
+               return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ProductID",productId));
            }
            catch (Exception)
            {

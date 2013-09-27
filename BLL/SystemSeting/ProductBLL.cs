@@ -163,5 +163,15 @@ namespace BLL.SystemSeting
        {
            return dal.UpdateStatus(pro);
        }
+
+       /// <summary>
+       /// 出价倒计时
+       /// </summary>
+       /// <param name="productId"></param>
+       /// <returns></returns>
+       public int UpdateTimePoint(string productId) 
+       {
+           return dal.UpdateTimePoint(productId);
+       }
     }
 }
