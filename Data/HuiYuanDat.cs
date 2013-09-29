@@ -82,7 +82,7 @@ namespace Data
        /// <returns></returns>
        public int UpdatePoint(HuiYuan hy) 
        {
-           string sql = "update HuiYuan set PaiDian=@PaiDian,FreePoint=@FreePoint where HuiYuanID=@HuiYuanID";
+           string sql = "update HuiYuan set PaiDian=PaiDian+@PaiDian,FreePoint=FreePoint+@FreePoint where HuiYuanID=@HuiYuanID";
            try
            {
                return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",hy.HuiYuanID),

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Tools;
 using Data.SystemSeting;
+using Model.Entities;
 
 namespace BLL.SystemSeting
 {
@@ -54,6 +55,38 @@ namespace BLL.SystemSeting
        {
            string sql = "update DingDan set Status="+st+" where DingDanID='"+id+"'";
            return ddDat.Setsql(sql);
+       }
+
+       /// <summary>
+       /// 生成订单
+       /// </summary>
+       /// <param name="dd"></param>
+       /// <returns></returns>
+       public int AddOrder(DingDan dd) 
+       {
+           return ddDat.AddOrder(dd);
+       }
+
+       /// <summary>
+       /// 根据类型名查询订单类型ID
+       /// </summary>
+       /// <param name="typeName"></param>
+       /// <returns></returns>
+       public OrderType GetbyName(string typeName) 
+       {
+           string sql = "select * from OrderType where TypeName='"+typeName+"'";
+           return ddDat.GetOrderType(sql);
+       }
+
+       /// <summary>
+       /// 根据ID查询订单类型名
+       /// </summary>
+       /// <param name="typeId"></param>
+       /// <returns></returns>
+       public OrderType GetbyID(string typeId) 
+       {
+           string sql = "select * from OrderType where OrderTypeID='"+typeId+"'";
+           return ddDat.GetOrderType(sql);
        }
     }
 }

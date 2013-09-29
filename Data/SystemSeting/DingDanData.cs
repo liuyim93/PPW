@@ -5,6 +5,8 @@ using System.Text;
 using Tools;
 using DAL;
 using System.Data;
+using Model.Entities;
+using System.Data.SqlClient;
 
 namespace Data.SystemSeting
 {
@@ -47,6 +49,50 @@ namespace Data.SystemSeting
        public int Setsql(string sql) 
        {
            return BLLdat.RunSQL(sql);
+       }
+
+       /// <summary>
+       /// 生成订单
+       /// </summary>
+       /// <param name="dd"></param>
+       /// <returns></returns>
+       public int AddOrder(DingDan dd)
+       {
+           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime)";
+           return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@DingDanBH",dd.DingDanBH),
+               new SqlParameter("@HuiYuanID",dd.HuiYuanID),
+               new SqlParameter("@ProductID",dd.ProductID),
+               new SqlParameter("@Status",dd.Status),
+               new SqlParameter("@OrderTypeID",dd.OrderTypeID),
+               new SqlParameter("@ProductPrice",dd.ProductPrice),
+               new SqlParameter("@Fee",dd.Fee),
+               new SqlParameter("@ShipFee",dd.ShipFee),
+               new SqlParameter("@TotalPrice",dd.TotalPrice),
+               new SqlParameter("@DingDanTime",DateTime.Now));
+       }
+
+       /// <summary>
+       /// 查询订单类型
+       /// </summary>
+       /// <param name="sql"></param>
+       /// <returns></returns>
+       public OrderType GetOrderType(string sql) 
+       {
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables[0].Rows.Count > 0)
+           {
+               OrderType type = new OrderType();
+               foreach (DataRow item in ds.Tables[0].Rows)
+               {
+                   type.OrderTypeID = item["OrderTypeID"].ToString();
+                   type.TypeName = item["TypeName"].ToString();
+               }
+               return type;
+           }
+           else 
+           {
+               return null;
+           }                      
        }
     }
 }

@@ -173,5 +173,15 @@ namespace BLL.SystemSeting
        {
            return dal.UpdateTimePoint(productId);
        }
+
+       /// <summary>
+       /// 查询最新的25条竞拍信息
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetProduct_Top25() 
+       {
+           string sql = "select top 25 * from Product order by AuctionTime asc";
+           return dal.GetProduct(sql);
+       }
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="Entities\HfTz.cs" />
     <Compile Include="Entities\HuiYuan.cs" />
     <Compile Include="Entities\JueSe.cs" />
+    <Compile Include="Entities\OrderType.cs" />
     <Compile Include="Entities\PaiDianJl.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductImeg.cs" />
