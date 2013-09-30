@@ -39,6 +39,9 @@ namespace WEB.Auction
             //正在热拍
             dlstProduct.DataSource = productBll.GetAuctioningProduct();
             dlstProduct.DataBind();
+            //最新成交五条信息
+            dlstDone.DataSource = productBll.GetDoneProduct_Top5();
+            dlstDone.DataBind();
         }
 
         //查询最新的25条竞拍信息，包括已成交的拍品
@@ -103,8 +106,7 @@ namespace WEB.Auction
                     {                        
                         throw;
                     }                   
-                    break;
-                    //成交                
+                    break;              
                 default:
                     break;
             }
@@ -232,6 +234,35 @@ namespace WEB.Auction
                         }
                     }                    
                 }                               
+            }
+        }
+
+        //最近成交
+        protected void dlstDone_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+            {
+                HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
+                HiddenField hfMemberID = e.Item.FindControl("hfMemberID") as HiddenField;
+                Image imgProduct = e.Item.FindControl("imgProduct") as Image;
+                HiddenField hfProductName=e.Item.FindControl("hfProductName")as HiddenField;
+                HiddenField hfProductNo=e.Item.FindControl("hfProductNo")as HiddenField;
+                //拍品提示信息、图片地址
+                if (hfProductID!=null&&hfProductID.Value!="")                    
+                {
+                    List<ProductImeg> list = productBll.GetProtductImeg("", hfProductID.Value);
+                    if (list.Count>0)
+                    {
+                        imgProduct.ImageUrl = list[0].img;
+                        imgProduct.ToolTip = hfProductName.Value + " 第" + hfProductNo.Value + "号拍品";
+                    }                   
+                }
+                Label lblMemberName = e.Item.FindControl("lblMemberName") as Label;
+                //获得者
+                if (hfMemberID.Value!=""&&hfMemberID!=null)
+                {
+                    lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
+                }
             }
         }
     }

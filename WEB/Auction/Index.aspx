@@ -100,9 +100,34 @@
                 
             </div>
             <div>
-                <asp:DataList ID="dlstDone" runat="server">
+                <asp:DataList ID="dlstDone" runat="server" RepeatColumns="5" 
+                    onitemdatabound="dlstDone_ItemDataBound">
                     <ItemTemplate>
-                        
+                        <div class="product_area">
+                            <div class="product_name">
+                                <a href="#" target="_self"><%#Eval("productName") %>&nbsp;<span style="color:Red"><%#Eval("Intro") %></span></a></div>
+                            <div class="product_fullprice">
+                                <img src="Images/fullprice.png" title="若竞拍未成功，可以按市场价补差价购买此商品！" alt="" width="16px" height="16px" />
+                            </div>
+                            <div class="product_img">
+                                <a href="" target="_self"><asp:Image ID="imgProduct" runat="server" Width="120px" Height="120px" /></a>
+                                <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
+                                <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' />
+                                <asp:HiddenField ID="hfProductName" runat="server" Value='<%#Eval("ProductName") %>' />
+                            </div>
+                            <div class="product_price">
+                                市场价：<span style="font-weight:bold;">￥<asp:Label ID="lblMarketPrice" runat="server" Text='<%#Eval("productPrice") %>'></asp:Label></span>
+                            </div>
+                            <div class="product_price">
+                                成交价：<span style="color:Red;font-weight:bold;font-family:Arial;">￥<asp:Label ID="lblAuctionPrice" runat="server" Text='<%#Eval("PmJGproduct") %>'></asp:Label></span>
+                            </div>
+                            <div class="product_price">
+                                获得者：<span style="color:#00666b"><asp:Label ID="lblMemberName" runat="server"></asp:Label><asp:HiddenField ID="hfMemberID" runat="server" Value='<%#Eval("HuiYuanID") %>' /></span>
+                            </div>
+                            <div class="product_endtime">
+                                <div style="float:left;width:60px;">成交时间：</div><asp:Label ID="lblEndTime" runat="server" Text='<%#Eval("EndTime") %>' Width="50px"></asp:Label>
+                            </div>
+                        </div>
                     </ItemTemplate>
                 </asp:DataList>
             </div>
@@ -113,7 +138,9 @@
             <div>
                 <asp:DataList ID="dlstPic" runat="server">
                     <ItemTemplate>
-                        
+                        <div>
+                            
+                        </div>
                     </ItemTemplate>
                 </asp:DataList>
             </div>

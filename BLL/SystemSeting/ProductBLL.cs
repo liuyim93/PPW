@@ -183,5 +183,25 @@ namespace BLL.SystemSeting
            string sql = "select top 25 * from Product order by AuctionTime asc";
            return dal.GetProduct(sql);
        }
+
+       /// <summary>
+       /// 查询最近成交的五条信息
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetDoneProduct_Top5() 
+       {
+           string sql = "select top 5 * from Product where Status=3 order by EndTime desc";
+           return dal.GetProduct(sql);
+       }
+
+       /// <summary>
+       /// 查询所有已成交的拍品
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetAllDoneProduct() 
+       {
+           string sql = "select * from Product where Status=3 order by EndTime desc";
+           return dal.GetProduct(sql);
+       }
     }
 }
