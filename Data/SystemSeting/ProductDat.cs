@@ -227,6 +227,28 @@ namespace Data.SystemSeting
                throw;
            }
        }
+
+       /// <summary>
+       /// 查询竞拍类型
+       /// </summary>
+       /// <param name="sql"></param>
+       /// <returns></returns>
+       public List<AuctionType> GetAuctionType(string sql) 
+       {
+           List<AuctionType> list = new List<AuctionType>();
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables[0].Rows.Count>0)
+           {
+               foreach (DataRow row in ds.Tables[0].Rows)
+               {
+                   AuctionType type = new AuctionType();
+                   type.AuctionTypeID=row["AuctionTypeID"].ToString();
+                   type.TypeName=row["TypeName"].ToString();
+                   list.Add(type);
+               }
+           }
+           return list;
+       }
         #endregion
     }
 }

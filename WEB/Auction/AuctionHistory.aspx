@@ -8,7 +8,7 @@
         </div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
           <ContentTemplate>
-            <div>
+            <div class="history_search">
                 竞拍类型：
                 <asp:DropDownList ID="dropAuctionType" runat="server">
                     <asp:ListItem Text="正在热拍" Value="auction" Selected="True"></asp:ListItem>
@@ -33,18 +33,18 @@
                 <asp:ImageButton ID="imgbtnSearch" runat="server" ImageUrl="Images/search.gif" />
             </div>        
             <asp:GridView ID="gvwHistory" runat="server" AutoGenerateColumns="false" 
-                  Width="100%" onrowdatabound="gvwHistory_RowDataBound">
+                  Width="100%" onrowdatabound="gvwHistory_RowDataBound" GridLines="Both" CssClass="gvw">
                 <Columns>
                     <asp:TemplateField HeaderText="商品">
                         <ItemTemplate>
                             <div>
-                                <div>
+                                <div class="product_img">
                                     <a href="" target="_self"><asp:Image ID="imgProduct" runat="server" Width="100px" Height="100px" /></a>
                                     <asp:HiddenField  ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' />
                                     <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
                                     <asp:HiddenField ID="hfProductName" runat="server" Value='<%#Eval("productName") %>' />
                                 </div>
-                                <div><a href="" target="_self" title='第<%#Eval("coding") %>期 <%#Eval("productName") %>'><%#Eval("productName") %></a><br /><asp:Label ID="lblIntro" runat="server" Text='<%#Eval("Intro") %>'></asp:Label></div>
+                                <div class="product_name"><a href="" target="_self" title='第<%#Eval("coding") %>期 <%#Eval("productName") %>'><%#Eval("productName") %></a><br /><asp:Label ID="lblIntro" runat="server" Text='<%#Eval("Intro") %>'></asp:Label></div>
                             </div>
                         </ItemTemplate>                                            
                     </asp:TemplateField>

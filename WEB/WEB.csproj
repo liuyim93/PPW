@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Auction\AuctionHistory.aspx" />
+    <Content Include="Auction\ProDetail.aspx" />
     <Content Include="Auction\Index.aspx" />
     <Content Include="Auction\Register.aspx" />
     <Content Include="Auction\Scripts\Main.js" />
@@ -448,6 +449,13 @@
     </Compile>
     <Compile Include="Auction\AuctionHistory.aspx.designer.cs">
       <DependentUpon>AuctionHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ProDetail.aspx.cs">
+      <DependentUpon>ProDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ProDetail.aspx.designer.cs">
+      <DependentUpon>ProDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\CheckCode.ashx.cs">
       <DependentUpon>CheckCode.ashx</DependentUpon>

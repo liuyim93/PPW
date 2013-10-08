@@ -203,5 +203,25 @@ namespace BLL.SystemSeting
            string sql = "select * from Product where Status=3 order by EndTime desc";
            return dal.GetProduct(sql);
        }
+
+       /// <summary>
+       /// 根据ID查询竞拍类型
+       /// </summary>
+       /// <returns></returns>
+       public List<AuctionType> GetAuctionTypebyID(string id) 
+       {
+           string sql = "select * from AuctionType where AuctionTypeID='"+id+"'";
+           return dal.GetAuctionType(sql);
+       }
+
+       /// <summary>
+       /// 根据名称查询竞拍类型
+       /// </summary>
+       /// <returns></returns>
+       public List<AuctionType> GetAuctionTypebyName(string name) 
+       {
+           string sql = "select * from AuctionType where TypeName='"+name+"'";
+           return dal.GetAuctionType(sql);
+       }
     }
 }

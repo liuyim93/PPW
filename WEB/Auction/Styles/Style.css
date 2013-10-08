@@ -147,6 +147,11 @@ ul{margin:0px;padding:0px;list-style:none;}
 /*历史成交页面*/
 .history{width:1000px; margin:10px auto; border:1px solid #cccccc;}
 .history_title{background:url("../Images/auction_history.gif") no-repeat; height:40px;line-height:40px;}
+.history .product_img{float:left;margin:5px;}
+.history .product_name{float:left; font-size:13px;margin:40px 0; text-align:left;}
+.history .product_name span{color:#ccc; text-align:left;}
+.history .gvw{text-align:center;}
+.history_search{display:block; height:40px;line-height:40px;padding:15px auto;}
 
 
 
