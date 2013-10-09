@@ -161,6 +161,7 @@ namespace Data.SystemSeting
                    obj.Fee = Convert.ToDecimal(item["Fee"]);
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
                    obj.FreePoint =Convert.ToInt32(item["FreePoint"]);
+                   obj.EndTime = Convert.ToDateTime(item["EndTime"]);
                    list.Add(obj);
                }
            }

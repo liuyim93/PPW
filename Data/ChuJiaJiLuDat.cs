@@ -6,6 +6,7 @@ using Model.Entities;
 using DAL;
 using System.Data;
 using System.Data.SqlClient;
+using Data.SystemSeting;
 
 namespace Data
 {
@@ -37,6 +38,35 @@ namespace Data
                 
                 throw;
             }
+        }
+
+       /// <summary>
+       /// 查询出价记录
+       /// </summary>
+       /// <param name="sql"></param>
+       /// <returns></returns>
+        public List<ChuJiaJiLu> GetChuJiaJiLu(string sql) 
+        {
+            List<ChuJiaJiLu> list = new List<ChuJiaJiLu>();
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables[0].Rows.Count>0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    ChuJiaJiLu record = new ChuJiaJiLu();
+                    record.HuiYuanID=row["HuiYuanID"].ToString();
+                    record.IPAdress=row["IPAdress"].ToString();
+                    record.Price = Convert.ToDecimal(row["Price"]);
+                    record.ProductID=row["ProductID"].ToString();
+                    record.Status = Convert.ToInt32(row["Status"]);
+                    record.AuctionPoint = Convert.ToInt32(row["AuctionPoint"]);
+                    record.AuctionTime = Convert.ToDateTime(row["AuctionTime"]);
+                    record.FreePoint = Convert.ToInt32(row["FreePoint"]);
+                    record.ChuJiaJiLuID=row["ChuJiaJiLuID"].ToString();
+                    list.Add(record);
+                }
+            }
+            return list;
         }
     }
 }
