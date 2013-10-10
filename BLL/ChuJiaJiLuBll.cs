@@ -48,5 +48,12 @@ namespace BLL
             string sql = "select top 10 * from ChuJiaJiLu where ProductID='"+ProId+"' order by AuctionTime desc";
             return cd.GetChuJiaJiLu(sql);
         }
+
+        //根据商品ID和会员ID查询出价记录
+        public List<ChuJiaJiLu> GetChuJiaJiLu(string proId,string hyId) 
+        {
+            string sql = "select * from ChuJiaJiLu where ProductID='"+proId+"' and HuiYuanID='"+hyId+"'";
+            return cd.GetChuJiaJiLu(sql);
+        }
     }
 }

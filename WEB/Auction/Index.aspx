@@ -4,18 +4,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="width:100%;height:100%;">
-        <div class="index_top">
+        <div id="index_top">
             <div class="top_left">
                 <!--广播-->
                 <div class="broadcast">
-                    
+                    <marquee></marquee>
                 </div>
                 <!--图片轮播-->
                 <div class="pic_baner">
                     
                 </div>
             </div>
-            <div class="top_right">
+            <div class="top_right1">
                 <!--新闻公告-->
                 <div class="news">
                     <div class="title">

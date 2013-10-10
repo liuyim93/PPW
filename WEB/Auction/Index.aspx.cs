@@ -216,6 +216,7 @@ namespace WEB.Auction
                                     dd.Fee = Convert.ToDecimal(hfFee.Value);
                                     dd.ShipFee = Convert.ToDecimal(hfShipFee.Value);
                                     dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;
+                                    dd.InvalidTime = DateTime.Now.AddDays(7);
                                     orderBll.AddOrder(dd);
                                     //修改拍品状态为已成交
                                     Product pro2 = new Product();

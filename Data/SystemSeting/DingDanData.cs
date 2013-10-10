@@ -58,7 +58,7 @@ namespace Data.SystemSeting
        /// <returns></returns>
        public int AddOrder(DingDan dd)
        {
-           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime)";
+           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime,InvalidTime)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime,@InvalidTime)";
            return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@DingDanBH",dd.DingDanBH),
                new SqlParameter("@HuiYuanID",dd.HuiYuanID),
                new SqlParameter("@ProductID",dd.ProductID),
@@ -68,7 +68,8 @@ namespace Data.SystemSeting
                new SqlParameter("@Fee",dd.Fee),
                new SqlParameter("@ShipFee",dd.ShipFee),
                new SqlParameter("@TotalPrice",dd.TotalPrice),
-               new SqlParameter("@DingDanTime",DateTime.Now));
+               new SqlParameter("@DingDanTime",DateTime.Now),
+               new SqlParameter("@InvalidTime",dd.InvalidTime));
        }
 
        /// <summary>

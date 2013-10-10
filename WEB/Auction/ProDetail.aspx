@@ -1,9 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="ProDetail.aspx.cs" Inherits="WEB.Auction.Auctioning" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">      
+        function setTab(num) {
+            var auction_my = document.getElementById('title_my');
+            var auction_history = document.getElementById('title_history');
+            var content_my = document.getElementById('content_my');
+            var content_history = document.getElementById('content_history');
+            if (num == 2) {
+                auction_my.className = "title_focus";
+                content_my.style.display = "block";
+                content_history.style.display = "none";
+                auction_history.className = "title_history";
+            } else {
+                auction_history.className = "title_focus";
+                content_history.style.display = "block";
+                content_my.style.display = "none";
+                auction_my.className = "title_my";
+            }
+        }        
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:UpdatePanel ID="updatepanel1" runat="server">
-    <ContentTemplate>       
+    <ContentTemplate>
+    <asp:Timer ID="Timer1" runat="server" Interval="1000" ontick="Timer1_Tick"></asp:Timer>       
     <div class="detail">
         <div class="pro_info">
             <div class="left">
@@ -37,7 +57,8 @@
                         </div>
                     </div>
                     <div class="button">
-                        <asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif" />
+                        <asp:ImageButton ID="imgbtnAuction" runat="server" 
+                            ImageUrl="Images/bid_button.gif" onclick="imgbtnAuction_Click" />
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="pnlEnd" runat="server" class="end">
@@ -55,20 +76,20 @@
             <div class="right">
                 <div class="right_top">
                     <div class="top_title">
-                        <div id="title_my">我的竞拍</div>
-                        <div id="title_history">竞拍历史</div>
+                        <div id="title_history" onmouseover="setTab(1);" class="title_focus">竞拍历史</div>
+                        <div id="title_my" onmouseover="setTab(2);" class="title_my">我的竞拍</div>                        
                     </div>
                     <div class="top_content">
-                        <div class="content_my">
+                        <div id="content_my">
                             <ul>
                                 <li>使用拍点：<asp:Label ID="lblAuctionPoint" runat="server">0</asp:Label></li>
                                 <li>使用返点：<asp:Label ID="lblFreePoint" runat="server">0</asp:Label></li>
                                 <li>补差价购买：￥<asp:Literal ID="ltlProPrice" runat="server"></asp:Literal>-<asp:Label ID="lblUsed" runat="server">0</asp:Label>=￥<asp:Label ID="lblPay" runat="server"></asp:Label></li>
                             </ul>
                         </div>
-                        <div class="content_history">
+                        <div id="content_history">
                             <asp:GridView ID="gvwHistory" runat="server" AutoGenerateColumns="false" 
-                                Width="100%" onrowdatabound="gvwHistory_RowDataBound" GridLines="None">
+                                 onrowdatabound="gvwHistory_RowDataBound" GridLines="None" Width="100%">
                                 <Columns>
                                     <asp:TemplateField HeaderText="出价人">
                                         <ItemTemplate>

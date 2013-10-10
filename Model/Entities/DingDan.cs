@@ -25,6 +25,8 @@ namespace Model.Entities
         public decimal TotalPrice { get; set; }
         //收货地址
         public string ShouHuoDZID { get; set; }
+        //付款截止日期
+        public DateTime InvalidTime { get; set; }
 	}
 }
 
