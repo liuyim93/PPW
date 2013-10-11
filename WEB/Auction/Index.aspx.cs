@@ -37,7 +37,7 @@ namespace WEB.Auction
             dlstNews.DataSource = ggBll.GetGgTop5();
             dlstNews.DataBind();
             //正在热拍
-            dlstProduct.DataSource = productBll.GetAuctioningProduct();
+            dlstProduct.DataSource = productBll.GetAuctioningProduct_Top25();
             dlstProduct.DataBind();
             //最新成交五条信息
             dlstDone.DataSource = productBll.GetDoneProduct_Top5();

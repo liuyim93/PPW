@@ -138,10 +138,39 @@ namespace BLL.SystemSeting
        /// 正在热拍的25件商品
        /// </summary>
        /// <returns></returns>
+       public List<Product> GetAuctioningProduct_Top25() 
+       {
+           string sql = "select top 25 * from Product where Status=4 order by AuctionTime asc";
+           return dal.GetProduct(sql);
+       }
+
+       /// <summary>
+       /// 正在热拍的所有商品
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetAllAuctioningProduct() 
+       {
+           string sql = "select * from Product where Status=4 order by AuctionTime asc";
+           return dal.GetProduct(sql);
+       }
+
+       /// <summary>
+       /// 查询所有的常规竞拍商品
+       /// </summary>
+       /// <returns></returns>
        public List<Product> GetAuctioningProduct() 
        {
-           string sql = "select top 25 * from Product where status=4 order by AuctionTime asc";
-           return dal.GetProduct(sql);
+           string sql = "select * from AuctionType where TypeName='常规竞拍'";
+           string auctionTypeId = dal.GetAuctionType(sql)[0].AuctionTypeID;
+            if (auctionTypeId != "")
+            {
+                string sql1 = "select * from Product where Status=4 and AuctionTypeID='" + auctionTypeId + "' order by AuctionTime asc";
+                return dal.GetProduct(sql1);
+            }
+            else 
+            {
+                return null;
+            }         
        }
 
        /// <summary>
