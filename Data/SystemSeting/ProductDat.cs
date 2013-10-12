@@ -98,6 +98,9 @@ namespace Data.SystemSeting
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
                    obj.EndTime =item["EndTime"]==DBNull.Value ? null:item["EndTime"]as DateTime?;
                    obj.Intro = item["Intro"].ToString();
+                   obj.AuctionTypeID=item["AuctionTypeID"].ToString();
+                   obj.FreePoint=Convert.ToInt32(item["FreePoint"]);
+                   obj.IsRecommend = Convert.ToInt32(item["IsRecommend"]);
                    list.Add(obj);
                }
            }

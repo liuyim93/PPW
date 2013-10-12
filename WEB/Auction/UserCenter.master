@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="UserCenter.master.cs" Inherits="WEB.Auction.UserCenter" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div id="usercenter">
+        <div class="usercenter_left">
+            <div class="usercenter_left_title">个人中心</div>
+            <div class="usercenter_left_content">
+                <div class="list_title">我的竞拍</div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="list_title">我的订单</div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="list_title">我的拍点</div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="list_title">我的信息</div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <asp:Image ID="imgPortrait" runat="server" Width="" Height="" />
+                </div>
+                <div>
+                    <div><asp:Label ID="lblMemberName" runat="server"></asp:Label>&nbsp;<a href="" target="_self">[个人信息]</a></div>
+                    <div>拍点：<asp:Label ID="lblAuctionPoint" runat="server"></asp:Label>&nbsp;返点：<asp:Label ID="lblFreePoint" runat="server"></asp:Label>&nbsp;积分:<asp:Label ID="lblJiFen" runat="server"></asp:Label>&nbsp;<a href="" target="_blank">[购买拍点]</a></div>
+                    <div><a href="" target="_self">竞拍订单（<asp:Label ID="lblAuctionOrder" runat="server"></asp:Label></a>&nbsp;<a href="" target="_self">补差价订单(<asp:Label ID="lblOrder2" runat="server"></asp:Label>)</a></div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="content3"  runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>

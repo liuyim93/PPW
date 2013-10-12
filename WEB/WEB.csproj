@@ -489,6 +489,13 @@
     <Compile Include="Auction\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Auction\UserCenter.master.cs">
+      <DependentUpon>UserCenter.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\UserCenter.master.designer.cs">
+      <DependentUpon>UserCenter.master</DependentUpon>
+    </Compile>
     <Compile Include="Auction\UserControl\Top.ascx.cs">
       <DependentUpon>Top.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -716,6 +723,7 @@
     <Content Include="kindeditor\asp.net\upload_json.ashx" />
     <Content Include="Auction\Main.Master" />
     <Content Include="Auction\CheckCode.ashx" />
+    <Content Include="Auction\UserCenter.master" />
     <None Include="kindeditor\jsp\demo.jsp" />
     <None Include="kindeditor\jsp\file_manager_json.jsp" />
     <None Include="kindeditor\jsp\upload_json.jsp" />

@@ -217,11 +217,11 @@ namespace BLL.SystemSeting
        /// 查询最近成交的五条信息
        /// </summary>
        /// <returns></returns>
-       public List<Product> GetDoneProduct_Top5() 
-       {
-           string sql = "select top 5 * from Product where Status=3 order by EndTime desc";
-           return dal.GetProduct(sql);
-       }
+       //public List<Product> GetDoneProduct_Top5() 
+       //{
+       //    string sql = "select top 5 * from Product where Status=3 order by EndTime desc";
+       //    return dal.GetProduct(sql);
+       //}
 
        /// <summary>
        /// 查询所有已成交的拍品
@@ -251,6 +251,26 @@ namespace BLL.SystemSeting
        {
            string sql = "select * from AuctionType where TypeName='"+name+"'";
            return dal.GetAuctionType(sql);
+       }
+
+       /// <summary>
+       /// 查询5条推荐商品信息
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetRecomdProduct_Top5() 
+       {
+           string sql = "select top 5 * from Product where IsRecommend=1 order by AuctionTime asc";
+           return dal.GetProduct(sql);
+       }
+
+       /// <summary>
+       /// 查询5条已成交商品
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetDoneProduct_Top5() 
+       {
+           string sql = "select top 5 * from Product where Status=3 and AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='常规竞拍') order by EndTime desc";
+           return dal.GetProduct(sql);
        }
     }
 }

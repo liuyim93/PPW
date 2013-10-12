@@ -40,6 +40,7 @@ namespace Model.Entities
         public string Intro { get; set; }//产品简介
         public int FreePoint { get; set; }//每次竞价需要的返点数
         public string AuctionTypeID { get; set; }//竞拍类型
+        public int IsRecommend { get; set; }//是否推荐商品
 	}
 }
 
