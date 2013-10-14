@@ -206,4 +206,26 @@ ul{margin:0px;padding:0px;list-style:none;}
 .rcomd_name{line-height:18px; overflow:hidden;min-height:20px;max-height:38px;}
 .rcomd_price{line-height:18px;}
 
+/*个人中心母板页*/
+.usercenter{margin-top:5px;padding:1px;width:100%;height:100%;}
+.usercenter_left{width:200px;border:1px solid #ccc;margin-right:5px;float:left;}
+.usercenter_left_title{height:30px;line-height:30px;border-bottom:1px solid #8f0100;padding-left:5px;font-size:14px;color:#8f0100;font-weight:bold;}
+.list_title{height:27px;line-height:27px;background-color:#ccc;padding-left:1px;font-weight:bold;}
+.usercenter_left_content ul{width:180px;margin:5px 0px 5px 10px;}
+.usercenter_left_content ul li{height:26px;line-height:26px;width:170px;}
+.usercenter_left_content ul li a{width:170px;height:26px;line-height:26px;padding-left:10px;}
+.usercenter_right{width:788px;float:left;}
+.userinfo{width:100%;height:100px;padding:5px;border:1px solid #ccc;}
+.userinfo_portrait{width:70px;float:left;padding:5px;margin-right:5px;}
+.userinfo_content{float:left;height:100%;}
+.userinfo_name{height:26px;line-height:26px;width:100%;margin:5px 0px;}
+
+/*正在参与的竞拍*/
+.biding{border:1px solid #ccc;width:100%;}
+.biding_title{border-bottom:1px solid #8f0100;padding-left:10px;font-size:16px;font-weight:bold;height:30px;line-height:30px;}
+.bidingarea{width:100%;margin-top:5px;}
+.bidingarea_top{height:30px;line-height:30px;background-color:#ccc;padding-left:5px;overflow:hidden;}
+.bidingarea_img{float:left;width:80px;height:80px;border:1px solid #ccc;}
+
+
 

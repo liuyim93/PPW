@@ -253,6 +253,7 @@ namespace Data.SystemSeting
            }
            return list;
        }
+
         #endregion
     }
 }

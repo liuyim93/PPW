@@ -5,12 +5,14 @@ using System.Text;
 using Model.Entities;
 using Data.SystemSeting;
 using Tools;
+using Data;
 
 namespace BLL.SystemSeting
 {
    public class ProductBLL:BaseBll
     {
        ProductDat dal = new ProductDat();
+       ChuJiaJiLuDat record = new ChuJiaJiLuDat();
        /// <summary>
        /// 添加
        /// </summary>
@@ -271,6 +273,35 @@ namespace BLL.SystemSeting
        {
            string sql = "select top 5 * from Product where Status=3 and AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='常规竞拍') order by EndTime desc";
            return dal.GetProduct(sql);
+       }
+
+       /// <summary>
+       /// 查询会员参与过竞拍的商品
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <param name="status"></param>
+       /// <returns></returns>
+       public List<Product> GetProductbyStatus(string hyId,int status) 
+       {
+           List<ChuJiaJiLu> list = record.GetdifProductIDbyhyID(hyId);
+           List<Product> list1=new List<Product>();
+           if (list != null)
+           {
+               for (int i = 0; i < list.Count; i++)
+               {
+                   string proId = list[i].ProductID;
+                   string sql = "select * from Product where ProductID='" + proId + "' and Status='" + status + "'";
+                   if (dal.GetProduct(sql).Count>0)
+                   {
+                       list1.Add(dal.GetProduct(sql)[0]);
+                   }                   
+               }
+               return list1;
+           }
+           else 
+           {
+               return null;
+           }
        }
     }
 }

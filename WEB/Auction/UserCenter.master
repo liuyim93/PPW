@@ -8,35 +8,37 @@
             <div class="usercenter_left_content">
                 <div class="list_title">我的竞拍</div>
                 <ul>
-                    <li></li>
-                    <li></li>
+                    <li><a href="" target="_self">正在参与的竞拍</a></li>
+                    <li><a href="" target="_self">历史竞拍</a></li>
                 </ul>
                 <div class="list_title">我的订单</div>
                 <ul>
-                    <li></li>
-                    <li></li>
+                    <li><a href="" target="_self">竞拍订单</a></li>
+                    <li><a href="" target="_self">补差价订单</a></li>
                 </ul>
                 <div class="list_title">我的拍点</div>
                 <ul>
-                    <li></li>
-                    <li></li>
+                    <li><a href="" target="_self">我要充值</a></li>
+                    <li><a href="" target="_self">出价记录</a></li>
+                    <li><a href="" target="_self">充值记录</a></li>
                 </ul>
                 <div class="list_title">我的信息</div>
                 <ul>
-                    <li></li>
-                    <li></li>
+                    <li><a href="" target="_self">个人资料</a></li>
+                    <li><a href="" target="_self">收货地址</a></li>
+                    <li><a href="" target="_self">修改密码</a></li>
                 </ul>
             </div>
         </div>
-        <div>
-            <div>
-                <div>
-                    <asp:Image ID="imgPortrait" runat="server" Width="" Height="" />
+        <div class="usercenter_right">
+            <div class="userinfo">
+                <div class="userinfo_portrait">
+                    <asp:Image ID="imgPortrait" runat="server" Width="60px" Height="60px" />
                 </div>
-                <div>
-                    <div><asp:Label ID="lblMemberName" runat="server"></asp:Label>&nbsp;<a href="" target="_self">[个人信息]</a></div>
-                    <div>拍点：<asp:Label ID="lblAuctionPoint" runat="server"></asp:Label>&nbsp;返点：<asp:Label ID="lblFreePoint" runat="server"></asp:Label>&nbsp;积分:<asp:Label ID="lblJiFen" runat="server"></asp:Label>&nbsp;<a href="" target="_blank">[购买拍点]</a></div>
-                    <div><a href="" target="_self">竞拍订单（<asp:Label ID="lblAuctionOrder" runat="server"></asp:Label></a>&nbsp;<a href="" target="_self">补差价订单(<asp:Label ID="lblOrder2" runat="server"></asp:Label>)</a></div>
+                <div class="userinfo_content">
+                    <div class="userinfo_name"><asp:Label ID="lblMemberName" runat="server"></asp:Label>&nbsp;<a href="" target="_self">[个人信息]</a></div>
+                    <div class="userinfo_name">拍点：<asp:Label ID="lblAuctionPoint" runat="server"></asp:Label>&nbsp;返点：<asp:Label ID="lblFreePoint" runat="server"></asp:Label>&nbsp;积分:<asp:Label ID="lblJiFen" runat="server"></asp:Label>&nbsp;<a href="" target="_blank">[购买拍点]</a></div>
+                    <div class="userinfo_name"><a href="" target="_self">竞拍订单(<asp:Label ID="lblAuctionOrder" runat="server"></asp:Label>)</a>&nbsp;<a href="" target="_self">补差价订单(<asp:Label ID="lblOrder2" runat="server"></asp:Label>)</a></div>
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="content3"  runat="server"></asp:ContentPlaceHolder>

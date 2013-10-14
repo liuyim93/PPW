@@ -4,7 +4,7 @@
                  <div class="top_login">欢迎来到拍拍网！&nbsp;<a href="UserLogin.aspx" target="_self">[登录]</a>&nbsp;<a href="Register.aspx" target="_self">[免费注册]</a></div>
             </asp:Panel>
            <asp:Panel ID="Panel2" runat="server" Visible="false">
-                <div class="top_login">您好！&nbsp;<asp:HyperLink ID="hlnkUserName" runat="server"></asp:HyperLink>&nbsp;<a href="#" target="_self">个人中心</a>&nbsp;<asp:LinkButton 
+                <div class="top_login">您好！&nbsp;<asp:HyperLink ID="hlnkUserName" runat="server"></asp:HyperLink>&nbsp;<a href="../UserInfo/Biding.aspx" target="_self">个人中心</a>&nbsp;<asp:LinkButton 
                         ID="lbtnLoginOut" runat="server" Text="安全退出" onclick="lbtnLoginOut_Click"></asp:LinkButton></div>
            </asp:Panel>
             <div class="top_right"><a href="">设为首页</a>|<a>加入收藏</a>|<a href="" target="_self">帮助中心</a></div>

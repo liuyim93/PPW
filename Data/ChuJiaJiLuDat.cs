@@ -68,5 +68,34 @@ namespace Data
             }
             return list;
         }
+
+       /// <summary>
+       ///根据会员ID查询参与过的商品ID 
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <returns></returns>
+        public List<ChuJiaJiLu> GetdifProductIDbyhyID(string hyId) 
+        {
+            List<ChuJiaJiLu> list = new List<ChuJiaJiLu>();
+            string sql = "select distinct ProductID from ChuJiaJiLu where HuiYuanID=@HuiYuanID";
+            try
+            {
+                using (SqlDataReader reader=sh.ExecuteReader(CommandType.Text,sql,new SqlParameter("@HuiYuanID",hyId)))
+                {
+                    while (reader.Read())
+                    {
+                        ChuJiaJiLu record = new ChuJiaJiLu();
+                        record.ProductID = reader["ProductID"].ToString();
+                        list.Add(record);
+                    }
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
     }
 }
