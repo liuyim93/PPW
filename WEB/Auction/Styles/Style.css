@@ -223,9 +223,17 @@ ul{margin:0px;padding:0px;list-style:none;}
 /*正在参与的竞拍*/
 .biding{border:1px solid #ccc;width:100%;}
 .biding_title{border-bottom:1px solid #8f0100;padding-left:10px;font-size:16px;font-weight:bold;height:30px;line-height:30px;}
-.bidingarea{width:100%;margin-top:5px;}
+.bidingarea{width:765px;margin:0px 10px 2px 10px;border:1px solid #ccc;height:130px;}
 .bidingarea_top{height:30px;line-height:30px;background-color:#ccc;padding-left:5px;overflow:hidden;}
-.bidingarea_img{float:left;width:80px;height:80px;border:1px solid #ccc;}
+.bidingarea_img{float:left;width:80px;height:80px;border:1px solid #ccc;margin:10px 5px;}
+.bidingarea_proname{float:left;border-right:1px solid #ccc;width:200px;line-height:20px;padding:15px 5px;height:70px;}
+.bidingarea_price{width:100px;height:100px;text-align:center;font-size:14px;color:#8f0100;border-right:1px solid #ccc;float:left;line-height:100px;font-weight:bold;}
+.bidingarea_member{height:100px;float:left;border-right:1px solid #ccc;line-height:100px;width:120px; text-align:center;}
+.bidingarea_act{height:40px;width:120px;float:left;text-align:center;border-right:1px solid #ccc;vertical-align:center;line-height:20px;padding:30px 0px;}
+.bidedarea_operate{width:110px;height:40px;line-height:20px;float:left;text-align:center;padding:30px 0px;}
+.bidinghead{height:30px;line-height:30px;font-size:14px;width:765px;margin:10px 10px 0px 10px;border:1px solid #ccc;border-bottom:1px solid #8f0100; text-align:center;}
+.bidinghead li{float:left;}
+.bidingarea_operate{width:110px;height:100px;line-height:100px;text-align:center;float:left;}
 
 
 

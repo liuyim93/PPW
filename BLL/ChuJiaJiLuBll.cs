@@ -55,5 +55,15 @@ namespace BLL
             string sql = "select * from ChuJiaJiLu where ProductID='"+proId+"' and HuiYuanID='"+hyId+"'";
             return cd.GetChuJiaJiLu(sql);
         }
+
+        /// <summary>
+        /// 根据商品ID查询参与竞拍的会员ID
+        /// </summary>
+        /// <param name="proId"></param>
+        /// <returns></returns>
+        public List<ChuJiaJiLu> GetHuiYuanIDbyProId(string proId) 
+        {
+            return cd.GetHuiYuanIDbyProId(proId);
+        }
     }
 }

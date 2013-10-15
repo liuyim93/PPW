@@ -165,6 +165,7 @@ namespace Data.SystemSeting
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
                    obj.FreePoint =Convert.ToInt32(item["FreePoint"]);
                    obj.EndTime = Convert.ToDateTime(item["EndTime"]);
+                   obj.AuctionTypeID = item["AuctionTypeID"].ToString();
                    list.Add(obj);
                }
            }

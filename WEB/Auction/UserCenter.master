@@ -8,8 +8,8 @@
             <div class="usercenter_left_content">
                 <div class="list_title">我的竞拍</div>
                 <ul>
-                    <li><a href="" target="_self">正在参与的竞拍</a></li>
-                    <li><a href="" target="_self">历史竞拍</a></li>
+                    <li><a href="../UserInfo/Biding.aspx" target="_self">正在参与的竞拍</a></li>
+                    <li><a href="../UserInfo/Bided.aspx" target="_self">历史竞拍</a></li>
                 </ul>
                 <div class="list_title">我的订单</div>
                 <ul>

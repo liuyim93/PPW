@@ -97,5 +97,35 @@ namespace Data
                 throw;
             }
         }
+        
+       /// <summary>
+        /// 根据商品ID查询参与竞拍的会员ID
+       /// </summary>
+       /// <param name="proId"></param>
+       /// <returns></returns>
+        public List<ChuJiaJiLu> GetHuiYuanIDbyProId(string proId)
+        {
+            List<ChuJiaJiLu> list=new List<ChuJiaJiLu>();
+            string sql = "select distinct HuiYuanID from ChuJiaJiLu where ProductID=@ProductID";
+            try
+            {
+                using (SqlDataReader reader=sh.ExecuteReader(CommandType.Text,sql,new SqlParameter("@ProductID",proId)))
+                {
+                    while (reader.Read())
+                    {
+                        ChuJiaJiLu record = new ChuJiaJiLu();
+                        record.HuiYuanID = reader["HuiYuanID"].ToString();
+                        list.Add(record);
+                    }
+                    return list;
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+        }
     }
 }
