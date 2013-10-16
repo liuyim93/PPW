@@ -57,6 +57,7 @@
     <Compile Include="Home\SystemParamsBll.cs" />
     <Compile Include="Home\UserBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShouHuoDZBll.cs" />
     <Compile Include="SystemSeting\bbsBll.cs" />
     <Compile Include="SystemSeting\DingDanBll.cs" />
     <Compile Include="SystemSeting\GonGaoBLL.cs" />

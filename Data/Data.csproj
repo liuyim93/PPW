@@ -49,6 +49,7 @@
     <Compile Include="LoginData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReYuanDal.cs" />
+    <Compile Include="ShouHuoDZDat.cs" />
     <Compile Include="SystemSeting\DingDanData.cs" />
     <Compile Include="SystemSeting\GonGaoDat.cs" />
     <Compile Include="SystemSeting\ProductDat.cs" />

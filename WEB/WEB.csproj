@@ -433,6 +433,7 @@
     <Content Include="SystemSeting\XinXi\GongGao.aspx" />
     <Content Include="SystemSeting\XinXi\GongShiXX.aspx" />
     <Content Include="SystemSeting\XinXi\YouQingLianJei.aspx" />
+    <Content Include="UserInfo\AuctionOrder.aspx" />
     <Content Include="UserInfo\Bided.aspx" />
     <Content Include="UserInfo\Biding.aspx" />
     <Content Include="Web.config">
@@ -693,6 +694,13 @@
     </Compile>
     <Compile Include="SystemSeting\XinXi\YouQingLianJei.aspx.designer.cs">
       <DependentUpon>YouQingLianJei.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\AuctionOrder.aspx.cs">
+      <DependentUpon>AuctionOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\AuctionOrder.aspx.designer.cs">
+      <DependentUpon>AuctionOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInfo\Bided.aspx.cs">
       <DependentUpon>Bided.aspx</DependentUpon>
