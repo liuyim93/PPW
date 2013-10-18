@@ -95,5 +95,38 @@ namespace Data.SystemSeting
                return null;
            }                      
        }
+
+       /// <summary>
+       /// 查询订单
+       /// </summary>
+       /// <param name="sql"></param>
+       /// <returns></returns>
+       public List<DingDan> GetDingDan(string sql) 
+       {
+           List<DingDan> list = new List<DingDan>();
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables[0].Rows.Count>0)
+           {               
+               foreach (DataRow row in ds.Tables[0].Rows)
+               {
+                   DingDan order = new DingDan();
+                   order.DingDanID = row["DingDanID"].ToString();
+                   order.DingDanBH = row["DingDanBH"].ToString();
+                   order.HuiYuanID = row["HuiYuanID"].ToString();
+                   order.ProductID = row["ProductID"].ToString();
+                   order.OrderTypeID = row["OrderTypeID"].ToString();
+                   order.ProductPrice=Convert.ToDecimal(row["ProductPrice"]);
+                   order.Fee=Convert.ToDecimal(row["Fee"]);
+                   order.ShipFee=Convert.ToDecimal(row["ShipFee"]);
+                   order.ShouHuoDZID=row["ShouHuoDZID"]==DBNull.Value?"":row["ShouHuoDZID"].ToString();
+                   order.Status=Convert.ToInt32(row["Status"]);
+                   order.TotalPrice=Convert.ToDecimal(row["TotalPrice"]);
+                   order.DingDanTime=Convert.ToDateTime(row["DingDanTime"]);
+                   order.InvalidTime=Convert.ToDateTime(row["InvalidTime"]);
+                   list.Add(order);
+               }
+           }
+           return list;
+       }
     }
 }

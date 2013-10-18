@@ -88,5 +88,17 @@ namespace BLL.SystemSeting
            string sql = "select * from OrderType where OrderTypeID='"+typeId+"'";
            return ddDat.GetOrderType(sql);
        }
+
+       /// <summary>
+       /// 根据会员ID和订单状态查询订单
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <param name="status"></param>
+       /// <returns></returns>
+       public List<DingDan> GetDingDanbyhyId(string hyId,int status) 
+       {
+           string sql = "select * from DingDan where HuiYuanID='"+hyId+"'and Status="+status+"";
+           return ddDat.GetDingDan(sql);
+       }
     }
 }
