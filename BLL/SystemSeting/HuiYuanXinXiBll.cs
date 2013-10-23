@@ -101,5 +101,26 @@ namespace BLL.SystemSeting
       {
           return dat.IsEmailAvailable(email);
       }
+
+      /// <summary>
+      /// 修改会员个人资料
+      /// </summary>
+      /// <param name="hy"></param>
+      /// <returns></returns>
+      public int UpdateUserInfo(HuiYuan hy) 
+      {
+          return dat.UpdateUserInfo(hy);
+      }
+
+      /// <summary>
+      /// 修改密码
+      /// </summary>
+      /// <param name="hyId"></param>
+      /// <param name="pwd"></param>
+      /// <returns></returns>
+      public int UpdatePwd(string hyId,string pwd) 
+      {
+          return dat.UpdatePwd(hyId,pwd);
+      }
     }
 }

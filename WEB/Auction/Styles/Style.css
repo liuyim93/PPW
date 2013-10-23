@@ -216,8 +216,8 @@ ul{margin:0px;padding:0px;list-style:none;}
 .usercenter_left_content ul li a{width:170px;height:26px;line-height:26px;padding-left:10px;}
 .usercenter_right{width:788px;float:left;}
 .userinfo{width:100%;height:100px;padding:5px;border:1px solid #ccc;}
-.userinfo_portrait{width:70px;float:left;padding:5px;margin-right:5px;}
-.userinfo_content{float:left;height:100%;}
+.userinfo_portrait{width:70px;float:left;padding:5px;margin-right:5px;height:70px;}
+.userinfo_content{float:left;height:auto;}
 .userinfo_name{height:26px;line-height:26px;width:100%;margin:5px 0px;}
 
 /*正在参与的竞拍*/
@@ -247,11 +247,25 @@ ul{margin:0px;padding:0px;list-style:none;}
 .actorder_lsttitle{height:30px;line-height:30px;border-bottom:2px solid #351c20;}
 .actorder_lsttitle li{float:left;width:80px;text-align:center;background-color:#ccc;font-size:14px;font-weight:bold;margin-right:3px;}
 .actorder_lsttitle li a{text-decoration:none;}
-.actorder_area{width:765px;margin-bottom:3px;}
+.actorder_area{width:765px;margin-bottom:5px;border:1px solid #ccc;height:100px;}
 .actorder_area_title{height:30px;line-height:30px;padding-left:5px;background-color:#ccc;}
 .actorder_area_img{width:60px;height:60px;margin:5px;border:1px solid #ccc;float:left;}
-.actorder_area_name{width:200px;float:left;height:70px;line-height:25px;padding:20px 0;}
-.actorder_area_price{float:left;height:70px;line-height:70px;width:75px;}
+.actorder_area_name{width:200px;float:left;height:30px;line-height:20px;padding:20px 0;margin-left:5px;margin-right:10px; overflow:hidden;}
+.actorder_area_price{float:left;height:30px;line-height:20px;width:75px; padding:20px 0;text-align:center;}
+.actorder_area_operate{float:left;height:70px;line-height:70px;text-align:center;width:75px;}
+
+/*个人资料*/
+#userinfo{width:100%;margin-top:5px;border:1px solid #ccc;height:300px;}
+.userinfo_title{border-bottom:1px solid #8f0100;height:30px;padding-left:5px;font-weight:bold;font-size:14px;line-height:30px;}
+.userinfo_content1{width:100%;padding-top:10px;}
+.userinfo_left1{float:left;width:200px;text-align:right;height:25px;line-height:25px;margin-right:2px;}
+.userinfo_right1{float:left;text-align:left;height:25px;line-height:25px;width:500px;}
+.userinfo_adress{float:left;height:70px;line-height:25px;}
+
+/*修改密码*/
+.updatepwd_submit{padding-left:220px;height:25px;line-height:25px;float:left;margin:5px 0;}
+.updatepwd_tr{height:30px;line-height:30px; clear:both;}
+.updatepwd{width:100%;margin-top:5px;border:1px solid #ccc;height:300px;}
 
 
 

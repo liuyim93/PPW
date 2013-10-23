@@ -40,8 +40,9 @@ namespace Model.Entities
 		public virtual ICollection<Tz> Tzs { get; set; }
         public Nullable<int> FreePoint { get; set; }//返点数
         public Nullable<int> ContinueLogins { get; set; }//连续登录次数
-        public int IsEmailVerify { get; set; }//邮箱是否验证
-        public int IsPhoneVerify { get; set; }//手机号码是否验证
+        public Nullable<int> IsEmailVerify { get; set; }//邮箱是否验证
+        public Nullable<int> IsPhoneVerify { get; set; }//手机号码是否验证
+        public string Adress { get; set; }//地址
 	}
 }
 

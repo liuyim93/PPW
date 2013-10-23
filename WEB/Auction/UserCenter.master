@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="UserCenter.master.cs" Inherits="WEB.Auction.UserCenter" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <asp:ContentPlaceHolder ID="Content4" runat="server" ></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="Content4" runat="server" >
+    </asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="usercenter">
@@ -25,9 +26,9 @@
                 </ul>
                 <div class="list_title">我的信息</div>
                 <ul>
-                    <li><a href="" target="_self">个人资料</a></li>
-                    <li><a href="" target="_self">收货地址</a></li>
-                    <li><a href="" target="_self">修改密码</a></li>
+                    <li><a href="../UserInfo/UserInfo.aspx" target="_self">个人资料</a></li>
+                    <li><a href="../UserInfo/ShipAdress.aspx" target="_self">收货地址</a></li>
+                    <li><a href="../UserInfo/UpdatePwd.aspx" target="_self">修改密码</a></li>
                 </ul>
             </div>
         </div>

@@ -36,6 +36,11 @@ namespace Data
                    hy.DJ = item["DJ"].ToString();
                    hy.CreatTime = item["CreatTime"] as DateTime?;
                    hy.LoginTime = item["LoginTime"] == DBNull.Value ? null : item["LoginTime"] as DateTime?;
+                   hy.FreePoint = item["FreePoint"] == DBNull.Value ? 0 : Convert.ToInt32(item["FreePoint"]);
+                   hy.ContinueLogins = item["ContinueLogins"] == DBNull.Value ? 0 : Convert.ToInt32(item["ContinueLogins"]);
+                   hy.Adress=item["Adress"]==DBNull.Value?"":item["Adress"].ToString();
+                   hy.IsEmailVerify = item["IsEmailVerify"] == DBNull.Value ? 0 : Convert.ToInt32(item["IsEmailVerify"]);
+                   hy.IsPhoneVerify = item["IsPhoneVerify"] == DBNull.Value ? 0 : Convert.ToInt32(item["IsPhoneVerify"]);
                    list.Add(hy);
                }
            }
@@ -156,6 +161,35 @@ namespace Data
                
                throw;
            }
+       }
+
+       /// <summary>
+       /// 修改会员个人资料
+       /// </summary>
+       /// <param name="hy"></param>
+       /// <returns></returns>
+       public int UpdateUserInfo(HuiYuan hy) 
+       {
+           string sql = "update HuiYuan set prName=@prName,sex=@sex,sfz=@sfz,sjh=@sjh,Adress=@Adress where HuiYuanID=@HuiYuanID";
+           return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@prName",hy.prName),
+               new SqlParameter("@Sex",hy.sex),
+               new SqlParameter("@sfz",hy.sfz),
+               new SqlParameter("@sjh",hy.sjh),
+               new SqlParameter("@Adress",hy.Adress),
+               new SqlParameter("@HuiYuanID",hy.HuiYuanID));
+       }
+
+       /// <summary>
+       /// 修改会员密码
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <param name="pwd"></param>
+       /// <returns></returns>
+       public int UpdatePwd(string hyId,string pwd) 
+       {
+           string sql = "update HuiYuan set MM=@MM where HuiYuanID=@HuiYuanID";
+           return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",hyId),
+               new SqlParameter("@MM",pwd));
        }
     }
 }

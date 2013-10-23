@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using BLL;
 using BLL.SystemSeting;
 using Model.Entities;
+using Tools;
+using System.Transactions;
 
 namespace WEB.UserInfo
 {
@@ -14,6 +16,8 @@ namespace WEB.UserInfo
     {
         ShouHuoDZBll adressBll = new ShouHuoDZBll();
         DingDanBll orderBll = new DingDanBll();
+        ProductBLL proBll = new ProductBLL();
+        HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -63,16 +67,21 @@ namespace WEB.UserInfo
                 if (type =="0")
                 {
                     status = 10;
+                    pnlShipAdress.Visible = true;
+                    pnlAddAdress.Visible = false;
+                    pnlAdressList.Visible = true;
                 }
                 else 
                 {
                     if (type == "1")
                     {
                         status = 8;
+                        pnlShipAdress.Visible = false;
                     }
                     else 
                     {
                         status = 11;
+                        pnlShipAdress.Visible = false;
                     }
                 }
                 dlstOrderList.DataSource = orderBll.GetDingDanbyhyId(hyId,status);
@@ -80,21 +89,74 @@ namespace WEB.UserInfo
             }
         }
 
+        /// <summary>
+        /// 取消添加收货地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-
+            ClearTextBox();
         }
 
+        /// <summary>
+        /// 保存收货地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (txtAdress.Text == "" || txtname.Text == "" || txtPhone.Text == "" || txtPostCode.Text == "")
+            {
+                return;
+            }
+            else 
+            {                                
+                using (TransactionScope ts=new TransactionScope())
+                {
+                    string hyId = Session["HuiYuanID"].ToString();
+                    if (adressBll.GetShouHuoDZbyhyId(hyId).Count>0)
+                    {
+                        adressBll.UpdateStatusbyhyId(hyId, 0);
+                    }                    
+                    ShouHuoDZ adress = new ShouHuoDZ();
+                    adress.IsSelect = 1;
+                    adress.DZ = txtAdress.Text;
+                    adress.HuiYuanID = hyId;
+                    adress.Remark = txtRemark.Text;
+                    adress.ShouHuoName = txtname.Text;
+                    adress.YouBian = txtPostCode.Text;
+                    adress.Mode = txtPhone.Text;
+                    adress.CreateTime = DateTime.Now;
+                    adressBll.AddShouHuoDZ(adress);
+                    ts.Complete();
+                }
+                BindAdress();
+                ClearTextBox();
+            }
+        }
 
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        public void ClearTextBox() 
+        {
+            txtAdress.Text = "";
+            txtname.Text = "";
+            txtPhone.Text = "";
+            txtPostCode.Text = "";
+            txtRemark.Text = "";
+            pnlAddAdress.Visible = false;
+            pnlAdressList.Visible = true;
+            rbtnAddAdress.Checked = false;
         }
 
         protected void rbtnAddAdress_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtnAddAdress.Checked==true)
             {
-                
+                pnlAddAdress.Visible = true;
+                pnlAdressList.Visible = false;
             }
         }
 
@@ -103,9 +165,53 @@ namespace WEB.UserInfo
             if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
             {
                 Image img = e.Item.FindControl("img") as Image;
-                Label proName = e.Item.FindControl("lblProName") as Label;
+                HyperLink proName = e.Item.FindControl("hlnkProName") as HyperLink;
                 Label status = e.Item.FindControl("lblStatus") as Label;
                 string proId = dlstOrderList.DataKeys[e.Item.ItemIndex].ToString();
+                proName.Text=proBll.GetById(proId)[0].productName;
+                List<ProductImeg> list_img = proBll.GetProtductImeg("",proId);
+                if (list_img.Count>0)
+                {
+                    img.ImageUrl=list_img[0].img;
+                }
+                switch (Convert.ToInt32(status.Text))
+                {
+                    case 10:
+                        status.Text = "未付款";
+                        break;
+                    case 11:
+                        status.Text = "已取消";
+                        break;
+                    case 8:
+                        status.Text ="待发货";
+                        break;
+                    case 9:
+                        status.Text = "已发货";
+                        break;
+                    case 7:
+                        status.Text = "交易成功";
+                        break;
+                    default:
+                        status.Text = "";
+                        break;
+                }
+            }
+        }
+
+        protected void dlstShipAdress_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+            {
+                HiddenField select = e.Item.FindControl("hfSelect") as HiddenField;
+                RadioButton rbtn = e.Item.FindControl("rbtnAdress") as RadioButton;
+                if (select.Value == "1")
+                {
+                    rbtn.Checked = true;
+                }
+                else 
+                {
+                    rbtn.Checked = false;
+                }
             }
         }
     }

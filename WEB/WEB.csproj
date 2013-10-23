@@ -436,6 +436,9 @@
     <Content Include="UserInfo\AuctionOrder.aspx" />
     <Content Include="UserInfo\Bided.aspx" />
     <Content Include="UserInfo\Biding.aspx" />
+    <Content Include="UserInfo\ShipAdress.aspx" />
+    <Content Include="UserInfo\UpdatePwd.aspx" />
+    <Content Include="UserInfo\UserInfo.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -715,6 +718,27 @@
     </Compile>
     <Compile Include="UserInfo\Biding.aspx.designer.cs">
       <DependentUpon>Biding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\ShipAdress.aspx.cs">
+      <DependentUpon>ShipAdress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\ShipAdress.aspx.designer.cs">
+      <DependentUpon>ShipAdress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\UpdatePwd.aspx.cs">
+      <DependentUpon>UpdatePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\UpdatePwd.aspx.designer.cs">
+      <DependentUpon>UpdatePwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\UserInfo.aspx.cs">
+      <DependentUpon>UserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\UserInfo.aspx.designer.cs">
+      <DependentUpon>UserInfo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

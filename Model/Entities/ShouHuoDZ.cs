@@ -14,7 +14,6 @@ namespace Model.Entities
 		public virtual HuiYuan HuiYuan { get; set; }
         public string Remark { get; set; }
         public DateTime CreateTime { get; set; }
-        public int IsDefault { get; set; }
         public int IsSelect { get; set; }
 	}
 }
