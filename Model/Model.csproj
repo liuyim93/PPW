@@ -67,6 +67,8 @@
     <Compile Include="Entities\QuanXian.cs" />
     <Compile Include="Entities\RenYuan.cs" />
     <Compile Include="Entities\ShouHuoDZ.cs" />
+    <Compile Include="Entities\ShowOrder.cs" />
+    <Compile Include="Entities\ShowOrderImg.cs" />
     <Compile Include="Entities\Tz.cs" />
     <Compile Include="Entities\YongHu.cs" />
     <Compile Include="Entities\YouQinLianJi.cs" />
