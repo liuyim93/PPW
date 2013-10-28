@@ -9,7 +9,7 @@ namespace Model.Entities
     {
        public string ShowOrderID { get; set; }
        public string OrderID { get; set; }
-       public int Points { get; set; }
+       public  Nullable<int> Points { get; set; }
        public string Title { get; set; }
        public string Detail { get; set; }
        public string Reply { get; set; }
@@ -18,5 +18,6 @@ namespace Model.Entities
        public int IsRead { get; set; }
        public int IsShow { get; set; }
        public ShowOrderImg showOrderImg { get; set; }
+       public string ImgUrl { get; set; }
     }
 }

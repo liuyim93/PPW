@@ -93,6 +93,7 @@
     <Content Include="Auction\Index.aspx" />
     <Content Include="Auction\Register.aspx" />
     <Content Include="Auction\Scripts\Main.js" />
+    <Content Include="Auction\ShowOrder.aspx" />
     <Content Include="Auction\Styles\Style.css" />
     <Content Include="Auction\UserControl\Top.ascx" />
     <Content Include="Auction\UserLogin.aspx" />
@@ -437,6 +438,7 @@
     <Content Include="UserInfo\Bided.aspx" />
     <Content Include="UserInfo\Biding.aspx" />
     <Content Include="UserInfo\ShipAdress.aspx" />
+    <Content Include="UserInfo\ShowOrder.aspx" />
     <Content Include="UserInfo\UpdatePwd.aspx" />
     <Content Include="UserInfo\UserInfo.aspx" />
     <Content Include="Web.config">
@@ -494,6 +496,13 @@
     </Compile>
     <Compile Include="Auction\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ShowOrder.aspx.cs">
+      <DependentUpon>ShowOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ShowOrder.aspx.designer.cs">
+      <DependentUpon>ShowOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\UserCenter.master.cs">
       <DependentUpon>UserCenter.master</DependentUpon>
@@ -725,6 +734,13 @@
     </Compile>
     <Compile Include="UserInfo\ShipAdress.aspx.designer.cs">
       <DependentUpon>ShipAdress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\ShowOrder.aspx.cs">
+      <DependentUpon>ShowOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\ShowOrder.aspx.designer.cs">
+      <DependentUpon>ShowOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInfo\UpdatePwd.aspx.cs">
       <DependentUpon>UpdatePwd.aspx</DependentUpon>

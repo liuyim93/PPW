@@ -100,5 +100,16 @@ namespace BLL.SystemSeting
            string sql = "select * from DingDan where HuiYuanID='"+hyId+"'and Status="+status+"";
            return ddDat.GetDingDan(sql);
        }
+
+       /// <summary>
+       /// 根据订单ID查询订单
+       /// </summary>
+       /// <param name="orderId"></param>
+       /// <returns></returns>
+       public List<DingDan> GetDingDan(string orderId) 
+       {
+           string sql = "select * from DingDan where DingDanID='"+orderId+"'";
+           return ddDat.GetDingDan(sql);
+       }
     }
 }

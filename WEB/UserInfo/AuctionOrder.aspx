@@ -44,7 +44,8 @@
                         </div>
                         <div class="actorder_lstcontent">
                             <asp:DataList ID="dlstOrderList" runat="server" Width="100%" 
-                                DataKeyField="ProductID" onitemdatabound="dlstOrderList_ItemDataBound">
+                                DataKeyField="ProductID" onitemdatabound="dlstOrderList_ItemDataBound" 
+                                onitemcommand="dlstOrderList_ItemCommand">
                                 <ItemTemplate>
                                     <div class="actorder_area">
                                         <div class="actorder_area_title">【竞拍购买】&nbsp;订单编号：<asp:Label ID="lblOrderNo" runat="server" Text='<%#Eval("DingDanBH") %>'></asp:Label>&nbsp;&nbsp;下单时间：<asp:Label ID="lblOrderTime" runat="server" Text='<%#Eval("DingDanTime") %>'></asp:Label>&nbsp;&nbsp;过期时间：<asp:Label ID="lblInvalidTime" runat="server" Text='<%#Eval("InvalidTime") %>'></asp:Label></div>
@@ -56,7 +57,7 @@
                                             <li class="actorder_area_price">运费<br />￥<asp:Label ID="lblShipFee" runat="server" Text='<%#Eval("ShipFee") %>'></asp:Label></li>
                                             <li class="actorder_area_price">总价<br />￥<asp:Label ID="lblTotalPrice" runat="server" Text='<%#Eval("TotalPrice") %>'></asp:Label></li>
                                             <li class="actorder_area_price">状态<br /><font color="red"><asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label></font></li>
-                                            <li class="actorder_area_operate"><asp:LinkButton ID="lbtnPay" runat="server">立即付款</asp:LinkButton></li>
+                                            <li class="actorder_area_operate"><asp:LinkButton ID="lbtnPay" runat="server">立即付款</asp:LinkButton><asp:LinkButton ID="lbtnShowOrder" runat="server" CommandName="show" CommandArgument='<%#Eval("DingDanID") %>'>晒单</asp:LinkButton></li>
                                         </ul>                                     
                                     </div>
                                 </ItemTemplate>

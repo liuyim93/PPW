@@ -214,5 +214,18 @@ namespace WEB.UserInfo
                 }
             }
         }
+
+        protected void dlstOrderList_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "show":
+                    string orderId = e.CommandArgument.ToString();
+                    Response.Redirect("../UserInfo/ShowOrder.aspx?id="+orderId);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
