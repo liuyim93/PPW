@@ -141,7 +141,7 @@ namespace WEB.UserInfo
                             string imgUrl = string.Empty;
                             for (int i = 0; i < listImg.Count; i++)
                             {
-                                imgUrl = listImg[i];
+                                imgUrl = "../Image/ShowOrderImg/" + listImg[i];
                                 showOrderBll.AddShowOrderImg(showOrderId, imgUrl);
                             }
                             ts.Complete();

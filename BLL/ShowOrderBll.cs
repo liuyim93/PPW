@@ -54,5 +54,16 @@ namespace BLL
         {
             return showOrderDat.AddShowOrderImg(showOrderId,imgUrl);
         }
+
+        /// <summary>
+        /// 根据晒单ID查询晒单图片
+        /// </summary>
+        /// <param name="showOrderId"></param>
+        /// <returns></returns>
+        public List<ShowOrderImg> GetShowOrderImg(string showOrderId) 
+        {
+            string sql = "select * from ShowOrderImg where ShowOrderID='"+showOrderId+"'";
+            return showOrderDat.GetShowOrderImg(sql);
+        }
     }
 }

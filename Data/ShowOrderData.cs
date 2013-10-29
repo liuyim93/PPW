@@ -77,6 +77,29 @@ namespace Data
             return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ImgUrl",imgUrl),
                 new SqlParameter("@ShowOrderID",showOrderId));
         }
+
+        /// <summary>
+        /// 查询晒单图片
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public List<ShowOrderImg> GetShowOrderImg(string sql) 
+        {
+            List<ShowOrderImg> list = new List<ShowOrderImg>();
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables[0].Rows.Count>0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+	            {
+		            ShowOrderImg showOrderImg=new ShowOrderImg();
+                    showOrderImg.ShowOrderImgID=row["ShowOrderImgID"].ToString();
+                    showOrderImg.ShowOrderID=row["ShowOrderID"].ToString();
+                    showOrderImg.ImgUrl=row["ImgUrl"].ToString();
+                    list.Add(showOrderImg);
+	            }
+            }
+            return list;
+        }
         #endregion
     }
 }

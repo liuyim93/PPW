@@ -30,12 +30,7 @@ namespace WEB.Auction
             //正在热拍
             dlstAuction.DataSource = proBll.GetAuctioningProduct();
             dlstAuction.DataBind();
-            //推荐商品
-            dlstRecommend.DataSource = proBll.GetRecomdProduct_Top5();
-            dlstRecommend.DataBind();
-            //历史成交
-            dlstHistory.DataSource = proBll.GetDoneProduct_Top5();
-            dlstHistory.DataBind();
+            
         }
 
         protected void dlstAuction_ItemDataBound(object sender, DataListItemEventArgs e)
@@ -135,52 +130,52 @@ namespace WEB.Auction
             }
         }
 
-        protected void dlstRecommend_ItemDataBound(object sender, DataListItemEventArgs e)
-        {
-            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
-            {
-                HyperLink hlnkProName = e.Item.FindControl("hlnkProName") as HyperLink;
-                Image imgProduct = e.Item.FindControl("imgProduct") as Image;
-                Label lblAuctionTime = e.Item.FindControl("lblAuctionTime") as Label;
-                HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
-                HiddenField hfProductNo = e.Item.FindControl("hfProductNo") as HiddenField;
-                hlnkProName.ToolTip = "第" + hfProductNo.Value + "期 " + hlnkProName.Text;
-                imgProduct.ToolTip = hlnkProName.ToolTip;
-                List<ProductImeg> list = proBll.GetProtductImeg("",hfProductID.Value);
-                if (list.Count > 0)
-                {
-                    imgProduct.ImageUrl = list[0].img;
-                }
-                else 
-                {
-                    imgProduct.ImageUrl = "";
-                }
-                lblAuctionTime.Text = Convert.ToDateTime(lblAuctionTime.Text).Hour.ToString().PadLeft(2, '0') +":"+ Convert.ToDateTime(lblAuctionTime.Text).Minute.ToString().PadLeft(2, '0');
-            }
-        }
+        //protected void dlstRecommend_ItemDataBound(object sender, DataListItemEventArgs e)
+        //{
+        //    if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+        //    {
+        //        HyperLink hlnkProName = e.Item.FindControl("hlnkProName") as HyperLink;
+        //        Image imgProduct = e.Item.FindControl("imgProduct") as Image;
+        //        Label lblAuctionTime = e.Item.FindControl("lblAuctionTime") as Label;
+        //        HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
+        //        HiddenField hfProductNo = e.Item.FindControl("hfProductNo") as HiddenField;
+        //        hlnkProName.ToolTip = "第" + hfProductNo.Value + "期 " + hlnkProName.Text;
+        //        imgProduct.ToolTip = hlnkProName.ToolTip;
+        //        List<ProductImeg> list = proBll.GetProtductImeg("",hfProductID.Value);
+        //        if (list.Count > 0)
+        //        {
+        //            imgProduct.ImageUrl = list[0].img;
+        //        }
+        //        else 
+        //        {
+        //            imgProduct.ImageUrl = "";
+        //        }
+        //        lblAuctionTime.Text = Convert.ToDateTime(lblAuctionTime.Text).Hour.ToString().PadLeft(2, '0') +":"+ Convert.ToDateTime(lblAuctionTime.Text).Minute.ToString().PadLeft(2, '0');
+        //    }
+        //}
 
-        protected void dlstHistory_ItemDataBound(object sender, DataListItemEventArgs e)
-        {
-            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
-            {
-                HyperLink hlnkProName = e.Item.FindControl("hlnkProName") as HyperLink;
-                Image imgProduct = e.Item.FindControl("imgProduct") as Image;
-                HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
-                HiddenField hfProductNo = e.Item.FindControl("hfProductNo") as HiddenField;
-                Label lblMemberName = e.Item.FindControl("lblMemberName") as Label;
-                hlnkProName.ToolTip = "第" + hfProductNo.Value + "期" + hlnkProName.Text;
-                imgProduct.ToolTip = hlnkProName.ToolTip;
-                List<ProductImeg> list = proBll.GetProtductImeg("", hfProductID.Value);
-                if (list.Count > 0)
-                {
-                    imgProduct.ImageUrl = list[0].img;
-                }
-                else
-                {
-                    imgProduct.ImageUrl = "";
-                }
-                lblMemberName.Text = hyBll.GetHuiYuan(lblMemberName.Text).HuiYuanName;
-            }
-        }
+        //protected void dlstHistory_ItemDataBound(object sender, DataListItemEventArgs e)
+        //{
+        //    if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+        //    {
+        //        HyperLink hlnkProName = e.Item.FindControl("hlnkProName") as HyperLink;
+        //        Image imgProduct = e.Item.FindControl("imgProduct") as Image;
+        //        HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
+        //        HiddenField hfProductNo = e.Item.FindControl("hfProductNo") as HiddenField;
+        //        Label lblMemberName = e.Item.FindControl("lblMemberName") as Label;
+        //        hlnkProName.ToolTip = "第" + hfProductNo.Value + "期" + hlnkProName.Text;
+        //        imgProduct.ToolTip = hlnkProName.ToolTip;
+        //        List<ProductImeg> list = proBll.GetProtductImeg("", hfProductID.Value);
+        //        if (list.Count > 0)
+        //        {
+        //            imgProduct.ImageUrl = list[0].img;
+        //        }
+        //        else
+        //        {
+        //            imgProduct.ImageUrl = "";
+        //        }
+        //        lblMemberName.Text = hyBll.GetHuiYuan(lblMemberName.Text).HuiYuanName;
+        //    }
+        //}
     }
 }

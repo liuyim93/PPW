@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="AuctionList.aspx.cs" Inherits="WEB.Auction.AuctionList" %>
+<%@ Register TagName="Recommend" Src="UserControl/Recommend.ascx" TagPrefix="uc1" %>
+<%@ Register TagName="Last" Src="UserControl/Last.ascx" TagPrefix="uc2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -44,46 +47,8 @@
         <div class="auctionlist_right">
             <div class="auctionlist_right_reg"><a href="" target="_self"><img src="Images/register_ad.jpg" /></a></div>
             <div class="auctionlist_right_guide"><a href="" target="_self"><img src="Images/fresh_guide.jpg" /></a></div>
-            <div class="auctionlist_rcomd">
-                <div class="auctionlist_rcomd_title">推荐商品</div>
-                <asp:DataList ID="dlstRecommend" runat="server" 
-                    onitemdatabound="dlstRecommend_ItemDataBound" Width="100%">
-                    <ItemTemplate>
-                        <div class="rcomd_area">
-                            <div class="rcomd_img"><a href="" target="_self"><asp:Image ID="imgProduct" runat="server" Width="70px" Height="70px" /></a></div>                            
-                            <div class="rcomd_detail">
-                                <div class="rcomd_name"><asp:HyperLink ID="hlnkProName" runat="server" Text='<%#Eval("productName") %>'></asp:HyperLink></div>
-                                <div class="rcomd_price">
-                                    市场价：<span>￥<asp:Label ID="lblProPrice" runat="server" Text='<%#Eval("productPrice") %>'></asp:Label></span><br />
-                                    拍卖时间：<asp:Label ID="lblAuctionTime" runat="server" Text='<%#Eval("AuctionTime") %>'></asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
-                        <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' />
-                    </ItemTemplate>
-                </asp:DataList>
-            </div>
-            <div class="auctionlist_rcomd">
-                <div class="auctionlist_rcomd_title">历史成交</div>
-                <asp:DataList ID="dlstHistory" runat="server" 
-                    onitemdatabound="dlstHistory_ItemDataBound" Width="100%">
-                    <ItemTemplate>
-                        <div class="rcomd_area">
-                            <div class="rcomd_img"><a href="" target="_self"><asp:Image ID="imgProduct" runat="server" Width="70px" Height="70px" /></a></div>
-                            <div class="rcomd_detail">                                
-                                <div class="rcomd_name"><asp:HyperLink ID="hlnkProName" runat="server" Text='<%#Eval("productName") %>'></asp:HyperLink></div>
-                                <div class="rcomd_price">
-                                    成交价：<span>￥<asp:Label ID="lblPrice" runat="server" Text='<%#Eval("PmJGproduct") %>'></asp:Label></span><br />
-                                    获得者：<span><asp:Label ID="lblMemberName" runat="server" Text='<%#Eval("HuiYuanID") %>'></asp:Label></span>
-                                </div>
-                            </div>
-                        </div>
-                        <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
-                        <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' />
-                    </ItemTemplate>
-                </asp:DataList>
-            </div>
+            <uc1:Recommend ID="recommend1" runat="server" />
+            <uc2:Last ID="last1" runat="server" />
         </div>
     </div>
 </div>

@@ -95,6 +95,8 @@
     <Content Include="Auction\Scripts\Main.js" />
     <Content Include="Auction\ShowOrder.aspx" />
     <Content Include="Auction\Styles\Style.css" />
+    <Content Include="Auction\UserControl\Last.ascx" />
+    <Content Include="Auction\UserControl\Recommend.ascx" />
     <Content Include="Auction\UserControl\Top.ascx" />
     <Content Include="Auction\UserLogin.aspx" />
     <Content Include="Auction\VerifyCode.aspx" />
@@ -510,6 +512,20 @@
     </Compile>
     <Compile Include="Auction\UserCenter.master.designer.cs">
       <DependentUpon>UserCenter.master</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\UserControl\Last.ascx.cs">
+      <DependentUpon>Last.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\UserControl\Last.ascx.designer.cs">
+      <DependentUpon>Last.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\UserControl\Recommend.ascx.cs">
+      <DependentUpon>Recommend.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\UserControl\Recommend.ascx.designer.cs">
+      <DependentUpon>Recommend.ascx</DependentUpon>
     </Compile>
     <Compile Include="Auction\UserControl\Top.ascx.cs">
       <DependentUpon>Top.ascx</DependentUpon>
