@@ -45,6 +45,16 @@ namespace BLL
         }
 
         /// <summary>
+        /// 首页显示4条拍客晒图
+        /// </summary>
+        /// <returns></returns>
+        public List<ShowOrder> GetShowOrder_Top4() 
+        {
+            string sql = "select top 4 * from ShowOrder where IsShow=1";
+            return showOrderDat.GetShowOrder(sql);
+        }
+
+        /// <summary>
         /// 添加晒单图片
         /// </summary>
         /// <param name="showOrderId"></param>

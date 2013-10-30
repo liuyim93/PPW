@@ -13,6 +13,15 @@ namespace WEB.Auction {
     public partial class Index {
         
         /// <summary>
+        /// dlstBroad 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dlstBroad;
+        
+        /// <summary>
         /// dlstNews 控件。
         /// </summary>
         /// <remarks>
@@ -67,12 +76,12 @@ namespace WEB.Auction {
         protected global::System.Web.UI.WebControls.DataList dlstDone;
         
         /// <summary>
-        /// dlstPic 控件。
+        /// dlstShowPic 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstPic;
+        protected global::System.Web.UI.WebControls.DataList dlstShowPic;
     }
 }

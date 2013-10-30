@@ -19,14 +19,11 @@ namespace WEB.Auction
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
         ChuJiaJiLuBll cjBll = new ChuJiaJiLuBll();
         DingDanBll orderBll = new DingDanBll();
+        ShowOrderBll showOrderBll = new ShowOrderBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["HuiYuanName"]==null||Session["HuiYuanID"]==null)
-                {
-                    Response.Redirect("UserLogin.aspx");
-                }
                 Bind();
             }            
        }
@@ -42,6 +39,12 @@ namespace WEB.Auction
             //最新成交五条信息
             dlstDone.DataSource = productBll.GetDoneProduct_Top5();
             dlstDone.DataBind();
+            //拍客晒图
+            dlstShowPic.DataSource = showOrderBll.GetShowOrder_Top4();
+            dlstShowPic.DataBind();
+            //广播
+            dlstBroad.DataSource = productBll.GetDoneProduct_Top5();
+            dlstBroad.DataBind();
         }
 
         //查询最新的25条竞拍信息，包括已成交的拍品
@@ -264,6 +267,98 @@ namespace WEB.Auction
                 {
                     lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
                 }
+            }
+        }
+
+        //拍客晒图
+        protected void dlstShowPic_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+            {
+                Literal memberName = e.Item.FindControl("ltlMemberName") as Literal;
+                Label donePrice = e.Item.FindControl("lblDonePrice") as Label;
+                Label marketPrice = e.Item.FindControl("lblMarketPrice") as Label;
+                Image img1 = e.Item.FindControl("img1") as Image;
+                Image img2 = e.Item.FindControl("img2") as Image;
+                Image img3 = e.Item.FindControl("img3") as Image;
+                Image img4 = e.Item.FindControl("img4") as Image;
+                HiddenField showOrderId = e.Item.FindControl("hfShowOrderID") as HiddenField;
+                HyperLink hlnkPro = e.Item.FindControl("hlnkPro") as HyperLink;
+                string orderId=dlstShowPic.DataKeys[e.Item.ItemIndex].ToString();
+                List<DingDan> list_order = orderBll.GetDingDan(orderId);
+                donePrice.Text=list_order[0].ProductPrice.ToString();
+                string proId=list_order[0].ProductID;
+                List<Product> list_pro = productBll.GetById(proId);
+                marketPrice.Text=list_pro[0].productPrice.ToString();
+                HuiYuan hy = hyBll.GetHuiYuan(list_order[0].HuiYuanID);
+                memberName.Text = hy.HuiYuanName;
+                hlnkPro.NavigateUrl = "../Auction/ProDetail.aspx?id="+proId;
+                 #region BindImg
+                if (showOrderId.Value != "")
+                {
+                    List<ShowOrderImg> list_img = showOrderBll.GetShowOrderImg(showOrderId.Value);
+                    switch (list_img.Count)
+                    {
+                        case 0:
+                            img1.Visible = false;
+                            img2.Visible = false;
+                            img3.Visible = false;
+                            img4.Visible = false;
+                            break;
+                        case 1:
+                            img1.ImageUrl = list_img[0].ImgUrl;
+                            img1.Visible = true;
+                            img2.Visible = false;
+                            img3.Visible = false;
+                            img4.Visible = false;
+                            break;
+                        case 2:
+                            img1.ImageUrl = list_img[0].ImgUrl;
+                            img2.ImageUrl = list_img[1].ImgUrl;
+                            img1.Visible = true;
+                            img2.Visible = true;
+                            img3.Visible = false;
+                            img4.Visible = false;
+                            break;
+                        case 3:
+                            img1.ImageUrl = list_img[0].ImgUrl;
+                            img2.ImageUrl = list_img[1].ImgUrl;
+                            img3.ImageUrl = list_img[2].ImgUrl;
+                            img1.Visible = true;
+                            img2.Visible = true;
+                            img3.Visible = true;
+                            img4.Visible = false;
+                            break;
+                        case 4:
+                            img1.ImageUrl = list_img[0].ImgUrl;
+                            img2.ImageUrl = list_img[1].ImgUrl;
+                            img3.ImageUrl = list_img[2].ImgUrl;
+                            img4.ImageUrl = list_img[3].ImgUrl;
+                            img1.Visible = true;
+                            img2.Visible = true;
+                            img3.Visible = true;
+                            img4.Visible = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                #endregion
+            }
+        }
+
+        //文字广播
+        protected void dlstBroad_ItemDataBound(object sender, DataListItemEventArgs e) 
+        {
+            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+            {
+                Literal memberName = e.Item.FindControl("ltlName") as Literal;
+                Literal proName = e.Item.FindControl("ltlProName") as Literal;
+                string proId=dlstBroad.DataKeys[e.Item.ItemIndex].ToString();
+                HuiYuan hy = hyBll.GetHuiYuan(memberName.Text);
+                memberName.Text = hy.HuiYuanName;
+                List<Product> list_pro = productBll.GetById(proId);
+                proName.Text=list_pro[0].productName;
             }
         }
     }
