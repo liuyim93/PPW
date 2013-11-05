@@ -32,30 +32,31 @@
                 </asp:DropDownList>&nbsp;
                 <asp:ImageButton ID="imgbtnSearch" runat="server" ImageUrl="Images/search.gif" />
             </div>        
-            <asp:GridView ID="gvwHistory" runat="server" AutoGenerateColumns="false" 
+            <asp:GridView ID="gvwHistory" runat="server" AutoGenerateColumns="false" DataKeyNames="AuctionID" 
                   Width="100%" onrowdatabound="gvwHistory_RowDataBound" GridLines="Both" CssClass="gvw">
                 <Columns>
                     <asp:TemplateField HeaderText="商品">
                         <ItemTemplate>
                             <div>
                                 <div class="product_img">
-                                    <a href="" target="_self"><asp:Image ID="imgProduct" runat="server" Width="100px" Height="100px" /></a>
-                                    <asp:HiddenField  ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' />
+                                    <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgProduct" runat="server" Width="100px" Height="100px" /></a>
+                                    <asp:HiddenField  ID="hfProductNo" runat="server" Value='<%#Eval("Coding") %>' />
                                     <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
-                                    <asp:HiddenField ID="hfProductName" runat="server" Value='<%#Eval("productName") %>' />
                                 </div>
-                                <div class="product_name"><a href="" target="_self" title='第<%#Eval("coding") %>期 <%#Eval("productName") %>'><%#Eval("productName") %></a><br /><asp:Label ID="lblIntro" runat="server" Text='<%#Eval("Intro") %>'></asp:Label></div>
+                                <div class="product_name"><asp:HyperLink ID="hlnkPro" runat="server" ></asp:HyperLink><br />
+                                    <asp:Label ID="lblIntro" runat="server" ></asp:Label>
+                                </div>
                             </div>
                         </ItemTemplate>                                            
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="市场价">
                         <ItemTemplate>
-                            <asp:Label ID="lblPrice" runat="server"><%#Eval("productPrice") %></asp:Label>
+                            <asp:Label ID="lblPrice" runat="server" ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="成交价">
                         <ItemTemplate>
-                            <asp:Label ID="lblAuctionPrice" runat="server"><%#Eval("PmJGproduct") %></asp:Label>
+                            <asp:Label ID="lblAuctionPrice" runat="server"><%#Eval("AuctionPrice") %></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="获得者">

@@ -27,6 +27,8 @@ namespace Model.Entities
         public string ShouHuoDZID { get; set; }
         //¸¶¿î½ØÖ¹ÈÕÆÚ
         public DateTime InvalidTime { get; set; }
+        //¾ºÅÄID
+        public string AuctionID { get; set; }
 	}
 }
 

@@ -19,8 +19,8 @@
                                     <li class="ShowOrder_area_avatar"><asp:Image ID="imgAvatar" runat="server" Width="70px" Height="70px" ImageUrl="../Image/default_avatar.gif" /><br /><div style="color:#999999;text-align:center;margin-top:3px; width:70px;"><asp:Literal ID="ltlMemberName" runat="server"></asp:Literal></div></li>
                                     <li class="ShowOrder_area_detail"><asp:Literal ID="ltlDetail" runat="server" Text='<%#Eval("Detail") %>'></asp:Literal></li>
                                     <li class="ShowOrder_area_img">
-                                        <asp:Image ID="img1" runat="server" Width="70px" Height="70px" Visible="false" />&nbsp;&nbsp;<asp:Image ID="img2" runat="server" width="70px" Height="70px" Visible="false" />&nbsp;&nbsp;
-                                        <asp:Image ID="img3" runat="server" Width="70px" Height="70px" Visible="false" />&nbsp;&nbsp;<asp:Image ID="img4" runat="server" Width="70px" Height="70px" Visible="false" />
+                                        <asp:Image ID="img1" runat="server" Width="80px" Height="80px" Visible="false" />&nbsp;<asp:Image ID="img2" runat="server" width="80px" Height="80px" Visible="false" />&nbsp;
+                                        <asp:Image ID="img3" runat="server" Width="80px" Height="80px" Visible="false" />&nbsp;<asp:Image ID="img4" runat="server" Width="80px" Height="80px" Visible="false" />
                                     </li>
                                 </ul>
                             </div>

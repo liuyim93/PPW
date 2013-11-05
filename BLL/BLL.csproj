@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuctionBll.cs" />
     <Compile Include="BaseBll.cs" />
     <Compile Include="Basei\RenYuanBll.cs" />
     <Compile Include="ChuJiaJiLuBll.cs" />

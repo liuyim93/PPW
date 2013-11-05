@@ -54,3 +54,11 @@ F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Model\bin\Debug\EntityFram
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Model\obj\Debug\ResolveAssemblyReference.cache
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Model\obj\Debug\Model.dll
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\Model\obj\Debug\Model.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\obj\Debug\ResolveAssemblyReference.cache
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\obj\Debug\Model.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\bin\Debug\Model.dll.config
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\bin\Debug\Model.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\bin\Debug\Model.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\bin\Debug\EntityFramework.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\bin\Debug\EntityFramework.xml
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Model\obj\Debug\Model.pdb

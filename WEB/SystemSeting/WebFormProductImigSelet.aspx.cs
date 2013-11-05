@@ -43,20 +43,14 @@ namespace WEB.SystemSeting
            List<Product> cp=pcBll.GetById(id);
            if (cp.Count > 0) 
            {
-               txtBh.Text = cp[0].coding;
                pinPai.Text = cp[0].productBrand;
-               PaiMaiJG.Text = cp[0].PmJGproduct == null ? "" : cp[0].PmJGproduct.Value.ToString();
-               SetTime.Text = cp[0].TimePoint == null ? "" : cp[0].TimePoint.Value.ToString();
                txtName.Text = cp[0].productName;
                type.Text = GetLX(cp[0].ProductTypeID); 
                txtJG.Text = cp[0].productPrice.Value.ToString();
-               paisj.Text = cp[0].AuctionTime == null ? "" : cp[0].AuctionTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
                discpSeled.Text = cp[0].ProductDetails;
                txtCreaTime.Text = cp[0].CreateTime.Value.ToString("yyyy-MM-dd");
                disIsSaoye.Text = cp[0].isshouYei == 0 ? "不显示" : "显示";
                txtIntro.Text = cp[0].Intro == null ? "" : cp[0].Intro;
-               txtPriceAdd.Text=cp[0].PriceAdd.ToString();
-               txtAuctionPoint.Text=cp[0].AuctionPoint.ToString();
                txtFee.Text = cp[0].Fee.ToString();
                txtShipFee.Text = cp[0].ShipFee.ToString();
            }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuctionData.cs" />
     <Compile Include="bbsData.cs" />
     <Compile Include="ChuJiaJiLuDat.cs" />
     <Compile Include="DBHelper.cs" />

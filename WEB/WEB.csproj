@@ -436,6 +436,7 @@
     <Content Include="SystemSeting\XinXi\GongGao.aspx" />
     <Content Include="SystemSeting\XinXi\GongShiXX.aspx" />
     <Content Include="SystemSeting\XinXi\YouQingLianJei.aspx" />
+    <Content Include="test.aspx" />
     <Content Include="UserInfo\AuctionOrder.aspx" />
     <Content Include="UserInfo\Bided.aspx" />
     <Content Include="UserInfo\Biding.aspx" />
@@ -723,6 +724,13 @@
     <Compile Include="SystemSeting\XinXi\YouQingLianJei.aspx.designer.cs">
       <DependentUpon>YouQingLianJei.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo\AuctionOrder.aspx.cs">
       <DependentUpon>AuctionOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -813,6 +821,26 @@
     <None Include="kindeditor\php\upload_json.php" />
     <None Include="My97DatePicker\WdatePicker.js.bak" />
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CHINAPAYLib">
+      <Guid>{AC4CEC5F-44FE-463E-94F7-5824EB2782AE}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CPNPC">
+      <Guid>{6736211D-F402-4199-8EE1-20BE79665444}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
@@ -821,7 +849,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2466</DevelopmentServerPort>
+          <DevelopmentServerPort>2798</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

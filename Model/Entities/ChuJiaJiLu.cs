@@ -6,7 +6,7 @@ namespace Model.Entities
 	public class ChuJiaJiLu
 	{
 		public string ChuJiaJiLuID { get; set; }
-		public string ProductID { get; set; }
+		public string AuctionID { get; set; }
 		public string HuiYuanID { get; set; }
 		public int Status { get; set; }
 		public virtual HuiYuan HuiYuan { get; set; }

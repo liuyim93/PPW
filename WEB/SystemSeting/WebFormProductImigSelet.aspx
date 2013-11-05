@@ -24,8 +24,7 @@
                                         <Items>
                                             <ext:DisplayField ID="txtBh" runat="server" FieldLabel="产品编号" ></ext:DisplayField>
                                             <ext:DisplayField ID="txtIntro" runat="server" FieldLabel="产品简介"></ext:DisplayField>  
-                                            <ext:DisplayField ID="pinPai" runat="server" FieldLabel="品牌"></ext:DisplayField>
-                                            <ext:DisplayField ID="PaiMaiJG" runat="server" FieldLabel="拍买价格"></ext:DisplayField>
+                                            <ext:DisplayField ID="pinPai" runat="server" FieldLabel="品牌"></ext:DisplayField>                                            
                                             <ext:DisplayField ID="txtCreaTime" runat="server" FieldLabel="创建时间"></ext:DisplayField>
                                             <ext:DisplayField ID="SetTime" runat="server" FieldLabel="拍买间隔"></ext:DisplayField>
                                             <ext:DisplayField ID="txtFee" runat="server" FieldLabel="手续费"></ext:DisplayField>

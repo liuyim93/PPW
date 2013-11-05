@@ -83,3 +83,16 @@ F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\BLL\bin\Debug\EntityFramew
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\BLL\obj\Debug\ResolveAssemblyReference.cache
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\BLL\obj\Debug\BLL.dll
 F:\刘义铭\项目交接\复件 MyPaiWang\PPwProject\BLL\obj\Debug\BLL.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\obj\Debug\ResolveAssemblyReference.cache
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\obj\Debug\BLL.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\BLL.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\BLL.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\Data.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\EntityFramework.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\Model.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\Tools.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\Data.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\Model.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\Tools.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\bin\Debug\EntityFramework.xml
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\BLL\obj\Debug\BLL.pdb

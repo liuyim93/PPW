@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\auction.cs" />
     <Compile Include="Entities\AuctionType.cs" />
     <Compile Include="Entities\CaiDan.cs" />
     <Compile Include="Entities\CaiDan_GongNengDian.cs" />

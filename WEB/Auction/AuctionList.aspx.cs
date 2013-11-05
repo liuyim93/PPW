@@ -95,34 +95,34 @@ namespace WEB.Auction
                     using (TransactionScope ts=new TransactionScope())
                     {
                          //修改产品表
-                            Product pro = new Product();
-                            HiddenField hfStatus=e.Item.FindControl("hfStatus")as HiddenField;
-                            if (hfStatus.Value!="3")
-                            {
-                                pro.TimePoint = 10;
-                            }                           
-                            pro.HuiYuanID=Session["HuiYuanID"].ToString();
-                            pro.ProductID = proId;
-                            proBll.UpdateProductPrice(pro);
-                            //查询出价后的产品信息
-                            Product pro2 = proBll.GetById(proId)[0];
-                            //添加出价记录
-                            ChuJiaJiLu cj = new ChuJiaJiLu();
-                            cj.AuctionTime = DateTime.Now;
-                            cj.ProductID = proId;
-                            cj.Status=1;
-                            cj.Price = Convert.ToDecimal(pro2.PmJGproduct);
-                            cj.IPAdress=Request.UserHostAddress;
-                            cj.HuiYuanID = Session["HuiYuanID"].ToString();
-                            cj.AuctionPoint = pro2.AuctionPoint;
-                            cj.FreePoint = Convert.ToInt32(pro2.FreePoint);
-                            cjBll.AddChuJiaJiLu(cj);
-                            //扣除会员相应的拍点
-                            HuiYuan hy = new HuiYuan();
-                            hy.HuiYuanID=Session["HuiYuanID"].ToString();
-                            hy.PaiDian = pro2.AuctionPoint*-1;
-                            hy.FreePoint = pro2.FreePoint*-1;
-                            hyBll.UpdateHuiYuanPoint(hy);
+                            //Product pro = new Product();
+                            //HiddenField hfStatus=e.Item.FindControl("hfStatus")as HiddenField;
+                            //if (hfStatus.Value!="3")
+                            //{
+                            //    pro.TimePoint = 10;
+                            //}                           
+                            //pro.HuiYuanID=Session["HuiYuanID"].ToString();
+                            //pro.ProductID = proId;
+                            //proBll.UpdateProductPrice(pro);
+                            ////查询出价后的产品信息
+                            //Product pro2 = proBll.GetById(proId)[0];
+                            ////添加出价记录
+                            //ChuJiaJiLu cj = new ChuJiaJiLu();
+                            //cj.AuctionTime = DateTime.Now;
+                            //cj.ProductID = proId;
+                            //cj.Status=1;
+                            //cj.Price = Convert.ToDecimal(pro2.PmJGproduct);
+                            //cj.IPAdress=Request.UserHostAddress;
+                            //cj.HuiYuanID = Session["HuiYuanID"].ToString();
+                            //cj.AuctionPoint = pro2.AuctionPoint;
+                            //cj.FreePoint = Convert.ToInt32(pro2.FreePoint);
+                            //cjBll.AddChuJiaJiLu(cj);
+                            ////扣除会员相应的拍点
+                            //HuiYuan hy = new HuiYuan();
+                            //hy.HuiYuanID=Session["HuiYuanID"].ToString();
+                            //hy.PaiDian = pro2.AuctionPoint*-1;
+                            //hy.FreePoint = pro2.FreePoint*-1;
+                            //hyBll.UpdateHuiYuanPoint(hy);
                             ts.Complete();
                     }
                     Bind();

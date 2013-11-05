@@ -34,7 +34,7 @@ namespace Data.SystemSeting
                    ds.Mode = item["Mode"].ToString();
                    ds.DZ = item["DZ"].ToString();
                    ds.YouBian = item["YouBian"].ToString();
-                   ds.OrderTypeID=item["TypeName"].ToString();
+                   ds.OrderTypeID=item["TypeName"].ToString();                     
                    list.Add(ds);
                }
            }
@@ -58,7 +58,7 @@ namespace Data.SystemSeting
        /// <returns></returns>
        public int AddOrder(DingDan dd)
        {
-           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime,InvalidTime)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime,@InvalidTime)";
+           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime,InvalidTime,AuctionID)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime,@InvalidTime,@AuctionID)";
            return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@DingDanBH",dd.DingDanBH),
                new SqlParameter("@HuiYuanID",dd.HuiYuanID),
                new SqlParameter("@ProductID",dd.ProductID),
@@ -69,7 +69,8 @@ namespace Data.SystemSeting
                new SqlParameter("@ShipFee",dd.ShipFee),
                new SqlParameter("@TotalPrice",dd.TotalPrice),
                new SqlParameter("@DingDanTime",DateTime.Now),
-               new SqlParameter("@InvalidTime",dd.InvalidTime));
+               new SqlParameter("@InvalidTime",dd.InvalidTime),
+               new SqlParameter("@AuctionID",dd.AuctionID));
        }
 
        /// <summary>
@@ -123,6 +124,7 @@ namespace Data.SystemSeting
                    order.TotalPrice=Convert.ToDecimal(row["TotalPrice"]);
                    order.DingDanTime=Convert.ToDateTime(row["DingDanTime"]);
                    order.InvalidTime=Convert.ToDateTime(row["InvalidTime"]);
+                   order.AuctionID=row["AuctionID"].ToString();
                    list.Add(order);
                }
            }

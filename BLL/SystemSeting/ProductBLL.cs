@@ -65,12 +65,12 @@ namespace BLL.SystemSeting
        /// </summary>
        /// <param name="obj"></param>
        /// <returns></returns>
-       public int Eid(Product obj)
-       {
-           string dat = obj.AuctionTime == null ? "null" :"'"+obj.AuctionTime.Value.ToString("yyyy-MM-dd HH:mm:ss")+"'";
-           string sql = "update Product set coding='"+obj.coding+"',ProductTypeID='"+obj.ProductTypeID+"',productName='"+obj.productName+"',productBrand='"+obj.productBrand+"',productPrice="+obj.productPrice+",PmJGproduct="+obj.PmJGproduct.Value+",AuctionTime="+dat+",TimePoint="+obj.TimePoint+",ProductDetails='"+obj.ProductDetails+"',PriceAdd="+obj.PriceAdd+",AuctionPoint="+obj.AuctionPoint+",Intro="+obj.Intro+",Fee="+obj.Fee+",ShipFee="+obj.ShipFee+" where ProductID='"+obj.ProductID+"'";
-           return setSql(sql);
-       }
+       //public int Eid(Product obj)
+       //{
+       //    string dat = obj.AuctionTime == null ? "null" :"'"+obj.AuctionTime.Value.ToString("yyyy-MM-dd HH:mm:ss")+"'";
+       //    string sql = "update Product set coding='"+obj.coding+"',ProductTypeID='"+obj.ProductTypeID+"',productName='"+obj.productName+"',productBrand='"+obj.productBrand+"',productPrice="+obj.productPrice+",PmJGproduct="+obj.PmJGproduct.Value+",AuctionTime="+dat+",TimePoint="+obj.TimePoint+",ProductDetails='"+obj.ProductDetails+"',PriceAdd="+obj.PriceAdd+",AuctionPoint="+obj.AuctionPoint+",Intro="+obj.Intro+",Fee="+obj.Fee+",ShipFee="+obj.ShipFee+" where ProductID='"+obj.ProductID+"'";
+       //    return setSql(sql);
+       //}
 
        /// <summary>
        /// 删除数据
@@ -180,10 +180,10 @@ namespace BLL.SystemSeting
        /// </summary>
        /// <param name="pro"></param>
        /// <returns></returns>
-       public int UpdateProductPrice(Product pro) 
-       {
-           return dal.UpdatePrice(pro);
-       }
+       //public int UpdateProductPrice(Product pro)
+       //{
+       //    return dal.UpdatePrice(pro);
+       //}
 
        /// <summary>
        /// 产品成交
@@ -281,27 +281,27 @@ namespace BLL.SystemSeting
        /// <param name="hyId"></param>
        /// <param name="status"></param>
        /// <returns></returns>
-       public List<Product> GetProductbyStatus(string hyId,int status) 
-       {
-           List<ChuJiaJiLu> list = record.GetdifProductIDbyhyID(hyId);
-           List<Product> list1=new List<Product>();
-           if (list != null)
-           {
-               for (int i = 0; i < list.Count; i++)
-               {
-                   string proId = list[i].ProductID;
-                   string sql = "select * from Product where ProductID='" + proId + "' and Status='" + status + "'";
-                   if (dal.GetProduct(sql).Count>0)
-                   {
-                       list1.Add(dal.GetProduct(sql)[0]);
-                   }                   
-               }
-               return list1;
-           }
-           else 
-           {
-               return null;
-           }
-       }
+       //public List<Product> GetProductbyStatus(string hyId, int status)
+       //{
+       //    List<ChuJiaJiLu> list = record.GetdifProductIDbyhyID(hyId);
+       //    List<Product> list1 = new List<Product>();
+       //    if (list != null)
+       //    {
+       //        for (int i = 0; i < list.Count; i++)
+       //        {
+       //            string proId = list[i].ProductID;
+       //            string sql = "select * from Product where ProductID='" + proId + "' and Status='" + status + "'";
+       //            if (dal.GetProduct(sql).Count > 0)
+       //            {
+       //                list1.Add(dal.GetProduct(sql)[0]);
+       //            }
+       //        }
+       //        return list1;
+       //    }
+       //    else
+       //    {
+       //        return null;
+       //    }
+       //}
     }
 }

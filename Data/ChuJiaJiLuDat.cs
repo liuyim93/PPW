@@ -21,10 +21,10 @@ namespace Data
        /// <returns></returns>
         public int AddChuJiaJiLu(ChuJiaJiLu cj) 
         {
-            string sql = "insert into ChuJiaJiLu (ProductID,HuiYuanID,Price,IPAdress,AuctionPoint,AuctionTime,Status,FreePoint) values(@ProductID,@HuiYuanID,@Price,@IPAdress,@AuctionPoint,@AuctionTime,@Status,@FreePoint)";
+            string sql = "insert into ChuJiaJiLu (AuctionID,HuiYuanID,Price,IPAdress,AuctionPoint,AuctionTime,Status,FreePoint) values(@AuctionID,@HuiYuanID,@Price,@IPAdress,@AuctionPoint,@AuctionTime,@Status,@FreePoint)";
             try
             {
-                return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ProductID",cj.ProductID),
+                return sh.ExecuteNonQuery(null, CommandType.Text, sql, new SqlParameter("@AuctionID", cj.AuctionID),
                     new SqlParameter("@HuiYuanID", cj.HuiYuanID),
                     new SqlParameter("@Price",cj.Price),
                     new SqlParameter("@IPAdress",cj.IPAdress),
@@ -57,7 +57,7 @@ namespace Data
                     record.HuiYuanID=row["HuiYuanID"].ToString();
                     record.IPAdress=row["IPAdress"].ToString();
                     record.Price = Convert.ToDecimal(row["Price"]);
-                    record.ProductID=row["ProductID"].ToString();
+                    record.AuctionID = row["AuctionID"].ToString();
                     record.Status = Convert.ToInt32(row["Status"]);
                     record.AuctionPoint = Convert.ToInt32(row["AuctionPoint"]);
                     record.AuctionTime = Convert.ToDateTime(row["AuctionTime"]);
@@ -70,14 +70,14 @@ namespace Data
         }
 
        /// <summary>
-       ///根据会员ID查询参与过的商品ID 
+       ///根据会员ID查询参与过的竞拍ID 
        /// </summary>
        /// <param name="hyId"></param>
        /// <returns></returns>
-        public List<ChuJiaJiLu> GetdifProductIDbyhyID(string hyId) 
+        public List<ChuJiaJiLu> GetdifAuctionIDbyhyID(string hyId) 
         {
             List<ChuJiaJiLu> list = new List<ChuJiaJiLu>();
-            string sql = "select distinct ProductID from ChuJiaJiLu where HuiYuanID=@HuiYuanID";
+            string sql = "select distinct AuctionID from ChuJiaJiLu where HuiYuanID=@HuiYuanID";
             try
             {
                 using (SqlDataReader reader=sh.ExecuteReader(CommandType.Text,sql,new SqlParameter("@HuiYuanID",hyId)))
@@ -85,7 +85,7 @@ namespace Data
                     while (reader.Read())
                     {
                         ChuJiaJiLu record = new ChuJiaJiLu();
-                        record.ProductID = reader["ProductID"].ToString();
+                        record.AuctionID = reader["AuctionID"].ToString();
                         list.Add(record);
                     }
                 }
@@ -99,17 +99,17 @@ namespace Data
         }
         
        /// <summary>
-        /// 根据商品ID查询参与竞拍的会员ID
+        /// 根据竞拍ID查询参与竞拍的会员ID
        /// </summary>
        /// <param name="proId"></param>
        /// <returns></returns>
-        public List<ChuJiaJiLu> GetHuiYuanIDbyProId(string proId)
+        public List<ChuJiaJiLu> GetHuiYuanIDbyauctionId(string auctionId)
         {
             List<ChuJiaJiLu> list=new List<ChuJiaJiLu>();
-            string sql = "select distinct HuiYuanID from ChuJiaJiLu where ProductID=@ProductID";
+            string sql = "select distinct HuiYuanID from ChuJiaJiLu where AuctionID=@AuctionID";
             try
             {
-                using (SqlDataReader reader=sh.ExecuteReader(CommandType.Text,sql,new SqlParameter("@ProductID",proId)))
+                using (SqlDataReader reader = sh.ExecuteReader(CommandType.Text, sql, new SqlParameter("@AuctionID", auctionId)))
                 {
                     while (reader.Read())
                     {

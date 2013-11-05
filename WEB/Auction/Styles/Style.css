@@ -113,7 +113,7 @@ img{border:0px;}
 .newest_done{width:100%;height:auto;padding:5px 0 5px 10px; border:1px solid #cccccc; margin:10px auto;}
 .newest_done .title{width:100%;height:40px; background:url("../images/done.gif") no-repeat;}
 .newest_done .content{width:100%;height:100%;}
-.showpic{width:100%;height:400px;margin:10px auto;padding:5px 0 5px 10px;border:1px solid #cccccc;}
+.showpic{width:100%;height:420px;margin:10px auto;padding:5px 0 5px 10px;border:1px solid #cccccc;}
 .showpic .title{width:100%;height:40px;background:url("../images/showpic.gif") no-repeat;}
 .showpic .content{width:100%;height:100%;}
 /*主页-正在热拍*/
@@ -133,7 +133,7 @@ img{border:0px;}
 
 /*主页-拍客晒图*/
 .showpic_con{width:95%;margin:5px;}
-.showpic_area{width:470px;height:220px;margin-left:5px;}
+.showpic_area{width:470px;height:190px;margin-left:5px;}
 .showpic_area_top{height:85px;width:100%;clear:both;}
 .showpic_area_avatar{width:70px;height:100%;float:left;}
 .showpic_area_name{width:50px;height:20px;line-height:20px;text-align:center;color:#8f0100;}
@@ -141,8 +141,8 @@ img{border:0px;}
 .showpic_area_ttl{height:20px;line-height:20px;font-weight:bold;}
 .showpic_area_pro{height:20px;line-height:20px; color:#999999;}
 .showpic_area_pro span{color:#ff6600;font-weight:bold;}
-.showpic_area_detail{height:45px;line-height:15px; color:#999999;}
-.showpic_area_bottom{width:100%;height:90px;}
+.showpic_area_detail{height:45px;line-height:15px; color:#999999; word-break:break-all;width:380px;overflow:hidden;}
+.showpic_area_bottom{width:100%;height:90px;margin-top:5px;}
 
 /*用户注册页面*/
 .reg{width:1000px; margin:5px auto;border:1px solid #ccc;}
@@ -319,14 +319,14 @@ img{border:0px;}
 .ShowOrder_left_title{height:30px;line-height:30px;font-size:14px;padding-left:5px;border-bottom:1px solid #8f0100;}
 .ShowOrder_left_title span{color:#cccccc;}
 .ShowOrder_left_content{width:100%; height:100%;}
-.ShowOrder_area{border:1px solid #ccc; margin:7px;}
+.ShowOrder_area{border:1px solid #ccc; margin:2px 7px 5px;}
 .ShowOrder_area_title{height:25px;line-height:25px;margin:5px 0px 0px 10px;}
 .ShowOrder_area_info{height:25px;margin-left:7px;line-height:25px; color:#999999;}
 .ShowOrder_area_info span{color:#ff6600;font-weight:bold;}
 .ShowOrder_area_pic{height:95px;clear:both;}
 .ShowOrder_area_pic ul li{float:left;}
 .ShowOrder_area_avatar{width:80px;height:100%;margin-left:7px;}
-.ShowOrder_area_detail{width:170px;height:100%;line-height:25px; margin:0 5px;}
+.ShowOrder_area_detail{width:200px;height:85px;line-height:20px; margin:0 20px;overflow:hidden; word-break:break-all;}
 .ShowOrder_area_img{padding:5px 0;}
 .ShowOrder_area_reply{margin-left:5px; color:#999999;font-weight:bold;margin-bottom:5px;}
 

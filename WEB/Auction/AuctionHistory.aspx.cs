@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Model.Entities;
 using BLL.SystemSeting;
+using BLL;
 
 namespace WEB.Auction
 {
@@ -13,6 +14,7 @@ namespace WEB.Auction
     {
         ProductBLL productBll=new ProductBLL();
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
+        AuctionBll auctionBll = new AuctionBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,7 +26,7 @@ namespace WEB.Auction
         public void Bind() 
         {
             //所有已成交的商品
-            gvwHistory.DataSource = productBll.GetAllDoneProduct();
+            gvwHistory.DataSource = auctionBll.GetAllAuctioned();
             gvwHistory.DataBind();
         }
 
@@ -36,14 +38,25 @@ namespace WEB.Auction
                 HiddenField hfProductID = e.Row.FindControl("hfProductID") as HiddenField;
                 HiddenField hfProductNo = e.Row.FindControl("hfProductNo") as HiddenField;
                 Image imgProduct = e.Row.FindControl("imgProduct") as Image;
-                HiddenField hfProductName=e.Row.FindControl("hfProductName")as HiddenField;
+                Label proPrice = e.Row.FindControl("lblPrice") as Label;
+                Label intro = e.Row.FindControl("lblIntro") as Label;
+                HyperLink lnkPro = e.Row.FindControl("hlnkPro") as HyperLink;
+                string auctionId=gvwHistory.DataKeys[e.Row.RowIndex].Value.ToString();
+                List<auction> list_act = auctionBll.GetAuction(auctionId);
                 if (hfProductID.Value!="")
                 {
+                    List<Product> list_pro = productBll.GetById(hfProductID.Value);
+                    string proName=list_pro[0].productName;
+                    proPrice.Text=list_pro[0].productPrice.ToString();
+                    intro.Text=list_pro[0].Intro;
+                    lnkPro.Text = proName;
+                    lnkPro.ToolTip="第"+list_act[0].Coding+"期 "+proName;
+                    lnkPro.NavigateUrl = "../Auction/ProDetail.aspx?id=" + auctionId;
                     List<ProductImeg> list = productBll.GetProtductImeg("",hfProductID.Value);
                     if (list.Count>0)
                     {
                         imgProduct.ImageUrl = list[0].img;
-                        imgProduct.ToolTip="第"+hfProductNo.Value+"期 "+hfProductName.Value;
+                        imgProduct.ToolTip = "第" + hfProductNo.Value + "期 " + proName;
                     }
                 }
                 if (lblMemberName.Text!="")

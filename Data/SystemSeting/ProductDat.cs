@@ -80,27 +80,15 @@ namespace Data.SystemSeting
                {
                    Product obj = new Product();
                    obj.ProductID = item["ProductID"].ToString();
-                   obj.coding=item["coding"]==null?"":item["coding"].ToString();
                    obj.ProductTypeID = item["ProductTypeID"].ToString();
                    obj.productName = item["productName"]==null ? "" : item["productName"].ToString();
                    obj.productBrand = item["productBrand"] == null ? "" : item["productBrand"].ToString();
                    obj.productPrice = Convert.ToDecimal(item["productPrice"]);
-                   obj.PmJGproduct = Convert.ToDecimal(item["PmJGproduct"]);
-                   obj.HuiYuanID = item["HuiYuanID"].ToString();
-                   obj.AuctionTime = item["AuctionTime"] == DBNull.Value ? null:item["AuctionTime"] as DateTime?;
-                   obj.TimePoint = item["TimePoint"] == null ? null :item["TimePoint"] as int?;
                    obj.CreateTime = Convert.ToDateTime(item["CreateTime"]);
-                   obj.Status = (int)item["Status"];
                    obj.isshouYei =Convert.ToInt32(item["isshouYei"]);
-                   obj.AuctionPoint = Convert.ToInt32(item["AuctionPoint"]);
-                   obj.PriceAdd = Convert.ToDecimal(item["PriceAdd"]);
                    obj.Fee = Convert.ToDecimal(item["Fee"]);
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
-                   obj.EndTime =item["EndTime"]==DBNull.Value ? null:item["EndTime"]as DateTime?;
                    obj.Intro = item["Intro"].ToString();
-                   obj.AuctionTypeID=item["AuctionTypeID"].ToString();
-                   obj.FreePoint=Convert.ToInt32(item["FreePoint"]);
-                   obj.IsRecommend = Convert.ToInt32(item["IsRecommend"]);
                    list.Add(obj);
                }
            }
@@ -146,51 +134,19 @@ namespace Data.SystemSeting
                {
                    Product obj = new Product();
                    obj.ProductID = item["ProductID"].ToString();
-                   obj.coding = item["coding"] == null ? "" : item["coding"].ToString();
                    obj.ProductTypeID = item["ProductTypeID"].ToString();
                    obj.productName = item["productName"] == null ? "" : item["productName"].ToString();
                    obj.productBrand = item["productBrand"] == null ? "" : item["productBrand"].ToString();
                    obj.productPrice = Convert.ToDecimal(item["productPrice"]);
-                   obj.PmJGproduct = item["PmJGproduct"]==null?0:Convert.ToDecimal(item["PmJGproduct"]);
-                   obj.HuiYuanID = item["HuiYuanID"]==null?"":item["HuiYuanID"].ToString();
-                   obj.AuctionTime = item["AuctionTime"] == DBNull.Value ? null : item["AuctionTime"] as DateTime?;
-                   obj.TimePoint = item["TimePoint"] == null ? null : item["TimePoint"] as int?;
                    obj.CreateTime = Convert.ToDateTime(item["CreateTime"]);
                    obj.ProductDetails = item["ProductDetails"] == null ? "" : item["ProductDetails"].ToString();
-                   obj.Status = (int)item["Status"];
-                   obj.PriceAdd = Convert.ToDecimal(item["PriceAdd"]);
-                   obj.AuctionPoint = Convert.ToInt32(item["AuctionPoint"]);
                    obj.Intro = item["Intro"].ToString();
                    obj.Fee = Convert.ToDecimal(item["Fee"]);
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
-                   obj.FreePoint =Convert.ToInt32(item["FreePoint"]);
-                   obj.EndTime = Convert.ToDateTime(item["EndTime"]);
-                   obj.AuctionTypeID = item["AuctionTypeID"].ToString();
                    list.Add(obj);
                }
            }
            return list;
-       }
-
-       /// <summary>
-       /// 会员出价
-       /// </summary>
-       /// <param name="pro"></param>
-       /// <returns></returns>
-       public int UpdatePrice(Product pro) 
-       {
-           try
-           {
-               string sql = "update product set PmJGproduct=PmJGproduct+PriceAdd,HuiYuanID=@HuiYuanID,TimePoint=@TimePoint where ProductID=@ProductID";
-               return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",pro.HuiYuanID),
-                   new SqlParameter("@TimePoint",pro.TimePoint),
-                   new SqlParameter("@ProductID",pro.ProductID));
-           }
-           catch (Exception)
-           {
-               
-               throw;
-           }
        }
 
        /// <summary>
@@ -204,8 +160,9 @@ namespace Data.SystemSeting
            {
                string sql = "update Product set Status=@Status,EndTime=@EndTime where ProductID=@ProductID";
                return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@EndTime",DateTime.Now),
-                   new SqlParameter("@ProductID",pro.ProductID),
-                   new SqlParameter("@Status",pro.Status));
+                   new SqlParameter("@ProductID",pro.ProductID)
+                   //new SqlParameter("@Status",pro.Status)
+                   );
            }
            catch (Exception)
            {

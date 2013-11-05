@@ -15,6 +15,7 @@ namespace WEB.UserInfo
         ProductBLL proBll = new ProductBLL();
         ChuJiaJiLuBll recordBll = new ChuJiaJiLuBll();
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
+        AuctionBll auctionBll = new AuctionBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,8 +33,8 @@ namespace WEB.UserInfo
             else 
             {
                 string hyId = Session["HuiYuanID"].ToString();
-                int status = 3;
-                dlstBiding.DataSource = proBll.GetProductbyStatus(hyId,status);
+                int status = 4;
+                dlstBiding.DataSource = auctionBll.GetAuctionbyStatus(hyId,status);
                 dlstBiding.DataBind();
             }
         }
@@ -49,6 +50,9 @@ namespace WEB.UserInfo
                 Label bidCount = e.Item.FindControl("lblBidCount") as Label;
                 Label pointCount = e.Item.FindControl("lblPointCount") as Label;
                 HiddenField proId = e.Item.FindControl("hfProID") as HiddenField;
+                Literal proName = e.Item.FindControl("ltlProName") as Literal;
+
+                string auctionId=dlstBiding.DataKeys[e.Item.ItemIndex].ToString();
                 proNo.Text = "第" + proNo.Text + "期";
                 List<ProductImeg>list=proBll.GetProtductImeg("",proId.Value);
                 if (list.Count > 0)
@@ -63,19 +67,21 @@ namespace WEB.UserInfo
 
                 string hyId=Session["HuiYuanID"].ToString();
                 List<Product> list_pro = proBll.GetById(proId.Value);
-                List<ChuJiaJiLu> list_record = recordBll.GetChuJiaJiLu(proId.Value,hyId);
+                List<auction> list_act = auctionBll.GetAuction(auctionId);
+                List<ChuJiaJiLu> list_record = recordBll.GetChuJiaJiLu(auctionId,hyId);
+                proName.Text=list_pro[0].productName;
                 bidCount.Text =list_record.Count.ToString();
                 string points = (list_record.Count * (list_record[0].AuctionPoint + list_record[0].FreePoint)).ToString();
-                if (proBll.GetAuctionTypebyID(list_pro[0].AuctionTypeID)[0].TypeName=="常规竞拍")
+                if (proBll.GetAuctionTypebyID(list_act[0].AuctionTypeID)[0].TypeName == "常规竞拍")
                 {
                     pointCount.Text = "拍点：" + points;
                 }
-                else 
+                else
                 {
                     pointCount.Text = "返点：" + points;
                 }
 
-                List<ChuJiaJiLu> list_record1 = recordBll.GetHuiYuanIDbyProId(proId.Value);
+                List<ChuJiaJiLu> list_record1 = recordBll.GetHuiYuanIDbyauctionId(proId.Value);
                 nums.Text = "共有" + list_record1.Count.ToString() + "人参与";
             }
         }
