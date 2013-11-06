@@ -28,7 +28,7 @@
                     <li><a href="" target="_self">即将竞拍</a></li>
                     <li><a href="../Auction/AuctionHistory.aspx" target="_self">历史竞拍</a></li>
                     <li><a href="" target="_self">免费体验</a></li>
-                    <li><a href="" target="_self">积分商城</a></li>
+                    <li><a href="../Auction/PointsMall.aspx" target="_self">积分商城</a></li>
                     <li><a href="../Auction/ShowOrder.aspx" target="_self">拍客晒图</a></li>
                 </ul>
             </div>

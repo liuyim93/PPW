@@ -41,6 +41,7 @@ namespace Data
                    hy.Adress=item["Adress"]==DBNull.Value?"":item["Adress"].ToString();
                    hy.IsEmailVerify = item["IsEmailVerify"] == DBNull.Value ? 0 : Convert.ToInt32(item["IsEmailVerify"]);
                    hy.IsPhoneVerify = item["IsPhoneVerify"] == DBNull.Value ? 0 : Convert.ToInt32(item["IsPhoneVerify"]);
+                   hy.Points = Convert.ToInt32(item["Points"]);
                    list.Add(hy);
                }
            }

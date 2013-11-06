@@ -49,7 +49,7 @@ namespace WEB.SystemSeting
                txtJG.Text = cp[0].productPrice.Value.ToString();
                discpSeled.Text = cp[0].ProductDetails;
                txtCreaTime.Text = cp[0].CreateTime.Value.ToString("yyyy-MM-dd");
-               disIsSaoye.Text = cp[0].isshouYei == 0 ? "不显示" : "显示";
+               //disIsSaoye.Text = cp[0].isshouYei == 0 ? "不显示" : "显示";
                txtIntro.Text = cp[0].Intro == null ? "" : cp[0].Intro;
                txtFee.Text = cp[0].Fee.ToString();
                txtShipFee.Text = cp[0].ShipFee.ToString();

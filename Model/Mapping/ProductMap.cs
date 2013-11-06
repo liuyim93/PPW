@@ -37,7 +37,7 @@ namespace Model.Mapping
 			this.Property(t => t.ProductTypeID).HasColumnName("ProductTypeID");
 			this.Property(t => t.productName).HasColumnName("productName");
 			this.Property(t => t.productBrand).HasColumnName("productBrand");
-			this.Property(t => t.isshouYei).HasColumnName("isshouYei");
+            //this.Property(t => t.isshouYei).HasColumnName("isshouYei");
 			this.Property(t => t.productPrice).HasColumnName("productPrice");
 			this.Property(t => t.CreateTime).HasColumnName("CreateTime");
 			this.Property(t => t.ProductDetails).HasColumnName("ProductDetails");

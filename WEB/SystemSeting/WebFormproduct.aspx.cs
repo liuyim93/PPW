@@ -244,7 +244,7 @@ namespace WEB.SystemSeting
               //prd.PmJGproduct = Convert.ToDecimal(PaiMaiJG.Text);
               //prd.AuctionTime = datetim;
               //prd.TimePoint = SetTime.Text == "" ? 0 : Convert.ToInt32(SetTime.Text);
-              prd.isshouYei =Convert.ToInt32(comx.SelectedItem.Value);
+              //prd.isshouYei =Convert.ToInt32(comx.SelectedItem.Value);
               prd.ProductDetails = e.ExtraParams["txt_TiMuNeiRong"];
               //prd.PriceAdd = Convert.ToDecimal(txtPriceAdd.Text);
               //prd.AuctionPoint = Convert.ToInt32(txtAcutionPoint.Text);

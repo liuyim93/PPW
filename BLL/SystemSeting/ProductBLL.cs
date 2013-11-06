@@ -147,16 +147,6 @@ namespace BLL.SystemSeting
        }
 
        /// <summary>
-       /// 正在热拍的所有商品
-       /// </summary>
-       /// <returns></returns>
-       public List<Product> GetAllAuctioningProduct() 
-       {
-           string sql = "select * from Product where Status=4 order by AuctionTime asc";
-           return dal.GetProduct(sql);
-       }
-
-       /// <summary>
        /// 查询所有的常规竞拍商品
        /// </summary>
        /// <returns></returns>
@@ -173,66 +163,6 @@ namespace BLL.SystemSeting
             {
                 return null;
             }         
-       }
-
-       /// <summary>
-       /// 会员出价
-       /// </summary>
-       /// <param name="pro"></param>
-       /// <returns></returns>
-       //public int UpdateProductPrice(Product pro)
-       //{
-       //    return dal.UpdatePrice(pro);
-       //}
-
-       /// <summary>
-       /// 产品成交
-       /// </summary>
-       /// <param name="pro"></param>
-       /// <returns></returns>
-       public int UpdateProductStatus(Product pro) 
-       {
-           return dal.UpdateStatus(pro);
-       }
-
-       /// <summary>
-       /// 出价倒计时
-       /// </summary>
-       /// <param name="productId"></param>
-       /// <returns></returns>
-       public int UpdateTimePoint(string productId) 
-       {
-           return dal.UpdateTimePoint(productId);
-       }
-
-       /// <summary>
-       /// 查询最新的25条竞拍信息
-       /// </summary>
-       /// <returns></returns>
-       public List<Product> GetProduct_Top25() 
-       {
-           string sql = "select top 25 * from Product order by AuctionTime asc";
-           return dal.GetProduct(sql);
-       }
-
-       /// <summary>
-       /// 查询最近成交的五条信息
-       /// </summary>
-       /// <returns></returns>
-       //public List<Product> GetDoneProduct_Top5() 
-       //{
-       //    string sql = "select top 5 * from Product where Status=3 order by EndTime desc";
-       //    return dal.GetProduct(sql);
-       //}
-
-       /// <summary>
-       /// 查询所有已成交的拍品
-       /// </summary>
-       /// <returns></returns>
-       public List<Product> GetAllDoneProduct() 
-       {
-           string sql = "select * from Product where Status=3 order by EndTime desc";
-           return dal.GetProduct(sql);
        }
 
        /// <summary>
@@ -303,5 +233,15 @@ namespace BLL.SystemSeting
        //        return null;
        //    }
        //}
+
+       /// <summary>
+       /// 查询可以积分兑换的商品
+       /// </summary>
+       /// <returns></returns>
+       public List<Product> GetAllExchangeProduct() 
+       {
+           string sql = "select * from Product where IsExchange=1 order by Points desc";
+           return dal.GetProduct(sql);
+       }
     }
 }

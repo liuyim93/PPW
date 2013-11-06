@@ -330,6 +330,31 @@ img{border:0px;}
 .ShowOrder_area_img{padding:5px 0;}
 .ShowOrder_area_reply{margin-left:5px; color:#999999;font-weight:bold;margin-bottom:5px;}
 
+/*PointsMall-积分商城*/
+.pointsmall{width:100%;border:1px solid #ccc; margin-top:10px;}
+.pointsmall_title{height:30px;line-height:30px;border-bottom:1px solid #8f0100;padding-left:5px;font-size:14px; font-weight:bold;}
+.pointsmall_search{height:30px;line-height:30px;width:100%;}
+.pointsmall_drop{float:left;margin-right:5px;height:30px;margin-left:10px;}
+.pointsmall_btn{float:left;width:45px;height:25px;background-color:#990033;text-align:center;margin:2px 0;line-height:25px;}
+.pointsmall_btn a{color:#ffffff;}
+.pointsmall_dlst{width:95%;margin:10px;}
+.pointsmall_area{width:195px;height:266px;background:url("../../Image/pointsarea_bg.gif") no-repeat scroll;position:relative;text-align:center; margin:5px 10px;padding-top:10px;}
+.pointsmall_area_img{width:120px;height:120px;margin-left:37px;margin-top:10px;}
+.pointsmall_area_name{line-height:15px;width:90%;height:30px;margin:20px 5px 5px;}
+.pointsmall_area_points{height:20px;line-height:20px;}
+.pointsmall_area_points  span{color:#8f0100;font-weight:bold;}
+
+/*PointsMall_Detail-商品详情*/
+.pointsdetail{width:100%;margin-top:10px;}
+.pointsdetail_top{width:100%;height:400px;}
+.pointsdetail_left{width:280px;margin-right:10px;height:100%;float:left;}
+.pointsdetail_right{width:60%;height:100%;float:left;}
+.pointsdetail_imgpro{width:200px;height:200px;margin-left:20px;}
+.pointsdetail_img{height:80px;line-height:80px;margin-top:10px;width:100%;}
+.pointsdetail_name{font-size:16px;font-weight:bold;height:30px;line-height:30px;width:95%;}
+.pointsdetail_price{}
+
+
 
 
 

@@ -15,28 +15,24 @@
                     <ContentTemplate>
                         <asp:Timer ID="timer1" runat="server"></asp:Timer>
                         <asp:DataList ID="dlstAuction" runat="server" RepeatColumns="4" 
-                            onitemcommand="dlstAuction_ItemCommand" 
+                            onitemcommand="dlstAuction_ItemCommand" DataKeyField="AuctionID"
                             onitemdatabound="dlstAuction_ItemDataBound">
                             <ItemTemplate>
                                 <div class="product_area">
-                                    <div class="product_name"><a href="" target="_self" title='<%#Eval("productName") %>'><%#Eval("productName") %>&nbsp;<span><%#Eval("Intro") %></span></a></div>
-                                    <div class="product_fullprice"><img src="Images/fullprice.png" width="16px" height="16px" title="若竞拍未成功，可以按市场价补差价购买此商品！" /></div>
-                                    <div class="product_img"><a href="" target="_self"><asp:Image ID="imgProduct" runat="server" Width="120px" Height="120px" /></a></div>
-                                    <div class="product_price">市场价：￥<span style="font-weight:bold;"><asp:Label ID="lblPrice" runat="server" Text='<%#Eval("productPrice") %>'></asp:Label></span></div>
-                                    <div class="product_price">拍卖价：<span style="color:Red;font-weight:bold;font-family:Arial;">￥<asp:Label ID="lblAuctionPrice" runat="server" Text='<%#Eval("PmJGproduct") %>'></asp:Label></span></div>
+                                    <div class="product_name"><asp:HyperLink ID="hlnkPro" runat="server" Target="_self">&nbsp;<asp:Label ID="lblIntro" runat="server"></asp:Label></asp:HyperLink></div>
+                                    <div class="product_fullprice"><img src="Images/fullprice.png" width="16px" height="16px" title="若竞拍未成功，可以按市场价补差价购买此商品！" alt="" /></div>
+                                    <div class="product_img"><a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgProduct" runat="server" Width="120px" Height="120px" /></a></div>
+                                    <div class="product_price">市场价：￥<span style="font-weight:bold;"><asp:Label ID="lblPrice" runat="server" ></asp:Label></span></div>
+                                    <div class="product_price">拍卖价：<span style="color:Red;font-weight:bold;font-family:Arial;">￥<asp:Label ID="lblAuctionPrice" runat="server" Text='<%#Eval("AuctionPrice") %>'></asp:Label></span></div>
                                     <div class="product_price">出价人：<span style="color:#00666b"><asp:Label ID="lblMemberName" runat="server"></asp:Label></span><asp:HiddenField ID="hfMemberID" runat="server" Value='<%#Eval("HuiYuanID") %>' /></div>
                                     <div class="product_timer"><asp:Label ID="lblTime" runat="server"></asp:Label></div>
-                                    <div class="product_auction"><asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif" CommandName="auction" CommandArgument='<%#Eval("ProductID") %>' /></div>
+                                    <div class="product_auction"><asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif" CommandName="auction" CommandArgument='<%#Eval("AuctionID") %>' /></div>
                                     <asp:HiddenField ID="hfTimePoint" runat="server" Value='<%#Eval("TimePoint") %>' />
                                     <asp:HiddenField ID="hfAuctionTime" runat="server" Value='<%#Eval("AuctionTime") %>' /> 
-                                   <asp:HiddenField ID="hfStatus" runat="server" Value='<%#Eval("Status") %>' />
-                                   <!--运费、手续费 -->                                                               
-                                   <asp:HiddenField ID="hfFee" runat="server" Value='<%#Eval("Fee") %>' />
-                                   <asp:HiddenField ID="hfShipFee" runat="server" Value='<%#Eval("ShipFee") %>' />
+                                   <asp:HiddenField ID="hfStatus" runat="server" Value='<%#Eval("Status") %>' />                                                             
                                    <asp:HiddenField ID="hfAuctionPoint" runat="server" Value='<%#Eval("AuctionPoint") %>' />
-                                   <asp:HiddenField ID="hfProductName" runat="server" Value='<%#Eval("productName") %>' />
                                    <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
-                                   <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("coding") %>' />                                  
+                                   <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("Coding") %>' />                                  
                                 </div>
                             </ItemTemplate>
                         </asp:DataList>

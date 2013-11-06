@@ -89,6 +89,8 @@
   <ItemGroup>
     <Content Include="Auction\AuctionHistory.aspx" />
     <Content Include="Auction\AuctionList.aspx" />
+    <Content Include="Auction\PointsMall.aspx" />
+    <Content Include="Auction\PointsMall_Detail.aspx" />
     <Content Include="Auction\ProDetail.aspx" />
     <Content Include="Auction\Index.aspx" />
     <Content Include="Auction\Register.aspx" />
@@ -468,6 +470,20 @@
     </Compile>
     <Compile Include="Auction\AuctionList.aspx.designer.cs">
       <DependentUpon>AuctionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\PointsMall.aspx.cs">
+      <DependentUpon>PointsMall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\PointsMall.aspx.designer.cs">
+      <DependentUpon>PointsMall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\PointsMall_Detail.aspx.cs">
+      <DependentUpon>PointsMall_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\PointsMall_Detail.aspx.designer.cs">
+      <DependentUpon>PointsMall_Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\ProDetail.aspx.cs">
       <DependentUpon>ProDetail.aspx</DependentUpon>

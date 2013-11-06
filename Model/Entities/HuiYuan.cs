@@ -43,6 +43,7 @@ namespace Model.Entities
         public Nullable<int> IsEmailVerify { get; set; }//邮箱是否验证
         public Nullable<int> IsPhoneVerify { get; set; }//手机号码是否验证
         public string Adress { get; set; }//地址
+        public int Points { get; set; }//可用积分
 	}
 }
 

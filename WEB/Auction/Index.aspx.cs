@@ -232,7 +232,7 @@ namespace WEB.Auction
                                 {
                                     //生成竞拍订单
                                     DingDan dd = new DingDan();
-                                    dd.DingDanBH = DateTime.Now.ToString().GetHashCode().ToString();
+                                    dd.DingDanBH = DateTime.Now.ToString("yyyyMMddHHmmss");
                                     dd.HuiYuanID = hfMemberID.Value;
                                     dd.ProductID = hfProductID.Value;
                                     dd.ProductPrice = Convert.ToDecimal(lblAuctionPrice.Text);
@@ -242,10 +242,11 @@ namespace WEB.Auction
                                     dd.ShipFee = shipFee;
                                     dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;
                                     dd.InvalidTime = DateTime.Now.AddDays(7);
+                                    dd.AuctionID = auctionId;
                                     orderBll.AddOrder(dd);
 
                                     //修改拍品状态为已成交
-                                    Model.Entities.auction auction2 = new Model.Entities.auction();
+                                    auction auction2 = new auction();
                                     auction2.Status = 3;
                                     auction2.EndTime = DateTime.Now;
                                     auction2.AuctionID = auctionId;

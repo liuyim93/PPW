@@ -139,5 +139,15 @@ namespace BLL
             }
             return list;
         }
+
+        /// <summary>
+        /// 查询所有正在竞拍的拍品
+        /// </summary>
+        /// <returns></returns>
+        public List<auction> GetAllAuctioning() 
+        {
+            string sql = "select * from Auction where Status=4 order by AuctionTime asc";
+            return auctionDat.GetAuction(sql);
+        }
     }
 }

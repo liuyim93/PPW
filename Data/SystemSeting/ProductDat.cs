@@ -85,10 +85,11 @@ namespace Data.SystemSeting
                    obj.productBrand = item["productBrand"] == null ? "" : item["productBrand"].ToString();
                    obj.productPrice = Convert.ToDecimal(item["productPrice"]);
                    obj.CreateTime = Convert.ToDateTime(item["CreateTime"]);
-                   obj.isshouYei =Convert.ToInt32(item["isshouYei"]);
                    obj.Fee = Convert.ToDecimal(item["Fee"]);
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
                    obj.Intro = item["Intro"].ToString();
+                   obj.IsExchange = Convert.ToInt32(item["IsExchange"]);
+                   obj.Points = Convert.ToInt32(item["Points"]);
                    list.Add(obj);
                }
            }
@@ -143,6 +144,8 @@ namespace Data.SystemSeting
                    obj.Intro = item["Intro"].ToString();
                    obj.Fee = Convert.ToDecimal(item["Fee"]);
                    obj.ShipFee = Convert.ToDecimal(item["ShipFee"]);
+                   obj.IsExchange = Convert.ToInt32(item["IsExchange"]);
+                   obj.Points = Convert.ToInt32(item["Points"]);
                    list.Add(obj);
                }
            }
