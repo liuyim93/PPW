@@ -65,6 +65,9 @@ namespace WEB.SystemSeting
                 Intro=x.Intro,
                 Fee=x.Fee,
                 ShipFee=x.ShipFee,
+                CreateTime=x.CreateTime,
+                Points=x.Points==0?"":x.Points.ToString(),
+                IsExchange=x.IsExchange==1?"是":"否"
             });
             StorlList.DataBind();
         }
@@ -135,10 +138,10 @@ namespace WEB.SystemSeting
           protected void AddShow(object obj,EventArgs e)
           {
               window_addGongYingShang.Title = "添加产品信息";
-              txtBh.Text = "";
+              //txtBh.Text = "";
               pinPai.Text = "";
-              PaiMaiJG.Value = "0";
-              SetTime.Value = null;
+              //PaiMaiJG.Value = "0";
+              //SetTime.Value = null;
               txtName.Text = "";
               txtJG.Value = "0";
               hidTiMuNeiRong.Value = "";
@@ -146,47 +149,51 @@ namespace WEB.SystemSeting
               bntAdds.Show();
               bntEids.Hide();
               txtIntro.Text = "";
-              txtPriceAdd.Value = "0.01";
-              txtAcutionPoint.Value = "100";
+              //txtPriceAdd.Value = "0.01";
+              //txtAcutionPoint.Value = "100";
               txtFee.Value = "0";
               txtShipFee.Value = "0";
+              chkGift.Checked = false;
               window_addGongYingShang.Show();
           }  
 
-          //protected void Add(object obj,DirectEventArgs e) 
-          //{
-          //    if (ddsCPLX.Value.ToString()=="0")
-          //    {
-          //        X.Msg.Alert("提示","请选择产品类型").Show();
-          //        return;
-          //    }
-          //    string dat = d241.Value.ToString();
-          //    DateTime? datetim = dat == "" ? null : Convert.ToDateTime(dat) as DateTime?; 
+          protected void Add(object obj,DirectEventArgs e) 
+          {
+              if (ddsCPLX.Value.ToString() == "0")
+              {
+                  X.Msg.Alert("提示", "请选择产品类型").Show();
+                  return;
+              }
+              string dat = d241.Value.ToString();
+              DateTime? datetim = dat == "" ? null : Convert.ToDateTime(dat) as DateTime?;
 
-          //    Product prd = new Product();
-          //    prd.ProductID = Guid.NewGuid().ToString();
-          //    prd.coding = txtBh.Text;
-          //    prd.ProductTypeID = hidSelectedTreeNode1.Value.ToString();
-          //    prd.productName = txtName.Text;
-          //    prd.productBrand = pinPai.Text;
-          //    prd.productPrice = Convert.ToDecimal(txtJG.Text);
-          //    prd.PmJGproduct = Convert.ToDecimal(PaiMaiJG.Text);
-          //    prd.AuctionTime = datetim;
-          //    prd.TimePoint = SetTime.Text == "" ? 0 : Convert.ToInt32(SetTime.Text);
-          //    prd.CreateTime = DateTime.Now;
-          //    prd.ProductDetails = e.ExtraParams["txt_TiMuNeiRong"];
-          //    prd.Status =(int)Status.未成交;
-          //    prd.isshouYei =Convert.ToInt32(comx.SelectedItem.Value);
-          //    prd.Intro = txtIntro.Text;
-          //    prd.PriceAdd = Convert.ToDecimal(txtPriceAdd.Text);
-          //    prd.AuctionPoint = Convert.ToInt32(txtAcutionPoint.Text);
-          //    prd.Fee = txtFee.Text == "" ? 0 : Convert.ToDecimal(txtFee.Text);
-          //    prd.ShipFee = txtShipFee.Text == "" ? 0 : Convert.ToDecimal(txtShipFee.Text);
-          //    pcBll.Add(prd);
-          //    X.Msg.Alert("提示", "添加成功！").Show();
-          //    window_addGongYingShang.Hide();
-          //    DataBindList();
-          //}
+              Product prd = new Product();
+              //prd.ProductID = Guid.NewGuid().ToString();
+              //prd.coding = txtBh.Text;
+              prd.ProductTypeID = hidSelectedTreeNode1.Value.ToString();
+              prd.productName = txtName.Text;
+              prd.productBrand = pinPai.Text;
+              prd.productPrice = Convert.ToDecimal(txtJG.Text);
+              //prd.PmJGproduct = Convert.ToDecimal(PaiMaiJG.Text);
+              //prd.AuctionTime = datetim;
+              //prd.TimePoint = SetTime.Text == "" ? 0 : Convert.ToInt32(SetTime.Text);
+              prd.CreateTime = DateTime.Now;
+              prd.ProductDetails = e.ExtraParams["txt_TiMuNeiRong"];
+              //prd.Status = (int)Status.未成交;
+              //prd.isshouYei = Convert.ToInt32(comx.SelectedItem.Value);
+              prd.Intro = txtIntro.Text;
+              //prd.PriceAdd = Convert.ToDecimal(txtPriceAdd.Text);
+              //prd.AuctionPoint = Convert.ToInt32(txtAcutionPoint.Text);
+              prd.Fee = txtFee.Text == "" ? 0 : Convert.ToDecimal(txtFee.Text);
+              prd.ShipFee = txtShipFee.Text == "" ? 0 : Convert.ToDecimal(txtShipFee.Text);
+              prd.IsExchange = chkGift.Checked ? 1 : 0;
+              prd.Points = txtPoints.Text.ToString()==""?0:Convert.ToInt32(txtPoints.Text);
+              //pcBll.Add(prd);
+              pcBll.AddProduct(prd);
+              X.Msg.Alert("提示", "添加成功！").Show();
+              window_addGongYingShang.Hide();
+              DataBindList();
+          }
 
           protected void EidShow(object obj, EventArgs e) 
           {
@@ -196,31 +203,33 @@ namespace WEB.SystemSeting
                   X.Msg.Alert("提示", "请选择需修改的数据！").Show();
                   return;
               }
-              //string id = s.SelectedRow.RecordID;
-              //cpid.Value = id;
-              //List<Product> list = pcBll.GetById(id);
+              string id = s.SelectedRow.RecordID;
+              cpid.Value = id;
+              List<Product> list = pcBll.GetById(id);
               //txtBh.Text = list[0].coding;
-              //pinPai.Text = list[0].productBrand;
+              pinPai.Text = list[0].productBrand;
               //PaiMaiJG.Text = list[0].PmJGproduct == null ? "" : list[0].PmJGproduct.Value.ToString();
               //SetTime.Text = list[0].TimePoint == null ? "" : list[0].TimePoint.Value.ToString();
-              //txtName.Text = list[0].productName;
-              //ddsCPLX.SetValue(list[0].ProductTypeID, GetLX(list[0].ProductTypeID));
-              //hidSelectedTreeNode1.Text = list[0].ProductTypeID;
-              //txtJG.Text = list[0].productPrice.Value.ToString();
-              ////paisj.Text = list[0].AuctionTime == null ? null : list[0].AuctionTime.Value.ToString();
+              txtName.Text = list[0].productName;
+              ddsCPLX.SetValue(list[0].ProductTypeID, GetLX(list[0].ProductTypeID));
+              hidSelectedTreeNode1.Text = list[0].ProductTypeID;
+              txtJG.Text = list[0].productPrice.Value.ToString();
+              //paisj.Text = list[0].AuctionTime == null ? null : list[0].AuctionTime.Value.ToString();
               //d241.Value = list[0].AuctionTime == null ? null : list[0].AuctionTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
-              //hidTiMuNeiRong.Value = list[0].ProductDetails;
+              hidTiMuNeiRong.Value = list[0].ProductDetails;
               //hidBh.Value = list[0].coding;
               //comx.SelectedItem.Value = list[0].isshouYei.ToString();
               //txtPriceAdd.Text = list[0].PriceAdd.ToString();
               //txtAcutionPoint.Text = list[0].AuctionPoint.ToString();
-              //txtIntro.Text=list[0].Intro;
-              //txtFee.Text=list[0].Fee.ToString();
-              //txtShipFee.Text=list[0].ShipFee.ToString();
-              //bntAdds.Hide();
-              //bntEids.Show();
-              //window_addGongYingShang.Title = "修改产品信息";
-              //window_addGongYingShang.Show();
+              txtIntro.Text = list[0].Intro;
+              txtFee.Text = list[0].Fee.ToString();
+              txtShipFee.Text = list[0].ShipFee.ToString();
+              chkGift.Checked = list[0].IsExchange == 1 ? true : false;
+              txtPoints.Text=list[0].Points.ToString();
+              bntAdds.Hide();
+              bntEids.Show();
+              window_addGongYingShang.Title = "修改产品信息";
+              window_addGongYingShang.Show();
           }
 
          //修改保存
@@ -251,13 +260,19 @@ namespace WEB.SystemSeting
               prd.Intro = txtIntro.Text;
               prd.Fee = txtFee.Text == "" ? 0 : Convert.ToDecimal(txtFee.Text);
               prd.ShipFee = txtShipFee.Text == "" ? 0 : Convert.ToDecimal(txtShipFee.Text);
-              //if (pcBll.Eid(prd) > 0) 
+              prd.IsExchange = chkGift.Checked ? 1 : 0;
+              prd.Points = Convert.ToInt32(txtPoints.Text);
+              pcBll.UpdateProduct(prd);
+              X.Msg.Alert("提示","修改成功！").Show();
+              window_addGongYingShang.Hide();
+              DataBindList();
+              hidBh.Value = "";
+              cpid.Value = "";
+              //if (pcBll.Eid(prd) > 0)
               //{
-              //    X.Msg.Alert("提示","修改成功！").Show();
+              //    X.Msg.Alert("提示", "修改成功！").Show();
               //    window_addGongYingShang.Hide();
-              //    DataBindList();
-              //    hidBh.Value = "";
-              //    cpid.Value = "";
+              //    DataBindList();                 
               //}
           }
 
@@ -355,6 +370,19 @@ namespace WEB.SystemSeting
              {
                  e.ErrorMessage = "该编号以存在！";
                  e.Success = false;
+             }
+         }
+
+         protected void chkGift_Change(object sender,DirectEventArgs e) 
+         {
+             if (chkGift.Checked)
+             {
+                 txtPoints.Visible = true;
+             }
+             else 
+             {
+                 txtPoints.Visible = false;
+                 txtPoints.Text = "";
              }
          }
     }

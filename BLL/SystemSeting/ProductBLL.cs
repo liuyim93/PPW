@@ -67,8 +67,8 @@ namespace BLL.SystemSeting
        /// <returns></returns>
        //public int Eid(Product obj)
        //{
-       //    string dat = obj.AuctionTime == null ? "null" :"'"+obj.AuctionTime.Value.ToString("yyyy-MM-dd HH:mm:ss")+"'";
-       //    string sql = "update Product set coding='"+obj.coding+"',ProductTypeID='"+obj.ProductTypeID+"',productName='"+obj.productName+"',productBrand='"+obj.productBrand+"',productPrice="+obj.productPrice+",PmJGproduct="+obj.PmJGproduct.Value+",AuctionTime="+dat+",TimePoint="+obj.TimePoint+",ProductDetails='"+obj.ProductDetails+"',PriceAdd="+obj.PriceAdd+",AuctionPoint="+obj.AuctionPoint+",Intro="+obj.Intro+",Fee="+obj.Fee+",ShipFee="+obj.ShipFee+" where ProductID='"+obj.ProductID+"'";
+       //    string dat = obj.AuctionTime == null ? "null" : "'" + obj.AuctionTime.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
+       //    string sql = "update Product set coding='" + obj.coding + "',ProductTypeID='" + obj.ProductTypeID + "',productName='" + obj.productName + "',productBrand='" + obj.productBrand + "',productPrice=" + obj.productPrice + ",PmJGproduct=" + obj.PmJGproduct.Value + ",AuctionTime=" + dat + ",TimePoint=" + obj.TimePoint + ",ProductDetails='" + obj.ProductDetails + "',PriceAdd=" + obj.PriceAdd + ",AuctionPoint=" + obj.AuctionPoint + ",Intro=" + obj.Intro + ",Fee=" + obj.Fee + ",ShipFee=" + obj.ShipFee + " where ProductID='" + obj.ProductID + "'";
        //    return setSql(sql);
        //}
 
@@ -242,6 +242,26 @@ namespace BLL.SystemSeting
        {
            string sql = "select * from Product where IsExchange=1 order by Points desc";
            return dal.GetProduct(sql);
+       }
+
+       /// <summary>
+       /// 修改产品信息
+       /// </summary>
+       /// <param name="pro"></param>
+       /// <returns></returns>
+       public int UpdateProduct(Product pro) 
+       {
+           return dal.UpdateProduct(pro);
+       }
+
+       /// <summary>
+       /// 添加产品信息
+       /// </summary>
+       /// <param name="pro"></param>
+       /// <returns></returns>
+       public int AddProduct(Product pro) 
+       {
+           return dal.AddProduct(pro);    
        }
     }
 }

@@ -18,6 +18,7 @@ namespace WEB.Auction
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
         ChuJiaJiLuBll cjBll = new ChuJiaJiLuBll();
         AuctionBll auctionBll = new AuctionBll();
+        DingDanBll orderBll = new DingDanBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -137,6 +138,80 @@ namespace WEB.Auction
                         ts.Complete();
                     }
                     Bind();
+                }
+            }
+        }
+
+        protected void timer1_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dlstAuction.Items.Count; i++)
+            {
+                HiddenField hfProductID = dlstAuction.Items[i].FindControl("hfProductID") as HiddenField;
+                HiddenField hfTimePoint = dlstAuction.Items[i].FindControl("hfTimePoint") as HiddenField;
+                HiddenField hfAuctionTime = dlstAuction.Items[i].FindControl("hfAuctionTime") as HiddenField;
+                Label lblTimer = dlstAuction.Items[i].FindControl("lblTimer") as Label;
+                HiddenField hfStaus = dlstAuction.Items[i].FindControl("hfStatus") as HiddenField;
+                HiddenField hfMemberID = dlstAuction.Items[i].FindControl("hfMemberID") as HiddenField;
+                Label lblAuctionPrice = dlstAuction.Items[i].FindControl("lblAuctionPrice") as Label;
+                List<Product> list_pro = proBll.GetById(hfProductID.Value);
+                decimal fee = list_pro[0].Fee;
+                decimal shipFee = list_pro[0].ShipFee;
+                string auctionId = dlstAuction.DataKeys[i].ToString();
+                if (hfAuctionTime.Value != "" && Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10))
+                {
+                    TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
+                    lblTimer.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
+                }
+                if (Convert.ToDateTime(hfAuctionTime.Value) <= DateTime.Now.AddSeconds(10) && hfProductID != null)
+                {
+
+                    auction auction = auctionBll.GetAuction(auctionId)[0];
+                    if (auction.TimePoint > 0 && auction.Status != 3)
+                    {
+                        auctionBll.UpdateTimePoint(auctionId);
+                        Product pro1 = proBll.GetById(hfProductID.Value)[0];
+                        auction auction1 = auctionBll.GetAuction(auctionId)[0];
+                        lblTimer.Text = "00:00:" + auction1.TimePoint.ToString().PadLeft(2, '0');
+                        if (auction1.TimePoint == 0)
+                        {
+                            try
+                            {
+                                string typeName = "竞拍订单";
+                                using (TransactionScope ts1 = new TransactionScope())
+                                {
+                                    //生成竞拍订单
+                                    DingDan dd = new DingDan();
+                                    dd.DingDanBH = DateTime.Now.ToString("yyyyMMddHHmmss");
+                                    dd.HuiYuanID = hfMemberID.Value;
+                                    dd.ProductID = hfProductID.Value;
+                                    dd.ProductPrice = Convert.ToDecimal(lblAuctionPrice.Text);
+                                    dd.Status = 10;
+                                    dd.OrderTypeID = orderBll.GetbyName(typeName).OrderTypeID;
+                                    dd.Fee = fee;
+                                    dd.ShipFee = shipFee;
+                                    dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;
+                                    dd.InvalidTime = DateTime.Now.AddDays(7);
+                                    dd.AuctionID = auctionId;
+                                    dd.ShouHuoDZID = "";
+                                    orderBll.AddOrder(dd);
+
+                                    //修改拍品状态为已成交
+                                    auction auction2 = new auction();
+                                    auction2.Status = 3;
+                                    auction2.EndTime = DateTime.Now;
+                                    auction2.AuctionID = auctionId;
+                                    auctionBll.UpdateStatus(auction2);
+                                    ts1.Complete();
+                                    lblTimer.Text = "已成交";
+                                }
+                            }
+                            catch (Exception)
+                            {
+
+                                throw;
+                            }
+                        }
+                    }
                 }
             }
         }

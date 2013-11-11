@@ -256,15 +256,6 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.Container cont1;
         
         /// <summary>
-        /// txtBh 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Ext.Net.TextField txtBh;
-        
-        /// <summary>
         /// pinPai 控件。
         /// </summary>
         /// <remarks>
@@ -272,24 +263,6 @@ namespace WEB.SystemSeting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Ext.Net.TextField pinPai;
-        
-        /// <summary>
-        /// PaiMaiJG 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Ext.Net.NumberField PaiMaiJG;
-        
-        /// <summary>
-        /// txtPriceAdd 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Ext.Net.NumberField txtPriceAdd;
         
         /// <summary>
         /// txtFee 控件。
@@ -310,13 +283,22 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.NumberField txtShipFee;
         
         /// <summary>
-        /// SetTime 控件。
+        /// chkGift 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Ext.Net.TextField SetTime;
+        protected global::Ext.Net.Checkbox chkGift;
+        
+        /// <summary>
+        /// txtPoints 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.NumberField txtPoints;
         
         /// <summary>
         /// Container1 控件。
@@ -371,15 +353,6 @@ namespace WEB.SystemSeting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Ext.Net.NumberField txtJG;
-        
-        /// <summary>
-        /// txtAcutionPoint 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Ext.Net.NumberField txtAcutionPoint;
         
         /// <summary>
         /// comx 控件。

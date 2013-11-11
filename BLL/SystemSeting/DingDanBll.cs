@@ -111,5 +111,17 @@ namespace BLL.SystemSeting
            string sql = "select * from DingDan where DingDanID='"+orderId+"'";
            return ddDat.GetDingDan(sql);
        }
+
+       /// <summary>
+       /// 根据会员ID和订单类型查询订单
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <param name="orderType"></param>
+       /// <returns></returns>
+       public List<DingDan> GetDingDanbytypeId(string hyId,string orderType) 
+       {
+           string sql = "select * from DingDan where HuiYuanID='"+hyId+"' and OrderTypeID=(select OrderTypeID from OrderType where TypeName='"+orderType+"') order by DingDanTime desc";
+           return ddDat.GetDingDan(sql);
+       }
     }
 }

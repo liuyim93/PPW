@@ -17,6 +17,7 @@
                 <ul>
                     <li><a href="../UserInfo/AuctionOrder.aspx?type=0" target="_self">竞拍订单</a></li>
                     <li><a href="" target="_self">补差价订单</a></li>
+                    <li><a href="../UserInfo/Exchange.aspx" target="_self">积分兑换</a></li>
                 </ul>
                 <div class="list_title">我的拍点</div>
                 <ul>

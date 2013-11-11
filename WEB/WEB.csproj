@@ -428,6 +428,7 @@
     <Content Include="SystemSeting\QuanXian\SelUser.aspx" />
     <Content Include="SystemSeting\QuanXian\ShouQuan.aspx" />
     <Content Include="SystemSeting\QuanXian\User.aspx" />
+    <Content Include="SystemSeting\WebFormAuction.aspx" />
     <Content Include="SystemSeting\WebFormproduct.aspx" />
     <Content Include="SystemSeting\WebFormProductImigSelet.aspx" />
     <Content Include="SystemSeting\WebFormProductType.aspx" />
@@ -442,6 +443,7 @@
     <Content Include="UserInfo\AuctionOrder.aspx" />
     <Content Include="UserInfo\Bided.aspx" />
     <Content Include="UserInfo\Biding.aspx" />
+    <Content Include="UserInfo\Exchange.aspx" />
     <Content Include="UserInfo\ShipAdress.aspx" />
     <Content Include="UserInfo\ShowOrder.aspx" />
     <Content Include="UserInfo\UpdatePwd.aspx" />
@@ -670,6 +672,13 @@
     <Compile Include="SystemSeting\QuanXian\User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemSeting\WebFormAuction.aspx.cs">
+      <DependentUpon>WebFormAuction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemSeting\WebFormAuction.aspx.designer.cs">
+      <DependentUpon>WebFormAuction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemSeting\WebFormproduct.aspx.cs">
       <DependentUpon>WebFormproduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -767,6 +776,13 @@
     </Compile>
     <Compile Include="UserInfo\Biding.aspx.designer.cs">
       <DependentUpon>Biding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\Exchange.aspx.cs">
+      <DependentUpon>Exchange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\Exchange.aspx.designer.cs">
+      <DependentUpon>Exchange.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInfo\ShipAdress.aspx.cs">
       <DependentUpon>ShipAdress.aspx</DependentUpon>

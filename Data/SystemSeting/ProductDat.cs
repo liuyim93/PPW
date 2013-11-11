@@ -215,6 +215,48 @@ namespace Data.SystemSeting
            return list;
        }
 
+       /// <summary>
+       /// 修改产品信息
+       /// </summary>
+       /// <param name="pro"></param>
+       /// <returns></returns>
+       public int UpdateProduct(Product pro) 
+       {
+           string sql = "update Product set ProductTypeID=@ProductTypeID,productName=@productName,productBrand=@productBrand,productPrice=@productPrice,ProductDetails=@ProductDetails,Intro=@Intro,Fee=@Fee,ShipFee=@ShipFee,IsExchange=@IsExchange,Points=@Points where ProductID=@ProductID";
+           return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ProductTypeID",pro.ProductTypeID),
+               new SqlParameter("@productName", pro.productName),
+               new SqlParameter("@productBrand", pro.productBrand),
+               new SqlParameter("@productPrice", pro.productPrice),
+               new SqlParameter("@ProductDetails", pro.ProductDetails),
+               new SqlParameter("@Intro", pro.Intro),
+               new SqlParameter("@Fee", pro.Fee),
+               new SqlParameter("@ShipFee", pro.ShipFee),
+               new SqlParameter("@IsExchange", pro.IsExchange),
+               new SqlParameter("@Points", pro.Points),
+               new SqlParameter("@ProductID", pro.ProductID));
+       }
+
+       /// <summary>
+       /// 添加产品信息
+       /// </summary>
+       /// <param name="pro"></param>
+       /// <returns></returns>
+       public int AddProduct(Product pro) 
+       {
+           string sql = "insert into Product (ProductTypeID,productName,productBrand,productPrice,CreateTime,ProductDetails,Intro,Fee,ShipFee,IsExchange,Points) values(@ProductTypeID,@productName,@productBrand,@productPrice,@CreateTime,@ProductDetails,@Intro,@Fee,@ShipFee,@IsExchange,@Points)";
+           return BLLdat.ExecuteNonQuery(null, CommandType.Text, sql, new SqlParameter("@ProductTypeID", pro.ProductTypeID),
+               new SqlParameter("@productName", pro.productName),
+               new SqlParameter("@productPrice", pro.productPrice),
+               new SqlParameter("@CreateTime", pro.CreateTime),
+               new SqlParameter("@ProductDetails", pro.ProductDetails),
+               new SqlParameter("@Intro", pro.Intro),
+               new SqlParameter("@Fee", pro.Fee),
+               new SqlParameter("@ShipFee", pro.ShipFee),
+               new SqlParameter("@IsExchange", pro.IsExchange),
+               new SqlParameter("@Points", pro.Points),
+               new SqlParameter("@productBrand",pro.productBrand));
+       }
+
         #endregion
     }
 }

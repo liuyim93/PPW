@@ -58,7 +58,7 @@ namespace Data.SystemSeting
        /// <returns></returns>
        public int AddOrder(DingDan dd)
        {
-           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime,InvalidTime,AuctionID)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime,@InvalidTime,@AuctionID)";
+           string sql = "insert into DingDan (DingDanBH,HuiYuanID,ProductID,Status,OrderTypeID,ProductPrice,Fee,ShipFee,TotalPrice,DingDanTime,InvalidTime,AuctionID,ShouHuoDZID)values(@DingDanBH,@HuiYuanID,@ProductID,@Status,@OrderTypeID,@ProductPrice,@Fee,@ShipFee,@TotalPrice,@DingDanTime,@InvalidTime,@AuctionID,@ShouHuoDZID)";
            return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@DingDanBH",dd.DingDanBH),
                new SqlParameter("@HuiYuanID",dd.HuiYuanID),
                new SqlParameter("@ProductID",dd.ProductID),
@@ -70,7 +70,8 @@ namespace Data.SystemSeting
                new SqlParameter("@TotalPrice",dd.TotalPrice),
                new SqlParameter("@DingDanTime",DateTime.Now),
                new SqlParameter("@InvalidTime",dd.InvalidTime),
-               new SqlParameter("@AuctionID",dd.AuctionID));
+               new SqlParameter("@AuctionID",dd.AuctionID),
+               new SqlParameter("@ShouHuoDZID",dd.ShouHuoDZID));
        }
 
        /// <summary>

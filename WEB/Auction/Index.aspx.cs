@@ -243,6 +243,7 @@ namespace WEB.Auction
                                     dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;
                                     dd.InvalidTime = DateTime.Now.AddDays(7);
                                     dd.AuctionID = auctionId;
+                                    dd.ShouHuoDZID = "";
                                     orderBll.AddOrder(dd);
 
                                     //修改拍品状态为已成交

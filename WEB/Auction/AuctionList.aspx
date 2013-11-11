@@ -13,7 +13,7 @@
             <div class="auctionlist_left_content">
                 <asp:UpdatePanel ID="updatepanel1" runat="server">
                     <ContentTemplate>
-                        <asp:Timer ID="timer1" runat="server"></asp:Timer>
+                        <asp:Timer ID="timer1" runat="server" ontick="timer1_Tick"></asp:Timer>
                         <asp:DataList ID="dlstAuction" runat="server" RepeatColumns="4" 
                             onitemcommand="dlstAuction_ItemCommand" DataKeyField="AuctionID"
                             onitemdatabound="dlstAuction_ItemDataBound">

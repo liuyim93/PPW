@@ -293,6 +293,7 @@ namespace WEB.Auction
                                 dd.Status = 10;
                                 dd.InvalidTime = DateTime.Now.AddDays(7);
                                 dd.DingDanBH = DateTime.Now.ToString().GetHashCode().ToString();
+                                dd.ShouHuoDZID = "";
                                 orderBll.AddOrder(dd);
                                 ts1.Complete();
                             }

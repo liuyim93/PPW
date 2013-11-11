@@ -192,5 +192,18 @@ namespace Data
            return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",hyId),
                new SqlParameter("@MM",pwd));
        }
+
+       /// <summary>
+       /// 修改会员可用积分
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <param name="points"></param>
+       /// <returns></returns>
+       public int UpdatePoints(string hyId,int points) 
+       {
+           string sql = "update HuiYuan set Points=Points+@Points where HuiYuanID=@HuiYuanID";
+           return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",hyId),
+               new SqlParameter("@Points",points));
+       }
     }
 }

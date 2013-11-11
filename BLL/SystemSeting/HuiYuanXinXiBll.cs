@@ -122,5 +122,10 @@ namespace BLL.SystemSeting
       {
           return dat.UpdatePwd(hyId,pwd);
       }
+
+      public int UpdatePoints(string hyId,int points) 
+      {
+          return dat.UpdatePoints(hyId,points);
+      }
     }
 }

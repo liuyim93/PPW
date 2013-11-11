@@ -67,21 +67,16 @@
         <ext:JsonReader IDProperty="ProductID">
             <Fields>
                 <ext:RecordField Name="ProductID"></ext:RecordField>
-                <ext:RecordField Name="coding"></ext:RecordField>
                 <ext:RecordField Name="ProductTypeID"></ext:RecordField>
                 <ext:RecordField Name="productName"></ext:RecordField>
                 <ext:RecordField Name="productBrand"></ext:RecordField>
                 <ext:RecordField Name="productPrice"></ext:RecordField>
-                <ext:RecordField Name="PmJGproduct"></ext:RecordField>
-                <ext:RecordField Name="HuiYuanID"></ext:RecordField>
-                <ext:RecordField Name="AuctionTime"></ext:RecordField>
-                <ext:RecordField Name="TimePoint"></ext:RecordField>
-                <ext:RecordField Name="Status"></ext:RecordField>
-                <ext:RecordField Name="PriceAdd"></ext:RecordField>
-                <ext:RecordField Name="AuctionPoint"></ext:RecordField>
                 <ext:RecordField Name="Fee"></ext:RecordField>
                 <ext:RecordField Name="ShipFee"></ext:RecordField>
                 <ext:RecordField Name="Intro"></ext:RecordField>
+                <ext:RecordField Name="IsExchange"></ext:RecordField>
+                <ext:RecordField Name="Points"></ext:RecordField>
+                <ext:RecordField Name="CreateTime"></ext:RecordField>
             </Fields>
         </ext:JsonReader>
     </Reader>
@@ -148,21 +143,18 @@
                 <ext:GridPanel ID="GridPanel1" runat="server"  StoreID="StorlList"  StripeRows="true" AutoDoLayout="true" Region="Center">
                     <ColumnModel>
                         <Columns>
-                            <ext:RowNumbererColumn Header="序"></ext:RowNumbererColumn>
-                            <ext:Column DataIndex="coding" Header="编码"></ext:Column>
+                            <ext:RowNumbererColumn Header="序"></ext:RowNumbererColumn>                            
                             <ext:Column DataIndex="productName" Header="产品名" Width="150"></ext:Column>
                             <ext:Column DataIndex="Intro" Header="产品简介"></ext:Column>
                             <ext:Column DataIndex="ProductTypeID" Header="产品类型" Width="150"></ext:Column>
                             <ext:Column DataIndex="productBrand" Header="品牌" Width="120"></ext:Column>
-                            <ext:Column DataIndex="productPrice" Header="市场价格"></ext:Column>
-                            <ext:Column DataIndex="PmJGproduct" Header="拍买价格"></ext:Column>
-                            <ext:Column DataIndex="productPrice" Header="价格"></ext:Column>
-                            <ext:Column DataIndex="AuctionTime" Header="拍买时间" Width="150"></ext:Column>
-                            <ext:Column DataIndex="PriceAdd" Header="涨幅"></ext:Column>
-                            <ext:Column DataIndex="AuctionPoint" Header="拍点数"></ext:Column>
+                            <ext:Column DataIndex="productPrice" Header="市场价格"></ext:Column>                     
+                            <ext:Column DataIndex="productPrice" Header="价格"></ext:Column>                                                   
                             <ext:Column DataIndex="Fee" Header="手续费"></ext:Column>
                             <ext:Column DataIndex="ShipFee" Header="运费"></ext:Column>
-                            <ext:Column DataIndex="Status" Header="状态"></ext:Column>
+                            <ext:Column DataIndex="IsExchange" Header="积分兑换"></ext:Column>
+                            <ext:Column DataIndex="Points" Header="所需积分"></ext:Column>
+                            <ext:Column DataIndex="CreateTime" Header="添加时间"></ext:Column>
                         </Columns>
                     </ColumnModel>
                     <SelectionModel><ext:CheckboxSelectionModel SingleSelect="true"></ext:CheckboxSelectionModel></SelectionModel>
@@ -217,19 +209,25 @@
                                         <Items>
                                             <ext:Container ID="cont1" runat="server" Layout="FormLayout" ColumnWidth=".5">
                                                 <Items>
-                                                    <ext:TextField ID="txtBh" runat="server" FieldLabel="产品编号" IndicatorText="*" IndicatorCls="tipCls"
+<%--                                                    <ext:TextField ID="txtBh" runat="server" FieldLabel="产品编号" IndicatorText="*" IndicatorCls="tipCls"
                                                       AllowBlank="false" MsgTarget="Side" IsRemoteValidation="true" >
                                                         <RemoteValidation OnValidation="YzBH">
                                                         </RemoteValidation>
-                                                      </ext:TextField>  
+                                                      </ext:TextField> --%> 
                                                     <ext:TextField ID="pinPai" runat="server" FieldLabel="品牌"></ext:TextField>
-                                                      <ext:NumberField ID="PaiMaiJG" runat="server" FieldLabel="拍买价格" Text="0" IndicatorText="*" IndicatorCls="tipCls"  AllowBlank="false" MsgTarget="Side" IsRemoteValidation="true">
+<%--                                                      <ext:NumberField ID="PaiMaiJG" runat="server" FieldLabel="拍买价格" Text="0" IndicatorText="*" IndicatorCls="tipCls"  AllowBlank="false" MsgTarget="Side" IsRemoteValidation="true">
                                                         <RemoteValidation OnValidation="YzJG"></RemoteValidation>
-                                                     </ext:NumberField>
-                                                     <ext:NumberField ID="txtPriceAdd" runat="server" FieldLabel="价格涨幅" AllowBlank="false" IndicatorText="*" MsgTarget="Side"></ext:NumberField>
+                                                     </ext:NumberField>--%>
+                                                     <%--<ext:NumberField ID="txtPriceAdd" runat="server" FieldLabel="价格涨幅" AllowBlank="false" IndicatorText="*" MsgTarget="Side"></ext:NumberField>--%>
                                                      <ext:NumberField ID="txtFee" runat="server" FieldLabel="手续费"></ext:NumberField>
                                                      <ext:NumberField ID="txtShipFee" runat="server" FieldLabel="运费"></ext:NumberField>
-                                                     <ext:TextField ID="SetTime" runat="server" FieldLabel="设置拍买时间"></ext:TextField>
+<%--                                                     <ext:TextField ID="SetTime" runat="server" FieldLabel="设置拍买时间"></ext:TextField>--%>
+                                                       <ext:Checkbox ID="chkGift" runat="server" FieldLabel="积分兑换">
+                                                            <DirectEvents>
+                                                                <Change OnEvent="chkGift_Change"></Change>
+                                                            </DirectEvents>
+                                                       </ext:Checkbox>
+                                                       <ext:NumberField ID="txtPoints" runat="server" FieldLabel="所需积分"></ext:NumberField>
                                                 </Items>
                                             </ext:Container>
                                              <ext:Container ID="Container1" runat="server" Layout="FormLayout" ColumnWidth=".5">
@@ -266,7 +264,7 @@
                                                      <ext:NumberField ID="txtJG" runat="server" FieldLabel="市场价格" Text="0" IndicatorText="*" IndicatorCls="tipCls"  AllowBlank="false" MsgTarget="Side" IsRemoteValidation="true">
                                                         <RemoteValidation OnValidation="YzJG"></RemoteValidation>
                                                      </ext:NumberField>
-                                                     <ext:NumberField ID="txtAcutionPoint" runat="server" FieldLabel="需要拍点" AllowBlank="false" IndicatorText="*" MsgTarget="Side"></ext:NumberField>
+                                                     <%--<ext:NumberField ID="txtAcutionPoint" runat="server" FieldLabel="需要拍点" AllowBlank="false" IndicatorText="*" MsgTarget="Side"></ext:NumberField>--%>
                                                      <ext:ComboBox ID="comx" runat="server" FieldLabel="显示首页" IndicatorText="*" IndicatorCls="tipCls"  AllowBlank="false" MsgTarget="Side">
                                                         <Items>
                                                             <ext:ListItem Text="不显示" Value="0" />
