@@ -149,5 +149,51 @@ namespace BLL
             string sql = "select * from Auction where Status=4 order by AuctionTime asc";
             return auctionDat.GetAuction(sql);
         }
+
+        /// <summary>
+        /// 根据拍品名称、竞拍类型、状态查询竞拍信息
+        /// </summary>
+        /// <param name="proName">拍品名称</param>
+        /// <param name="auctionType">竞拍类型</param>
+        /// <param name="status">状态</param>
+        /// <returns></returns>
+        public List<auction> GetAuction(string proName,string auctionType,string status) 
+        {
+            string sql = "select * from Auction where ProductID in(select ProductID from Product where productName like'%" + proName + "%')";
+            if (auctionType != "")
+            {
+                sql += "and AuctionTypeID=(select * from AuctionType where TypeName='" + auctionType + "')";
+            }
+            else 
+            {
+                if (status!="")
+                {
+                    sql += "and Status="+status;
+                }
+            }
+            return auctionDat.GetAuction(sql);
+        }
+
+        /// <summary>
+        /// 根据竞拍类型ID查询竞拍信息
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
+        public List<AuctionType> GetAuctionTypebyId(string typeId) 
+        {
+            string sql = "select * from AuctionType where AuctionTypeID="+typeId;
+            return auctionDat.GetAuctionType(sql);
+        }
+
+        /// <summary>
+        /// 根据类型名查询竞拍信息
+        /// </summary>
+        /// <param name="typeName"></param>
+        /// <returns></returns>
+        public List<AuctionType> GetAuctionTypebyName(string typeName) 
+        {
+            string sql = "select * from AuctionType where TypeName='"+typeName+"'";
+            return auctionDat.GetAuctionType(sql);
+        }
     }
 }

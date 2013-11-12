@@ -104,5 +104,30 @@ namespace Data
                 new SqlParameter("@TimePoint", auction.TimePoint),
                 new SqlParameter("@AuctionID", auction.AuctionID));
         }
+
+        #region 竞拍类型
+
+        /// <summary>
+        /// 查询竞拍类型
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public List<AuctionType> GetAuctionType(string sql) 
+        {
+            List<AuctionType> list = new List<AuctionType>();
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables[0].Rows.Count>0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    AuctionType auctionType = new AuctionType();
+                    auctionType.AuctionTypeID=row["AuctionTypeID"].ToString();
+                    auctionType.TypeName=row["TypeName"].ToString();
+                    list.Add(auctionType);
+                }
+            }
+            return list;
+        }
+        # endregion
     }
 }

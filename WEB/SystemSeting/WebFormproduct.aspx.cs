@@ -372,18 +372,5 @@ namespace WEB.SystemSeting
                  e.Success = false;
              }
          }
-
-         protected void chkGift_Change(object sender,DirectEventArgs e) 
-         {
-             if (chkGift.Checked)
-             {
-                 txtPoints.Visible = true;
-             }
-             else 
-             {
-                 txtPoints.Visible = false;
-                 txtPoints.Text = "";
-             }
-         }
     }
   }
