@@ -222,11 +222,7 @@
                                                      <ext:NumberField ID="txtFee" runat="server" FieldLabel="手续费"></ext:NumberField>
                                                      <ext:NumberField ID="txtShipFee" runat="server" FieldLabel="运费"></ext:NumberField>
 <%--                                                     <ext:TextField ID="SetTime" runat="server" FieldLabel="设置拍买时间"></ext:TextField>--%>
-                                                       <ext:Checkbox ID="chkGift" runat="server" FieldLabel="积分兑换">
-                                                            <DirectEvents>
-                                                                <Change OnEvent="chkGift_Change"></Change>
-                                                            </DirectEvents>
-                                                       </ext:Checkbox>
+                                                       <ext:Checkbox ID="chkGift" runat="server" FieldLabel="积分兑换"></ext:Checkbox>
                                                        <ext:NumberField ID="txtPoints" runat="server" FieldLabel="所需积分"></ext:NumberField>
                                                 </Items>
                                             </ext:Container>

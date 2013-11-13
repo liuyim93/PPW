@@ -105,6 +105,36 @@ namespace Data
                 new SqlParameter("@AuctionID", auction.AuctionID));
         }
 
+        /// <summary>
+        /// 修改竞拍信息
+        /// </summary>
+        /// <param name="act"></param>
+        /// <returns></returns>
+        public int UpdateAuction(auction act)
+        {
+            string sql = "update Auction set ProductID=@ProductID,AuctionPrice=@AuctionPrice,AuctionTime=@AuctionTime,PriceAdd=@PriceAdd,AuctionPoint=@AuctionPoint,FreePoint=@FreePoint,IsRecommend=@IsRecommend,AuctionTypeID=@AuctionTypeID where AuctionID=@AuctionID";
+            return sh.ExecuteNonQuery(null, CommandType.Text, sql, new SqlParameter("@ProductID", act.ProductID),
+                new SqlParameter("@AuctionPrice", act.AuctionPrice),
+                new SqlParameter("@AuctionTime", act.AuctionTime),
+                new SqlParameter("@PriceAdd", act.PriceAdd),
+                new SqlParameter("@AuctionPoint", act.AuctionPoint),
+                new SqlParameter("@FreePoint", act.FreePoint),
+                new SqlParameter("@IsRecommend", act.IsRecommend),
+                new SqlParameter("@AuctionTypeID", act.AuctionTypeID),
+                new SqlParameter("@AuctionID", act.AuctionID));
+        }
+
+        /// <summary>
+        /// 删除竞拍信息
+        /// </summary>
+        /// <param name="auctionId"></param>
+        /// <returns></returns>
+        public int DeleteAuction(string auctionId) 
+        {
+            string sql = "delete from Auction where AuctionID=@AuctionID";
+            return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@AuctionID",auctionId));
+        }
+
         #region 竞拍类型
 
         /// <summary>

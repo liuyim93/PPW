@@ -162,7 +162,7 @@ namespace BLL
             string sql = "select * from Auction where ProductID in(select ProductID from Product where productName like'%" + proName + "%')";
             if (auctionType != "")
             {
-                sql += "and AuctionTypeID=(select * from AuctionType where TypeName='" + auctionType + "')";
+                sql += "and AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='" + auctionType + "')";
             }
             else 
             {
@@ -181,7 +181,7 @@ namespace BLL
         /// <returns></returns>
         public List<AuctionType> GetAuctionTypebyId(string typeId) 
         {
-            string sql = "select * from AuctionType where AuctionTypeID="+typeId;
+            string sql = "select * from AuctionType where AuctionTypeID='"+typeId+"'";
             return auctionDat.GetAuctionType(sql);
         }
 
@@ -194,6 +194,35 @@ namespace BLL
         {
             string sql = "select * from AuctionType where TypeName='"+typeName+"'";
             return auctionDat.GetAuctionType(sql);
+        }
+
+        /// <summary>
+        /// 查询所有的竞拍类型
+        /// </summary>
+        /// <returns></returns>
+        public List<AuctionType> GetAuctionType() 
+        {
+            string sql = "select * from AuctionType";
+            return auctionDat.GetAuctionType(sql);
+        }
+
+        /// <summary>
+        /// 修改竞拍信息
+        /// </summary>
+        /// <param name="act"></param>
+        /// <returns></returns>
+        public int UpdateAuction(auction act) 
+        {
+            return auctionDat.UpdateAuction(act);
+        }
+
+        /// <summary>
+        /// 删除竞拍信息
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteAuction(string auctionId) 
+        {
+            return auctionDat.DeleteAuction(auctionId);
         }
     }
 }

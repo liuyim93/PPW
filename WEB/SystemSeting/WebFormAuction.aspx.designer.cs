@@ -40,6 +40,24 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.Store storeAuction;
         
         /// <summary>
+        /// storePro 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Store storePro;
+        
+        /// <summary>
+        /// storeAuctionType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Store storeAuctionType;
+        
+        /// <summary>
         /// viewport1 控件。
         /// </summary>
         /// <remarks>
@@ -157,13 +175,13 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.FormPanel FormPanel1;
         
         /// <summary>
-        /// pnl1 控件。
+        /// container1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Ext.Net.Panel pnl1;
+        protected global::Ext.Net.Container container1;
         
         /// <summary>
         /// container_left 控件。
@@ -175,13 +193,13 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.Container container_left;
         
         /// <summary>
-        /// dropPro 控件。
+        /// cboxPro 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Ext.Net.DropDownField dropPro;
+        protected global::Ext.Net.ComboBox cboxPro;
         
         /// <summary>
         /// txtAuctionPrice 控件。
@@ -202,13 +220,13 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.NumberField txtPriceAdd;
         
         /// <summary>
-        /// txtAuctionPoint 控件。
+        /// cboxRecommend 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Ext.Net.NumberField txtAuctionPoint;
+        protected global::Ext.Net.ComboBox cboxRecommend;
         
         /// <summary>
         /// container_right 控件。
@@ -220,13 +238,22 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.Container container_right;
         
         /// <summary>
-        /// dropAuctionType1 控件。
+        /// cboxAuctionTypes 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Ext.Net.DropDownField dropAuctionType1;
+        protected global::Ext.Net.ComboBox cboxAuctionTypes;
+        
+        /// <summary>
+        /// txtAuctionPoint 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.NumberField txtAuctionPoint;
         
         /// <summary>
         /// numFreePoint 控件。
@@ -238,13 +265,13 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.NumberField numFreePoint;
         
         /// <summary>
-        /// chkRecommend 控件。
+        /// txtAuctionTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Ext.Net.ComboBox chkRecommend;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAuctionTime;
         
         /// <summary>
         /// btnAdds 控件。
@@ -281,6 +308,159 @@ namespace WEB.SystemSeting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Ext.Net.Window window_detail;
+        
+        /// <summary>
+        /// FormPanel2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.FormPanel FormPanel2;
+        
+        /// <summary>
+        /// Panel2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Panel Panel2;
+        
+        /// <summary>
+        /// Container3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Container Container3;
+        
+        /// <summary>
+        /// disProName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disProName;
+        
+        /// <summary>
+        /// disAuctionPrice 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disAuctionPrice;
+        
+        /// <summary>
+        /// disHuiYuan 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disHuiYuan;
+        
+        /// <summary>
+        /// disAuctionTime 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disAuctionTime;
+        
+        /// <summary>
+        /// disAuctionPoint 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disAuctionPoint;
+        
+        /// <summary>
+        /// disCoding 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disCoding;
+        
+        /// <summary>
+        /// disIsRecommend 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disIsRecommend;
+        
+        /// <summary>
+        /// Container4 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Container Container4;
+        
+        /// <summary>
+        /// disProPrice 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disProPrice;
+        
+        /// <summary>
+        /// disPriceAdd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disPriceAdd;
+        
+        /// <summary>
+        /// disAuctionType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disAuctionType;
+        
+        /// <summary>
+        /// disEndTime 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disEndTime;
+        
+        /// <summary>
+        /// disFreePoint 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disFreePoint;
+        
+        /// <summary>
+        /// disStatus 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.DisplayField disStatus;
         
         /// <summary>
         /// btnClose1 控件。

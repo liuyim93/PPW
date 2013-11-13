@@ -84,7 +84,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                conn.Close();
+                conn.Close();      
                 throw ex;
             }
             return dataSet;
