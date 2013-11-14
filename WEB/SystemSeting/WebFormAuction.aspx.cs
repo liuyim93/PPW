@@ -8,6 +8,7 @@ using BLL;
 using BLL.SystemSeting;
 using Ext.Net;
 using Model.Entities;
+using BLL.Home;
 
 namespace WEB.SystemSeting
 {
@@ -16,11 +17,33 @@ namespace WEB.SystemSeting
         AuctionBll auctionBll = new AuctionBll();
         ProductBLL proBll = new ProductBLL();
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
+        QuanXianBll qxBll = new QuanXianBll();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindData();
-            BindProduct();
-            BindAuctionType();
+            if (Session["userid"] == null)
+            {
+                Response.Redirect("../../Login.aspx");
+            }
+            else 
+            {
+                BindData();
+                BindProduct();
+                BindAuctionType();
+                Permission();
+            }            
+        }
+
+        /// <summary>
+        /// 权限
+        /// </summary>
+        public void Permission() 
+        {
+            int menuId = Convert.ToInt32(Request.QueryString["cdid"]);
+            btnAdd.Visible = qxBll.IsHaveQx(menuId,"add");
+            btnEdit.Visible = qxBll.IsHaveQx(menuId,"edit");
+            btnDel.Visible = qxBll.IsHaveQx(menuId,"delete");
+            btnDetail.Visible = qxBll.IsHaveQx(menuId,"browser");
         }
 
         public void AddShow(object sender,EventArgs e) 

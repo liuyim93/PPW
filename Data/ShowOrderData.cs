@@ -60,7 +60,34 @@ namespace Data
                 }
             }
             return list;
-        }       
+        }
+
+        /// <summary>
+        /// 管理员回复晒单
+        /// </summary>
+        /// <param name="showOrder"></param>
+        /// <returns></returns>
+        public int UpdateShowOrderbyAdmin(ShowOrder showOrder) 
+        {
+            string sql = "update ShowOrder set IsCheck=@IsCheck,IsShow=@IsShow,IsRead=@IsRead,Points=@Points,Reply=@Reply where ShowOrderID=@ShowOrderID";
+            return sh.ExecuteNonQuery(null, CommandType.Text, sql, new SqlParameter("@ShowOrderID", showOrder.ShowOrderID),
+                new SqlParameter("@IsCheck", showOrder.IsCheck),
+                new SqlParameter("@IsShow", showOrder.IsShow),
+                new SqlParameter("@IsRead", showOrder.IsRead),
+                new SqlParameter("@Points", showOrder.Points),
+                new SqlParameter("@Reply", showOrder.Reply));
+        }
+
+        /// <summary>
+        /// 删除晒单
+        /// </summary>
+        /// <param name="showOrderId"></param>
+        /// <returns></returns>
+        public int DeleteShowOrder(string showOrderId) 
+        {
+            string sql = "delete from ShowOrder where ShowOrderID=@ShowOrderID";
+            return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ShowOrderID",showOrderId));
+        }
         #endregion
 
         #region 晒单图片

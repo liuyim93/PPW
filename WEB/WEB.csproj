@@ -434,6 +434,7 @@
     <Content Include="SystemSeting\WebFormProductType.aspx" />
     <Content Include="SystemSeting\XiaoShou\DingDan.aspx" />
     <Content Include="SystemSeting\XiaoShou\HuiYuanMages.aspx" />
+    <Content Include="SystemSeting\XiaoShou\WebFormShowOrder.aspx" />
     <Content Include="SystemSeting\XinXi\GoGaoSelect.aspx" />
     <Content Include="SystemSeting\XinXi\GonGaoType.aspx" />
     <Content Include="SystemSeting\XinXi\GongGao.aspx" />
@@ -713,6 +714,13 @@
     </Compile>
     <Compile Include="SystemSeting\XiaoShou\HuiYuanMages.aspx.designer.cs">
       <DependentUpon>HuiYuanMages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSeting\XiaoShou\WebFormShowOrder.aspx.cs">
+      <DependentUpon>WebFormShowOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemSeting\XiaoShou\WebFormShowOrder.aspx.designer.cs">
+      <DependentUpon>WebFormShowOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemSeting\XinXi\GoGaoSelect.aspx.cs">
       <DependentUpon>GoGaoSelect.aspx</DependentUpon>
