@@ -31,6 +31,15 @@ namespace WEB.SystemSeting.XiaoShou {
         protected global::Ext.Net.Store storList;
         
         /// <summary>
+        /// storeOrderType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Store storeOrderType;
+        
+        /// <summary>
         /// form1 控件。
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace WEB.SystemSeting.XiaoShou {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Ext.Net.ComboBox cmdStat;
+        
+        /// <summary>
+        /// cboxType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cboxType;
         
         /// <summary>
         /// xtxtbegin 控件。

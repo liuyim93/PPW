@@ -72,7 +72,7 @@ namespace BLL.SystemSeting
        /// </summary>
        /// <param name="typeName"></param>
        /// <returns></returns>
-       public OrderType GetbyName(string typeName) 
+       public List<OrderType> GetbyName(string typeName) 
        {
            string sql = "select * from OrderType where TypeName='"+typeName+"'";
            return ddDat.GetOrderType(sql);
@@ -83,7 +83,7 @@ namespace BLL.SystemSeting
        /// </summary>
        /// <param name="typeId"></param>
        /// <returns></returns>
-       public OrderType GetbyID(string typeId) 
+       public List<OrderType> GetbyID(string typeId) 
        {
            string sql = "select * from OrderType where OrderTypeID='"+typeId+"'";
            return ddDat.GetOrderType(sql);
@@ -122,6 +122,29 @@ namespace BLL.SystemSeting
        {
            string sql = "select * from DingDan where HuiYuanID='"+hyId+"' and OrderTypeID=(select OrderTypeID from OrderType where TypeName='"+orderType+"') order by DingDanTime desc";
            return ddDat.GetDingDan(sql);
+       }
+
+       /// <summary>
+       /// 根据订单编号、下单时间、状态查询订单信息
+       /// </summary>
+       /// <param name="orderNum"></param>
+       /// <param name="begin"></param>
+       /// <param name="end"></param>
+       /// <param name="status"></param>
+       /// <returns></returns>
+       public List<DingDan> GetOrder(string orderNum,DateTime?begin,DateTime?end,string status,string orderTypeId) 
+       {
+           return ddDat.GetOrder(orderNum,begin,end,status,orderTypeId);
+       }
+
+       /// <summary>
+       /// 查询所有的订单类型
+       /// </summary>
+       /// <returns></returns>
+       public List<OrderType> GetAllOrderType() 
+       {
+           string sql = "select * from OrderType";
+           return ddDat.GetOrderType(sql);
        }
     }
 }

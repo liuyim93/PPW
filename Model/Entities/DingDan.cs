@@ -29,6 +29,22 @@ namespace Model.Entities
         public DateTime InvalidTime { get; set; }
         //竞拍ID
         public string AuctionID { get; set; }
+        //会员名
+        public string HuiYuanName { get; set; }
+        //收货人
+        public string ShouHuoName { get; set; }
+        //联系电话
+        public string Mode { get; set; }
+        //地址
+        public string DZ { get; set; }
+        //邮编
+        public string YouBian { get; set; }
+        //备注
+        public string Remark { get; set; }
+        //产品名称
+        public string ProductName { get; set; }
+        //订单类型
+        public string OrderType { get; set; }
 	}
 }
 

@@ -6,6 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .dlstimg{margin-left:80px;height:80px;}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -30,6 +33,15 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+    </ext:Store>
+    <ext:Store ID="storeImage" runat="server">
+        <Reader>
+            <ext:JsonReader IDProperty="ShowOrderImgID">
+                <Fields>
+                    <ext:RecordField  Name="ImgUrl"></ext:RecordField>
+                </Fields>
+            </ext:JsonReader>
+        </Reader>        
     </ext:Store>
     <div>
         <ext:Viewport ID="viewport" runat="server" Layout="FormLayout">
@@ -121,7 +133,16 @@
                                 <ext:Panel ID="pnlReply" runat="server" Layout="FormLayout" Height="290" Border="false" Margins="10 0 0 0">
                                     <Items>
                                         <ext:DisplayField ID="disTitle" runat="server" FieldLabel="标题"></ext:DisplayField>
-                                        <ext:DisplayField ID="disDetail" runat="server" FieldLabel="内容"></ext:DisplayField>
+                                        <ext:DisplayField ID="disDetail" runat="server" FieldLabel="内容"></ext:DisplayField>     
+                                        <ext:Panel ID="pnlImg" runat="server" Height="80" Layout="FormLayout" Border="false" Width="800">
+                                            <Content>
+                                                <asp:DataList ID="dlstImg" runat="server" RepeatDirection="Horizontal" CssClass="dlstimg">
+                                                    <ItemTemplate>
+                                                        <div style="margin-right:5px;"><a href="../<%#Eval("ImgUrl") %>" target="_blank"><img src='../<%#Eval("ImgUrl") %>' width="80px" height="80px" /></a></div>
+                                                    </ItemTemplate>
+                                                </asp:DataList>
+                                            </Content>
+                                        </ext:Panel>                                                                 
                                         <ext:ComboBox ID="cboxPass" runat="server" FieldLabel="审核" AllowBlank="false" IndicatorText="*" IsRemoteValidation="true">
                                             <Items>
                                                 <ext:ListItem Text="通过" Value="1" />
@@ -178,6 +199,15 @@
                                     <Items>
                                         <ext:DisplayField ID="disShowOrderTitle" runat="server" FieldLabel="标题"></ext:DisplayField>
                                         <ext:DisplayField ID="disShowOrderDetail" runat="server" FieldLabel="内容"></ext:DisplayField>
+                                        <ext:Panel ID="pnlImage" runat="server" Layout="FormLayout" Border="false" Height="80">
+                                            <Content>
+                                                <asp:DataList ID="dlstImage" runat="server" RepeatDirection="Horizontal" CssClass="dlstimg">
+                                                    <ItemTemplate>
+                                                        <div style="margin-right:5px;"><a href="../<%#Eval("ImgUrl") %>" target="_blank"><img src="../<%#Eval("ImgUrl") %>" alt="" width="80px" height="80px" /></a></div>
+                                                    </ItemTemplate>
+                                                </asp:DataList>
+                                            </Content>
+                                        </ext:Panel>
                                         <ext:DisplayField ID="disReply" runat="server" FieldLabel="回复"></ext:DisplayField>
                                     </Items>
                                 </ext:Panel>

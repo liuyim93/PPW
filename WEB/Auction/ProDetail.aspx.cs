@@ -284,7 +284,7 @@ namespace WEB.Auction
                                 Product pro=proBll.GetById(act3.ProductID)[0];
                                 DingDan dd = new DingDan();
                                 dd.HuiYuanID = act3.HuiYuanID;
-                                dd.OrderTypeID = orderBll.GetbyName("竞拍订单").OrderTypeID;
+                                dd.OrderTypeID = orderBll.GetbyName("竞拍订单")[0].OrderTypeID;
                                 dd.ProductID = act3.ProductID;
                                 dd.ProductPrice = Convert.ToDecimal(act3.AuctionPrice);
                                 dd.ShipFee = pro.ShipFee;

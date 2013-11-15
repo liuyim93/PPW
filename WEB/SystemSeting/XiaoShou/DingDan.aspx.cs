@@ -7,11 +7,14 @@ using System.Web.UI.WebControls;
 using BLL.SystemSeting;
 using Tools;
 using Ext.Net;
+using BLL;
+
 namespace WEB.SystemSeting.XiaoShou
 {
     public partial class DingDan : BasePage
     {
         DingDanBll DinDanbll = new DingDanBll();
+        ShouHuoDZBll AdressBll = new ShouHuoDZBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack&&!X.IsAjaxRequest)
@@ -26,23 +29,30 @@ namespace WEB.SystemSeting.XiaoShou
             string st = cmdStat.SelectedItem.Value;
             DateTime? beg = xtxtbegin.GetTime();
             DateTime? end = xtxtbend.GetTime();
+            string orderTypeId = cboxType.SelectedItem.Value;
 
-            List<DinDans> list = DinDanbll.GetDinDan(bh, beg, end, st);
-            storList.DataSource = list.Select(x => new
+            List<Model.Entities.DingDan> list = DinDanbll.GetOrder(bh, beg, end, st,orderTypeId);
+            if (list.Count>0)
             {
-                DingDanID = x.DingDanID,
-                DingDanBH = x.DingDanBH,
-                HuiYuanID = x.HuiYuanID,
-                ProductID = x.ProductID,
-                DingDanTime = x.DingDanTime == null ? "" : x.DingDanTime.Value.ToString("yyyy-MM-dd"),
-                ShouHuoName = x.ShouHuoName,
-                Mode = x.Mode,
-                DZ = x.DZ,
-                YouBian = x.YouBian,
-                Status = (Status)x.Status,
-                OrderTypeID=x.OrderTypeID
-            });
-            storList.DataBind();
+                storList.DataSource = list.Select(x => new
+                {
+                    DingDanID = x.DingDanID,
+                    DingDanBH = x.DingDanBH,
+                    HuiYuan = x.HuiYuanName,
+                    ProductName = x.ProductName,
+                    DingDanTime = x.DingDanTime == null ? "" : x.DingDanTime.Value.ToString("yyyy-MM-dd"),
+                    ShouHuoName = x.ShouHuoDZID == "" ? "" : AdressBll.GetShouHuoDZ(x.ShouHuoDZID)[0].ShouHuoName,
+                    Mode = x.ShouHuoDZID == "" ? "" : AdressBll.GetShouHuoDZ(x.ShouHuoDZID)[0].Mode,
+                    DZ = x.ShouHuoDZID == "" ? "" : AdressBll.GetShouHuoDZ(x.ShouHuoDZID)[0].DZ,
+                    YouBian = x.ShouHuoDZID == "" ? "" : AdressBll.GetShouHuoDZ(x.ShouHuoDZID)[0].YouBian,
+                    Status = (Status)x.Status,
+                    OrderType = x.OrderType,
+                    TotalPrice = x.TotalPrice.ToString()
+                });
+                storList.DataBind();
+            }
+            storeOrderType.DataSource = DinDanbll.GetAllOrderType();
+            storeOrderType.DataBind();
         }
 
         protected void SetSata(object sender,DirectEventArgs e) 

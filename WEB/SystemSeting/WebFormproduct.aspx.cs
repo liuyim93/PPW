@@ -145,7 +145,7 @@ namespace WEB.SystemSeting
               txtName.Text = "";
               txtJG.Value = "0";
               hidTiMuNeiRong.Value = "";
-              d241.Value = null;
+              //d241.Value = null;
               bntAdds.Show();
               bntEids.Hide();
               txtIntro.Text = "";
@@ -164,8 +164,8 @@ namespace WEB.SystemSeting
                   X.Msg.Alert("提示", "请选择产品类型").Show();
                   return;
               }
-              string dat = d241.Value.ToString();
-              DateTime? datetim = dat == "" ? null : Convert.ToDateTime(dat) as DateTime?;
+              //string dat = d241.Value.ToString();
+              //DateTime? datetim = dat == "" ? null : Convert.ToDateTime(dat) as DateTime?;
 
               Product prd = new Product();
               //prd.ProductID = Guid.NewGuid().ToString();
@@ -235,8 +235,8 @@ namespace WEB.SystemSeting
          //修改保存
           protected void EidSeve(object obj,DirectEventArgs e) 
           {
-              string dat = d241.Value.ToString();
-              DateTime? datetim= dat==""?null:Convert.ToDateTime(dat)as DateTime?; 
+              //string dat = d241.Value.ToString();
+              //DateTime? datetim= dat==""?null:Convert.ToDateTime(dat)as DateTime?; 
               if (ddsCPLX.Value.ToString() == "0")
               {
                   X.Msg.Alert("提示", "请选择产品类型").Show();

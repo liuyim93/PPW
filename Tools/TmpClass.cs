@@ -20,6 +20,7 @@ namespace Tools
        public string YouBian { get; set; }
        public string OrderTypeID { get; set; }
        public string ShouHuoDZID { get; set; }
+       public decimal TotalPrice { get; set; }
     }
 
     [Serializable]

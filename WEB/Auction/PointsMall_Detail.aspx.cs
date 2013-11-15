@@ -221,7 +221,7 @@ namespace WEB.Auction
                     order.TotalPrice = 0;
                     order.Status=8;
                     order.ProductPrice =Convert.ToDecimal(lblPrice.Text);
-                    order.OrderTypeID = orderBll.GetbyName("积分兑换").OrderTypeID;
+                    order.OrderTypeID = orderBll.GetbyName("积分兑换")[0].OrderTypeID;
                     order.InvalidTime = DateTime.MaxValue;
                     order.AuctionID = "";
                     order.ProductID=Request.QueryString["id"];

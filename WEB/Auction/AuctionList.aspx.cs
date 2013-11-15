@@ -186,7 +186,7 @@ namespace WEB.Auction
                                     dd.ProductID = hfProductID.Value;
                                     dd.ProductPrice = Convert.ToDecimal(lblAuctionPrice.Text);
                                     dd.Status = 10;
-                                    dd.OrderTypeID = orderBll.GetbyName(typeName).OrderTypeID;
+                                    dd.OrderTypeID = orderBll.GetbyName(typeName)[0].OrderTypeID;
                                     dd.Fee = fee;
                                     dd.ShipFee = shipFee;
                                     dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;

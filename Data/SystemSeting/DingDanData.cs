@@ -34,7 +34,8 @@ namespace Data.SystemSeting
                    ds.Mode = item["Mode"].ToString();
                    ds.DZ = item["DZ"].ToString();
                    ds.YouBian = item["YouBian"].ToString();
-                   ds.OrderTypeID=item["TypeName"].ToString();                     
+                   ds.OrderTypeID=item["TypeName"].ToString();
+                   ds.TotalPrice = Convert.ToDecimal(item["TotalPrice"]);
                    list.Add(ds);
                }
            }
@@ -79,18 +80,20 @@ namespace Data.SystemSeting
        /// </summary>
        /// <param name="sql"></param>
        /// <returns></returns>
-       public OrderType GetOrderType(string sql) 
+       public List<OrderType> GetOrderType(string sql) 
        {
+           List<OrderType> list = new List<OrderType>();
            DataSet ds = BLLdat.GetDataSet(sql);
            if (ds.Tables[0].Rows.Count > 0)
-           {
-               OrderType type = new OrderType();
+           {               
                foreach (DataRow item in ds.Tables[0].Rows)
                {
+                   OrderType type = new OrderType();
                    type.OrderTypeID = item["OrderTypeID"].ToString();
                    type.TypeName = item["TypeName"].ToString();
+                   list.Add(type);
                }
-               return type;
+               return list;
            }
            else 
            {
@@ -126,6 +129,74 @@ namespace Data.SystemSeting
                    order.DingDanTime=Convert.ToDateTime(row["DingDanTime"]);
                    order.InvalidTime=Convert.ToDateTime(row["InvalidTime"]);
                    order.AuctionID=row["AuctionID"].ToString();
+                   list.Add(order);
+               }
+           }
+           return list;
+       }
+
+       /// <summary>
+       /// 根据订单编号、下单时间、状态查询订单信息
+       /// </summary>
+       /// <param name="orderNum"></param>
+       /// <param name="start"></param>
+       /// <param name="end"></param>
+       /// <param name="status"></param>
+       /// <returns></returns>
+       public List<DingDan> GetOrder(string orderNum,DateTime?start,DateTime?end,string status,string orderTypeId) 
+       {
+           string sql = "select dd.*,hh.HuiYuanName,pro.ProductName,ot.TypeName from DingDan as dd,HuiYuan as hh,Product as pro,OrderType as ot where hh.HuiYuanID=dd.HuiYuanID and pro.ProductID=dd.ProductID and ot.OrderTypeID=dd.OrderTypeID and dd.DingDanBH like '%"+orderNum+"%'";
+           if (start != null)
+           {
+               string begin = start.Value.ToString("yyyy-MM-dd");
+               sql += "and DingDanTime>'" + begin + "'";
+           }
+           else 
+           {
+               if (end != null)
+               {
+                   string maxTime = end.Value.ToString("yyyy-MM-dd");
+                   sql += "and DingDanTime<'" + end + "'";
+               }
+               else 
+               {
+                   if (orderTypeId!=null)
+                   {
+                       sql += "and dd.OrderTypeID='" + orderTypeId + "'";
+                   }
+                   else 
+                   {
+                       if (status != null)
+                       {
+                           sql += "and Status=" + status;
+                       }
+                   }                   
+               }
+           }
+           DataSet ds = BLLdat.GetDataSet(sql);
+           List<DingDan> list = new List<DingDan>();
+           if (ds.Tables[0].Rows.Count>0)
+           {
+               foreach (DataRow row in ds.Tables[0].Rows)
+               {
+                   DingDan order = new DingDan();
+                   order.DingDanID = row["DingDanID"].ToString();
+                   order.DingDanBH = row["DingDanBH"].ToString();
+                   order.HuiYuanID = row["HuiYuanID"].ToString();
+                   order.ProductID = row["ProductID"].ToString();
+                   order.OrderTypeID = row["OrderTypeID"].ToString();
+                   order.ProductPrice = Convert.ToDecimal(row["ProductPrice"]);
+                   order.Fee = Convert.ToDecimal(row["Fee"]);
+                   order.ShipFee = Convert.ToDecimal(row["ShipFee"]);
+                   order.ShouHuoDZID = row["ShouHuoDZID"] ==null ? "" : row["ShouHuoDZID"].ToString();
+                   order.Status = Convert.ToInt32(row["Status"]);
+                   order.TotalPrice = Convert.ToDecimal(row["TotalPrice"]);
+                   order.DingDanTime = Convert.ToDateTime(row["DingDanTime"]);
+                   order.InvalidTime = Convert.ToDateTime(row["InvalidTime"]);
+                   order.AuctionID = row["AuctionID"].ToString();
+                   order.HuiYuanName=row["HuiYuanName"].ToString();
+                   order.ProductName=row["ProductName"].ToString();
+                   order.OrderType=row["TypeName"].ToString();
                    list.Add(order);
                }
            }

@@ -272,9 +272,9 @@
                                             </Items>
                                         </ext:Container>
                                    </Items>
-                                   <Content>
+<%--                                   <Content>
                                     &nbsp; &nbsp; &nbsp;拍买时间：<input type="text" name="cfg" value="" id="d241" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" runat="server" class="Wdate" style="width:150px"/>
-                                   </Content>
+                                   </Content>--%>
                                </ext:Panel>
                                <ext:Panel ID="pan2" runat="server" Layout="FormLayout" Title="产品详情" AnchorHorizontal="100%" >
                                     <Items>

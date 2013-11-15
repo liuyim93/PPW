@@ -33,20 +33,31 @@
             <Fields>
                 <ext:RecordField Name="DingDanID"></ext:RecordField>
                 <ext:RecordField Name="DingDanBH"></ext:RecordField>
-                <ext:RecordField Name="OrderTypeID"></ext:RecordField>
-                <ext:RecordField Name="ShouHuoDZID"></ext:RecordField>
-                <ext:RecordField Name="HuiYuanID"></ext:RecordField>
-                <ext:RecordField Name="ProductID"></ext:RecordField>
+                <ext:RecordField Name="OrderType"></ext:RecordField>                
+                <ext:RecordField Name="HuiYuan"></ext:RecordField>
+                <ext:RecordField Name="ProductName"></ext:RecordField>
                 <ext:RecordField Name="DingDanTime"></ext:RecordField>
                 <ext:RecordField Name="ShouHuoName"></ext:RecordField>
                 <ext:RecordField Name="Mode"></ext:RecordField>
                 <ext:RecordField Name="DZ"></ext:RecordField>
                 <ext:RecordField Name="YouBian"></ext:RecordField>
                 <ext:RecordField Name="Status"></ext:RecordField>
+                <ext:RecordField Name="TotalPrice"></ext:RecordField>
             </Fields>
         </ext:JsonReader>
     </Reader>
 </ext:Store>
+<ext:Store ID="storeOrderType" runat="server">
+    <Reader>
+        <ext:JsonReader IDProperty="OrderTypeID">
+            <Fields>
+                <ext:RecordField Name="OrderTypeID"></ext:RecordField>
+                <ext:RecordField Name="TypeName"></ext:RecordField>
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
+</ext:Store>
+
     <form id="form1" runat="server">
     <div>
     <ext:Viewport ID="cip" runat="server" Layout="BorderLayout">
@@ -67,6 +78,7 @@
                     <TriggerClick  Handler="this.clear();"/>
                    </Listeners>
                 </ext:ComboBox>
+                <ext:ComboBox ID="cboxType" runat="server" FieldLabel="订单类型" StoreID="storeOrderType" ValueField="OrderTypeID" DisplayField="TypeName" Width="200"></ext:ComboBox>
                  <ext:DateField ID="xtxtbegin" runat="server" FieldLabel="下单时间" LabelWidth="110"  Width="220" Format="yyyy-MM-dd"
                                      Vtype="daterange" EnableKeyEvents="true">
                             <Listeners>
@@ -100,9 +112,10 @@
             <ColumnModel>
                 <Columns>
                     <ext:Column DataIndex="DingDanBH" Header="订单编号"></ext:Column>
-                    <ext:Column DataIndex="OrderTypeID" Header="订单类型"></ext:Column>
-                    <ext:Column DataIndex="HuiYuanID" Header="会员名"></ext:Column>
-                    <ext:Column DataIndex="ProductID" Header="产品"></ext:Column>
+                    <ext:Column DataIndex="OrderType" Header="订单类型"></ext:Column>
+                    <ext:Column DataIndex="HuiYuan" Header="会员名"></ext:Column>
+                    <ext:Column DataIndex="ProductName" Header="产品名称"></ext:Column>
+                    <ext:Column DataIndex="TotalPrice" Header="总金额"></ext:Column>
                     <ext:Column DataIndex="ShouHuoName" Header="收货人"></ext:Column>
                     <ext:Column DataIndex="Mode" Header="联系电话"></ext:Column>
                     <ext:Column DataIndex="DZ" Header="地址"></ext:Column>
@@ -123,7 +136,7 @@
                 </ext:Toolbar>
             </TopBar>
             <BottomBar>
-                <ext:PagingToolbar runat="server" PageSize="10">
+                <ext:PagingToolbar runat="server" PageSize="12">
                 </ext:PagingToolbar>
             </BottomBar>
             <SelectionModel>

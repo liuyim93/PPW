@@ -93,10 +93,12 @@ namespace WEB.SystemSeting.XiaoShou
                 disDetail.Text=list[0].Detail;
                 disReply.Text=list[0].Reply;
                 disTime.Text=list[0].LoadTime.ToString();
+                List<ShowOrderImg> list_img = showorderBll.GetShowOrderImg(showOrderId);
+                dlstImg.DataSource = list_img;
+                dlstImg.DataBind();
                 btnSave.Show();
                 btnReturn.Show();
                 window_update.Show();
-                window_update.Reload();
             }            
         }
 
@@ -124,8 +126,10 @@ namespace WEB.SystemSeting.XiaoShou
                 txtReply.Text=list[0].Reply;
                 cboxPass.Value=list[0].IsCheck;
                 cboxHome.Value=list[0].IsShow;
+                List<ShowOrderImg> list_img = showorderBll.GetShowOrderImg(showOrderId);
+                dlstImg.DataSource = list_img;
+                dlstImg.DataBind();
                 window_update.Show();
-                window_update.Reload();
             }
         }
 
@@ -153,8 +157,10 @@ namespace WEB.SystemSeting.XiaoShou
                  disIsCheck.Text=list[0].IsCheck==1?"已通过":"未通过";
                  disIsShow.Text=list[0].IsShow==1?"是":"否";
                  window_detail.Title = "详细信息";
-                 window_detail.Show();
-                 BindData();
+                 List<ShowOrderImg> list_img = showorderBll.GetShowOrderImg(showOrderId);
+                 dlstImage.DataSource = list_img;
+                 dlstImage.DataBind();
+                 window_detail.Show();      
              }
         }
 

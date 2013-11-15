@@ -40,6 +40,15 @@ namespace WEB.SystemSeting.XiaoShou {
         protected global::Ext.Net.Store storeShowOrder;
         
         /// <summary>
+        /// storeImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Store storeImage;
+        
+        /// <summary>
         /// viewport 控件。
         /// </summary>
         /// <remarks>
@@ -265,6 +274,24 @@ namespace WEB.SystemSeting.XiaoShou {
         protected global::Ext.Net.DisplayField disDetail;
         
         /// <summary>
+        /// pnlImg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Panel pnlImg;
+        
+        /// <summary>
+        /// dlstImg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dlstImg;
+        
+        /// <summary>
         /// cboxPass 控件。
         /// </summary>
         /// <remarks>
@@ -461,6 +488,24 @@ namespace WEB.SystemSeting.XiaoShou {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Ext.Net.DisplayField disShowOrderDetail;
+        
+        /// <summary>
+        /// pnlImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Ext.Net.Panel pnlImage;
+        
+        /// <summary>
+        /// dlstImage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dlstImage;
         
         /// <summary>
         /// disReply 控件。
