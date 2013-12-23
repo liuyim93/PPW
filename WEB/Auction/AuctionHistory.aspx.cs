@@ -28,6 +28,10 @@ namespace WEB.Auction
             //所有已成交的商品
             gvwHistory.DataSource = auctionBll.GetAllAuctioned();
             gvwHistory.DataBind();
+            dropProductType.DataSource = productBll.GetAllProductType();
+            dropProductType.DataTextField = "TypeName";
+            dropProductType.DataValueField = "ProductTypeID";
+            dropProductType.DataBind();
         }
 
         protected void gvwHistory_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -64,6 +68,16 @@ namespace WEB.Auction
                     lblMemberName.Text = hyBll.GetHuiYuan(lblMemberName.Text).HuiYuanName;
                 }
             }
+        }
+
+        protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+        }
+
+        protected void AspNetPager1_PageChanged(object sender,EventArgs e) 
+        {
+            
         }
     }
 }

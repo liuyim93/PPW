@@ -72,7 +72,14 @@ namespace WEB.Auction
                 {
                     imgProduct.ImageUrl="";
                 }
-                lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
+                if (hfMemberID.Value == "")
+                {
+                    lblMemberName.Text = "";
+                }
+                else 
+                {
+                    lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
+                }               
                 imgbtnAuction.ToolTip = "每次出价消耗"+hfAuctionPoint.Value+"拍点";
                 if (hfAuctionTime.Value!=""&&hfTimePoint.Value!="")
                 {
@@ -149,7 +156,7 @@ namespace WEB.Auction
                 HiddenField hfProductID = dlstAuction.Items[i].FindControl("hfProductID") as HiddenField;
                 HiddenField hfTimePoint = dlstAuction.Items[i].FindControl("hfTimePoint") as HiddenField;
                 HiddenField hfAuctionTime = dlstAuction.Items[i].FindControl("hfAuctionTime") as HiddenField;
-                Label lblTimer = dlstAuction.Items[i].FindControl("lblTimer") as Label;
+                Label lblTime = dlstAuction.Items[i].FindControl("lblTime") as Label;
                 HiddenField hfStaus = dlstAuction.Items[i].FindControl("hfStatus") as HiddenField;
                 HiddenField hfMemberID = dlstAuction.Items[i].FindControl("hfMemberID") as HiddenField;
                 Label lblAuctionPrice = dlstAuction.Items[i].FindControl("lblAuctionPrice") as Label;
@@ -160,7 +167,7 @@ namespace WEB.Auction
                 if (hfAuctionTime.Value != "" && Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10))
                 {
                     TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
-                    lblTimer.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
+                    lblTime.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
                 }
                 if (Convert.ToDateTime(hfAuctionTime.Value) <= DateTime.Now.AddSeconds(10) && hfProductID != null)
                 {
@@ -171,7 +178,7 @@ namespace WEB.Auction
                         auctionBll.UpdateTimePoint(auctionId);
                         Product pro1 = proBll.GetById(hfProductID.Value)[0];
                         auction auction1 = auctionBll.GetAuction(auctionId)[0];
-                        lblTimer.Text = "00:00:" + auction1.TimePoint.ToString().PadLeft(2, '0');
+                        lblTime.Text = "00:00:" + auction1.TimePoint.ToString().PadLeft(2, '0');
                         if (auction1.TimePoint == 0)
                         {
                             try
@@ -202,7 +209,7 @@ namespace WEB.Auction
                                     auction2.AuctionID = auctionId;
                                     auctionBll.UpdateStatus(auction2);
                                     ts1.Complete();
-                                    lblTimer.Text = "已成交";
+                                    lblTime.Text = "已成交";
                                 }
                             }
                             catch (Exception)

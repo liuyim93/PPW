@@ -37,6 +37,10 @@
     <Reference Include="AjaxPro">
       <HintPath>App_Data\AjaxPro.dll</HintPath>
     </Reference>
+    <Reference Include="AspNetPager, Version=7.4.3.0, Culture=neutral, PublicKeyToken=fb0a0fe055d40fd4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AspNetPager.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\DocumentFormat.OpenXml.dll</HintPath>
@@ -89,6 +93,7 @@
   <ItemGroup>
     <Content Include="Auction\AuctionHistory.aspx" />
     <Content Include="Auction\AuctionList.aspx" />
+    <Content Include="Auction\FutureAuction.aspx" />
     <Content Include="Auction\PointsMall.aspx" />
     <Content Include="Auction\PointsMall_Detail.aspx" />
     <Content Include="Auction\ProDetail.aspx" />
@@ -473,6 +478,13 @@
     </Compile>
     <Compile Include="Auction\AuctionList.aspx.designer.cs">
       <DependentUpon>AuctionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\FutureAuction.aspx.cs">
+      <DependentUpon>FutureAuction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\FutureAuction.aspx.designer.cs">
+      <DependentUpon>FutureAuction.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\PointsMall.aspx.cs">
       <DependentUpon>PointsMall.aspx</DependentUpon>

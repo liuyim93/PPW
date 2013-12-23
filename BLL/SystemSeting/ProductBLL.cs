@@ -23,6 +23,18 @@ namespace BLL.SystemSeting
            db.SaveChanges();
        }
 
+       #region 产品类型
+       /// <summary>
+       /// 查询所有的产品类型
+       /// </summary>
+       /// <returns></returns>
+       public List<ProductType> GetAllProductType() 
+       {
+           string sql = "select * from ProductType";
+           return dal.GetProducType(sql);
+       }
+       #endregion
+
        /// <summary>
        /// 跟据条件查找产品
        /// </summary>

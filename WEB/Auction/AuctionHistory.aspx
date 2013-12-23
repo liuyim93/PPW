@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="AuctionHistory.aspx.cs" Inherits="WEB.Auction.AuctionHistory" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="history">
-        <div class="history_title">
-            
-        </div>
+        <div class="history_title">历史竞拍&nbsp;<span style="color:#ccc;font-size:12px;">Auction History</span></div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
           <ContentTemplate>
             <div class="history_search">
@@ -71,6 +70,36 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <asp:Repeater ID="Repeater1" runat="server">
+                <HeaderTemplate>
+                    <table>
+                        <tr>
+                            <td>商品</td>
+                            <td>成交价</td>
+                            <td>获得者</td>
+                            <td>成交时间</td>
+                        </tr>
+                    </table>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <div>
+                        <ul>
+                            <li><a href="ProDetail.aspx?id<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgPro" runat="server" Width="90px" Height="90px" /></a></li>
+                            <li><a href="ProDetail.aspx?id<%#Eval("AuctionID") %>" target="_self">第<%#Eval("Coding") %>期&nbsp;<asp:Literal ID="ltlProName" runat="server" Text='<%#Eval("ProductID") %>'></asp:Literal></a><br />
+                                <asp:Label ID="lblProIntro" runat="server"></asp:Label><br />
+                                市场价:<span>￥<asp:Literal ID="ltlProPrice" runat="server"></asp:Literal></span>
+                            </li>
+                            <li>￥<%#Eval("AuctionPrice") %></li>
+                            <li><asp:Literal ID="ltlWinner" runat="server" Text='<%#Eval("HuiYuanID") %>'></asp:Literal></li>
+                            <li><asp:Literal ID="ltlEndTime" runat="server" Text='<%#Eval("EndTime") %>'></asp:Literal></li>
+                        </ul>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="9" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager>
           </ContentTemplate>            
         </asp:UpdatePanel>        
     </div>

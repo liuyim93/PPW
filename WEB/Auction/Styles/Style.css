@@ -1,4 +1,4 @@
-﻿body {font-size:12px;margin:0px;padding:0px;}
+﻿body {font-size:13px;margin:0px;padding:0px;}
 dl{margin:0px;padding:0px;}
 dt{margin:0px;padding:0px;}
 dd{margin:0px;padding:0px;}
@@ -161,7 +161,7 @@ ul{margin:0px;padding:0px;list-style:none;}
 
 /*历史成交页面*/
 .history{width:1000px; margin:10px auto; border:1px solid #cccccc;}
-.history_title{background:url("../Images/auction_history.gif") no-repeat; height:40px;line-height:40px;}
+.history_title{height:35px;line-height:35px;padding-left:15px;font-weight:bold;font-size:15px;color:#8f0100;border-bottom:1px solid #ccc;}
 .history .product_img{float:left;margin:5px;}
 .history .product_name{float:left; font-size:13px;margin:40px 0; text-align:left;}
 .history .product_name span{color:#ccc; text-align:left;}
@@ -380,6 +380,30 @@ ul{margin:0px;padding:0px;list-style:none;}
 .gift_head{height:25px;line-height:25px;border-bottom:1px solid #8f0100;}
 .gift_head li{float:left;}
 .gift_area_time{width:80px;line-height:15px;padding:30px 0;height:40px;float:left;text-align:center;}
+
+/*即将竞拍*/
+.future_content{width:98%;margin:5px auto;padding-bottom:30px;position:relative;}
+.future_area{width:98%;height:100px;margin:5px auto;background-color:#fdfdfd;}
+.future_area_current{width:98%;height:100px;margin:5px auto;background-color:#f2f2f2;}
+.future_area_current ul li{float:left;}
+.future_area ul{list-style:none;}
+.future_area ul li{float:left;}
+.future_area_img{width:120px;height:100px;padding-left:10px;margin-right:10px;}
+.future_area_name{width:450px;padding:10px 5px;height:80px;line-height:27px; overflow:hidden;}
+.future_area_price{width:150px;height:100px;line-height:100px;text-align:center;color:#ff6600;font-weight:bold;}
+.future_area_time{width:170px;text-align:center; font-weight:bold;height:100px;line-height:100px;}
+#tab_head{width:98%;height:28px;line-height:28px; font-weight:bold; font-size:14px;}
+.future_area_name span{color:#a6a6a6;}
+
+/*分页控件*/
+.paginator { font: 12px Arial, Helvetica, sans-serif; position:absolute;left:40%;bottom:10px;}
+.paginator a {border:solid 1px #ccc;cursor:pointer;text-decoration:none;}
+.paginator a:visited {padding: 1px 6px; border: solid 1px #ddd; background: #fff; text-decoration: none;}
+.paginator .cpb {border:1px solid #F50;font-weight:700;color:#F50;background-color:#ffeee5;}
+.paginator a:hover {border:solid 1px #f50;color:#f50;text-decoration:none;}
+.paginator a,.paginator a:visited,.paginator .cpb,.paginator a:hover 
+{float:left;height:16px;line-height:16px;min-width:10px;_width:10px;margin-right:5px;text-align:center;
+ white-space:nowrap;font-size:12px;font-family:Arial,SimSun;padding:0 3px;}
 
 
 

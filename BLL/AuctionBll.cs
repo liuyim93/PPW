@@ -5,6 +5,7 @@ using System.Text;
 using Model.Entities;
 using Data;
 using Data.SystemSeting;
+using System.Data;
 
 namespace BLL
 {
@@ -223,6 +224,15 @@ namespace BLL
         public int DeleteAuction(string auctionId) 
         {
             return auctionDat.DeleteAuction(auctionId);
+        }
+
+        /// <summary>
+        /// 查询即将竞拍的拍品
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAuction_Future() 
+        {
+            return auctionDat.GetAuction_Future();
         }
     }
 }

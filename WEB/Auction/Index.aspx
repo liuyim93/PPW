@@ -58,7 +58,7 @@
               <asp:UpdatePanel ID="updatepanel1" runat="server">
                 <ContentTemplate>
                 <asp:Timer ID="timer1" runat="server" Interval="1000" ontick="timer1_Tick"></asp:Timer>    
-                <asp:DataList ID="dlstProduct" runat="server" RepeatColumns="5" Width="100%" 
+                <asp:DataList ID="dlstProduct" runat="server" RepeatColumns="5" 
                     onitemcommand="dlstProduct_ItemCommand" DataKeyField="AuctionID"
                     onitemdatabound="dlstProduct_ItemDataBound">
                     <ItemTemplate>

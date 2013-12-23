@@ -135,6 +135,17 @@ namespace Data
             return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@AuctionID",auctionId));
         }
 
+        /// <summary>
+        /// 查询即将竞拍的拍品
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAuction_Future() 
+        {
+            DateTime dt = DateTime.Now.Date.AddDays(1);
+            string sql = "select * from Auction where Status=4 and AuctionTime>'"+DateTime.Now+"' and AuctionTime<'"+dt+"'";
+            return sh.GetDataSet(sql).Tables[0];
+        }
+
         #region 竞拍类型
 
         /// <summary>
