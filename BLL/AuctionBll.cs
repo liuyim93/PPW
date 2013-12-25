@@ -14,6 +14,18 @@ namespace BLL
         AuctionData auctionDat = new AuctionData();
         ChuJiaJiLuDat recordDat = new ChuJiaJiLuDat();
 
+        #region 竞拍类型
+        /// <summary>
+        /// 查询所有的竞拍类型
+        /// </summary>
+        /// <returns></returns>
+        public List<AuctionType> GetAllAuctionType() 
+        {
+            string sql = "select * from AuctionType";
+            return auctionDat.GetAuctionType(sql);
+        }
+        #endregion
+
         /// <summary>
         /// 添加竞拍商品
         /// </summary>
@@ -233,6 +245,21 @@ namespace BLL
         public DataTable GetAuction_Future() 
         {
             return auctionDat.GetAuction_Future();
+        }
+
+        /// <summary>
+        /// 查询历史竞拍
+        /// </summary>
+        /// <param name="auctionTypeId"></param>
+        /// <param name="proTypeId"></param>
+        /// <param name="minProPrice"></param>
+        /// <param name="maxProPrice"></param>
+        /// <param name="minAuctionPrice"></param>
+        /// <param name="maxAuctionPrice"></param>
+        /// <returns></returns>
+        public DataTable GetAuction_History(string auctionTypeId,string proTypeId,string minProPrice,string maxProPrice,string minAuctionPrice,string maxAuctionPrice) 
+        {
+            return auctionDat.GetAuction_History(auctionTypeId,proTypeId,minProPrice,maxProPrice,minAuctionPrice,minAuctionPrice);
         }
     }
 }

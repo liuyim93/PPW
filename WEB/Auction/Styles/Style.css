@@ -160,13 +160,16 @@ ul{margin:0px;padding:0px;list-style:none;}
 .reg_submit{height:40px;padding-left:80px;line-height:40px;}
 
 /*历史成交页面*/
-.history{width:1000px; margin:10px auto; border:1px solid #cccccc;}
+.history{width:1000px; margin:10px auto; border:1px solid #cccccc;position:relative;padding-bottom:30px;overflow:hidden;}
 .history_title{height:35px;line-height:35px;padding-left:15px;font-weight:bold;font-size:15px;color:#8f0100;border-bottom:1px solid #ccc;}
 .history .product_img{float:left;margin:5px;}
 .history .product_name{float:left; font-size:13px;margin:40px 0; text-align:left;}
 .history .product_name span{color:#ccc; text-align:left;}
 .history .gvw{text-align:center;}
 .history_search{display:block; height:40px;line-height:40px;padding:15px auto;}
+.history_area_winner{width:100px;height:100%;text-align:center;line-height:100px;}
+.history_area_time{width:150px;height:100px;text-align:center;line-height:100px;overflow:hidden;}
+.history_area_price{width:100px;height:100%;line-height:100px;text-align:center; color:#ff6600;font-weight:bold;}
 
 /*商品详情页面*/
 .pro_info{width:100%;height:400px;margin:10px 5px;}
@@ -392,7 +395,7 @@ ul{margin:0px;padding:0px;list-style:none;}
 .future_area_name{width:450px;padding:10px 5px;height:80px;line-height:27px; overflow:hidden;}
 .future_area_price{width:150px;height:100px;line-height:100px;text-align:center;color:#ff6600;font-weight:bold;}
 .future_area_time{width:170px;text-align:center; font-weight:bold;height:100px;line-height:100px;}
-#tab_head{width:98%;height:28px;line-height:28px; font-weight:bold; font-size:14px;}
+#tab_head{width:98%;height:28px;line-height:28px; font-weight:bold; font-size:14px;background-color:#f3f3f3;margin:0px auto;}
 .future_area_name span{color:#a6a6a6;}
 
 /*分页控件*/

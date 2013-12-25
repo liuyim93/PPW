@@ -3,6 +3,30 @@
 <%@ Register TagName="Last" Src="UserControl/Last.ascx" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<script type="text/javascript">    
+    function loadms()
+    {
+        var items=0;
+        var datalist = document.getElementById(<%=dlstAuction.ClientID %>).children[0];
+        var rows=datalist.children.length;
+        for (var row = 0; row < rows.length; row++) {            
+            for (var j = 0; j < datalist.children[0].length; j++) {
+                items++;
+}
+}
+for (var k = 100; k < items+100; k++) {
+    var timespan=document.getElementById('ctl00_ContentPlaceHolder1_dlstAuction_ct'+k+'_lblTime');
+    var time_ms=document.getElementById('ctl00_ContentPlaceHolder1_dlstAuction_ct'+k+'_lblMS');
+    var timepoint=document.getElementById('ctl00_ContentPlaceHolder1_dlstAuction_ct'+k+'_hfTimePoint');
+    if (timepoint.innerText<10&&timepoint.innerText>0) {
+        setInterval("updatems()",100);
+}
+}
+    } 
+    function  updatems(){
+        
+    }  
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div class="auctionlist">
@@ -25,7 +49,7 @@
                                     <div class="product_price">市场价：￥<span style="font-weight:bold;"><asp:Label ID="lblPrice" runat="server" ></asp:Label></span></div>
                                     <div class="product_price">拍卖价：<span style="color:Red;font-weight:bold;font-family:Arial;">￥<asp:Label ID="lblAuctionPrice" runat="server" Text='<%#Eval("AuctionPrice") %>'></asp:Label></span></div>
                                     <div class="product_price">出价人：<span style="color:#00666b"><asp:Label ID="lblMemberName" runat="server"></asp:Label></span><asp:HiddenField ID="hfMemberID" runat="server" Value='<%#Eval("HuiYuanID") %>' /></div>
-                                    <div class="product_timer"><asp:Label ID="lblTime" runat="server"></asp:Label></div>
+                                    <div class="product_timer"><asp:Label ID="lblTime" runat="server"></asp:Label><asp:Label ID="lblMS" runat="server"></asp:Label></div>
                                     <div class="product_auction"><asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif" CommandName="auction" CommandArgument='<%#Eval("AuctionID") %>' /></div>
                                     <asp:HiddenField ID="hfTimePoint" runat="server" Value='<%#Eval("TimePoint") %>' />
                                     <asp:HiddenField ID="hfAuctionTime" runat="server" Value='<%#Eval("AuctionTime") %>' /> 

@@ -9,10 +9,7 @@
           <ContentTemplate>
             <div class="history_search">
                 竞拍类型：
-                <asp:DropDownList ID="dropAuctionType" runat="server">
-                    <asp:ListItem Text="正在热拍" Value="auction" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="免费竞拍" Value="free"></asp:ListItem>
-                </asp:DropDownList>&nbsp;
+                <asp:DropDownList ID="dropAuctionType" runat="server"></asp:DropDownList>&nbsp;
                 拍品类型：<asp:DropDownList ID="dropProductType" runat="server"></asp:DropDownList>&nbsp;
                 拍品价格：
                 <asp:DropDownList ID="dropProductPrice" runat="server">
@@ -29,69 +26,32 @@
                     <asp:ListItem Text="5-50元" Value="5-50"></asp:ListItem>
                     <asp:ListItem Text="50元以上" Value="50-"></asp:ListItem>
                 </asp:DropDownList>&nbsp;
-                <asp:ImageButton ID="imgbtnSearch" runat="server" ImageUrl="Images/search.gif" />
+                <asp:ImageButton ID="imgbtnSearch" runat="server" ImageUrl="Images/search.gif" 
+                    onclick="imgbtnSearch_Click" />
             </div>        
-            <asp:GridView ID="gvwHistory" runat="server" AutoGenerateColumns="false" DataKeyNames="AuctionID" 
-                  Width="100%" onrowdatabound="gvwHistory_RowDataBound" GridLines="Both" CssClass="gvw">
-                <Columns>
-                    <asp:TemplateField HeaderText="商品">
-                        <ItemTemplate>
-                            <div>
-                                <div class="product_img">
-                                    <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgProduct" runat="server" Width="100px" Height="100px" /></a>
-                                    <asp:HiddenField  ID="hfProductNo" runat="server" Value='<%#Eval("Coding") %>' />
-                                    <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
-                                </div>
-                                <div class="product_name"><asp:HyperLink ID="hlnkPro" runat="server" ></asp:HyperLink><br />
-                                    <asp:Label ID="lblIntro" runat="server" ></asp:Label>
-                                </div>
-                            </div>
-                        </ItemTemplate>                                            
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="市场价">
-                        <ItemTemplate>
-                            <asp:Label ID="lblPrice" runat="server" ></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="成交价">
-                        <ItemTemplate>
-                            <asp:Label ID="lblAuctionPrice" runat="server"><%#Eval("AuctionPrice") %></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="获得者">
-                        <ItemTemplate>
-                            <asp:Label ID="lblMemberName" runat="server" Text='<%#Eval("HuiYuanID") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="成交时间">
-                        <ItemTemplate>
-                            <asp:Label ID="lblEndTime" runat="server" Text='<%#Eval("EndTime") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-            <asp:Repeater ID="Repeater1" runat="server">
+            <asp:Repeater ID="Repeater1" runat="server" 
+                  onitemdatabound="Repeater1_ItemDataBound">
                 <HeaderTemplate>
-                    <table>
+                    <table id="tab_head">
                         <tr>
-                            <td>商品</td>
-                            <td>成交价</td>
-                            <td>获得者</td>
-                            <td>成交时间</td>
+                            <td style="padding-left:45px;width:500px;">商品</td>
+                            <td style="width:100px;text-align:center;">成交价</td>
+                            <td style="width:100px;text-align:center;">获得者</td>
+                            <td style="width:150px;text-align:center;">成交时间</td>
                         </tr>
                     </table>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <div>
+                    <div class="future_area" onmouseover="this.className='future_area_current'" onmouseout="this.className='future_area'">
                         <ul>
-                            <li><a href="ProDetail.aspx?id<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgPro" runat="server" Width="90px" Height="90px" /></a></li>
-                            <li><a href="ProDetail.aspx?id<%#Eval("AuctionID") %>" target="_self">第<%#Eval("Coding") %>期&nbsp;<asp:Literal ID="ltlProName" runat="server" Text='<%#Eval("ProductID") %>'></asp:Literal></a><br />
+                            <li class="future_area_img"><a href="ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgPro" runat="server" Width="90px" Height="90px" /></a></li>
+                            <li class="future_area_name"><a href="ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self">第<%#Eval("Coding") %>期&nbsp;<asp:Literal ID="ltlProName" runat="server" Text='<%#Eval("ProductID") %>'></asp:Literal></a><br />
                                 <asp:Label ID="lblProIntro" runat="server"></asp:Label><br />
-                                市场价:<span>￥<asp:Literal ID="ltlProPrice" runat="server"></asp:Literal></span>
+                                市场价:<span style="color:#ff6600; font-weight:bold;">￥<asp:Literal ID="ltlProPrice" runat="server"></asp:Literal></span>
                             </li>
-                            <li>￥<%#Eval("AuctionPrice") %></li>
-                            <li><asp:Literal ID="ltlWinner" runat="server" Text='<%#Eval("HuiYuanID") %>'></asp:Literal></li>
-                            <li><asp:Literal ID="ltlEndTime" runat="server" Text='<%#Eval("EndTime") %>'></asp:Literal></li>
+                            <li class="history_area_price">￥<%#Eval("AuctionPrice") %></li>
+                            <li class="history_area_winner"><asp:Literal ID="ltlWinner" runat="server" Text='<%#Eval("HuiYuanID") %>'></asp:Literal></li>
+                            <li class="history_area_time"><asp:Literal ID="ltlEndTime" runat="server" Text='<%#Eval("EndTime") %>'></asp:Literal></li>
                         </ul>
                     </div>
                 </ItemTemplate>

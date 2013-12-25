@@ -146,6 +146,51 @@ namespace Data
             return sh.GetDataSet(sql).Tables[0];
         }
 
+        /// <summary>
+        /// 查询历史竞拍
+        /// </summary>
+        /// <param name="auctionTypeId">竞拍类型</param>
+        /// <param name="proTypeId">拍品类型</param>
+        /// <param name="minProPrice">拍品最低价格</param>
+        /// <param name="maxProPrice">拍品最高价格</param>
+        /// <param name="minAuctionPrice">竞拍价格</param>
+        /// <param name="maxAuctionPrice">竞拍价格</param>
+        /// <returns></returns>
+        public DataTable GetAuction_History(string auctionTypeId,string proTypeId,string minProPrice,string maxProPrice,string minAuctionPrice,string maxAuctionPrice) 
+        {
+            string sql = "select * from Auction where Status=3 and AuctionTypeID='"+auctionTypeId+"'";
+            if (proTypeId!="不限")
+            {
+                sql += "and ProductID in(select ProductID from Product where ProductTypeID='"+proTypeId+"')";
+            }
+
+            if (minProPrice != "" && maxProPrice != "")
+            {                
+                sql += " and ProductID in(select ProductID from Product where productPrice>" + minProPrice + " and productPrice<" + maxProPrice + ")";
+            }
+            else 
+            {
+                if (maxProPrice == ""&&minProPrice!="")
+                {
+                    sql += "and ProductID in(select ProductID from Product where productPrice<" + maxProPrice + ")";
+                }
+            }
+
+            if (minAuctionPrice != "" && maxAuctionPrice != "")
+            {
+                sql += "and AuctionPrice>" + minAuctionPrice + " and AuctionPrice<" + maxAuctionPrice + "";
+            }
+            else 
+            {
+                if (maxAuctionPrice==""&&minAuctionPrice!="")
+                {
+                    sql += "and AuctionPrice<"+maxAuctionPrice+"";
+                }
+            }
+            sql += "order by EndTime desc";
+            return sh.GetDataSet(sql).Tables[0];
+        }
+
         #region 竞拍类型
 
         /// <summary>
