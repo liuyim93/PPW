@@ -102,6 +102,7 @@
     <Content Include="Auction\Scripts\Main.js" />
     <Content Include="Auction\ShowOrder.aspx" />
     <Content Include="Auction\Styles\Style.css" />
+    <Content Include="Auction\Test.aspx" />
     <Content Include="Auction\UserControl\Last.ascx" />
     <Content Include="Auction\UserControl\Recommend.ascx" />
     <Content Include="Auction\UserControl\Top.ascx" />
@@ -537,6 +538,13 @@
     </Compile>
     <Compile Include="Auction\ShowOrder.aspx.designer.cs">
       <DependentUpon>ShowOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\UserCenter.master.cs">
       <DependentUpon>UserCenter.master</DependentUpon>

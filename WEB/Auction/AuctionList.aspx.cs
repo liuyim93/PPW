@@ -223,6 +223,26 @@ namespace WEB.Auction
             }
         }
 
+        protected void timer2_Tick(object sender,EventArgs e)
+        {
+            for (int i = 0; i < dlstAuction.Items.Count; i++)
+            {
+                HiddenField timePoint=dlstAuction.Items[i].FindControl("hfTimePoint")as HiddenField;
+                Label ms=dlstAuction.Items[i].FindControl("lblMS")as Label;
+                if (Convert.ToInt32(timePoint.Value)>0&&Convert.ToInt32(timePoint.Value)<=10)
+                {
+                    if (ms.Text == ""||ms.Text=="0")
+                    {
+                        ms.Text = "9";
+                    }
+                    else 
+                    {
+                        ms.Text = (Convert.ToInt32(ms.Text)-1).ToString();
+                    }
+                }
+            }
+        }
+
         //protected void dlstRecommend_ItemDataBound(object sender, DataListItemEventArgs e)
         //{
         //    if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)

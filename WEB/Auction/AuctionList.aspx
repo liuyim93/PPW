@@ -3,29 +3,34 @@
 <%@ Register TagName="Last" Src="UserControl/Last.ascx" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script type="text/javascript">    
-    function loadms()
-    {
-        var items=0;
-        var datalist = document.getElementById(<%=dlstAuction.ClientID %>).children[0];
-        var rows=datalist.children.length;
-        for (var row = 0; row < rows.length; row++) {            
-            for (var j = 0; j < datalist.children[0].length; j++) {
-                items++;
-}
-}
-for (var k = 100; k < items+100; k++) {
-    var timespan=document.getElementById('ctl00_ContentPlaceHolder1_dlstAuction_ct'+k+'_lblTime');
-    var time_ms=document.getElementById('ctl00_ContentPlaceHolder1_dlstAuction_ct'+k+'_lblMS');
-    var timepoint=document.getElementById('ctl00_ContentPlaceHolder1_dlstAuction_ct'+k+'_hfTimePoint');
-    if (timepoint.innerText<10&&timepoint.innerText>0) {
-        setInterval("updatems()",100);
-}
-}
-    } 
-    function  updatems(){
-        
-    }  
+<script type="text/javascript">
+    function loadms() {
+        var datalist = document.getElementById('<%=dlstAuction.ClientID %>').children[0];
+        var rows = datalist.children.length;
+        for (var row = 0; row < rows; row++) {
+            var columns = datalist.children[0];
+            for (var j = 0; j < columns.children.length; j++) {
+                if (columns.children[j].innerHTML != "" && columns.children[j].innerHTML != null) {
+                    var item = columns.children[j].children;
+                    var itemlen = item.children.length;
+                    var timems = item.children[6].children[2];
+                    var timepoint = item.children[8];
+                    if (timepoint.innerText != "" && timepoint.innerText > 0 && timepoint.innerText < 10) {
+                        setInterval("updatems(timems)", 100);
+                    }
+                }
+            }
+        }
+    }
+    function updatems(timems) {        
+        var i = 9;
+        if (i >= 0) {
+            timems.innerText = i;
+            i--;
+        } else {
+            i = 9;
+        }
+    }
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -35,7 +40,7 @@ for (var k = 100; k < items+100; k++) {
         <div class="auctionlist_left">
             <div class="auctionlist_left_title">正在热拍</div>
             <div class="auctionlist_left_content">
-                <asp:UpdatePanel ID="updatepanel1" runat="server">
+                <asp:UpdatePanel ID="updatepanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <asp:Timer ID="timer1" runat="server" ontick="timer1_Tick" Interval="1000"></asp:Timer>
                         <asp:DataList ID="dlstAuction" runat="server" RepeatColumns="4" 
