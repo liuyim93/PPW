@@ -51,3 +51,5 @@ F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Data\bin\Debug\Model.pdb
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Data\bin\Debug\Tools.pdb
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Data\bin\Debug\EntityFramework.xml
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Data\obj\Debug\Data.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Data\bin\Debug\Newtonsoft.Json.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Data\bin\Debug\Newtonsoft.Json.xml

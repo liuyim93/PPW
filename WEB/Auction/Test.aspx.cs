@@ -8,6 +8,8 @@ using BLL;
 using BLL.SystemSeting;
 using Model.Entities;
 using System.Runtime.Serialization;
+using Tools;
+using System.Web.Script.Serialization;
 
 namespace WEB.Auction
 {
@@ -23,7 +25,7 @@ namespace WEB.Auction
             if (!IsPostBack)
             {
                 BindData();
-            }
+            }           
         }
 
         public void BindData() 
@@ -80,21 +82,21 @@ namespace WEB.Auction
                     lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
                 }
                 imgbtnAuction.ToolTip = "每次出价消耗" + hfAuctionPoint.Value + "拍点";
-                if (hfAuctionTime.Value != "" && hfTimePoint.Value != "")
-                {
-                    if (Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10) && hfStatus.Value != "3")
-                    {
-                        TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
-                        lblTime.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');
-                    }
-                    else
-                    {
-                        if (hfStatus.Value != "3")
-                        {
-                            lblTime.Text = "00:00:" + hfTimePoint.Value.PadLeft(2, '0');
-                        }
-                    }
-                }
+                //if (hfAuctionTime.Value != "" && hfTimePoint.Value != "")
+                //{
+                //    if (Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10) && hfStatus.Value != "3")
+                //    {
+                //        TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
+                //        lblTime.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');
+                //    }
+                //    else
+                //    {
+                //        if (hfStatus.Value != "3")
+                //        {
+                //            lblTime.Text = "00:00:" + hfTimePoint.Value.PadLeft(2, '0');
+                //        }
+                //    }
+                //}
             }
         }
     }

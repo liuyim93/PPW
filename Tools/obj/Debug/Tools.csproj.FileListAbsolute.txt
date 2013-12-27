@@ -38,3 +38,5 @@ F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Tools\bin\Debug\Tools.pdb
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Tools\obj\Debug\ResolveAssemblyReference.cache
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Tools\obj\Debug\Tools.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Tools\obj\Debug\Tools.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Tools\bin\Debug\Newtonsoft.Json.dll
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\Tools\bin\Debug\Newtonsoft.Json.xml

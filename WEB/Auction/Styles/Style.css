@@ -125,6 +125,9 @@ ul{margin:0px;padding:0px;list-style:none;}
 .product_fullprice{width:20px; height:20px;position:absolute;top:12px;right:5px; cursor:pointer;}
 .product_img{width:120px;height:120px;margin-left:35px; cursor:pointer;}
 .product_price{color:#999999;height:25px;line-height:25px;padding-left:45px;}
+.product_price_auctionprice{color:#999999;height:25px;line-height:25px;padding-left:45px;}
+.product_price_auctionprice span{color:#000000;font-weight:bold;font-family:微软雅黑;}
+.product_price_auctionprice_toggle{background:#ff0000;color:#000000;font-weight:bold;font-family:微软雅黑;}
 .product_timer{height:30px;line-height:30px; font-family:Arial;font-size:20px;font-weight:bold; text-align:center;}
 .product_auction{text-align:center;}
 .product_endtime{color:#999999;height:32px; padding-left:40px; line-height:32px;}

@@ -11,7 +11,7 @@ namespace Tools
 {
     public class DataTableConverter
     {
-        public override void WriteJson(JsonWriter writer, object value)
+        public  void WriteJson(JsonWriter writer, object value)
         {
             DataTable dt = (DataTable)value;
 
@@ -31,7 +31,7 @@ namespace Tools
 
         }
 
-        public override bool CanConvert(Type objectType)
+        public  bool CanConvert(Type objectType)
         {
             return typeof(DataTable).IsAssignableFrom(objectType);
         }  
