@@ -9,59 +9,109 @@
     <link rel="Stylesheet" type="text/css" href="Styles/Style.css" />
     <script type="text/javascript">
         $(document).ready(function () {
-            $.extend({
-                getData: function () {
-                    $.ajax({
-                        url: "testajax.aspx",
-                        type: "GET",
-                        dataType: "json",
-                        data: "",
-                        success: function (data) {
-                            for (var i = 0; i < data.length; i++) {
-                                var $id = data[i].AuctionID;
-                                var $price = $("#testarea_price" + $id + " span");
-                                var $member = $("#testarea_member" + $id + " span");
-                                var $time = $("#testarea_time" + $id + " span:first");
-                                var $timems = $("#testarea_time" + $id + " span:last");
-                                var $timepoint = $("#testarea_time" + $id + " input");
-                                $timepoint.text(data[i].TimePoint);
-                                var auctionprice = data[i].AuctionPrice;
-                                if (auctionprice != $price.text()) {
-                                    $price.toggleClass('product_price_auctionprice_toggle');
-                                    $price.text("￥" + data[i].AuctionPrice);
-                                }                                
-                                $member.text(data[i].HuiYuanID);
-                                var datetime = new Date(ChangeDateFormat(data[i].AuctionTime));
-                                var datenow = new Date();
-                                $time.text(getTimeSpan(datetime, datenow));
-                            }
-                        },
-                        error: function () { alert("ajax error."); }
-                    });
-                }
+            var $auctionbtn = $(".auctionbtn");
+            $auctionbtn.click(function () {                
+                $.extend({
+                    var $auctionId = $(this).next().attr("value");
+                $.ajax({
+                    url: "submitauction.aspx",
+                    type: "GET",
+                    dataType: "json",
+                    async: false,
+                    data: "AuctionID=" + $auctionId,
+                    success: function () { },
+                    error: function (msg) { }
+                });
+                });
+
+                $.extend({
+                    getData: function () {
+                        var $id = "";
+                        $.ajax({
+                            url: "testajax.aspx",
+                            type: "GET",
+                            dataType: "json",
+                            data: "",
+                            success: function (data) {
+                                for (var i = 0; i < data.length; i++) {
+                                    $id = data[i].AuctionID;
+                                    var $price = $("#testarea_price" + $id + " span");
+                                    var $member = $("#testarea_member" + $id + " span");
+                                    var $time = $("#testarea_time" + $id + " span:first");
+                                    var $timems = $("#testarea_time" + $id + " span:last");
+                                    var $timepoint = $("#testarea_time" + $id + " input");
+                                    $timepoint.text(data[i].TimePoint);
+                                    var auctionprice = data[i].AuctionPrice;
+                                    if ("￥" + auctionprice != $price.text()) {
+                                        $price.toggleClass('product_price_auctionprice_toggle');
+                                        $price.text("￥" + data[i].AuctionPrice);
+                                    } else {
+                                        $price.removeClass('product_price_auctionprice_toggle');
+                                    }
+                                    $member.text(data[i].HuiYuanID);
+                                    var datetime = new Date(ChangeDateFormat(data[i].AuctionTime));
+                                    var datenow = new Date();
+
+                                    if (data[i].Status == 3) {
+                                        $time.text("已成交");
+                                        $timems.text("");
+                                    } else {
+                                        if (getTimeSpan(datetime, datenow) != "") {
+                                            $time.text(getTimeSpan(datetime, datenow));
+                                        } else {
+                                            if (data[i].TimePoint == 10) {
+                                                $time.text("00:00:" + data[i].TimePoint);
+                                            } else {
+                                                $time.text("00:00:0" + data[i].TimePoint);
+                                                if (data[i].TimePoint == 0) {
+                                                    $.ajax({
+                                                        url: "auctioncomplete.aspx",
+                                                        type: "get",
+                                                        dataType: "json",
+                                                        async: false,
+                                                        data: "AuctionID=" + data[i].AuctionID + "&hyId=" + escape($("#testarea_member" + $id + " input").text()),
+                                                        success: function (data) {
+                                                            $time.text("已成交");
+                                                        },
+                                                        error: function () { alert("ajax error!"); }
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            error: function () { alert("ajax error."); }
+                        });
+                    }
+                });
+                $.extend({
+                    getMS: function () {
+                        $.ajax({
+                            url: "testajax.aspx",
+                            type: "GET",
+                            dataType: "json",
+                            data: "",
+                            success: function (data) {
+                                for (var i = 0; i < data.length; i++) {
+                                    var $id = data[i].AuctionID;
+                                    var $timepoint = $("#testarea_time" + $id + " input");
+                                    var $timems = $("#testarea_time" + $id + " span:last");
+                                    $timepoint.text(data[i].TimePoint);
+                                    if (data[i].Status == 3) {
+                                        $timems.text("");
+                                    } else {
+                                        $timems.text(timeMS($timepoint.text(), $timems.text()));
+                                    }
+                                }
+                            },
+                            error: function (msg) { alert("something is wrong!" + msg) }
+                        });
+                    }
+                });
             });
-            $.extend({
-                getMS: function () {
-                    $.ajax({
-                        url: "testajax.aspx",
-                        type: "GET",
-                        dataType: "json",
-                        data: "",
-                        success: function (data) {
-                            for (var i = 0; i < data.length; i++) {
-                                var $id = data[i].AuctionID;
-                                var $timepoint = $("#testarea_time" + $id + " input");
-                                var $timems = $("#testarea_time" + $id + " span:last");
-                                $timepoint.text(data[i].TimePoint);
-                                $timems.text(timeMS($timepoint.text(), $timems.text()));
-                            }
-                        },
-                        error: function () { }
-                    });
-                }
-            });
-            setInterval("$.getData()", 1000);
-            setInterval("$.getMS()", 300);
+            setInterval("$.getData()", 200);
+            setInterval("$.getMS()", 200);
 
             function ChangeDateFormat(jsondate) {
                 var date = new Date(parseInt(jsondate.replace("/Date(", "").replace(")/", ""), 10));
@@ -76,22 +126,26 @@
 
             function getTimeSpan(date1, date2) {
                 var dateSpan = date1.getTime() - date2.getTime();
-                var num = dateSpan % (24 * 3600 * 1000);
-                var hours = Math.floor(num / (3600 * 1000));
-                var nums = dateSpan % (3600 * 1000);
-                var minutes = Math.floor(nums / (60 * 1000));
-                var nums1 = nums % (60 * 1000);
-                var seconds = Math.floor(nums1 / 1000);
-                if (hours < 10 && hours > 0) {
-                    hours = "0" + hours;
+                if (dateSpan > 10000) {
+                    var num = dateSpan % (24 * 3600 * 1000);
+                    var hours = Math.floor(num / (3600 * 1000));
+                    var nums = dateSpan % (3600 * 1000);
+                    var minutes = Math.floor(nums / (60 * 1000));
+                    var nums1 = nums % (60 * 1000);
+                    var seconds = Math.floor(nums1 / 1000);
+                    if (hours < 10 && hours > 0) {
+                        hours = "0" + hours;
+                    }
+                    if (minutes < 10 && minutes > 0) {
+                        minutes = "0" + minutes;
+                    }
+                    if (seconds < 10 && seconds > 0) {
+                        seconds = "0" + seconds;
+                    }
+                    return hours + ":" + minutes + ":" + seconds;
+                } else {
+                    return "";
                 }
-                if (minutes < 10 && minutes > 0) {
-                    minutes = "0" + minutes;
-                }
-                if (seconds < 10 && seconds > 0) {
-                    seconds = "0" + seconds;
-                }
-                return hours + ":" + minutes + ":" + seconds;
             }
 
             function timeMS(timepoint, ms) {
@@ -141,7 +195,9 @@
                     </div>
                     <div class="product_auction" id="testarea_btn<%#Eval("AuctionID") %>">
                         <asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif"
-                            CommandName="auction" CommandArgument='<%#Eval("AuctionID") %>' /></div>                    
+                            CommandName="auction" CommandArgument='<%#Eval("AuctionID") %>' CssClass="auctionbtn"/>
+                            <input type="text" value='<%#Eval("AuctionID") %>' style="display:none" />
+                            </div>                    
                     <asp:HiddenField ID="hfAuctionTime" runat="server" Value='<%#Eval("AuctionTime") %>' />
                     <asp:HiddenField ID="hfStatus" runat="server" Value='<%#Eval("Status") %>' />
                     <asp:HiddenField ID="hfAuctionPoint" runat="server" Value='<%#Eval("AuctionPoint") %>' />

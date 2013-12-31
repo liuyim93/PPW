@@ -17,6 +17,7 @@ namespace WEB.Auction
         JavaScriptSerializer serialize = new JavaScriptSerializer();
         protected void Page_Load(object sender, EventArgs e)
         {
+            string auctionId=Request.QueryString["AuctionID"];
             List<auction> list = auctionBll.GetAllAuctioning();
             string jsonStr = serialize.Serialize(list);
             Response.Clear();

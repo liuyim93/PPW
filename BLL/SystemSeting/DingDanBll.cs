@@ -83,9 +83,19 @@ namespace BLL.SystemSeting
        /// </summary>
        /// <param name="typeId"></param>
        /// <returns></returns>
-       public List<OrderType> GetbyID(string typeId) 
+       public List<OrderType> GetOrderTypebyID(string typeId) 
        {
            string sql = "select * from OrderType where OrderTypeID='"+typeId+"'";
+           return ddDat.GetOrderType(sql);
+       }
+
+       /// <summary>
+       /// 根据订单类型名查询订单类型ID
+       /// </summary>
+       /// <param name="typeName"></param>
+       /// <returns></returns>
+       public List<OrderType> GetOrderTypebyName(string typeName) {
+           string sql = "select * from OrderType where TypeName='"+typeName+"'";
            return ddDat.GetOrderType(sql);
        }
 

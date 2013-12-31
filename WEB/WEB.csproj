@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Auction\auctioncomplete.aspx" />
     <Content Include="Auction\AuctionHistory.aspx" />
     <Content Include="Auction\AuctionList.aspx" />
     <Content Include="Auction\FutureAuction.aspx" />
@@ -102,6 +103,7 @@
     <Content Include="Auction\Scripts\Main.js" />
     <Content Include="Auction\ShowOrder.aspx" />
     <Content Include="Auction\Styles\Style.css" />
+    <Content Include="Auction\submitauction.aspx" />
     <Content Include="Auction\Test.aspx" />
     <Content Include="Auction\testajax.aspx" />
     <Content Include="Auction\UserControl\Last.ascx" />
@@ -467,6 +469,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auction\auctioncomplete.aspx.cs">
+      <DependentUpon>auctioncomplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\auctioncomplete.aspx.designer.cs">
+      <DependentUpon>auctioncomplete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Auction\AuctionHistory.aspx.cs">
       <DependentUpon>AuctionHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -539,6 +548,13 @@
     </Compile>
     <Compile Include="Auction\ShowOrder.aspx.designer.cs">
       <DependentUpon>ShowOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\submitauction.aspx.cs">
+      <DependentUpon>submitauction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\submitauction.aspx.designer.cs">
+      <DependentUpon>submitauction.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
