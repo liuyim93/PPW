@@ -22,21 +22,12 @@ namespace WEB.Auction {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// top1 控件。
+        /// repeater1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WEB.Auction.UserControl.Top top1;
-        
-        /// <summary>
-        /// dlstAuction 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstAuction;
+        protected global::System.Web.UI.WebControls.Repeater repeater1;
     }
 }

@@ -360,6 +360,7 @@
     <Content Include="kindeditor\themes\qq\editor.gif" />
     <Content Include="kindeditor\themes\qq\qq.css" />
     <Content Include="kindeditor\themes\simple\simple.css" />
+    <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Lib\DocumentFormat.OpenXml.dll" />
     <Content Include="Scripts\Lib\DocumentFormat.OpenXml.Extensions.dll" />
     <Content Include="Scripts\Lib\DocumentFormat.OpenXml.Extensions.XML" />

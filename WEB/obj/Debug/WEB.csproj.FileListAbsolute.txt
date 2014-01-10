@@ -110,7 +110,6 @@ F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\ResolveAssembly
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\Interop.CHINAPAYLib.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\Interop.CPNPC.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\WEB.csproj.ResolveComReference.cache
-F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\WEB.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\WEB.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\WEB.pdb
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\AjaxPro.dll
@@ -135,4 +134,5 @@ F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\Ext.Net.xml
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\Ext.Net.Utilities.xml
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\Newtonsoft.Json.xml
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\Data.pdb
+F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\WEB.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\WEB.pdb
