@@ -88,8 +88,8 @@ function PaiPaiBidItem(_GameType, _Vid, _PaiPai) {
 	        }
 	        else {
 	            this.oTimer.html("已成交"); this.oBtn.html("");
-	            _this.PaiPaiBid.Remove(this.id);
-	            _this = null;
+//	            _this.PaiPaiBid.Remove(this.id);
+//	            _this = null;
 	        }
 	    }
 	    else if (this.GameType == '89737BC5-37DB-4DC8-B527-B1136162839E') {
@@ -108,8 +108,8 @@ function PaiPaiBidItem(_GameType, _Vid, _PaiPai) {
 	        }
 	        else {
 	            this.oTimer.html("秒杀已成交");
-	            _this.PaiPaiBid.Remove(this.id);
-	            _this = null;
+//	            _this.PaiPaiBid.Remove(this.id);
+//	            _this = null;
 	        }
 	    }
 	},
@@ -132,7 +132,7 @@ function PaiPaiBidItem(_GameType, _Vid, _PaiPai) {
 	        this.Price = d["AuctionPrice"];
 	        this.VendueState = d["Status"];
 	        this.VendueUserId = d["HuiYuanID"]; //竞拍信息对应的会员编号
-	        this.UserNickName = d["HuiYuanID"];
+	        this.UserNickName = d["HuiYuanName"];
 	        this.UserHeadImage = d["HuiYuanID"];
 	        this.timePoint = d["TimePoint"];
 	        this.AuctionTime = new Date(parseInt(d["AuctionTime"].replace("/Date(", "").replace(")/", ""), 10));
@@ -230,19 +230,21 @@ function PaiPaiBid() {
 	    var dt = _this.AjaxData_1[0];
 	    //if(dt)
 	    {
-	        try {
-	            //alert(dt);
-	            //if(1==0)
-	            for (var i = 0; i < dt.length; i++) {
-	                var d = (dt[i]);
-	                var id = d["AuctionID"].toString(); //id值
-	                var o = _this.DivList["Bid_" + id];
-	                o.FillEndStopTime();
-	                //o.Mill --;
-	            }
-	        } catch (se) {//window.status = e.message;
-	            alert(se);
-	        }
+        if(dt!=null&&dt.length>0){
+            try {
+                //alert(dt);
+                //if(1==0)
+                for (var i = 0; i < dt.length; i++) {
+                    var d = (dt[i]);
+                    var id = d["AuctionID"].toString(); //id值
+                    var o = _this.DivList["Bid_" + id];
+                    o.FillEndStopTime();
+                    //o.Mill --;
+                }
+            } catch (se) {//window.status = e.message;
+                alert(se);
+            }
+        }	        
 	    }
 	    //var n = parseInt(window.status,10);if(isNaN(n))n=0;window.status = (++n);
 	    _this.ArrTimer[0] = setTimeout(function () { _this.Fill(); }, 100); //启动1/10计时器
@@ -586,7 +588,7 @@ PaiPaiBid.prototype.BidSuccess = function (id, msg) {
     } else if (msg == 3) {
         _this.ShowBidTip(id, '您的余额不足，请充值!'); //<a href="javascript:paycountnow();" title="充值，获取闪点">【马上充值】</a>');
         isAlertCharge(id);
-        
+
     } else if (msg == 4) {
         _this.ShowBidTip(id, '您已出价，无需重复', "#FF0000");
         //var msg = '<div class="tc"><span class="button"><span class="first-child"><button onclick="removeDialogbox(\'#userAway\');" type="button">您已出价，无需重复!</button></span></span></div>';
@@ -625,6 +627,8 @@ PaiPaiBid.prototype.BidSuccess = function (id, msg) {
         _this.ShowBidTip(id, '本期商品竞拍尚未开始', "#339900");
     } else if (msg == 100) {
         _this.ShowBidTip(id, '游戏类型不一致');
+    }else if (msg == 18) {
+        _this.ShowBidTip(id,'您的返点不足！');
     } else {
         _this.ShowBidTip(id, '出价信息到达服务器时竞拍已经结束，下次请提早出价！', "#FF0000");
     }
@@ -704,13 +708,13 @@ PaiPaiBid.prototype.BidHistory = function (id, VendueState, oDiv) {
     if (VendueState >= 3) { clearInterval(this.timer_Detail[0]); return false; }
     else {
         var _this = this;
-        var _url = "/index.aspx?s=/Auction/ajaxbidhistory_json/tid/" + id;
+        var _url = "/Auction/ajax/BidHistory.ashx";
         //alert(_url);
-        AjaxSubmit(null, _url, { "GameType": _this.GameType }
+        AjaxSubmit(null, _url, { "id":id }
 			, function (msg) { _this.BidHistoryFill(msg, id, oDiv); }
 			, null, 'json'
 		);
-        this.timer_Detail[0] = setTimeout(function () { _this.BidHistory(id, VendueState, oDiv) }, 10000); //3s
+        this.timer_Detail[0] = setTimeout(function () { _this.BidHistory(id, VendueState, oDiv) }, 6000); //3s
         //clearInterval(this.timer_Detail[0]);
     }
 }

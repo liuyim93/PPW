@@ -43,7 +43,7 @@ namespace BLL
         /// <returns></returns>
         public List<auction> GetAuctionbyProId(string proId) 
         {
-            string sql = "select * from Auction where ProductID="+proId;
+            string sql = "select * from Auction where ProductID='"+proId+"'";
             return auctionDat.GetAuction(sql);
         }
 
@@ -260,6 +260,46 @@ namespace BLL
         public DataTable GetAuction_History(string auctionTypeId,string proTypeId,string minProPrice,string maxProPrice,string minAuctionPrice,string maxAuctionPrice) 
         {
             return auctionDat.GetAuction_History(auctionTypeId,proTypeId,minProPrice,maxProPrice,minAuctionPrice,minAuctionPrice);
+        }
+
+        /// <summary>
+        /// 查询当天正在竞拍的常规竞拍拍品
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getAllAuctioning() {
+            return auctionDat.getAllAuctioning();
+        }
+
+        /// <summary>
+        /// 查询当天未成交的常规竞拍 拍品
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getNormalAuctioning() {
+            return auctionDat.getNormalAuctioning();
+        }
+
+        /// <summary>
+        /// 查询25件 常规竞拍
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getAuctioning_Top25() {
+            return auctionDat.getAuctioning_Top25();
+        }
+
+        /// <summary>
+        /// 查询5条免费竞拍
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getFreeAuction_Top5() {
+            return auctionDat.getFreeAuction_Top5();
+        }
+
+        /// <summary>
+        /// 查询当天所有未成交的免费竞拍 拍品
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getFreeAuctioning() {
+            return auctionDat.getFreeAuctioning();
         }
     }
 }

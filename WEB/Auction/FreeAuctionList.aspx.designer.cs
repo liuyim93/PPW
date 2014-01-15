@@ -10,60 +10,69 @@
 namespace WEB.Auction {
     
     
-    public partial class Index {
+    public partial class FreeAuctionList {
         
         /// <summary>
-        /// dlstBroad 控件。
+        /// form1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstBroad;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// dlstNews 控件。
+        /// top1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstNews;
+        protected global::WEB.Auction.UserControl.Top top1;
         
         /// <summary>
-        /// repeater_auction 控件。
+        /// repeater1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater_auction;
+        protected global::System.Web.UI.WebControls.Repeater repeater1;
         
         /// <summary>
-        /// repeater_free 控件。
+        /// AspNetPager1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater_free;
+        protected global::Wuqi.Webdiyer.AspNetPager AspNetPager1;
         
         /// <summary>
-        /// dlstDone 控件。
+        /// recommend1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstDone;
+        protected global::WEB.Auction.UserControl.Recommand recommend1;
         
         /// <summary>
-        /// dlstShowPic 控件。
+        /// last1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstShowPic;
+        protected global::WEB.Auction.UserControl.Last last1;
+        
+        /// <summary>
+        /// bottom1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::WEB.Auction.UserControl.Bottom bottom1;
     }
 }

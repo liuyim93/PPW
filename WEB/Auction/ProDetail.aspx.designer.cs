@@ -13,24 +13,6 @@ namespace WEB.Auction {
     public partial class Auctioning {
         
         /// <summary>
-        /// updatepanel1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatepanel1;
-        
-        /// <summary>
-        /// Timer1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.Timer Timer1;
-        
-        /// <summary>
         /// imgBig 控件。
         /// </summary>
         /// <remarks>
@@ -85,42 +67,6 @@ namespace WEB.Auction {
         protected global::System.Web.UI.WebControls.Label lblShipFee;
         
         /// <summary>
-        /// ltlPrice 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlPrice;
-        
-        /// <summary>
-        /// lblAuctionPrice 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAuctionPrice;
-        
-        /// <summary>
-        /// ltlMember 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlMember;
-        
-        /// <summary>
-        /// lblMemberName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMemberName;
-        
-        /// <summary>
         /// pnlAuction 控件。
         /// </summary>
         /// <remarks>
@@ -128,51 +74,6 @@ namespace WEB.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlAuction;
-        
-        /// <summary>
-        /// lblTime 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTime;
-        
-        /// <summary>
-        /// imgbtnAuction 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtnAuction;
-        
-        /// <summary>
-        /// pnlEnd 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEnd;
-        
-        /// <summary>
-        /// lblStart 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStart;
-        
-        /// <summary>
-        /// lblEnd 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEnd;
         
         /// <summary>
         /// lblPoint 控件。
@@ -236,15 +137,6 @@ namespace WEB.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPay;
-        
-        /// <summary>
-        /// gvwHistory 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvwHistory;
         
         /// <summary>
         /// lblDetail 控件。

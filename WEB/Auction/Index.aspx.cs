@@ -35,8 +35,11 @@ namespace WEB.Auction
             dlstNews.DataSource = ggBll.GetGgTop5();
             dlstNews.DataBind();
             //正在热拍
-            dlstProduct.DataSource = auctionBll.GetAuction_Top25();
-            dlstProduct.DataBind();
+            repeater_auction.DataSource = auctionBll.getAuctioning_Top25();
+            repeater_auction.DataBind();
+            //免费竞拍
+            repeater_free.DataSource = auctionBll.getFreeAuction_Top5();
+            repeater_free.DataBind();
             //最新成交五条信息
             dlstDone.DataSource = auctionBll.GetAuctioned_Top5();
             dlstDone.DataBind();
@@ -48,224 +51,218 @@ namespace WEB.Auction
             dlstBroad.DataBind();
         }
 
-        //查询最新的25条未成交的竞拍信息
-        public void BindProduct() 
-        {
-            dlstProduct.DataSource = auctionBll.GetAuction_Top25();
-            dlstProduct.DataBind();
-        }
-
         /// <summary>
         /// 正在热拍
         /// </summary>
         /// <param name="source"></param>
         /// <param name="e"></param>
-        protected void dlstProduct_ItemCommand(object source, DataListCommandEventArgs e)
-        {
-            switch (e.CommandName)
-            {
-                    //出价
-                case "auction":
-                    try
-                    {
-                        if (Session["HuiYuanName"] == null || Session["HuiYuanID"] == null)
-                        {
-                            MessageBox.AlertAndRedirect("请先登录","../Auction/UserLogin.aspx",Page);
-                        }
-                        else 
-                        {
-                            string auctionId = e.CommandArgument.ToString();
-                            using (TransactionScope ts = new TransactionScope())
-                            {
-                                //修改竞拍表
-                                auction auction = new auction();
-                                HiddenField hfAuctionTime = e.Item.FindControl("hfAuctionTime") as HiddenField;
-                                Label lblTimer = e.Item.FindControl("lblTimer") as Label;
-                                HiddenField hfStatus = e.Item.FindControl("hfStatus") as HiddenField;
-                                if (hfStatus.Value != "3")
-                                {
-                                    auction.TimePoint = 10;
-                                }
-                                auction.HuiYuanID = Session["HuiYuanID"].ToString();
-                                auction.AuctionID = auctionId;
-                                auctionBll.UpdateAuctionPrice(auction);
-                                //查询出价后的产品信息
-                                auction auction1 = auctionBll.GetAuction(auctionId)[0];
-                                //添加出价记录
-                                ChuJiaJiLu cj = new ChuJiaJiLu();
-                                cj.AuctionTime = DateTime.Now;
-                                cj.AuctionID = auctionId;
-                                cj.Status = 1;
-                                cj.Price = Convert.ToDecimal(auction1.AuctionPrice);
-                                cj.IPAdress = Request.UserHostAddress;
-                                cj.HuiYuanID = Session["HuiYuanID"].ToString();
-                                cj.AuctionPoint = auction1.AuctionPoint;
-                                cj.FreePoint = Convert.ToInt32(auction1.FreePoint);
-                                cjBll.AddChuJiaJiLu(cj);
-                                //扣除会员相应的拍点
-                                HuiYuan hy = new HuiYuan();
-                                hy.HuiYuanID = Session["HuiYuanID"].ToString();
-                                hy.PaiDian = auction1.AuctionPoint * -1;
-                                hy.FreePoint = auction1.FreePoint * -1;
-                                hyBll.UpdateHuiYuanPoint(hy);
-                                ts.Complete();
-                            }
-                            BindProduct();
-                        }                       
-                    }
-                    catch (Exception)
-                    {                        
-                        throw;
-                    }                   
-                    break;              
-                default:
-                    break;
-            }
-        }
+        //protected void dlstProduct_ItemCommand(object source, DataListCommandEventArgs e)
+        //{
+        //    switch (e.CommandName)
+        //    {
+        //            //出价
+        //        case "auction":
+        //            try
+        //            {
+        //                if (Session["HuiYuanName"] == null || Session["HuiYuanID"] == null)
+        //                {
+        //                    MessageBox.AlertAndRedirect("请先登录","../Auction/UserLogin.aspx",Page);
+        //                }
+        //                else 
+        //                {
+        //                    string auctionId = e.CommandArgument.ToString();
+        //                    using (TransactionScope ts = new TransactionScope())
+        //                    {
+        //                        //修改竞拍表
+        //                        auction auction = new auction();
+        //                        HiddenField hfAuctionTime = e.Item.FindControl("hfAuctionTime") as HiddenField;
+        //                        Label lblTimer = e.Item.FindControl("lblTimer") as Label;
+        //                        HiddenField hfStatus = e.Item.FindControl("hfStatus") as HiddenField;
+        //                        if (hfStatus.Value != "3")
+        //                        {
+        //                            auction.TimePoint = 10;
+        //                        }
+        //                        auction.HuiYuanID = Session["HuiYuanID"].ToString();
+        //                        auction.AuctionID = auctionId;
+        //                        auctionBll.UpdateAuctionPrice(auction);
+        //                        //查询出价后的产品信息
+        //                        auction auction1 = auctionBll.GetAuction(auctionId)[0];
+        //                        //添加出价记录
+        //                        ChuJiaJiLu cj = new ChuJiaJiLu();
+        //                        cj.AuctionTime = DateTime.Now;
+        //                        cj.AuctionID = auctionId;
+        //                        cj.Status = 1;
+        //                        cj.Price = Convert.ToDecimal(auction1.AuctionPrice);
+        //                        cj.IPAdress = Request.UserHostAddress;
+        //                        cj.HuiYuanID = Session["HuiYuanID"].ToString();
+        //                        cj.AuctionPoint = auction1.AuctionPoint;
+        //                        cj.FreePoint = Convert.ToInt32(auction1.FreePoint);
+        //                        cjBll.AddChuJiaJiLu(cj);
+        //                        //扣除会员相应的拍点
+        //                        HuiYuan hy = new HuiYuan();
+        //                        hy.HuiYuanID = Session["HuiYuanID"].ToString();
+        //                        hy.PaiDian = auction1.AuctionPoint * -1;
+        //                        hy.FreePoint = auction1.FreePoint * -1;
+        //                        hyBll.UpdateHuiYuanPoint(hy);
+        //                        ts.Complete();
+        //                    }
+        //                    BindProduct();
+        //                }                       
+        //            }
+        //            catch (Exception)
+        //            {                        
+        //                throw;
+        //            }                   
+        //            break;              
+        //        default:
+        //            break;
+        //    }
+        //}
 
         //正在热拍
-        protected void dlstProduct_ItemDataBound(object sender, DataListItemEventArgs e)
-        {
-            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
-            {
-                HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
-                Image imgProduct = e.Item.FindControl("imgProduct") as Image;
-                HiddenField hfProductNo = e.Item.FindControl("hfProductNo") as HiddenField;
-                Label marketPrice = e.Item.FindControl("lblMarketPrice") as Label;
+        //protected void dlstProduct_ItemDataBound(object sender, DataListItemEventArgs e)
+        //{
+        //    if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
+        //    {
+        //        HiddenField hfProductID = e.Item.FindControl("hfProductID") as HiddenField;
+        //        Image imgProduct = e.Item.FindControl("imgProduct") as Image;
+        //        HiddenField hfProductNo = e.Item.FindControl("hfProductNo") as HiddenField;
+        //        Label marketPrice = e.Item.FindControl("lblMarketPrice") as Label;
 
-                string auctionId=dlstProduct.DataKeys[e.Item.ItemIndex].ToString();
-                List<Product> list_pro = productBll.GetById(hfProductID.Value);
-                string proName = list_pro[0].productName;
-                List<ProductImeg> list_img = productBll.GetProtductImeg("",hfProductID.Value);                    
-                if (list_img.Count > 0)
-                {
-                    imgProduct.ImageUrl = list_img[0].img;
-                    imgProduct.ToolTip = proName + " (第" + hfProductNo.Value + "号拍品)";//图片提示信息
-                }                    
-                HiddenField hfAuctionPoint = e.Item.FindControl("hfAuctionPoint") as HiddenField;
-                ImageButton imgbtnAuction = e.Item.FindControl("imgbtnAuction") as ImageButton;
-                imgbtnAuction.ToolTip = "每次出价消耗"+hfAuctionPoint.Value+"拍点";//出价按钮 提示信息
+        //        string auctionId=dlstProduct.DataKeys[e.Item.ItemIndex].ToString();
+        //        List<Product> list_pro = productBll.GetById(hfProductID.Value);
+        //        string proName = list_pro[0].productName;
+        //        List<ProductImeg> list_img = productBll.GetProtductImeg("",hfProductID.Value);                    
+        //        if (list_img.Count > 0)
+        //        {
+        //            imgProduct.ImageUrl = list_img[0].img;
+        //            imgProduct.ToolTip = proName + " (第" + hfProductNo.Value + "号拍品)";//图片提示信息
+        //        }                    
+        //        HiddenField hfAuctionPoint = e.Item.FindControl("hfAuctionPoint") as HiddenField;
+        //        ImageButton imgbtnAuction = e.Item.FindControl("imgbtnAuction") as ImageButton;
+        //        imgbtnAuction.ToolTip = "每次出价消耗"+hfAuctionPoint.Value+"拍点";//出价按钮 提示信息
 
-                //拍品名称
-                HyperLink hlnkProName = e.Item.FindControl("hlnkProName") as HyperLink;
-                Literal intro = e.Item.FindControl("ltlIntro") as Literal;
-                hlnkProName.Text = proName;
-                intro.Text=list_pro[0].Intro;
-                hlnkProName.NavigateUrl = "../Auction/ProDetail.aspx?id="+auctionId+"";
-                hlnkProName.ToolTip =imgProduct.ToolTip;
-                marketPrice.Text=list_pro[0].productPrice.ToString();
+        //        //拍品名称
+        //        HyperLink hlnkProName = e.Item.FindControl("hlnkProName") as HyperLink;
+        //        Literal intro = e.Item.FindControl("ltlIntro") as Literal;
+        //        hlnkProName.Text = proName;
+        //        intro.Text=list_pro[0].Intro;
+        //        hlnkProName.NavigateUrl = "../Auction/ProDetail.aspx?id="+auctionId+"";
+        //        hlnkProName.ToolTip =imgProduct.ToolTip;
+        //        marketPrice.Text=list_pro[0].productPrice.ToString();
 
-                //显示出价人
-                HiddenField hfMemberID = e.Item.FindControl("hfMemberID") as HiddenField;
-                Label lblMemberName = e.Item.FindControl("lblMemberName") as Label;
-                if (hfMemberID != null && hfMemberID.Value != "")
-                {
-                    lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
-                }
-                else 
-                {
-                    lblMemberName.Text = "";
-                }
-                //显示倒计时
-                HiddenField hfAuctionTime = e.Item.FindControl("hfAuctionTime") as HiddenField;
-                Label lblTimer = e.Item.FindControl("lblTimer") as Label;
-                HiddenField hfTimePoint = e.Item.FindControl("hfTimePoint") as HiddenField;
-                HiddenField hfStatus=e.Item.FindControl("hfStatus")as HiddenField;
-                if (hfAuctionTime.Value != "" && Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10))
-                {
-                    TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
-                    lblTimer.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
-                }
-                else 
-                {
-                    if (Convert.ToInt32(hfStatus.Value) == 3)
-                    {
-                        lblTimer.Text = "已成交";
-                    }
-                    else 
-                    {
-                        if (hfTimePoint.Value!="-1")
-                        {
-                            lblTimer.Text = "00:00:" + hfTimePoint.Value.PadLeft(2, '0');
-                        }                        
-                    }                    
-                }
-            }
-        }
+        //        //显示出价人
+        //        HiddenField hfMemberID = e.Item.FindControl("hfMemberID") as HiddenField;
+        //        Label lblMemberName = e.Item.FindControl("lblMemberName") as Label;
+        //        if (hfMemberID != null && hfMemberID.Value != "")
+        //        {
+        //            lblMemberName.Text = hyBll.GetHuiYuan(hfMemberID.Value).HuiYuanName;
+        //        }
+        //        else 
+        //        {
+        //            lblMemberName.Text = "";
+        //        }
+        //        //显示倒计时
+        //        HiddenField hfAuctionTime = e.Item.FindControl("hfAuctionTime") as HiddenField;
+        //        Label lblTimer = e.Item.FindControl("lblTimer") as Label;
+        //        HiddenField hfTimePoint = e.Item.FindControl("hfTimePoint") as HiddenField;
+        //        HiddenField hfStatus=e.Item.FindControl("hfStatus")as HiddenField;
+        //        if (hfAuctionTime.Value != "" && Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10))
+        //        {
+        //            TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
+        //            lblTimer.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
+        //        }
+        //        else 
+        //        {
+        //            if (Convert.ToInt32(hfStatus.Value) == 3)
+        //            {
+        //                lblTimer.Text = "已成交";
+        //            }
+        //            else 
+        //            {
+        //                if (hfTimePoint.Value!="-1")
+        //                {
+        //                    lblTimer.Text = "00:00:" + hfTimePoint.Value.PadLeft(2, '0');
+        //                }                        
+        //            }                    
+        //        }
+        //    }
+        //}
 
-        protected void timer1_Tick(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dlstProduct.Items.Count; i++)
-            {
-                HiddenField hfProductID = dlstProduct.Items[i].FindControl("hfProductID") as HiddenField;
-                HiddenField hfTimePoint = dlstProduct.Items[i].FindControl("hfTimePoint") as HiddenField;
-                HiddenField hfAuctionTime=dlstProduct.Items[i].FindControl("hfAuctionTime")as HiddenField;
-                Label lblTimer=dlstProduct.Items[i].FindControl("lblTimer")as Label;
-                HiddenField hfStaus=dlstProduct.Items[i].FindControl("hfStatus")as HiddenField;
-                HiddenField hfMemberID = dlstProduct.Items[i].FindControl("hfMemberID") as HiddenField;
-                Label lblAuctionPrice=dlstProduct.Items[i].FindControl("lblAuctionPrice")as Label;
-                List<Product> list_pro = productBll.GetById(hfProductID.Value);
-                decimal fee=list_pro[0].Fee;
-                decimal shipFee = list_pro[0].ShipFee;
-                string auctionId=dlstProduct.DataKeys[i].ToString();
-                if (hfAuctionTime.Value!= "" && Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10))
-                {
-                    TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
-                    lblTimer.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
-                }
-                if (Convert.ToDateTime(hfAuctionTime.Value)<=DateTime.Now.AddSeconds(10)&&hfProductID!=null)
-                {
+        //protected void timer1_Tick(object sender, EventArgs e)
+        //{
+        //    for (int i = 0; i < dlstProduct.Items.Count; i++)
+        //    {
+        //        HiddenField hfProductID = dlstProduct.Items[i].FindControl("hfProductID") as HiddenField;
+        //        HiddenField hfTimePoint = dlstProduct.Items[i].FindControl("hfTimePoint") as HiddenField;
+        //        HiddenField hfAuctionTime=dlstProduct.Items[i].FindControl("hfAuctionTime")as HiddenField;
+        //        Label lblTimer=dlstProduct.Items[i].FindControl("lblTimer")as Label;
+        //        HiddenField hfStaus=dlstProduct.Items[i].FindControl("hfStatus")as HiddenField;
+        //        HiddenField hfMemberID = dlstProduct.Items[i].FindControl("hfMemberID") as HiddenField;
+        //        Label lblAuctionPrice=dlstProduct.Items[i].FindControl("lblAuctionPrice")as Label;
+        //        List<Product> list_pro = productBll.GetById(hfProductID.Value);
+        //        decimal fee=list_pro[0].Fee;
+        //        decimal shipFee = list_pro[0].ShipFee;
+        //        string auctionId=dlstProduct.DataKeys[i].ToString();
+        //        if (hfAuctionTime.Value!= "" && Convert.ToDateTime(hfAuctionTime.Value) > DateTime.Now.AddSeconds(10))
+        //        {
+        //            TimeSpan ts = Convert.ToDateTime(hfAuctionTime.Value) - DateTime.Now;
+        //            lblTimer.Text = ts.Hours.ToString().PadLeft(2, '0') + ":" + ts.Minutes.ToString().PadLeft(2, '0') + ":" + ts.Seconds.ToString().PadLeft(2, '0');//商品未开始竞拍的倒计时
+        //        }
+        //        if (Convert.ToDateTime(hfAuctionTime.Value)<=DateTime.Now.AddSeconds(10)&&hfProductID!=null)
+        //        {
 
-                    auction auction = auctionBll.GetAuction(auctionId)[0];
-                    if (auction.TimePoint > 0 && auction.Status != 3)
-                    {
-                        auctionBll.UpdateTimePoint(auctionId);
-                        Product pro1 = productBll.GetById(hfProductID.Value)[0];
-                        auction auction1 = auctionBll.GetAuction(auctionId)[0];
-                        lblTimer.Text = "00:00:" + auction1.TimePoint.ToString().PadLeft(2, '0');
-                        if (auction1.TimePoint == 0)
-                        {                            
-                            try
-                            {
-                                string typeName = "竞拍订单";
-                                using (TransactionScope ts1 = new TransactionScope())
-                                {
-                                    //生成竞拍订单
-                                    DingDan dd = new DingDan();
-                                    dd.DingDanBH = DateTime.Now.ToString("yyyyMMddHHmmss");
-                                    dd.HuiYuanID = hfMemberID.Value;
-                                    dd.ProductID = hfProductID.Value;
-                                    dd.ProductPrice = Convert.ToDecimal(lblAuctionPrice.Text);
-                                    dd.Status = 10;                                    
-                                    dd.OrderTypeID = orderBll.GetbyName(typeName)[0].OrderTypeID;
-                                    dd.Fee = fee;
-                                    dd.ShipFee = shipFee;
-                                    dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;
-                                    dd.InvalidTime = DateTime.Now.AddDays(7);
-                                    dd.AuctionID = auctionId;
-                                    dd.ShouHuoDZID = "";
-                                    orderBll.AddOrder(dd);
+        //            auction auction = auctionBll.GetAuction(auctionId)[0];
+        //            if (auction.TimePoint > 0 && auction.Status != 3)
+        //            {
+        //                auctionBll.UpdateTimePoint(auctionId);
+        //                Product pro1 = productBll.GetById(hfProductID.Value)[0];
+        //                auction auction1 = auctionBll.GetAuction(auctionId)[0];
+        //                lblTimer.Text = "00:00:" + auction1.TimePoint.ToString().PadLeft(2, '0');
+        //                if (auction1.TimePoint == 0)
+        //                {                            
+        //                    try
+        //                    {
+        //                        string typeName = "竞拍订单";
+        //                        using (TransactionScope ts1 = new TransactionScope())
+        //                        {
+        //                            //生成竞拍订单
+        //                            DingDan dd = new DingDan();
+        //                            dd.DingDanBH = DateTime.Now.ToString("yyyyMMddHHmmss");
+        //                            dd.HuiYuanID = hfMemberID.Value;
+        //                            dd.ProductID = hfProductID.Value;
+        //                            dd.ProductPrice = Convert.ToDecimal(lblAuctionPrice.Text);
+        //                            dd.Status = 10;                                    
+        //                            dd.OrderTypeID = orderBll.GetbyName(typeName)[0].OrderTypeID;
+        //                            dd.Fee = fee;
+        //                            dd.ShipFee = shipFee;
+        //                            dd.TotalPrice = dd.Fee + dd.ShipFee + dd.ProductPrice;
+        //                            dd.InvalidTime = DateTime.Now.AddDays(7);
+        //                            dd.AuctionID = auctionId;
+        //                            dd.ShouHuoDZID = "";
+        //                            orderBll.AddOrder(dd);
 
-                                    //修改拍品状态为已成交
-                                    auction auction2 = new auction();
-                                    auction2.Status = 3;
-                                    auction2.EndTime = DateTime.Now;
-                                    auction2.AuctionID = auctionId;
-                                    auctionBll.UpdateStatus(auction2);
-                                    ts1.Complete();
-                                    lblTimer.Text = "已成交";
-                                }
-                            }
-                            catch (Exception)
-                            {
+        //                            //修改拍品状态为已成交
+        //                            auction auction2 = new auction();
+        //                            auction2.Status = 3;
+        //                            auction2.EndTime = DateTime.Now;
+        //                            auction2.AuctionID = auctionId;
+        //                            auctionBll.UpdateStatus(auction2);
+        //                            ts1.Complete();
+        //                            lblTimer.Text = "已成交";
+        //                        }
+        //                    }
+        //                    catch (Exception)
+        //                    {
                                 
-                                throw;
-                            }
-                        }
-                    }                    
-                }
-            }
-        }
+        //                        throw;
+        //                    }
+        //                }
+        //            }                    
+        //        }
+        //    }
+        //}
+
 
         //最近成交
         protected void dlstDone_ItemDataBound(object sender, DataListItemEventArgs e)

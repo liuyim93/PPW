@@ -8,6 +8,8 @@ a:visited{color:Black;text-decoration:none;}
 a:hover{color:#ff0000;text-decoration:underline;}
 a:active{color:Red;text-decoration:underline;}
 ul{margin:0px;padding:0px;list-style:none;}
+*{margin:0px;padding:0px;}
+img{border:0px;}
 /*Main.Master*/
 .top
 {
@@ -68,21 +70,24 @@ ul{margin:0px;padding:0px;list-style:none;}
 {
 	width:100%;
 	background:#f5f5f5;
-	height:200px;
+	float:left;
+	margin-top:5px;
 	}
-.main_bottom .footer
+.footer
 {
 	width:1000px;
-	margin:0 auto;
+	margin:auto;
 	padding-top:10px;
+	text-align:center;
+	height:auto;
 	}
-.main_bottom .footer dl
+.footer dl
 {
 	width:200px;
 	list-style:none;
 	float:left;
 	}
-.main_bottom .footer dl dt
+.footer dl dt
 {
 	font-weight:bold;
 	padding:0 0 10px 10px;
@@ -106,30 +111,33 @@ ul{margin:0px;padding:0px;list-style:none;}
 #index_top .top_right1 .news .title{font-size:14px;padding:5px auto;border-bottom:1px solid #9f140d; width:100%;height:28px;line-height:28px;background:url("../images/news_title.gif") repeat-x;}
 .more{float:right;margin-right:2px;font-size:12px;}
 #index_top .top_right1 .newbie{width:100%;height:auto;}
-.free_acution{width:100%;height:200px; border:1px solid #cccccc; padding:5px 0 5px 10px;}
-.free_acution .title{width:100%; background:url("../images/selling.gif") no-repeat; height:40px; margin:10px auto;}
+.free_acution{width:100%;height:370px; border:1px solid #cccccc; border-radius:5px;}
+.auction_title{height:35px; line-height:35px;font-size:16px;font-weight:bold;padding-left:15px;border-bottom:1px solid #e4e4e4;position:relative;}
+.auction_title span{font-size:13px;color:#ccc;}
 .free_acution .content{width:100%; height:100%;}
-.newest_done{width:100%;height:auto;padding:5px 0 5px 10px; border:1px solid #cccccc; margin:10px auto;}
+.newest_done{width:100%;height:auto; border:1px solid #cccccc; margin:10px auto;border-radius:5px;}
 .newest_done .title{width:100%;height:40px; background:url("../images/done.gif") no-repeat;}
 .newest_done .content{width:100%;height:100%;}
-.showpic{width:100%;height:420px;margin:10px auto;padding:5px 0 5px 10px;border:1px solid #cccccc;}
+.showpic{width:100%;height:420px;margin:10px auto;border:1px solid #cccccc;border-radius:5px;}
 .showpic .title{width:100%;height:40px;background:url("../images/showpic.gif") no-repeat;}
 .showpic .content{width:100%;height:100%;}
 /*主页-正在热拍*/
-.selling{width:100%;height:700px; border:1px solid #cccccc; margin:10px auto; padding:5px 0px 5px 10px;}
+.selling{width:100%;height:auto;min-height:370px; border:1px solid #cccccc; margin:10px auto;position:relative;border-radius:5px;}
 .selling .title{width:auto; height:40px; background:url("../images/selling.gif") no-repeat;}
 .selling .content{height:100%;width:100%;}
-.selling .title span{float:right;margin:10px 30px;}
-.product_area{width:195px;height:330px;background:url("../images/product_bg.jpg");position:relative;}
-.product_area .product_name{width:135px;height:46px;line-height:16px;margin-left:20px;padding-top:10px;overflow:hidden; color:#404040; text-align:center;}
+.auction_title_more{font-size:13px;height:35px;line-height:35px;font-weight:normal;position:absolute;top:0px;right:10px;}
+.product_area{width:195px;height:330px;background:url("../images/product_bg.jpg");position:relative;float:left;}
+.product_name{width:135px;height:46px;line-height:16px;margin-left:20px;padding-top:10px;overflow:hidden; color:#404040; text-align:center;}
 .product_fullprice{width:20px; height:20px;position:absolute;top:12px;right:5px; cursor:pointer;}
 .product_img{width:120px;height:120px;margin-left:35px; cursor:pointer;}
 .product_price{color:#999999;height:25px;line-height:25px;padding-left:45px;}
-.product_price_auctionprice{color:#999999;height:25px;line-height:25px;padding-left:45px;}
+.product_price_auctionprice{color:#ff0000;height:25px;line-height:25px;display:inline-block;font-weight:bold;font-family:Arial;font-size:13px;}
+.product_price_userinfo{color:#00666b;display:inline-block;}
 .product_price_auctionprice span{color:#000000;font-weight:bold;font-family:微软雅黑;}
 .product_price_auctionprice_toggle{background:#ff0000;color:#000000;font-weight:bold;font-family:微软雅黑;}
 .product_timer{height:30px;line-height:30px; font-family:Arial;font-size:20px;font-weight:bold; text-align:center;}
 .product_auction{text-align:center;}
+.product_auction img{cursor:pointer;}
 .product_endtime{color:#999999;height:32px; padding-left:40px; line-height:32px;}
 .product_endtime span{height:16px;line-height:16px; float:left;}
 
@@ -210,11 +218,11 @@ ul{margin:0px;padding:0px;list-style:none;}
 #content_my li{height:25px;line-height:25px;}
 
 /*正在热拍页面*/
-.auctionlist{width:100%;height:auto;}
+.auctionlist{height:auto;margin:5px auto; width:1000px;}
 .auctionlist_top{height:25px;font-size:14px;line-height:25px;}
 .auctionlist_left{width:795px;border:1px solid #ccc;float:left;height:100%;margin-right:5px;}
 .auctionlist_left_title{height:30px;line-height:30px;text-align:left;font-size:14px;border-bottom:1px solid #8f0100; padding-left:5px; font-weight:bold;}
-.auctionlist_left_content{width:100%;padding:5px;}
+.auctionlist_left_content{width:100%;padding:5px;margin:0px auto;overflow:hidden;position:relative;padding-bottom:30px;}
 .auctionlist_right{width:190px;height:100%;float:left;}
 .auctionlist_right_reg{width:189px;height:165px;}
 .auctionlist_right_guide{width:189px;height:165px;}

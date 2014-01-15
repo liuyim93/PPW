@@ -13,31 +13,22 @@ namespace WEB.Auction {
     public partial class AuctionList {
         
         /// <summary>
-        /// updatepanel1 控件。
+        /// repeater1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatepanel1;
+        protected global::System.Web.UI.WebControls.Repeater repeater1;
         
         /// <summary>
-        /// timer1 控件。
+        /// AspNetPager1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.Timer timer1;
-        
-        /// <summary>
-        /// dlstAuction 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlstAuction;
+        protected global::Wuqi.Webdiyer.AspNetPager AspNetPager1;
         
         /// <summary>
         /// recommend1 控件。

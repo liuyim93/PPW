@@ -1,73 +1,62 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="AuctionList.aspx.cs" Inherits="WEB.Auction.AuctionList" %>
 <%@ Register TagName="Recommend" Src="UserControl/Recommend.ascx" TagPrefix="uc1" %>
 <%@ Register TagName="Last" Src="UserControl/Last.ascx" TagPrefix="uc2" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script type="text/javascript">
-    function loadms() {
-        var datalist = document.getElementById('<%=dlstAuction.ClientID %>').children[0];
-        var rows = datalist.children.length;
-        for (var row = 0; row < rows; row++) {
-            var columns = datalist.children[0];
-            for (var j = 0; j < columns.children.length; j++) {
-                if (columns.children[j].innerHTML != "" && columns.children[j].innerHTML != null) {
-                    var item = columns.children[j].children;
-                    var itemlen = item.children.length;
-                    var timems = item.children[6].children[2];
-                    var timepoint = item.children[8];
-                    if (timepoint.innerText != "" && timepoint.innerText > 0 && timepoint.innerText < 10) {
-                        setInterval("updatems(timems)", 100);
-                    }
-                }
-            }
-        }
-    }
-    function updatems(timems) {        
-        var i = 9;
-        if (i >= 0) {
-            timems.innerText = i;
-            i--;
-        } else {
-            i = 9;
-        }
-    }
-</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="auctionlist">
+    <div class="auctionlist">
     <div class="auctionlist_top">正在热拍：</div>
     <div class="auctionlist">
         <div class="auctionlist_left">
             <div class="auctionlist_left_title">正在热拍</div>
-            <div class="auctionlist_left_content">
-                <asp:UpdatePanel ID="updatepanel1" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <asp:Timer ID="timer1" runat="server" ontick="timer1_Tick" Interval="1000"></asp:Timer>
-                        <asp:DataList ID="dlstAuction" runat="server" RepeatColumns="4" 
-                            onitemcommand="dlstAuction_ItemCommand" DataKeyField="AuctionID"
-                            onitemdatabound="dlstAuction_ItemDataBound">
-                            <ItemTemplate>
-                                <div class="product_area">
-                                    <div class="product_name"><asp:HyperLink ID="hlnkPro" runat="server" Target="_self">&nbsp;<asp:Label ID="lblIntro" runat="server"></asp:Label></asp:HyperLink></div>
-                                    <div class="product_fullprice"><img src="Images/fullprice.png" width="16px" height="16px" title="若竞拍未成功，可以按市场价补差价购买此商品！" alt="" /></div>
-                                    <div class="product_img"><a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><asp:Image ID="imgProduct" runat="server" Width="120px" Height="120px" /></a></div>
-                                    <div class="product_price">市场价：￥<span style="font-weight:bold;"><asp:Label ID="lblPrice" runat="server" ></asp:Label></span></div>
-                                    <div class="product_price">拍卖价：<span style="color:Red;font-weight:bold;font-family:Arial;">￥<asp:Label ID="lblAuctionPrice" runat="server" Text='<%#Eval("AuctionPrice") %>'></asp:Label></span></div>
-                                    <div class="product_price">出价人：<span style="color:#00666b"><asp:Label ID="lblMemberName" runat="server"></asp:Label></span><asp:HiddenField ID="hfMemberID" runat="server" Value='<%#Eval("HuiYuanID") %>' /></div>
-                                    <div class="product_timer"><asp:Label ID="lblTime" runat="server"></asp:Label><asp:Label ID="lblMS" runat="server"></asp:Label></div>
-                                    <div class="product_auction"><asp:ImageButton ID="imgbtnAuction" runat="server" ImageUrl="Images/bid_button.gif" CommandName="auction" CommandArgument='<%#Eval("AuctionID") %>' /></div>
-                                    <asp:HiddenField ID="hfTimePoint" runat="server" Value='<%#Eval("TimePoint") %>' />
-                                    <asp:HiddenField ID="hfAuctionTime" runat="server" Value='<%#Eval("AuctionTime") %>' /> 
-                                   <asp:HiddenField ID="hfStatus" runat="server" Value='<%#Eval("Status") %>' />                                                             
-                                   <asp:HiddenField ID="hfAuctionPoint" runat="server" Value='<%#Eval("AuctionPoint") %>' />
-                                   <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
-                                   <asp:HiddenField ID="hfProductNo" runat="server" Value='<%#Eval("Coding") %>' />                                  
-                                </div>
-                            </ItemTemplate>
-                        </asp:DataList>
-                    </ContentTemplate>
-                </asp:UpdatePanel>                
+            <div class="auctionlist_left_content">  
+                <asp:Repeater ID="repeater1" runat="server">
+                    <ItemTemplate>
+                        <div id="bid_<%#Eval("AuctionID") %>" class="product_area">
+                            <div class="product_name">
+                                <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self" title='<%#Eval("productName") %> <%#Eval("Intro") %>'><%#Eval("productName") %></a>
+                            </div>
+                            <div class="product_fullprice">
+                                <img src="Images/fullprice.png" title="若竞拍未成功，可以按市场价补差价购买此商品！" alt="" width="16px" height="16px" />
+                                <span id="spanTip_<%#Eval("AuctionID") %>"></span>
+                            </div>
+                            <div class="product_img">
+                                <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><img id="imgPro" width="120px" height="120px" src="<%#Eval("img") %>" alt="" title='<%#Eval("productName") %>' /></a>
+                            </div>
+                            <div class="product_price">
+                                市场价：<span><%#Eval("productPrice") %></span></div>
+                            <div class="product_price">
+                                拍卖价：<div id="Price_<%#Eval("AuctionID") %>" class="product_price_auctionprice"></div>
+                            </div>
+                            <div class="product_price">
+                                最后出价：<div id="UserInfo_<%#Eval("AuctionID") %>" class="product_price_userinfo"></div>
+                            </div>
+                            <div id="timer_<%#Eval("AuctionID") %>" class="product_timer"></div>
+                            <div id="btn_<%#Eval("AuctionID") %>" class="product_auction">
+                                <img src="Images/bid_button.gif" id='<%#Eval("AuctionID") %>' title="每次出价消耗<%#Eval("AuctionPoint") %>拍点" />
+                            </div>                            
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>       
+                <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="9" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager>     
             </div>
+             <script type="text/javascript">
+                 $(function () {
+                     var PaiPai_Manage = new PaiPaiBid();
+                     $("div[id^='bid_']").each(function (i) {
+                         PaiPai_Manage.Add(this.id.substr(4));
+                     });
+                     $("div[id^='btn_']").click(function () {
+                         PaiPai_Manage.Bid($(this).attr("id").replace("btn_", ""));
+                     });
+                     PaiPai_Manage.Start();
+                 });
+    </script>
         </div>
         <div class="auctionlist_right">
             <div class="auctionlist_right_reg"><a href="" target="_self"><img src="Images/register_ad.jpg" /></a></div>

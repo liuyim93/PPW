@@ -205,5 +205,17 @@ namespace Data
            return BLLdat.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@HuiYuanID",hyId),
                new SqlParameter("@Points",points));
        }
+
+       public string GetHuiYuanNamebyId(string hyId) {
+           string sql = "select HuiYuanName from HuiYuan where HuiYuanID='"+hyId+"'";
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables[0].Rows.Count > 0)
+           {
+               return ds.Tables[0].Rows[0]["HuiYuanName"].ToString();
+           }
+           else {
+               return "";
+           }
+       }
     }
 }

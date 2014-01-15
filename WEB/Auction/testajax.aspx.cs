@@ -9,6 +9,7 @@ using Model.Entities;
 using System.Web.Script.Serialization;
 using BLL;
 using System.Transactions;
+using System.Web.Services;
 
 namespace WEB.Auction
 {
@@ -65,7 +66,6 @@ namespace WEB.Auction
                             }
                             catch (Exception)
                             {
-
                                 throw;
                             }
                         }
@@ -85,6 +85,6 @@ namespace WEB.Auction
             Response.Clear();
             Response.Write(jsonStr);
             Response.End();
-        }
+        }               
     }
 }

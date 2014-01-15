@@ -51,11 +51,39 @@
         </div>
         <!--正在热拍-->
         <div class="selling">
-            <div class="title">
-                <span><a href="" target="_self">更多>></a></span>
+            <div class="auction_title">
+                正在热拍<span>&nbsp;Auctioning</span><div class="auction_title_more"><a href="" target="_self">更多>></a></div>
             </div>
             <div class="content">
-              <asp:UpdatePanel ID="updatepanel1" runat="server">
+                <asp:Repeater ID="repeater_auction" runat="server">
+                    <ItemTemplate>
+                        <div id="bid_<%#Eval("AuctionID") %>" class="product_area">
+                            <div class="product_name">
+                                <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self" title='第<%#Eval("Coding") %>期 <%#Eval("productName") %>'><%#Eval("productName") %>&nbsp;<span style="color:Red"><%#Eval("Intro") %></span></a></div>
+                            <div class="product_fullprice">
+                                <img src="Images/fullprice.png" alt="" title="若竞拍未成功，可以按市场价补差价购买此商品！" width="16px" height="16px" />
+                                <span id="spanTip_<%#Eval("AuctionID") %>"></span>
+                            </div>
+                            <div class="product_img">
+                                <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><img src="<%#Eval("img") %>" alt="" width="120px" height="120px" /></a>
+                            </div>
+                            <div class="product_price">
+                                市场价:<sapn style="font-weight:bold;">￥<%#Eval("productPrice") %></sapn>
+                            </div>
+                            <div class="product_price">
+                                拍卖价：<div id="Price_<%#Eval("AuctionID") %>" class="product_price_auctionprice"></div>
+                            </div>
+                            <div class="product_price">
+                                最后出价：<div id="UserInfo_<%#Eval("AuctionID") %>" class="product_price_userinfo"></div>
+                            </div>
+                            <div id="timer_<%#Eval("AuctionID") %>" class="product_timer"></div>
+                            <div id="btn_<%#Eval("AuctionID") %>" class="product_auction">
+                                <img src="Images/bid_button.gif" alt="出价" title="每次出价消耗<%#Eval("AuctionPoint") %>拍点" id='<%#Eval("AuctionID") %>' />
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+              <%--<asp:UpdatePanel ID="updatepanel1" runat="server">
                 <ContentTemplate>
                 <asp:Timer ID="timer1" runat="server" Interval="1000" ontick="timer1_Tick"></asp:Timer>    
                 <asp:DataList ID="dlstProduct" runat="server" RepeatColumns="5" 
@@ -90,25 +118,45 @@
                     </ItemTemplate>
                 </asp:DataList>
               </ContentTemplate>
-            </asp:UpdatePanel>
+            </asp:UpdatePanel>--%>
             </div>
         </div>
         <!--免费竞拍-->
         <div class="free_acution">
-            <div class="title"></div>
+            <div class="auction_title">免费赢取<span>&nbsp;Free Auction</span></div>
             <div class="content">
-                <asp:DataList ID="dlstFree" runat="server">
+                <asp:Repeater ID="repeater_free" runat="server">
                     <ItemTemplate>
-                        
+                        <div id="bid_<%#Eval("AuctionID") %>" class="product_area">
+                            <div class="product_name">
+                                <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self" title='第<%#Eval("Coding") %>期 <%#Eval("productName") %>'><%#Eval("productName") %>&nbsp;<span style="color:Red"><%#Eval("Intro") %></span></a></div>
+                            <div class="product_fullprice">
+                                <img src="Images/free.png" alt="" title="新手专享，免费赢取" />
+                                <span id="spanTip_<%#Eval("AuctionID") %>"></span>
+                            </div>
+                            <div class="product_img">
+                                <a href="../Auction/ProDetail.aspx?id=<%#Eval("AuctionID") %>" target="_self"><img src="<%#Eval("img") %>" alt="" width="120px" height="120px" /></a>
+                            </div>
+                            <div class="product_price">
+                                市场价：<span style="font-weight:bold;">￥<%#Eval("productPrice") %></span></div>
+                            <div class="product_price">
+                                拍卖价：<div id="Price_<%#Eval("AuctionID") %>" class="product_price_auctionprice"></div>
+                            </div>
+                            <div class="product_price">
+                                最后出价：<div id="UserInfo_<%#Eval("AuctionID") %>" class="product_price_userinfo"></div>
+                            </div>
+                            <div id="timer_<%#Eval("AuctionID") %>" class="product_timer"></div>
+                            <div id="btn_<%#Eval("AuctionID") %>" class="product_auction">
+                                <img src="Images/bid_button.gif" alt="出价" title="每次出价消耗<%#Eval("FreePoint") %>返点" id='<%#Eval("AuctionID") %>' />
+                            </div>
+                        </div>
                     </ItemTemplate>
-                </asp:DataList>
+                </asp:Repeater>
             </div>
         </div>
         <!--最新成交-->
         <div class="newest_done">
-            <div class="title">
-                
-            </div>
+            <div class="auction_title">最近成交<span>&nbsp;Last Done</span></div>
             <div>
                 <asp:DataList ID="dlstDone" runat="server" RepeatColumns="5" 
                     onitemdatabound="dlstDone_ItemDataBound" DataKeyField="AuctionID">
@@ -143,7 +191,7 @@
         </div>
         <!--拍客晒图-->
         <div class="showpic">
-            <div class="title"></div>
+            <div class="auction_title">拍客晒图<span>&nbsp;Show Order</span></div>
                 <asp:DataList ID="dlstShowPic" runat="server" RepeatColumns="2" 
                     onitemdatabound="dlstShowPic_ItemDataBound" DataKeyField="OrderID" class="showpic_con">
                     <ItemTemplate>
@@ -169,6 +217,7 @@
         </div>
     </div>
     <script type="text/javascript">
+        //图片轮播
         var p = $('#picplayer');
         var pics1 = [{ url: '../Image/banner1.jpg', link: 'http://www.jb51.net/#', time: 5000 }, { url: '../Image/banner2.jpg', link: 'http://www.jb51.net/#', time: 4000 },
 { url: '../Image/banner3.jpg', link: 'http://www.jb51.net', time: 6000 }, { url: 'http://img.jb51.net/online/picPlayer/2.jpg', link: 'http://www.jb51.net', time: 6000 },
@@ -256,5 +305,17 @@
         var MyMar = setInterval(Marquee, speed);
         tab.onmouseover = function () { clearInterval(MyMar) };
         tab.onmouseout = function () { MyMar = setInterval(Marquee, speed) };
+
+        //竞拍
+        $(function () {
+            var PaiPai_Manage = new PaiPaiBid();
+            $("div[id^='bid_']").each(function (i) {
+                PaiPai_Manage.Add(this.id.substr(4));
+            });
+            $("div[id^='btn_']").click(function () {
+                PaiPai_Manage.Bid($(this).attr("id").replace("btn_", ""));
+            });
+            PaiPai_Manage.Start();
+        });
     </script>
 </asp:Content>

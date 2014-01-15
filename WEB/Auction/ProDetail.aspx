@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="ProDetail.aspx.cs" Inherits="WEB.Auction.Auctioning" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script type="text/javascript" src="~/Scripts/jquery-1.9.1.js"></script>
     <script type="text/javascript">      
         function setTab(num) {
             var auction_my = document.getElementById('title_my');
@@ -21,10 +20,7 @@
         }        
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:UpdatePanel ID="updatepanel1" runat="server">
-    <ContentTemplate>
-    <asp:Timer ID="Timer1" runat="server" Interval="1000" ontick="Timer1_Tick"></asp:Timer>       
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
     <div class="detail">
         <div class="pro_info">
             <div class="left">
@@ -46,26 +42,18 @@
                         <li>运费：<asp:Label ID="lblShipFee" runat="server"></asp:Label></li>
                     </ol>
                     <ol>
-                        <li><asp:Literal ID="ltlPrice" runat="server" Text="当前价格："></asp:Literal><asp:Label ID="lblAuctionPrice" runat="server" ></asp:Label></li>
-                        <li><asp:Literal ID="ltlMember" runat="server" Text="出价人："></asp:Literal><asp:Label ID="lblMemberName" runat="server"></asp:Label></li>
+                        <li>当前价格：<div id="Price_<%=auctionId %>" class="product_price_auctionprice"></div></li>
+                        <li>最后出价：<div id="UserInfo_<%=auctionId %>" class="product_price_userinfo"></div></li>
                     </ol>
                 </div>
                 <asp:Panel ID="pnlAuction" runat="server" CssClass="auction">
                     <div class="time">
                         <div class="text">剩余时间：</div>
-                        <div class="timer">
-                            <asp:Label ID="lblTime" runat="server"></asp:Label>                            
+                        <div class="product_timer" id="timer_<%=auctionId %>">                                                       
                         </div>
                     </div>
-                    <div class="button">
-                        <asp:ImageButton ID="imgbtnAuction" runat="server" 
-                            ImageUrl="Images/bid_button.gif" onclick="imgbtnAuction_Click" />
-                    </div>
-                </asp:Panel>
-                <asp:Panel ID="pnlEnd" runat="server" class="end">
-                    <div class="text">竞拍已结束</div>
-                    <div class="timespan">开始时间：<asp:Label ID="lblStart" runat="server"></asp:Label><br />
-                        结束时间：<asp:Label ID="lblEnd" runat="server"></asp:Label>
+                    <div class="product_auction" id="btn_<%=auctionId %>">
+                        <img id="<%=auctionId %>" src="Images/bid_button.gif" alt="出价" />
                     </div>
                 </asp:Panel>
                 <div class="bottom">
@@ -89,27 +77,7 @@
                             </ul>
                         </div>
                         <div id="content_history">
-                            <asp:GridView ID="gvwHistory" runat="server" AutoGenerateColumns="false" 
-                                 onrowdatabound="gvwHistory_RowDataBound" GridLines="None" Width="100%">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="出价人">
-                                        <ItemTemplate>
-                                            <a class="membername"><asp:Label ID="lblMemberName" runat="server"></asp:Label></a>
-                                            <asp:HiddenField ID="hfMemberID" runat="server" Value='<%#Eval("HuiYuanID") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="参与价">
-                                        <ItemTemplate>
-                                            ￥<asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="IP地址">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblIPAdress" runat="server" Text='<%#Eval("IPAdress") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
+                            
                         </div>
                     </div>
                 </div>
@@ -125,6 +93,18 @@
             </div>
         </div>
     </div>
-    </ContentTemplate>
-</asp:UpdatePanel>
+    <script type="text/javascript">
+        var actId='<%=auctionId %>';
+        var PaiPai_Manage=null;
+        $(function(){
+            PaiPai_Manage=new PaiPaiBid();
+            $("div[id^='btn_']").click(function(){
+                PaiPai_Manage.Bid($(this).attr("id").replace("btn_",""));   
+            });
+            PaiPai_Manage.Add(actId);
+            PaiPai_Manage.Start();
+            PaiPai_Manage.BidHistory(actId,0,$("content_history"));
+            PaiPai_Manage.UserInfoSelf(actId,0,$("content_my"));
+        })
+    </script>
 </asp:Content>

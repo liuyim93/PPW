@@ -22,6 +22,7 @@ namespace Model.Entities
         public Nullable<DateTime> EndTime { get; set; }
         public string AuctionTypeID { get; set; }
         public int IsRecommend { get; set; }
+        public string HuiYuanName { get; set; }
 
     }
 }

@@ -94,6 +94,7 @@
     <Content Include="Auction\auctioncomplete.aspx" />
     <Content Include="Auction\AuctionHistory.aspx" />
     <Content Include="Auction\AuctionList.aspx" />
+    <Content Include="Auction\FreeAuctionList.aspx" />
     <Content Include="Auction\FutureAuction.aspx" />
     <Content Include="Auction\PointsMall.aspx" />
     <Content Include="Auction\PointsMall_Detail.aspx" />
@@ -106,6 +107,7 @@
     <Content Include="Auction\submitauction.aspx" />
     <Content Include="Auction\Test.aspx" />
     <Content Include="Auction\testajax.aspx" />
+    <Content Include="Auction\UserControl\Bottom.ascx" />
     <Content Include="Auction\UserControl\Last.ascx" />
     <Content Include="Auction\UserControl\Recommend.ascx" />
     <Content Include="Auction\UserControl\Top.ascx" />
@@ -470,6 +472,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auction\ajax\BidHistory.ashx.cs">
+      <DependentUpon>BidHistory.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Auction\auctioncomplete.aspx.cs">
       <DependentUpon>auctioncomplete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -490,6 +495,13 @@
     </Compile>
     <Compile Include="Auction\AuctionList.aspx.designer.cs">
       <DependentUpon>AuctionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\FreeAuctionList.aspx.cs">
+      <DependentUpon>FreeAuctionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\FreeAuctionList.aspx.designer.cs">
+      <DependentUpon>FreeAuctionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\FutureAuction.aspx.cs">
       <DependentUpon>FutureAuction.aspx</DependentUpon>
@@ -577,6 +589,13 @@
     </Compile>
     <Compile Include="Auction\UserCenter.master.designer.cs">
       <DependentUpon>UserCenter.master</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\UserControl\Bottom.ascx.cs">
+      <DependentUpon>Bottom.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\UserControl\Bottom.ascx.designer.cs">
+      <DependentUpon>Bottom.ascx</DependentUpon>
     </Compile>
     <Compile Include="Auction\UserControl\Last.ascx.cs">
       <DependentUpon>Last.ascx</DependentUpon>
@@ -897,6 +916,7 @@
     <Content Include="Auction\Main.Master" />
     <Content Include="Auction\CheckCode.ashx" />
     <Content Include="Auction\UserCenter.master" />
+    <Content Include="Auction\ajax\BidHistory.ashx" />
     <None Include="kindeditor\jsp\demo.jsp" />
     <None Include="kindeditor\jsp\file_manager_json.jsp" />
     <None Include="kindeditor\jsp\upload_json.jsp" />
