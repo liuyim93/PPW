@@ -45,8 +45,8 @@ namespace BLL
         //查询最新的10条出价记录
         public List<ChuJiaJiLu> GetChuJiaJiLubyauctionId_Top10(string auctionId) 
         {
-            string sql = "select top 10 * from ChuJiaJiLu where AuctionID='" + auctionId + "' order by AuctionTime desc";
-            return cd.GetChuJiaJiLu(sql);
+            string sql = "select top 10 c.*,h.HuiYuanName,h.sjh from ChuJiaJiLu as c,HuiYuan as h where c.AuctionID='" + auctionId + "' and h.HuiYuanID=c.HuiYuanID order by AuctionTime desc";
+            return cd.GetchuJiaJiLu(sql);
         }
 
         //根据竞拍ID和会员ID查询出价记录

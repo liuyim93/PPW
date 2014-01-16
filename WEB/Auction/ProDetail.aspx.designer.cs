@@ -22,6 +22,15 @@ namespace WEB.Auction {
         protected global::System.Web.UI.WebControls.Image imgBig;
         
         /// <summary>
+        /// repeater_img 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeater_img;
+        
+        /// <summary>
         /// lblProName 控件。
         /// </summary>
         /// <remarks>
@@ -92,51 +101,6 @@ namespace WEB.Auction {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPriceAdd;
-        
-        /// <summary>
-        /// lblAuctionPoint 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAuctionPoint;
-        
-        /// <summary>
-        /// lblFreePoint 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFreePoint;
-        
-        /// <summary>
-        /// ltlProPrice 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlProPrice;
-        
-        /// <summary>
-        /// lblUsed 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsed;
-        
-        /// <summary>
-        /// lblPay 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPay;
         
         /// <summary>
         /// lblDetail 控件。

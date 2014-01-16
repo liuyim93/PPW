@@ -28,7 +28,11 @@
                     <asp:Image ID="imgBig" runat="server" Width="300px" Height="300px" />
                 </div>
                 <div class="img_small">
-                    
+                    <asp:Repeater ID="repeater_img" runat="server">
+                        <ItemTemplate>
+                            <img id="img_<%#Eval("ProductImegId") %>" src="<%#Eval("img") %>" alt="" class="pointsdetail_img_non" title="温馨提示：图片仅供参考，商品以实物为准。" />
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
             <div class="center">
@@ -62,7 +66,7 @@
                     倒计时为0->成交！
                 </div>
             </div>
-            <div class="right">
+            <div class="pro_info_right">
                 <div class="right_top">
                     <div class="top_title">
                         <div id="title_history" onmouseover="setTab(1);" class="title_focus">竞拍历史</div>
@@ -70,11 +74,11 @@
                     </div>
                     <div class="top_content">
                         <div id="content_my">
-                            <ul>
+                            <%--<ul>
                                 <li>使用拍点：<asp:Label ID="lblAuctionPoint" runat="server">0</asp:Label></li>
                                 <li>使用返点：<asp:Label ID="lblFreePoint" runat="server">0</asp:Label></li>
                                 <li>补差价购买：￥<asp:Literal ID="ltlProPrice" runat="server"></asp:Literal>-<asp:Label ID="lblUsed" runat="server">0</asp:Label>=￥<asp:Label ID="lblPay" runat="server"></asp:Label></li>
-                            </ul>
+                            </ul>--%>
                         </div>
                         <div id="content_history">
                             
@@ -95,6 +99,8 @@
     </div>
     <script type="text/javascript">
         var actId='<%=auctionId %>';
+        var isLogin=<%=isLogin %>;
+        var proPrice=<%=proPrice %>;
         var PaiPai_Manage=null;
         $(function(){
             PaiPai_Manage=new PaiPaiBid();
@@ -103,8 +109,8 @@
             });
             PaiPai_Manage.Add(actId);
             PaiPai_Manage.Start();
-            PaiPai_Manage.BidHistory(actId,0,$("content_history"));
-            PaiPai_Manage.UserInfoSelf(actId,0,$("content_my"));
+            PaiPai_Manage.BidHistory(actId,0,$("#content_history"));
+            PaiPai_Manage.UserInfoSelf(actId,proPrice,$("#content_my"),isLogin);
         })
     </script>
 </asp:Content>

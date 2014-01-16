@@ -705,12 +705,12 @@ PaiPaiBid.prototype.BidHistory = function (id, VendueState, oDiv) {
     if (!VendueState) VendueState = 0;
     //VendeuState = parseInt(VendeuState,10);
     if (isNaN(VendueState)) VendueState = 0;
-    if (VendueState >= 3) { clearInterval(this.timer_Detail[0]); return false; }
+    if (VendueState == 3) { clearInterval(this.timer_Detail[0]); return false; }
     else {
         var _this = this;
-        var _url = "/Auction/ajax/BidHistory.ashx";
+        var _url = "/Auction/ajax/bidHistory.aspx";
         //alert(_url);
-        AjaxSubmit(null, _url, { "id":id }
+        AjaxSubmit("get", _url, { "id": id }
 			, function (msg) { _this.BidHistoryFill(msg, id, oDiv); }
 			, null, 'json'
 		);
@@ -725,8 +725,8 @@ PaiPaiBid.prototype.BidHistoryFill = function (data, id, oDiv) {
     var tid = id;
     var data_all = data;
     var htmlvar;
-    var html_header = '<table cellspacing="0" cellpadding="0" border="0" class="n_bidusers">'
-		+ '<tr><th class="l2"><div  style="width:75px;white-space:nowrap;overflow:hidden;">会员</div></th><th class="l2">IP</th><th class="l2">手机</th><th class="l1">参与价</th></tr>';
+    var html_header = '<table cellspacing="0" cellpadding="0" border="0" class="bidusers" width="100%">'
+		+ '<tr><th class="l2"><div  style="width:50px;white-space:nowrap;overflow:hidden;">会员</div></th><th class="l2">价格</th><th class="l1">IP地址</th></tr>';
     var html_footer = '</table>'; //
 
     var html_body = '';
@@ -734,17 +734,16 @@ PaiPaiBid.prototype.BidHistoryFill = function (data, id, oDiv) {
     var item_type = '';
     //alert(data_all["all"]);
     //更新所有记录
-    jQuery.each(data_all["all"], function (i, n) {
+    jQuery.each(data_all, function (i, n) {
         var item = n;
         if (i > 9) return false;
         //item_num++;
         //if(item.bidtype==1){item_type = '分身';//0
         //}else{item_type = '手动';//1
         //}		
-        html_body += '<tr><td ><div  style="width:75px;white-space:nowrap;overflow:hidden;"><a class="noreturn n_u1">' + item.nickname + '</a></div></td>'
-     			+ '<td >' + _this.FormatIp(item.ip) + '</td>'
-     			+ '<td >' + _this.FormatPhone(item.UserMobile) + '</td>'
-     			+ '<td style="text-align:center">¥' + item.price + '</td>'
+        html_body += '<tr><td ><div  style="width:50px;white-space:nowrap;overflow:hidden;"><a class="noreturn n_u1">' + item.HuiYuanName + '</a></div></td>'
+     			+ '<td style="text-align:center">¥' + item.Price + '</td>'
+                + '<td >' + _this.FormatIp(item.IPAdress) + '</td>' 
      			+ '</tr>';
 
         //有更新时才更新??		
@@ -773,34 +772,33 @@ PaiPaiBid.prototype.BidHistoryFill = function (data, id, oDiv) {
 
 //针对性处理
 
-PaiPaiBid.prototype.UserInfoSelf = function (id, SafetyPrice, oDiv) {
+PaiPaiBid.prototype.UserInfoSelf = function (id, SafetyPrice, oDiv, isLogin) {
     //alert(SafetyPrice);
     var _this = this;
     var tid = id;
-    var islogin = 1; //getCookie('islogin');
+    //    var islogin = 1; //getCookie('islogin');
     var js_saveprice = SafetyPrice;
     var html_header = '<table cellspacing="0" cellpadding="0" border="0" class="n_bidusers">';
     var html_footer = '</table>'; //
     var html_body = '';
 
-    var _url = "/index.aspx?s=/Auction/ajaxmycount/tid/" + tid;
-    if (islogin) {
-        AjaxSubmit("POST", _url, { "GameType": _this.GameType }, function (data) {
+    var _url = "/Auction/ajax/UserInfoSelf.aspx";
+    if (isLogin) {
+        AjaxSubmit("get", _url, { "tid": tid }, function (data) {
             //alert(data["self_point_a"]);
             //data.self_point_a=530;
             //data.self_point_b=330;
-            //data.self_price_point_a = 8;
-
-            html_body += '<tr><td class="l1">使用拍点:</td><td class="l2">' + data["self_point_a"] + '</td></tr>';
-            html_body += '<tr><td class="l1">使用赠点:</td><td class="l2">' + data["self_point_b"] + '</td></tr>';
-            html_body += '<tr><td class="l1">使用拍点总数:</td><td class="l2">' + (data["self_point_a"] * 1 + data["self_point_b"] * 1) + '</td></tr>';
+            //data.self_price_point_a = 8;            
+            html_body += '<tr><td class="l1">使用拍点:</td><td class="l2">' + data["AuctionPoint"] + '</td></tr>';
+            html_body += '<tr><td class="l1">使用返点:</td><td class="l2">' + data["FreePoint"] + '</td></tr>';
+            html_body += '<tr><td class="l1">使用拍点总数:</td><td class="l2">' + (data["AuctionPoint"] * 1 + data["FreePoint"] * 1) + '</td></tr>';
             html_body += '<tr><td class="l1">补差价购买价:</td><td class="l2">&yen;<font color="red">'
-				+ js_saveprice + '</font> - ' + (data["self_point_a"]) / 100.0 + ' = ¥<font color="red">'
-				+ (js_saveprice - (data["self_point_a"]) / 100.0)
+				+ js_saveprice + '</font> - ' + (data["AuctionPoint"]) / 100.0 + ' = ¥<font color="red">'
+				+ (js_saveprice - (data["AuctionPoint"]) / 100.0)
 				+ '</font></td></tr>';
             oDiv.html(html_header + html_body + html_footer);
             //_this.UserInfoSelf(id,SafetyPrice,oDiv);
-            window.setTimeout(function () { _this.UserInfoSelf(id, SafetyPrice, oDiv) }, 3000); //开始
+            window.setTimeout(function () { _this.UserInfoSelf(id, SafetyPrice, oDiv, isLogin) }, 3000); //开始
         }, null, "json");
 
 

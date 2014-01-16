@@ -27,10 +27,14 @@ namespace WEB.Auction
                 Bind();
                 BindgvwHistory();
                 BindMyAuction();
-            }            
+            }
+            if(HttpContext.Current.Session["HuiYuanID"]!=null&&HttpContext.Current.Session["HuiYuanID"].ToString()!=""){
+                isLogin = 1;
+            }
         }
         public string auctionId = string.Empty;
         public string proPrice = string.Empty;
+        public int isLogin = 0;
 
         public void Bind()
         {
@@ -54,6 +58,8 @@ namespace WEB.Auction
                     if (list_img.Count > 0)
                     {
                         imgBig.ImageUrl = list_img[0].img;
+                        repeater_img.DataSource = list_img;
+                        repeater_img.DataBind();
                     }
                     //会员名
                     if (list[0].HuiYuanID == "")
@@ -119,14 +125,10 @@ namespace WEB.Auction
             List<auction> list = auctionBll.GetAuction(auctionId);
             if (list.Count>0)
             {
-                List<Product> list_pro = proBll.GetById(list[0].ProductID);
-                ltlProPrice.Text = list_pro[0].productPrice.ToString();
+                List<Product> list_pro = proBll.GetById(list[0].ProductID);                
             }
             if (Session["HuiYuanName"] == null || Session["HuiYuanID"] == null)
-            {
-                lblAuctionPoint.Text = "0";
-                lblFreePoint.Text = "0";
-                lblUsed.Text = "0";
+            {              
             }
             else 
             {
@@ -136,9 +138,7 @@ namespace WEB.Auction
                 List<ChuJiaJiLu> list1 = recordBll.GetChuJiaJiLu(auctionId,memberId);
                 if (list1 == null)
                 {
-                    lblAuctionPoint.Text = "0";
-                    lblFreePoint.Text = "0";
-                    lblUsed.Text = "0";
+                   
                 }
                 else 
                 {
@@ -146,16 +146,9 @@ namespace WEB.Auction
                     {
                         auction += list1[i].AuctionPoint;
                         free+=list1[i].FreePoint;
-                    }
-                    lblAuctionPoint.Text = auction.ToString();
-                    lblFreePoint.Text = free.ToString();
-                    lblUsed.Text=((auction+free)/100).ToString();
+                    }                    
                 }
-            }
-            if (ltlProPrice.Text!=""&&lblUsed.Text!="")
-            {
-                lblPay.Text = (Convert.ToDecimal(ltlProPrice.Text) - Convert.ToDecimal(lblUsed.Text)).ToString();
-            }
+            }            
         }
 
         protected void gvwHistory_RowDataBound(object sender, GridViewRowEventArgs e)

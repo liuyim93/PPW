@@ -16,6 +16,8 @@ namespace Model.Entities
         public string IPAdress { get; set; }//IP地址
         public int AuctionPoint { get; set; }//使用的拍点数
         public int FreePoint { get; set; }//使用的返点数
+        public string HuiYuanName { get; set; }//会员名
+        public string sjh { get; set; }//手机号
 	}
 }
 

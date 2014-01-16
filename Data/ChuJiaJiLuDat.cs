@@ -125,7 +125,35 @@ namespace Data
                 
                 throw;
             }
+        }
 
+       /// <summary>
+       /// 查询出价记录、出价人会员名和手机号
+       /// </summary>
+       /// <param name="sql"></param>
+       /// <returns></returns>
+        public List<ChuJiaJiLu> GetchuJiaJiLu(string sql) {
+            List<ChuJiaJiLu> list = new List<ChuJiaJiLu>();
+            DataSet ds = sh.GetDataSet(sql);
+            if(ds.Tables[0].Rows.Count>0){
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    ChuJiaJiLu record = new ChuJiaJiLu();
+                    record.HuiYuanID = row["HuiYuanID"].ToString();
+                    record.IPAdress = row["IPAdress"].ToString();
+                    record.Price = Convert.ToDecimal(row["Price"]);
+                    record.AuctionID = row["AuctionID"].ToString();
+                    record.Status = Convert.ToInt32(row["Status"]);
+                    record.AuctionPoint = Convert.ToInt32(row["AuctionPoint"]);
+                    record.AuctionTime = Convert.ToDateTime(row["AuctionTime"]);
+                    record.FreePoint = Convert.ToInt32(row["FreePoint"]);
+                    record.ChuJiaJiLuID = row["ChuJiaJiLuID"].ToString();
+                    record.HuiYuanName=row["HuiYuanName"].ToString();
+                    record.sjh=row["sjh"].ToString();
+                    list.Add(record);
+                }
+            }
+            return list;
         }
     }
 }

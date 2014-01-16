@@ -91,6 +91,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Auction\ajax\bidHistory.aspx" />
+    <Content Include="Auction\ajax\UserInfoSelf.aspx" />
     <Content Include="Auction\auctioncomplete.aspx" />
     <Content Include="Auction\AuctionHistory.aspx" />
     <Content Include="Auction\AuctionList.aspx" />
@@ -474,6 +476,20 @@
   <ItemGroup>
     <Compile Include="Auction\ajax\BidHistory.ashx.cs">
       <DependentUpon>BidHistory.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ajax\bidHistory.aspx.cs">
+      <DependentUpon>bidHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ajax\bidHistory.aspx.designer.cs">
+      <DependentUpon>bidHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ajax\UserInfoSelf.aspx.cs">
+      <DependentUpon>UserInfoSelf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ajax\UserInfoSelf.aspx.designer.cs">
+      <DependentUpon>UserInfoSelf.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\auctioncomplete.aspx.cs">
       <DependentUpon>auctioncomplete.aspx</DependentUpon>
