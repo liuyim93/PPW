@@ -111,6 +111,12 @@
             PaiPai_Manage.Start();
             PaiPai_Manage.BidHistory(actId,0,$("#content_history"));
             PaiPai_Manage.UserInfoSelf(actId,proPrice,$("#content_my"),isLogin);
+            $(".img_small img").mouseover(function(){
+                $(this).css("border","1px solid #8f0100"); 
+                $(this).siblings().css("border","none");
+                var bigImgSrc=$(this).attr("src");     
+                $(".img_big img").attr("src",bigImgSrc);                          
+            });
         })
     </script>
 </asp:Content>

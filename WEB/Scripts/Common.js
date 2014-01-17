@@ -17,13 +17,13 @@ String.prototype.trim = function () { return $.trim(this); }
 
 function AddDialogbox(objId, title, zIndex, objWidth, ScreenMaskId, zIndex_Sub, IsShowClose, strContent, DialogTitle) {
     if (ScreenMaskId == null) ScreenMaskId = ""; //2010-09-27 Add
-    addScreenMask(ScreenMaskId, zIndex_Sub);
+//    addScreenMask(ScreenMaskId, zIndex_Sub);
 
     var objIdInHTML = objId.replace(/#/, "");
     var sTop = (document.compatMode == "CSS1Compat") ? document.documentElement.scrollTop : document.body.scrollTop;
 
     //why document.body.scrollTop == 0 on chrome?
-    if (sys.chrome) { sTop = document.body.scrollTop; }
+//    if (sys.chrome) { sTop = document.body.scrollTop; }
 
     var docBodyScrollTop = sTop + $(window).height() / 7;
     var left = $(window).width() / 2 - objWidth / 2;
@@ -59,7 +59,7 @@ function RemoveDialogbox(objId, ScreenMaskId) {
     if (ScreenMaskId == null || ScreenMaskId == "") ScreenMaskId = ""; //2010-09-27 Add
     var objIdInHTML = objId.replace(/#/, "");
     $("#" + objIdInHTML).fadeOut("fast", function () {
-        removeScreenMask(ScreenMaskId);
+//        removeScreenMask(ScreenMaskId);
         $(this).remove(); //从DOM中删除本对象
     });
 }
@@ -104,20 +104,23 @@ function Fast_Login(uNameId, uPassId, datatype) {
     //alert(uName + "|" + uPass);
     if ($.trim(uName).length < 1 || $.trim(uPass).length < 1 || uName == "用户名/邮箱" || uPass == "请输入密码") {
         //alert("请输入用户邮箱(或用户名)和密码。");
-        AlertInfo("登录异常", "请输入用户邮箱(或用户名)和密码。");
+//        AlertInfo("登录异常", "请输入用户邮箱(或用户名)和密码。");
+        alert("请输入用户名或密码.");
         return false;
     }
     AjaxSubmit(
-		null,
-		"/index.aspx?s=/User/FastUserLogin/",
+		"get",
+		"../Auction/ajax/FastUserLogin.aspx",
 		{ "username": uName, "password": uPass },
 		function (msg) {
 		    if (msg == 1) {
 		        AjaxLoginBoxClose();
-		        Fast_GetUserInfo();
+		        //		        Fast_GetUserInfo();
+		        window.location.href = window.location.href;
 		    }
 		    else {
-		        AlertError("登录失败", "用户名或密码错误.");
+		        //		        AlertError("登录失败", "用户名或密码错误.");
+		        alert("用户名或密码错误。");
 		        //ShowErrorMsg("用户登陆有误,可能的原因:\r\n\r\n\t1.用户名或密码错误;\r\n\t2.网络故障.", "会员登陆"); //。
 
 		    }
@@ -125,10 +128,9 @@ function Fast_Login(uNameId, uPassId, datatype) {
 		function (msg) {
 		    ShowErrorMsg("用户登陆有误:" + (msg.responseText ? msg.responseText : "ErrorAjax") + "。");
 		}
-
 	);
 
-    setCookie('islogin', '1');
+//    setCookie('islogin', '1');
     return true;
 }
 function f5() {
@@ -209,7 +211,7 @@ function Fast_Logout(isAutoExit) {
 +++++++++++++++++++++++++++++++++++++*/
 
 function AjaxLoginBox() {
-    AjaxSubmit(null, "/User/LoginBox.aspx", ""
+    AjaxSubmit(null, "/Auction/ajax/LoginBox.aspx", ""
 	, function (msg) {
 	    AddDialogbox("Ajax_User_Login_Box", "", 60001, 489, "Ajax_User_Login_screenMask", 10000, false, msg);
 	}, null);
@@ -416,13 +418,13 @@ function getStr() {
 +++++++++++++++++++++++++++++++++++++*/
 function AlertBox(objId, title, zIndex, objWidth, ScreenMaskId, zIndex_Sub, IsShowClose, strContent, DialogTitle, DialogBankgroundColor) {
     if (ScreenMaskId == null) ScreenMaskId = "";
-    addScreenMask(ScreenMaskId, zIndex_Sub);
+//    addScreenMask(ScreenMaskId, zIndex_Sub);
 
     var objIdInHTML = objId.replace(/#/, "");
     var sTop = (document.compatMode == "CSS1Compat") ? document.documentElement.scrollTop : document.body.scrollTop;
 
     //why document.body.scrollTop == 0 on chrome?
-    if (sys.chrome) { sTop = document.body.scrollTop; }
+//    if (sys.chrome) { sTop = document.body.scrollTop; }
 
     var docBodyScrollTop = sTop + $(window).height() / 7;
     var left = $(window).width() / 2 - objWidth / 2;
@@ -433,7 +435,7 @@ function AlertBox(objId, title, zIndex, objWidth, ScreenMaskId, zIndex_Sub, IsSh
     if (zIndex_Sub != null) {
         docBodyScrollTop = docBodyScrollTop + 100;
     }
-    var strCloseDiv = '<div style="line-height:25px;text-align:right;height:100%;"><div style="width:80%;float:left;text-align:left;font-weight:bold;color:#FFFFFF;">&nbsp;' + DialogTitle + '</div><a href="javascript:;" style="margin:5px 5px 0 0;display:block;width:16px;float:right"><img alt="关闭" src="/images/alert/close.png" /></a></div>';
+    var strCloseDiv = '<div style="line-height:25px;text-align:right;height:100%;"><div style="width:80%;float:left;text-align:left;font-weight:bold;color:#FFFFFF;">&nbsp;' + DialogTitle + '</div><a style="margin:5px 5px 0 0;display:block;width:16px;float:right;cursor:pointer;"><img alt="关闭" src="Images/close.png" onclick=\"RemoveAlertBox('+objId+');\" /></a></div>';
 
 
     $(document.body).prepend(
@@ -455,7 +457,7 @@ function RemoveAlertBox(objId, ScreenMaskId) {
     if (ScreenMaskId == null || ScreenMaskId == "") ScreenMaskId = ""; //2010-09-27 Add
     var objIdInHTML = objId.replace(/#/, "");
     $("#" + objIdInHTML).fadeOut("fast", function () {
-        removeScreenMask(ScreenMaskId);
+//        removeScreenMask(ScreenMaskId);
         $(this).remove(); //从DOM中删除本对象
     });
 }

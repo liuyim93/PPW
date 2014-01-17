@@ -12,8 +12,8 @@
     <link rel="Stylesheet" type="text/css" href="Styles/Style.css" />
     <script src="../Scripts/PaiPai_20140108_dyjjp.js" type="text/javascript"></script>
     <script src="../Scripts/Common.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-1.2.6.js" type="text/javascript"></script>
-    <asp:ContentPlaceHolder ID="head" runat="server">
+    <script src="../Scripts/jquery-1.2.6.js" type="text/javascript"></script>    
+    <asp:ContentPlaceHolder ID="head" runat="server">    
     </asp:ContentPlaceHolder>
 </head>
 <body>    

@@ -18,7 +18,8 @@
                     <span>热门搜索：<a href="" target="_self">手机</a>&nbsp;<a href="" target="_self">笔记本电脑</a></span>
                 </div>
                 <div>
-                    
+                    <input id="_username" type="hidden" />
+                    <input id="_password" type="hidden" />
                 </div>
             </div>
             <div class="top_menu">

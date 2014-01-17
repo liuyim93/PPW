@@ -1,42 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" EnableSessionState="True" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="PointsMall_Detail.aspx.cs" Inherits="WEB.Auction.PointsMall_Detail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <script type="text/javascript">
-            function imgfocus(num) {
-                var imgpro = document.getElementById('<%=imgPro.ClientID %>');
-                var img1 = document.getElementById('<%=img1.ClientID %>');
-                var img2 = document.getElementById('<%=img2.ClientID %>');
-                var img3 = document.getElementById('<%=img3.ClientID %>');
-                img1.style.borderWidth = "1px";
-                img2.style.borderWidth = "1px";
-                img3.style.borderWidth = "1px";
-                switch (num) {
-                    case 1:
-                        var src = img1.getAttribute("src");
-                        imgpro.setAttribute("src", src);
-                        img1.className = 'pointsdetail_img_focus';
-                        img2.className = "pointsdetail_img_non";
-                        img3.className = 'pointsdetail_img_non';
-                        break;
-                    case 2:
-                        var src1 = img2.getAttribute("src");
-                        imgpro.setAttribute("src", src1);
-                        img1.className = 'pointsdetail_img_non';
-                        img2.className = "pointsdetail_img_focus";
-                        img3.className = 'pointsdetail_img_non';
-                        break;
-                    case 3:
-                        var src2 = img3.getAttribute("src");
-                        imgpro.setAttribute("src", src2);
-                        img1.className = 'pointsdetail_img_non';
-                        img2.className = "pointsdetail_img_non";
-                        img3.className = 'pointsdetail_img_focus';
-                        break;
-                    default:
-                        break;
-
-                }
-            }
-
+<%--        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".img_small img").mouseover(function () {
+                    $(this).css("border", "1px solid #8f0100");
+                    $(this).siblings().css("border", "none");
+                    var bigImgSrc = $(this).attr("src");
+                    $(".img_big img").attr("src", bigImgSrc);
+                });
+            }); 
+                        
             function loginadress() {
                 var response = WEB.Auction.PointsMall_Detail.Check().value;
                 var btn_return = document.getElementById("btn_return");
@@ -81,19 +54,19 @@
                 adressdiv.style.visibility = "visible";
                 return true;
              }
-    </script>
+    </script>--%>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:UpdatePanel ID="updatepnel1" runat="server">
-    <ContentTemplate>       
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
     <div class="pointsdetail">
         <div class="pointsdetail_top">
             <div class="pointsdetail_left">
-                <div class="pointsdetail_imgpro"><asp:Image ID="imgPro" runat="server" Width="260px" Height="260px" /></div>
-                <div class="pointsdetail_img">
-                    <asp:Image ID="img1" runat="server" onmouseover='imgfocus(1);' CssClass="pointsdetail_img_non" />
-                    <asp:Image ID="img2" runat="server" onmouseover='imgfocus(2);' CssClass="pointsdetail_img_non" />
-                    <asp:Image ID="img3" runat="server" onmouseover='imgfocus(3);' CssClass="pointsdetail_img_non" />
+                <div class="img_big"><asp:Image ID="imgPro" runat="server" Width="300px" Height="260px" /></div>
+                <div class="img_small">
+                    <asp:Repeater ID="repeater_img" runat="server">
+                        <ItemTemplate>
+                            <img src="<%#Eval("img") %>" class="pointsdetail_img_non" />
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>  
             <div class="pointsdetail_right">
@@ -110,13 +83,13 @@
             <div class="pointsdetail_detail"><asp:Label ID="lblDetail" runat="server"></asp:Label></div>
         </div>
     </div>
-    <asp:Panel ID="adressdiv" runat="server" class="adressdiv">
+    <div id="adressdiv" class="adressdiv">
         <div id="adressdiv_bg"></div>
         <div id="adressdiv_top">
             <div class="adressdiv_top_close"><img id="img_close" src="../../Image/Close.png" width="16px" height="16px" border="0px" onclick="back();" /></div>
             <div class="adressdiv_top_title"><asp:Literal ID="ltlTitle" runat="server" Text="选择收货地址"></asp:Literal></div>
-            <asp:Panel ID="pnlAdressList" runat="server" Visible="true" class="adressdiv_adrlst">
-                <asp:DataList ID="dlstShipAdress" runat="server" onitemdatabound="dlstShipAdress_ItemDataBound" DataKeyField="ShouHuoDZID">
+            <div ID="pnlAdressList" class="adressdiv_adrlst">
+                <%--<asp:DataList ID="dlstShipAdress" runat="server" onitemdatabound="dlstShipAdress_ItemDataBound" DataKeyField="ShouHuoDZID">
                     <ItemTemplate>
                         <div>
                             <asp:RadioButton ID="rbtnAdress" runat="server" GroupName="ss" onclick="clickme(this.name)" />&nbsp;<asp:Label ID="lblname"　runat="server" Text='<%#Eval("ShouHuoName") %>'></asp:Label>&nbsp;&nbsp;<asp:Label ID="lblAdress" runat="server" Text='<%#Eval("DZ") %>'></asp:Label>&nbsp;&nbsp;<asp:Label ID="lblPhone" runat="server" Text='<%#Eval("Mode") %>'></asp:Label>
@@ -125,22 +98,30 @@
                     </ItemTemplate>
                 </asp:DataList>
                  <asp:RadioButton ID="rbtnAddAdress" runat="server" oncheckedchanged="rbtnAddAdress_CheckedChanged" AutoPostBack="true" Text="添加收货地址" onClientClick="return static();" />
-                 <div class="adressdiv_adrlst_btn"><asp:Button ID="btnConfirm" runat="server" onclick="btnConfirm_Click" Text="确定" />&nbsp;&nbsp;<asp:Button ID="btnBack" runat="server" OnClientClick=" return back();" Text="取消" /></div>
-            </asp:Panel>
-            <asp:Panel ID="pnlAddAdress" runat="server" Visible="false"> 
+                 <div class="adressdiv_adrlst_btn"><asp:Button ID="btnConfirm" runat="server" onclick="btnConfirm_Click" Text="确定" />&nbsp;&nbsp;<asp:Button ID="btnBack" runat="server" OnClientClick=" return back();" Text="取消" /></div>--%>
+                   <div>
+                    <asp:Repeater ID="repeater_adr" runat="server">
+                        <ItemTemplate>
+                            <input type="radio" id="radio_<%#Eval("ShouHuoDZID") %>" />&nbsp;&nbsp;<p><%#Eval("ShouHuoName") %></p>&nbsp;&nbsp;
+                            <p><%#Eval("DZ") %></p>&nbsp;&nbsp;<p><%#Eval("Mode") %></p>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                     </div>
+                    <input type="radio" id="radioAddAdr" value="添加收货地址" /><br />
+                    <div class=="adressdiv_adrlst-btn"><img src="" alt="确定" />&nbsp;&nbsp;<img src="" alt="取消" /></div>                
+            </div>
+            <div id="pnlAddAdress"> 
                 <div class="actorder_addadr">
                     <ul>
-                        <li class="actorder_addadr1"><div class="addadr_left" style="width:170px;"><font color="red">*</font>收货人：</div><div class="addadr_right"><asp:TextBox ID="txtname" runat="server"></asp:TextBox></div></li>
-                        <li class="actorder_addadr2"><div class="addadr_left" style="width:170px;"><font color="red">*</font>收货地址：</div><div class="addadr_right"><asp:TextBox ID="txtAdress" runat="server" TextMode="MultiLine"></asp:TextBox></div></li>
-                        <li class="actorder_addadr1"><div class="addadr_left" style="width:170px;"><font color="red">*</font>电话号码：</div><div class="addadr_right"><asp:TextBox ID="txtPhone" runat="server"></asp:TextBox></div></li>
-                        <li class="actorder_addadr1"><div class="addadr_left" style="width:170px;"><font color="red">*</font>邮编：</div><div class="addadr_right"><asp:TextBox ID="txtPostCode" runat="server"></asp:TextBox></div></li>
-                        <li class="actorder_addadr2"><div class="addadr_left" style="width:170px;">备注：</div><div class="addadr_right"><asp:TextBox ID="txtRemark" runat="server" TextMode="MultiLine"></asp:TextBox></div></li>
-                        <li class="actorder_addadr_btn" style="padding-left:180px;"><asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="保存" />&nbsp;&nbsp;<asp:Button ID="btnCancel" runat="server" onclick="btnCancel_Click" Text="取消" OnClientClick="return static();" /></li>
+                        <li class="actorder_addadr1"><div class="addadr_left" style="width:170px;"><font color="red">*</font>收货人：</div><div class="addadr_right"><input type="text" id="txtname" /></div></li>
+                        <li class="actorder_addadr2"><div class="addadr_left" style="width:170px;"><font color="red">*</font>收货地址：</div><div class="addadr_right"><input id="txtadr" type="text" /></div></li>
+                        <li class="actorder_addadr1"><div class="addadr_left" style="width:170px;"><font color="red">*</font>电话号码：</div><div class="addadr_right"><input type="text" id="txtphone" /></div></li>
+                        <li class="actorder_addadr1"><div class="addadr_left" style="width:170px;"><font color="red">*</font>邮编：</div><div class="addadr_right"><input type="text" id="txtcode" /></div></li>
+                        <li class="actorder_addadr2"><div class="addadr_left" style="width:170px;">备注：</div><div class="addadr_right"><input type="text" id="txtremark" /></div></li>
+                        <li class="actorder_addadr_btn" style="padding-left:180px;"><img src="" alt="确定" />&nbsp;&nbsp;<img src="" alt="取消" /></li>
                     </ul>
                 </div>
-            </asp:Panel>
-        </div>
-    </asp:Panel>
-     </ContentTemplate>
-</asp:UpdatePanel>
+            </div>
+        </div>        
+    </div>
 </asp:Content>

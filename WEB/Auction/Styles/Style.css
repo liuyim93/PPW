@@ -184,8 +184,9 @@ img{border:0px;}
 
 /*商品详情页面*/
 .pro_info{width:100%;height:400px;margin:10px 5px;}
-.pro_info .left{width:300px;height:100%; border:1px solid #ccc;float:left;}
+.pro_info .left{width:300px;height:100%; border:1px solid #ccc;float:left;margin-right:10px;}
 .img_big{width:100%;height:300px; border-bottom:1px solid #ccc; text-align:center;}
+.img_small{height:77px;margin:8px;margin-left:10px;}
 .pro_info .center{width:370px;height:auto;float:left;padding:10px;}
 .pro_info .center .name{width:100%;height:50px;line-height:20px;font-size:16px; overflow:hidden;}
 .pro_info .center .middle{width:100%;height:110px;}
@@ -359,13 +360,13 @@ img{border:0px;}
 
 /*PointsMall_Detail-商品详情*/
 .pointsdetail{width:100%;margin-top:10px;}
-.pointsdetail_top{width:100%;height:380px;}
-.pointsdetail_left{width:280px;margin-right:10px;height:100%;float:left;}
+.pointsdetail_top{width:100%;height:395px;}
+.pointsdetail_left{width:300px;margin-right:10px;height:100%;float:left;border:1px solid #ccc;}
 .pointsdetail_right{width:60%;height:100%;float:left;}
-.pointsdetail_imgpro{width:280px;height:280px;margin-left:20px;}
+.pointsdetail_imgpro{width:300px;height:280px;margin-left:20px;}
 .pointsdetail_img_focus{height:76px;width:76px;border:1px solid #8f0100;}
 .pointsdetail_img{height:80px;line-height:80px;width:100%;}
-.pointsdetail_img_non{height:75px;width:75px;border:0px;}
+.pointsdetail_img_non{height:75px;width:75px;border:0px;margin-right:10px;}
 .pointsdetail_name{font-size:16px;font-weight:bold;height:30px;line-height:30px;width:95%;}
 .pointsdetail_price{height:25px;width:100%;line-height:25px;}
 .pointsdetail_points{height:25px;line-height:25px;width:100%;}
@@ -374,7 +375,6 @@ img{border:0px;}
 .pointsdetail_bottom{width:100%;border:1px solid #ccc;margin:10px 0px;}
 .pointsdetail_title{height:30px;line-height:30px;font-size:14px;font-weight:bold;border-bottom:1px solid #8f0100;}
 .pointsdetail_detail{width:95%;margin:10px;}
-.adressdiv{ visibility:hidden;}
 #adressdiv_bg{position:fixed;left:0px;top:0px;width:100%;height:100%; opacity:0.5;background-color:Black;z-index:100;}
 #adressdiv_top{width:500px;float:left;height:300px;left:35%;top:20%;position:fixed;z-index:1000; background-color:White;}
 .adressdiv_top_close{width:18px;height:18px;position:absolute;right:0px;top:0px;}
@@ -418,6 +418,16 @@ img{border:0px;}
 .paginator a,.paginator a:visited,.paginator .cpb,.paginator a:hover 
 {float:left;height:16px;line-height:16px;min-width:10px;_width:10px;margin-right:5px;text-align:center;
  white-space:nowrap;font-size:12px;font-family:Arial,SimSun;padding:0 3px;}
+ 
+ /*LoginBox-登录弹窗*/
+ .loginbox{width:482px;height:305px;border:1px solid #ccc;position:relative;margin:2px;}
+ .loginbox_close{width:16px;height:16px;position:absolute;top:0px;right:0px;cursor:pointer;}
+ .loginbox_reg{width:100%;height:170px;text-align:center; color:#5f5f5f;}
+ .loginbox_reg p{width:70%;margin:5px auto;}
+ .loginbox_login{width:98%;height:130px;background-color:#ccc;margin:0px auto;}
+ .loginbox_login img{cursor:pointer;}
+ .loginbox_login table{margin:0px auto;}
+ .loginbox_login table tr{height:25px;line-height:25px;}
 
 
 

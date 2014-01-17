@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Auction\ajax\bidHistory.aspx" />
+    <Content Include="Auction\ajax\FastUserLogin.aspx" />
+    <Content Include="Auction\ajax\LoginBox.aspx" />
     <Content Include="Auction\ajax\UserInfoSelf.aspx" />
     <Content Include="Auction\auctioncomplete.aspx" />
     <Content Include="Auction\AuctionHistory.aspx" />
@@ -474,15 +476,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auction\ajax\BidHistory.ashx.cs">
-      <DependentUpon>BidHistory.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Auction\ajax\bidHistory.aspx.cs">
       <DependentUpon>bidHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Auction\ajax\bidHistory.aspx.designer.cs">
       <DependentUpon>bidHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ajax\FastUserLogin.aspx.cs">
+      <DependentUpon>FastUserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ajax\FastUserLogin.aspx.designer.cs">
+      <DependentUpon>FastUserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ajax\LoginBox.aspx.cs">
+      <DependentUpon>LoginBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ajax\LoginBox.aspx.designer.cs">
+      <DependentUpon>LoginBox.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\ajax\UserInfoSelf.aspx.cs">
       <DependentUpon>UserInfoSelf.aspx</DependentUpon>
@@ -932,7 +945,6 @@
     <Content Include="Auction\Main.Master" />
     <Content Include="Auction\CheckCode.ashx" />
     <Content Include="Auction\UserCenter.master" />
-    <Content Include="Auction\ajax\BidHistory.ashx" />
     <None Include="kindeditor\jsp\demo.jsp" />
     <None Include="kindeditor\jsp\file_manager_json.jsp" />
     <None Include="kindeditor\jsp\upload_json.jsp" />
