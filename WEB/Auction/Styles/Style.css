@@ -375,12 +375,18 @@ img{border:0px;}
 .pointsdetail_bottom{width:100%;border:1px solid #ccc;margin:10px 0px;}
 .pointsdetail_title{height:30px;line-height:30px;font-size:14px;font-weight:bold;border-bottom:1px solid #8f0100;}
 .pointsdetail_detail{width:95%;margin:10px;}
+#adressdiv{display:none;}
 #adressdiv_bg{position:fixed;left:0px;top:0px;width:100%;height:100%; opacity:0.5;background-color:Black;z-index:100;}
 #adressdiv_top{width:500px;float:left;height:300px;left:35%;top:20%;position:fixed;z-index:1000; background-color:White;}
 .adressdiv_top_close{width:18px;height:18px;position:absolute;right:0px;top:0px;}
 .adressdiv_top_title{height:30px;line-height:30px;font-size:14px;font-weight:bold;border-bottom:1px solid #ccc;padding-left:10px;}
-.adressdiv_adrlst{width:90%;padding-left:5px;margin-top:10px;}
+.adressdiv_adrlst{width:100%;margin-top:10px;}
 .adressdiv_adrlst_btn{margin-top:20px;padding-left:0px;text-align:center;}
+#adrlst{width:95%;margin:2px auto;}
+.adrlst_area{}
+#pnlAddAdress{display:none;}
+#pnlAddAdress input{border:1px solid #ccc;height:22px;}
+#pnlAddAdress textarea{border:1px solid #ccc;}
 
 /*UserInfo/Exchange.aspx-积分兑换*/
 .gift{width:100%;border:1px solid #ccc;margin-top:5px;}

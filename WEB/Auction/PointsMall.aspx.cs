@@ -22,14 +22,31 @@ namespace WEB.Auction
         }
 
         public void Bind() 
-        {
-            dlstExchange.DataSource = proBll.GetAllExchangeProduct();
+        {                     
+            dropProType.DataSource = proBll.GetAllProductType();
+            dropProType.DataTextField = "TypeName";
+            dropProType.DataValueField = "ProductTypeID";
+            dropProType.DataBind();
+            dropProType.Items.Insert(0,"不限");
+            string proTypeId = "";
+            string minPoints = "0";
+            string maxPoints = "0";
+            dlstExchange.DataSource = proBll.GetExchangeProduct(proTypeId,minPoints,maxPoints);
             dlstExchange.DataBind();
         }
 
         protected void lbtnSearch_Click(object sender, EventArgs e)
         {
-
+            string proTypeId = dropProType.SelectedValue;
+            if(proTypeId=="不限"){
+                proTypeId = "";
+            }
+            string Points = dropPoints.SelectedValue;
+            string[] Point = Points.Split('-');
+            string minPoint=Point[0];
+            string maxPoint=Point[1];
+            dlstExchange.DataSource = proBll.GetExchangeProduct(proTypeId,minPoint,maxPoint);
+            dlstExchange.DataBind();
         }
 
         protected void dlstExchange_ItemDataBound(object sender, DataListItemEventArgs e)

@@ -9,11 +9,11 @@
             <div class="pointsmall_search">
                 <div class="pointsmall_drop">产品类型：<asp:DropDownList ID="dropProType" runat="server"></asp:DropDownList>&nbsp;&nbsp;
                      积分：<asp:DropDownList ID="dropPoints" runat="server">
-                        <asp:ListItem Text="不限" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="不限" Value="0-0"></asp:ListItem>
                         <asp:ListItem Text="500以下" Value="0-500"></asp:ListItem>
                         <asp:ListItem Text="500~1000" Value="500-1000"></asp:ListItem>
                         <asp:ListItem Text="1000~2000" Value="1000-2000"></asp:ListItem> 
-                        <asp:ListItem Text="2000以上" Value="2000"></asp:ListItem>
+                        <asp:ListItem Text="2000以上" Value="2000-"></asp:ListItem>
                       </asp:DropDownList>
                   </div>
                   <div class="pointsmall_btn"><asp:LinkButton ID="lbtnSearch" runat="server" onclick="lbtnSearch_Click">搜索</asp:LinkButton></div>
@@ -25,6 +25,7 @@
                         <div class="pointsmall_area_img"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><asp:Image ID="imgPro" runat="server" Width="120px" Height="120px" ToolTip='<%#Eval("productName") %>' /></a></div>
                         <div class="pointsmall_area_name"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><%#Eval("productName") %></a></div>
                         <div class="pointsmall_area_points">积分：<asp:Label ID="lblPoints" runat="server"><%#Eval("Points") %></asp:Label></div>
+                        <div style="text-align:center;margin-top:5px;"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><img src="" alt="立即兑换" /></a></div>
                     </div>
                 </ItemTemplate>
             </asp:DataList>

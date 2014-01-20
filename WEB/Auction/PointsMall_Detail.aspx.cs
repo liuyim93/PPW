@@ -26,7 +26,8 @@ namespace WEB.Auction
             }
             AjaxPro.Utility.RegisterTypeForAjax(typeof(PointsMall_Detail));
         }
-
+        public string isLogin = "";
+        public string productId = "";
         public void Bind() 
         {
             if (Request.QueryString["id"] == null || Request.QueryString["id"] == "")
@@ -36,6 +37,7 @@ namespace WEB.Auction
             else 
             {
                 string proId=Request.QueryString["id"];
+                productId = proId;
                 List<Product> list_pro = proBll.GetById(proId);
                 if (list_pro.Count > 0)
                 {
@@ -62,6 +64,7 @@ namespace WEB.Auction
                 else 
                 {
                     string hyId=Session["HuiYuanID"].ToString();
+                    isLogin = "1";
                     HuiYuan hy = hyBll.GetHuiYuan(hyId);
                     lblCurPoints.Text=hy.Points.ToString();
                     BindAdress();

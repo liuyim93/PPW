@@ -91,9 +91,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Auction\ajax\AddAdress.aspx" />
     <Content Include="Auction\ajax\bidHistory.aspx" />
     <Content Include="Auction\ajax\FastUserLogin.aspx" />
     <Content Include="Auction\ajax\LoginBox.aspx" />
+    <Content Include="Auction\ajax\Points.aspx" />
     <Content Include="Auction\ajax\UserInfoSelf.aspx" />
     <Content Include="Auction\auctioncomplete.aspx" />
     <Content Include="Auction\AuctionHistory.aspx" />
@@ -476,6 +478,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auction\ajax\AddAdress.aspx.cs">
+      <DependentUpon>AddAdress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ajax\AddAdress.aspx.designer.cs">
+      <DependentUpon>AddAdress.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Auction\ajax\bidHistory.aspx.cs">
       <DependentUpon>bidHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -496,6 +505,13 @@
     </Compile>
     <Compile Include="Auction\ajax\LoginBox.aspx.designer.cs">
       <DependentUpon>LoginBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auction\ajax\Points.aspx.cs">
+      <DependentUpon>Points.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auction\ajax\Points.aspx.designer.cs">
+      <DependentUpon>Points.aspx</DependentUpon>
     </Compile>
     <Compile Include="Auction\ajax\UserInfoSelf.aspx.cs">
       <DependentUpon>UserInfoSelf.aspx</DependentUpon>
