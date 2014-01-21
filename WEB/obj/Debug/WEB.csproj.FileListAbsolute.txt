@@ -112,7 +112,6 @@ F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\Interop.CPNPC.d
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\obj\Debug\WEB.csproj.ResolveComReference.cache
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\WEB.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\WEB.pdb
-F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\AjaxPro.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\BLL.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\DocumentFormat.OpenXml.dll
 F:\刘义铭\项目交接\MyPaiWang 1.0\PPwProject\WEB\bin\DocumentFormat.OpenXml.Extensions.dll

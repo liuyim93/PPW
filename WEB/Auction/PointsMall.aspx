@@ -24,8 +24,9 @@
                     <div class="pointsmall_area">
                         <div class="pointsmall_area_img"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><asp:Image ID="imgPro" runat="server" Width="120px" Height="120px" ToolTip='<%#Eval("productName") %>' /></a></div>
                         <div class="pointsmall_area_name"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><%#Eval("productName") %></a></div>
+                        <div class="pointsmall_area_price">市场价：<asp:Label ID="lblProPrice" runat="server" >￥<%#Eval("productPrice") %></asp:Label></div>
                         <div class="pointsmall_area_points">积分：<asp:Label ID="lblPoints" runat="server"><%#Eval("Points") %></asp:Label></div>
-                        <div style="text-align:center;margin-top:5px;"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><img src="" alt="立即兑换" /></a></div>
+                        <div style="text-align:center;margin-top:7px;"><a href="../Auction/PointsMall_Detail.aspx?id=<%#Eval("ProductID") %>" target="_self"><img src="Images/btn_exchange.jpg" alt="立即兑换" /></a></div>
                     </div>
                 </ItemTemplate>
             </asp:DataList>

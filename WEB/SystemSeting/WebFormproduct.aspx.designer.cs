@@ -382,6 +382,15 @@ namespace WEB.SystemSeting {
         protected global::Ext.Net.Container Container4;
         
         /// <summary>
+        /// txt_TiMuNeiRong 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txt_TiMuNeiRong;
+        
+        /// <summary>
         /// hidTiMuNeiRong 控件。
         /// </summary>
         /// <remarks>

@@ -173,14 +173,17 @@
                     </asp:Repeater>
                 </div>
             </div>  
-            <div class="pointsdetail_right">
+            <div class="pointsdetail_middle">
                 <div class="pointsdetail_name"><asp:Label ID="lblProName" runat="server"></asp:Label></div>
                 <div class="pointsdetail_price">市场价：<asp:Label ID="lblPrice" runat="server"></asp:Label></div>
                 <div class="pointsdetail_points">所需积分：<asp:Label ID="lblPoints" runat="server"></asp:Label></div>
                 <div class="pointsdetail_price">当前积分：<asp:Label ID="lblCurPoints" runat="server"></asp:Label></div>
-                <div class="pointsdetail_btn"><img src="Images/nei.png" alt="立即兑换" id="exchange" /></div>
+                <div class="pointsdetail_btn"><img src="Images/btn_exchange.jpg" alt="立即兑换" id="exchange" /></div>
                 <div style="width:100%;height:25px;line-height:25px;"><p id="btn_return"></p></div>
             </div> 
+            <div class="pointsdetail_right">
+                <img src="Images/guide.jpg" alt="" />
+            </div>
         </div>
         <div class="pointsdetail_bottom">
             <div class="pointsdetail_title">商品详情</div>

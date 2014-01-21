@@ -16,10 +16,9 @@ namespace WEB.Auction
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
         protected void Page_Load(object sender, EventArgs e)
         {
-            AjaxPro.Utility.RegisterTypeForAjax(typeof(Register));
+           
         }
         //验证邮箱
-        [AjaxPro.AjaxMethod]
         public string IsEmailAvailable(string email)
         {
             object obj = hyBll.IsEmailAvailable(email);
@@ -33,7 +32,6 @@ namespace WEB.Auction
             }
         }
         //验证用户名是否可用
-        [AjaxPro.AjaxMethod]
         public string IsUserNameAvailable(string username) 
         {
             object obj = hyBll.IsUserNameAvailable(username);

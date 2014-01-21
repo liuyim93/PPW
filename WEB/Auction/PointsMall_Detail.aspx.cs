@@ -24,7 +24,7 @@ namespace WEB.Auction
             {
                 Bind();
             }
-            AjaxPro.Utility.RegisterTypeForAjax(typeof(PointsMall_Detail));
+            //AjaxPro.Utility.RegisterTypeForAjax(typeof(PointsMall_Detail));
         }
         public string isLogin = "";
         public string productId = "";
@@ -81,7 +81,7 @@ namespace WEB.Auction
             repeater_adr.DataBind();
         }
 
-        [AjaxPro.AjaxMethod]
+        //[AjaxPro.AjaxMethod]
         public string Check() 
         {
             if (Session["HuiYuanID"] == null || Session["HuiYuanName"] == null)

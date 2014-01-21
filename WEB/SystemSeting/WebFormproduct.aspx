@@ -7,20 +7,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="../../kindeditor/themes/default/default.css" rel="stylesheet" type="text/css" />
-    <link href="../../kindeditor/plugins/code/prettify.css" rel="stylesheet" type="text/css" />
-    <script  src="../../kindeditor/kindeditor.js" type="text/javascript"></script>
-    <script  src="../../kindeditor/lang/zh_CN.js" type="text/javascript"></script>
-    <script  src="../../kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
+    <link href="../kindeditor/themes/default/default.css" rel="stylesheet" type="text/css" />
+    <link href="../kindeditor/plugins/code/prettify.css" rel="stylesheet" type="text/css" />
+    <script  src="../kindeditor/kindeditor.js" type="text/javascript"></script>
+    <script  src="../kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+    <script  src="../kindeditor/plugins/code/prettify.js" type="text/javascript"></script>
     <script src="../kindeditor/kindeditor-all.js" type="text/javascript"></script>
     <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <script type="text/javascript">
         var editor1, editor2;
         KindEditor.ready(function (K) {
             editor1 = K.create('#txt_TiMuNeiRong', {
-                cssPath: '../../kindeditor/plugins/code/prettify.css',
-                uploadJson: '../../kindeditor/asp.net/upload_json.ashx',
-                fileManagerJson: '../../kindeditor/asp.net/file_manager_json.ashx',
+                cssPath: '../kindeditor/plugins/code/prettify.css',
+                uploadJson: '../kindeditor/asp.net/upload_json.ashx',
+                fileManagerJson: '../kindeditor/asp.net/file_manager_json.ashx',
                 allowFileManager: true,
                 resizeType: 0,
                 afterCreate: function () {
@@ -287,7 +287,7 @@
                                                         </td>
                                                         <td style="padding-left: 4px; text-align: left; width: 675px;">
                                                             <textarea id="txt_TiMuNeiRong" name="txt_TiMuNeiRong" style="width: 668px; height: 280px;
-                                                                margin-bottom: 10px;"></textarea>
+                                                                margin-bottom: 10px;" runat="server"></textarea>
                                                         </td>
                                                     </tr>
                                                 </table>
