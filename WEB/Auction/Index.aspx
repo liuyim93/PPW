@@ -157,7 +157,7 @@
         <!--最新成交-->
         <div class="newest_done">
             <div class="auction_title">最近成交<span>&nbsp;Last Done</span></div>
-            <div>
+            <div class="content">
                 <asp:DataList ID="dlstDone" runat="server" RepeatColumns="5" 
                     onitemdatabound="dlstDone_ItemDataBound" DataKeyField="AuctionID">
                     <ItemTemplate>

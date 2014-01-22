@@ -9,6 +9,7 @@ using BLL.SystemSeting;
 using Model.Entities;
 using Tools;
 using System.Transactions;
+using System.Data;
 
 namespace WEB.UserInfo
 {
@@ -58,6 +59,7 @@ namespace WEB.UserInfo
             string hyId=Session["HuiYuanID"].ToString();
             int status;
             string type=Request.QueryString["type"];
+            string orderType = "竞拍订单";
             if (type != "0" && type != "1" && type != "2")
             {
                 Response.Redirect("../Auction/Index.aspx");
@@ -84,8 +86,17 @@ namespace WEB.UserInfo
                         pnlShipAdress.Visible = false;
                     }
                 }
-                dlstOrderList.DataSource = orderBll.GetDingDanbyhyId(hyId,status);
-                dlstOrderList.DataBind();
+                DataTable dt = orderBll.getDingDanbyhyId(hyId,status,orderType);
+                if(dt.Rows.Count>0){
+                    AspNetPager1.RecordCount = dt.Rows.Count;
+                    PagedDataSource pds = new PagedDataSource();
+                    pds.DataSource = dt.DefaultView;
+                    pds.AllowPaging = true;
+                    pds.PageSize = AspNetPager1.PageSize;
+                    pds.CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1;
+                    dlstOrderList.DataSource = pds;
+                    dlstOrderList.DataBind();
+                }
             }
         }
 
@@ -226,6 +237,11 @@ namespace WEB.UserInfo
                 default:
                     break;
             }
+        }
+
+        protected void AspNetPager1_PageChanged(object sender, EventArgs e)
+        {
+            BindOrder();
         }
     }
 }

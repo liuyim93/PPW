@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/UserCenter.master" AutoEventWireup="true" CodeBehind="Bided.aspx.cs" Inherits="WEB.UserInfo.Bided" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="content3" runat="server">
     <div class="biding">
         <div class="biding_title">竞拍历史</div>
+        <div class="biding_content">
         <asp:DataList ID="dlstBided" runat="server" Width="100%" 
-            onitemdatabound="dlstBided_ItemDataBound" DataKeyField="ProductID">
+            onitemdatabound="dlstBided_ItemDataBound" DataKeyField="ProductID" 
+                onitemcommand="dlstBided_ItemCommand">
             <HeaderTemplate>
                 <ul class="bidinghead">
                     <li style="width:300px;">商品</li>
@@ -35,12 +39,17 @@
                             <asp:Label ID="lblPointCount" runat="server"></asp:Label>
                         </li>
                         <li class="bidedarea_operate">
-                            <asp:HyperLink ID="hlnkBuy" runat="server" Visible="false">补差价购买</asp:HyperLink>
+                            <asp:LinkButton ID="lbtnBuy" runat="server" CommandName="buy" CommandArgument='<%#Eval("AuctionID") %>'>补差价购买</asp:LinkButton>
                             <asp:Label ID="lblTimeOut" runat="server" Text="超过3天不能再补差价购买了" Visible="false"></asp:Label>                            
                         </li>
                     </ul>
                 </div>
             </ItemTemplate>
         </asp:DataList>
+        <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="10" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager> 
+                            </div>
     </div>
 </asp:Content>

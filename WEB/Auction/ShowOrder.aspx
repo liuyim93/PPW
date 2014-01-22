@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="ShowOrder.aspx.cs" Inherits="WEB.Auction.ShowOrder" %>
-<%@ Register Src="UserControl/Recommend.ascx" TagName="Recommend" TagPrefix="uc1" %><%@ Register Src="UserControl/Last.ascx" TagName="Last" TagPrefix="uc2" %>
+<%@ Register Src="UserControl/Recommend.ascx" TagName="Recommend" TagPrefix="uc1" %>
+<%@ Register Src="UserControl/Last.ascx" TagName="Last" TagPrefix="uc2" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -28,6 +31,10 @@
                         </div>
                     </ItemTemplate>
                 </asp:DataList>
+                <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="10" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager>   
             </div>
         </div>
         <div class="auctionlist_right">

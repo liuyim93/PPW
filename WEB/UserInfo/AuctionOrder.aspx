@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/UserCenter.master" AutoEventWireup="true" CodeBehind="AuctionOrder.aspx.cs" Inherits="WEB.UserInfo.AuctionOrder" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="content3" runat="server">
     <asp:UpdatePanel ID="updatepanel1" runat="server">
         <ContentTemplate>
@@ -57,11 +59,15 @@
                                             <li class="actorder_area_price">运费<br />￥<asp:Label ID="lblShipFee" runat="server" Text='<%#Eval("ShipFee") %>'></asp:Label></li>
                                             <li class="actorder_area_price">总价<br />￥<asp:Label ID="lblTotalPrice" runat="server" Text='<%#Eval("TotalPrice") %>'></asp:Label></li>
                                             <li class="actorder_area_price">状态<br /><font color="red"><asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label></font></li>
-                                            <li class="actorder_area_operate"><asp:LinkButton ID="lbtnPay" runat="server">立即付款</asp:LinkButton><asp:LinkButton ID="lbtnShowOrder" runat="server" CommandName="show" CommandArgument='<%#Eval("DingDanID") %>'>晒单</asp:LinkButton></li>
+                                            <li class="actorder_area_operate"><asp:LinkButton ID="lbtnPay" runat="server">立即付款</asp:LinkButton>|<asp:LinkButton ID="lbtnShowOrder" runat="server" CommandName="show" CommandArgument='<%#Eval("DingDanID") %>'>晒单</asp:LinkButton></li>
                                         </ul>                                     
                                     </div>
                                 </ItemTemplate>
                             </asp:DataList>
+                            <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="10" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager> 
                         </div>
                     </div>
                 </div>

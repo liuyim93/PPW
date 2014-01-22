@@ -5,6 +5,7 @@ using System.Text;
 using Tools;
 using Data.SystemSeting;
 using Model.Entities;
+using System.Data;
 
 namespace BLL.SystemSeting
 {
@@ -155,6 +156,38 @@ namespace BLL.SystemSeting
        {
            string sql = "select * from OrderType";
            return ddDat.GetOrderType(sql);
+       }
+
+       /// <summary>
+       /// 根据会员ID和订单状态查询订单
+       /// </summary>
+       /// <param name="hyId">会员ID</param>
+       /// <param name="status">状态</param>
+       /// <returns></returns>
+       public DataTable getDingDanbyhyId(string hyId,int status,string orderType) {
+           return ddDat.getDingDanbyhyId(hyId,status,orderType);
+       }
+
+       /// <summary>
+       /// 根据会员ID和订单类型查询订单
+       /// </summary>
+       /// <param name="hyId"></param>
+       /// <param name="orderType"></param>
+       /// <returns></returns>
+       public DataTable getDingDanbyType(string hyId,string orderType) {
+           return ddDat.getDingDanbyType(hyId,orderType);
+       }
+
+       /// <summary>
+       /// 查询一件拍品是否有重复的订单
+       /// </summary>
+       /// <param name="auctionId">竞拍ID</param>
+       /// <param name="orderType">订单类型</param>
+       /// <param name="hyId">会员ID</param>
+       /// <returns></returns>
+       public List<DingDan> GetDingDan(string auctionId,string orderType,string hyId) {
+           string sql = "select * from DingDan where AuctionID='"+auctionId+"' and HuiYuanID='"+hyId+"'and OrderTypeID=(select OrderTypeID from OrderType where TypeName='"+orderType+"')";
+           return ddDat.GetDingDan(sql);
        }
     }
 }

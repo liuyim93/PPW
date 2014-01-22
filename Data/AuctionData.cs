@@ -144,8 +144,16 @@ namespace Data
         public DataTable GetAuction_Future() 
         {
             DateTime dt = DateTime.Now.Date.AddDays(1);
-            string sql = "select * from Auction where Status=4 and AuctionTime>'"+DateTime.Now+"' and AuctionTime<'"+dt+"'";
-            return sh.GetDataSet(sql).Tables[0];
+            string sql = "select * from Auction where Status=4 and AuctionTime>'"+DateTime.Now+"' and AuctionTime<'"+dt+"' and AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='常规竞拍')";
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -190,7 +198,15 @@ namespace Data
                 }
             }
             sql += "order by EndTime desc";
-            return sh.GetDataSet(sql).Tables[0];
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -200,7 +216,15 @@ namespace Data
         public DataTable getAllAuctioning() {
             DateTime date = DateTime.Now.Date.AddDays(1);
             string sql = "select a.*,p.productName,p.productPrice,p.Intro,i.img from Auction as a, Product as p,ProductImeg as i where p.ProductID=a.ProductID and i.ProductID=a.ProductID and i.xh=1 and a.Status!=3 and a.AuctionTime<'"+date+"'";
-            return  sh.GetDataSet(sql).Tables[0];            
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }            
         }
 
         /// <summary>
@@ -210,7 +234,15 @@ namespace Data
         public DataTable getNormalAuctioning() {
             DateTime dt = DateTime.Now.Date.AddDays(1);
             string sql = "select a.*,p.productName,p.productPrice,p.Intro,i.img from Auction as a, Product as p,ProductImeg as i where p.ProductID=a.ProductID and i.ProductID=a.ProductID and i.xh=1 and a.Status!=3 and a.AuctionTime<'" + dt + "' and a.AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='常规竞拍') order by a.AuctionTime asc";
-            return sh.GetDataSet(sql).Tables[0];
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -219,7 +251,15 @@ namespace Data
         /// <returns></returns>
         public DataTable getAuctioning_Top25() {
             string sql = "select top 25 a.*,p.productName,p.productPrice,p.Intro,i.img from Auction as a, Product as p,ProductImeg as i where p.ProductID=a.ProductID and i.ProductID=a.ProductID and i.xh=1 and a.Status!=3 and a.AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='常规竞拍') order by a.AuctionTime asc";
-            return sh.GetDataSet(sql).Tables[0];
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -228,7 +268,13 @@ namespace Data
         /// <returns></returns>
         public DataTable getFreeAuction_Top5() {
             string sql = "select top 5 a.*,p.productName,p.productPrice,p.Intro,i.img from Auction as a, Product as p,ProductImeg as i where p.ProductID=a.ProductID and i.ProductID=a.ProductID and i.xh=1 and a.Status!=3 and a.AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='免费竞拍') order by a.AuctionTime asc";
-            return sh.GetDataSet(sql).Tables[0];
+            DataSet ds= sh.GetDataSet(sql);
+            if (ds.Tables.Count>0)
+            {
+                return ds.Tables[0];
+            }else{
+                return null;
+            }
         }
 
         /// <summary>
@@ -238,7 +284,32 @@ namespace Data
         public DataTable getFreeAuctioning() {
             DateTime dt = DateTime.Now.Date;
             string sql = "select a.*,p.productName,p.productPrice,p.Intro,i.img from Auction as a,Product as p,ProductImeg as i where p.ProductID=a.ProductID and i.ProductID=a.ProductID and i.xh=1 and a.AuctionTypeID=(select AuctionTypeID from AuctionType where TypeName='免费竞拍') and a.Status!=3 and a.AuctionTime<'"+dt.AddDays(1)+"' order by a.AuctionTime asc";
-            return sh.GetDataSet(sql).Tables[0];
+            DataSet ds= sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 根据会员ID和状态查询正在竞拍的拍品
+        /// </summary>
+        /// <param name="hyId">会员ID</param>
+        /// <param name="status">状态</param>
+        /// <returns></returns>
+        public DataTable getAuctionbyStatus(string hyId,int status) {
+            string sql = "select * from Auction where Status="+status+" and AuctionID in(select distinct AuctionID from ChuJiaJiLu where HuiYuanID='"+hyId+"')";
+            DataSet ds = sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else {
+                return null;
+             }
         }
 
         #region 竞拍类型

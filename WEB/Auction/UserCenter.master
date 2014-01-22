@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="usercenter_right">
-            <div class="userinfo">
+           <%-- <div class="userinfo">
                 <div class="userinfo_portrait">
                     <asp:Image ID="imgPortrait" runat="server" Width="60px" Height="60px" />
                 </div>
@@ -43,7 +43,7 @@
                     <div class="userinfo_name">拍点：<asp:Label ID="lblAuctionPoint" runat="server"></asp:Label>&nbsp;返点：<asp:Label ID="lblFreePoint" runat="server"></asp:Label>&nbsp;积分:<asp:Label ID="lblJiFen" runat="server"></asp:Label>&nbsp;<a href="" target="_blank">[购买拍点]</a></div>
                     <div class="userinfo_name"><a href="" target="_self">竞拍订单(<asp:Label ID="lblAuctionOrder" runat="server"></asp:Label>)</a>&nbsp;<a href="" target="_self">补差价订单(<asp:Label ID="lblOrder2" runat="server"></asp:Label>)</a></div>
                 </div>
-            </div>
+            </div>--%>
             <asp:ContentPlaceHolder ID="content3"  runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>

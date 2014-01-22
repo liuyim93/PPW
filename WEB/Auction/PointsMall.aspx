@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/Main.Master" AutoEventWireup="true" CodeBehind="PointsMall.aspx.cs" Inherits="WEB.Auction.PointsMall" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -18,6 +20,7 @@
                   </div>
                   <div class="pointsmall_btn"><asp:LinkButton ID="lbtnSearch" runat="server" onclick="lbtnSearch_Click">搜索</asp:LinkButton></div>
             </div>
+            <div class="pointsmall_content">
             <asp:DataList ID="dlstExchange" runat="server" DataKeyField="ProductID" 
                 onitemdatabound="dlstExchange_ItemDataBound" RepeatColumns="5">
                 <ItemTemplate>
@@ -30,6 +33,11 @@
                     </div>
                 </ItemTemplate>
             </asp:DataList>
+            <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="20" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager>   
+            </div>
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>

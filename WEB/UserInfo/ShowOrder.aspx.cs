@@ -49,7 +49,7 @@ namespace WEB.UserInfo
                     {
                         string proId = list_order[0].ProductID;
                         List<Product> list_pro = proBll.GetById(proId);
-                        link_Pro.HRef = "../Auction/ProDetail.aspx?id=" + proId + "";
+                        link_Pro.HRef = "../Auction/ProDetail.aspx?id=" + list_order[0].AuctionID + "";
                         link_Pro1.HRef = link_Pro.HRef;
                         link_Pro1.InnerText = list_pro[0].productName;
                         List<ProductImeg> list_img = proBll.GetProtductImeg("",proId);

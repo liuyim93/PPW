@@ -88,6 +88,23 @@ namespace Data
             string sql = "delete from ShowOrder where ShowOrderID=@ShowOrderID";
             return sh.ExecuteNonQuery(null,CommandType.Text,sql,new SqlParameter("@ShowOrderID",showOrderId));
         }
+
+        /// <summary>
+        /// 根据是否通过审核查询 晒订单
+        /// </summary>
+        /// <param name="isCheck">是否通过审核</param>
+        /// <returns></returns>
+        public DataTable getShowOrderbyCheck(int isCheck) {
+            string sql = "select * from ShowOrder where IsCheck=" + isCheck;
+            DataSet ds=sh.GetDataSet(sql);
+            if (ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else {
+                return null;
+            }
+        }
         #endregion
 
         #region 晒单图片

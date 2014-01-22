@@ -257,6 +257,39 @@ namespace Data.SystemSeting
                new SqlParameter("@productBrand",pro.productBrand));
        }
 
+       /// <summary>
+       /// 根据条件查询可以积分兑换的商品
+       /// </summary>
+       /// <param name="proTypeId">商品类型ID</param>
+       /// <param name="minPoints">最小积分</param>
+       /// <param name="maxPoints">最大积分</param>
+       /// <returns></returns>
+       public DataTable GetExchangeProduct(string proTypeId, string minPoints, string maxPoints)
+       {
+           string sql = "select * from Product where IsExchange=1";
+           if (proTypeId != "")
+           {
+               sql += "and ProductTypeID='" + proTypeId + "'";
+           }
+           if (minPoints != "0" && maxPoints != "0" && maxPoints != "")
+           {
+               sql += "and Points>" + minPoints + " and Points<=" + maxPoints + "";
+           }
+           else if (maxPoints == "")
+           {
+               sql += "and Points>" + minPoints + "";
+           }
+           sql += "order by CreateTime desc";
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables.Count > 0)
+           {
+               return ds.Tables[0];
+           }
+           else {
+               return null;
+           }
+       }
+
         #endregion
     }
 }

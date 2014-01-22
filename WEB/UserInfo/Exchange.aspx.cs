@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Model.Entities;
 using BLL;
 using BLL.SystemSeting;
+using System.Data;
 
 namespace WEB.UserInfo
 {
@@ -33,8 +34,18 @@ namespace WEB.UserInfo
             {
                 string hyId=Session["HuiYuanID"].ToString();
                 string orderType = "积分兑换";
-                dlstExchange.DataSource = orderBll.GetDingDanbytypeId(hyId,orderType);
-                dlstExchange.DataBind();
+                DataTable dt = orderBll.getDingDanbyType(hyId,orderType);
+                if (dt.Rows.Count>0)
+                {
+                    AspNetPager1.RecordCount = dt.Rows.Count;
+                    PagedDataSource pds = new PagedDataSource();
+                    pds.DataSource = dt.DefaultView;
+                    pds.AllowPaging = true;
+                    pds.PageSize = AspNetPager1.PageSize;
+                    pds.CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1;
+                    dlstExchange.DataSource = pds;
+                    dlstExchange.DataBind();
+                }
             }
         }
 
@@ -69,6 +80,11 @@ namespace WEB.UserInfo
                     shipAdress.Text = "";
                 }
             }
+        }
+
+        protected void AspNetPager1_PageChanged(object sender, EventArgs e)
+        {
+            Bind();
         }
     }
 }

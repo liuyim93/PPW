@@ -6,6 +6,7 @@ using Model.Entities;
 using Data.SystemSeting;
 using Tools;
 using Data;
+using System.Data;
 
 namespace BLL.SystemSeting
 {
@@ -254,31 +255,7 @@ namespace BLL.SystemSeting
        {
            string sql = "select * from Product where IsExchange=1 order by Points desc";
            return dal.GetProduct(sql);
-       }
-
-       /// <summary>
-       /// 根据条件查询可以积分兑换的商品
-       /// </summary>
-       /// <param name="proTypeId">商品类型ID</param>
-       /// <param name="minPoints">最小积分</param>
-       /// <param name="maxPoints">最大积分</param>
-       /// <returns></returns>
-       public List<Product> GetExchangeProduct(string proTypeId,string minPoints,string maxPoints) {
-           string sql = "select * from Product where IsExchange=1";
-           if (proTypeId != "")
-           {
-               sql += "and ProductTypeID='" + proTypeId + "'";
-           }
-           if (minPoints != "0" && maxPoints != "0" && maxPoints != "")
-           {
-               sql += "and Points>" + minPoints + " and Points<=" + maxPoints + "";
-           }
-           else if(maxPoints==""){
-               sql += "and Points>"+minPoints+"";
-           }
-           sql += "order by CreateTime desc";
-           return dal.GetProduct(sql);
-       }
+       }      
 
        /// <summary>
        /// 修改产品信息
@@ -298,6 +275,17 @@ namespace BLL.SystemSeting
        public int AddProduct(Product pro) 
        {
            return dal.AddProduct(pro);    
+       }
+
+       /// <summary>
+       /// 根据条件查询可以积分兑换的商品
+       /// </summary>
+       /// <param name="proTypeId">商品类型</param>
+       /// <param name="minPoints">最小积分</param>
+       /// <param name="maxPoints">最大积分</param>
+       /// <returns></returns>
+       public DataTable GetExchangeProduct(string proTypeId,string minPoints,string maxPoints) {
+           return dal.GetExchangeProduct(proTypeId,minPoints,maxPoints);
        }
     }
 }

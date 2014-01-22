@@ -28,7 +28,7 @@ namespace WEB.Auction
         public void Bind() 
         {
             int isCheck = 1;
-            dlstShowOrder.DataSource = showOrderBll.GetShowOrderbyCheck(isCheck);
+            dlstShowOrder.DataSource = showOrderBll.getShowOrderbyCheck(isCheck);
             dlstShowOrder.DataBind();
         }
 
@@ -108,6 +108,11 @@ namespace WEB.Auction
                 #endregion
                 }
             }
+        }
+
+        protected void AspNetPager1_PageChanged(object sender, EventArgs e)
+        {
+            Bind();
         }
     }
 }

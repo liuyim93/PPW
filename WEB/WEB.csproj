@@ -222,6 +222,7 @@
     <Content Include="UserInfo\Bided.aspx" />
     <Content Include="UserInfo\Biding.aspx" />
     <Content Include="UserInfo\Exchange.aspx" />
+    <Content Include="UserInfo\FillPrice.aspx" />
     <Content Include="UserInfo\ShipAdress.aspx" />
     <Content Include="UserInfo\ShowOrder.aspx" />
     <Content Include="UserInfo\UpdatePwd.aspx" />
@@ -659,6 +660,13 @@
     </Compile>
     <Compile Include="UserInfo\Exchange.aspx.designer.cs">
       <DependentUpon>Exchange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo\FillPrice.aspx.cs">
+      <DependentUpon>FillPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfo\FillPrice.aspx.designer.cs">
+      <DependentUpon>FillPrice.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInfo\ShipAdress.aspx.cs">
       <DependentUpon>ShipAdress.aspx</DependentUpon>

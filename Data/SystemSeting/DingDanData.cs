@@ -202,5 +202,41 @@ namespace Data.SystemSeting
            }
            return list;
        }
+
+       /// <summary>
+       /// 根据会员ID和状态查询订单
+       /// </summary>
+       /// <param name="hyId">会员ID</param>
+       /// <param name="status">状态</param>
+       /// <returns></returns>
+       public DataTable getDingDanbyhyId(string hyId,int status,string orderType) {
+           string sql = "select * from DingDan where HuiYuanID='"+hyId+"' and Status="+status+" and OrderTypeID=(select OrderTypeID from OrderType where TypeName='"+orderType+"') order by DingDanTime desc";
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables.Count > 0)
+           {
+               return ds.Tables[0];
+           }
+           else {
+               return null;
+           }
+       }
+
+       /// <summary>
+       /// 根据会员id和订单类型查询订单
+       /// </summary>
+       /// <param name="hyId">会员ID</param>
+       /// <param name="orderType">订单类型</param>
+       /// <returns></returns>
+       public DataTable getDingDanbyType(string hyId,string orderType) {
+           string sql = "select * from DingDan where HuiYuanID='" + hyId + "' and OrderTypeID=(select OrderTypeID from OrderType where TypeName='" + orderType + "') order by DingDanTime desc";
+           DataSet ds = BLLdat.GetDataSet(sql);
+           if (ds.Tables.Count > 0)
+           {
+               return ds.Tables[0];
+           }
+           else {
+               return null;
+           }
+       }
     }
 }

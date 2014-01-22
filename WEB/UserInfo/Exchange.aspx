@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Auction/UserCenter.master" AutoEventWireup="true" CodeBehind="Exchange.aspx.cs" Inherits="WEB.UserInfo.Exchange" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="Webdiyer" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Content4" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content3" runat="server">
@@ -33,6 +35,10 @@
                     </div>
                 </ItemTemplate>
             </asp:DataList>
+            <webdiyer:aspnetpager ID="AspNetPager1" runat="server" CssClass="paginator" CurrentPageButtonClass="cpb"
+                         LastPageText="尾页" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" 
+                            AlwaysShow="true" UrlPaging="true" PageSize="10" 
+                            onpagechanged="AspNetPager1_PageChanged"></webdiyer:aspnetpager> 
         </div>
     </div>
 </asp:Content>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Data;
 using Model.Entities;
+using System.Data;
 
 namespace BLL
 {
@@ -42,6 +43,15 @@ namespace BLL
         {
             string sql = "select * from ShowOrder where IsCheck="+isCheck;
             return showOrderDat.GetShowOrder(sql);
+        }
+
+        /// <summary>
+        /// 根据是否通过审核查询 晒订单
+        /// </summary>
+        /// <param name="isCheck">是否通过审核</param>
+        /// <returns></returns>
+        public DataTable getShowOrderbyCheck(int isCheck) {
+            return showOrderDat.getShowOrderbyCheck(isCheck);
         }
 
         /// <summary>

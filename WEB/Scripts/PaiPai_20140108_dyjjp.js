@@ -242,7 +242,7 @@ function PaiPaiBid() {
                     //o.Mill --;
                 }
             } catch (se) {//window.status = e.message;
-                alert(se);
+//                alert(se);
             }
         }	        
 	    }
@@ -487,7 +487,7 @@ PaiPaiBid.prototype.FormatTime_3 = function (oItemThis) {
         return (_this.Ft(h) + ":" + _this.Ft(m) + ":" + _this.Ft(s)); // + "|"+x;
     }
     else {
-            return x;
+            return "即将成交";
     }
 
 }

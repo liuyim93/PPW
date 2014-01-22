@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using BLL.SystemSeting;
 using Model.Entities;
 using BLL;
+using System.Data;
 
 namespace WEB.UserInfo
 {
@@ -34,8 +35,18 @@ namespace WEB.UserInfo
             {
                 string hyId = Session["HuiYuanID"].ToString();
                 int status = 4;
-                dlstBiding.DataSource = auctionBll.GetAuctionbyStatus(hyId,status);
-                dlstBiding.DataBind();
+                 DataTable dt= auctionBll.getAuctionbyStatus(hyId,status);                 
+                 if (dt.Rows.Count>0)
+                 {
+                     AspNetPager1.RecordCount = dt.Rows.Count;
+                     PagedDataSource pds = new PagedDataSource();
+                     pds.DataSource = dt.DefaultView;
+                     pds.AllowPaging = true;
+                     pds.PageSize = AspNetPager1.PageSize;
+                     pds.CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1;
+                     dlstBiding.DataSource = pds;
+                     dlstBiding.DataBind();
+                 }
             }
         }
 
@@ -84,6 +95,11 @@ namespace WEB.UserInfo
                 List<ChuJiaJiLu> list_record1 = recordBll.GetHuiYuanIDbyauctionId(proId.Value);
                 nums.Text = "共有" + list_record1.Count.ToString() + "人参与";
             }
+        }
+
+        protected void AspNetPager1_PageChanged(object sender, EventArgs e)
+        {
+            Bind();
         }
     }
 }

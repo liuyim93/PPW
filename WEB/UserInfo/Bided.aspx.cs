@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using BLL;
 using Model.Entities;
 using BLL.SystemSeting;
+using System.Data;
+using Tools;
 
 namespace WEB.UserInfo
 {
@@ -16,6 +18,7 @@ namespace WEB.UserInfo
         HuiYuanXinXiBll hyBll = new HuiYuanXinXiBll();
         ChuJiaJiLuBll recordBll = new ChuJiaJiLuBll();
         AuctionBll auctionBll = new AuctionBll();
+        DingDanBll orderBll = new DingDanBll();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,8 +37,18 @@ namespace WEB.UserInfo
             {
                 string hyId=Session["HuiYuanID"].ToString();
                 int status = 3;
-                dlstBided.DataSource = auctionBll.GetAuctionbyStatus(hyId,status);
-                dlstBided.DataBind();
+                DataTable dt = auctionBll.getAuctionbyStatus(hyId, status);
+                if (dt.Rows.Count > 0)
+                {
+                    AspNetPager1.RecordCount = dt.Rows.Count;
+                    PagedDataSource pds = new PagedDataSource();
+                    pds.DataSource = dt.DefaultView;
+                    pds.AllowPaging = true;
+                    pds.PageSize = AspNetPager1.PageSize;
+                    pds.CurrentPageIndex = AspNetPager1.CurrentPageIndex - 1;
+                    dlstBided.DataSource = pds;
+                    dlstBided.DataBind();
+                }
             }
         }
 
@@ -62,12 +75,12 @@ namespace WEB.UserInfo
                     if (DateTime.Now > Convert.ToDateTime(fullTime.Text))
                     {
                         timeOut.Visible = true;
-                        hlnkBuy.Visible = false;
+                        //hlnkBuy.Visible = false;
                     }
                     else 
                     {
                         timeOut.Visible = false;
-                        hlnkBuy.Visible = true;
+                        //hlnkBuy.Visible = true;
                     }
                 }
                 string proId = dlstBided.DataKeys[e.Item.ItemIndex].ToString();
@@ -101,6 +114,61 @@ namespace WEB.UserInfo
 
                 List<ChuJiaJiLu> list_record1 = recordBll.GetChuJiaJiLubyauctionId(auctionId.Value);
                 nums.Text = list_record1.Count.ToString();
+            }
+        }
+
+        protected void AspNetPager1_PageChanged(object sender, EventArgs e)
+        {
+            Bind();
+        }
+
+        protected void dlstBided_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName=="buy")
+            {
+                string auctionId = e.CommandArgument.ToString();
+                if (Session["HuiYuanID"] == null)
+                {
+                    Response.Redirect("../Auction/Index.aspx");
+                }
+                else {
+                    string hyId=Session["HuiYuanID"].ToString();
+                    string orderType="补差价订单";
+                    List<DingDan> list = orderBll.GetDingDan(auctionId,orderType,hyId);
+                    if (list.Count > 0)
+                    {
+                        MessageBox.Alert("您已经补差价购买过该拍品，不能重复购买。", Page);
+                    }
+                    else {
+                        try
+                        {
+                            DingDan order = new DingDan();
+                            order.AuctionID = auctionId;
+                            order.HuiYuanID = hyId;
+                            order.DingDanBH = DateTime.Now.ToString("yyyyMMddhhmmss");
+                            order.DingDanTime = DateTime.Now;
+                            order.OrderTypeID = orderBll.GetOrderTypebyName("补差价订单")[0].OrderTypeID;
+                            order.ShouHuoDZID = "";
+                            order.Status = 10;
+                            order.InvalidTime = DateTime.Now.AddDays(3);
+
+                            List<auction> list_act = auctionBll.GetAuction(auctionId);
+                            List<Product> list_pro = proBll.GetById(list_act[0].ProductID);
+                            order.ProductID = list_act[0].ProductID;
+                            order.Fee = list_pro[0].Fee;
+                            order.ShipFee = list_pro[0].ShipFee;
+                            order.ProductPrice = Convert.ToDecimal(list_pro[0].productPrice);
+                            order.TotalPrice = order.ProductPrice + order.Fee + order.ShipFee;
+                            orderBll.AddOrder(order);
+                            Response.Redirect("FillPrice.aspx");
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+                    }                   
+                }
             }
         }
     }

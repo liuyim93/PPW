@@ -135,6 +135,7 @@ namespace BLL
         /// <param name="status"></param>
         /// <returns></returns>
         public List<auction> GetAuctionbyStatus(string hyId,int status) 
+
         {
             List<ChuJiaJiLu> list_record = recordDat.GetdifAuctionIDbyhyID(hyId);
             List<auction> list = new List<auction>();
@@ -151,6 +152,16 @@ namespace BLL
                 }
             }
             return list;
+        }
+
+        /// <summary>
+        /// 根据会员id和拍品状态 查询拍品
+        /// </summary>
+        /// <param name="hyId">会员ID</param>
+        /// <param name="status">拍品状态</param>
+        /// <returns></returns>
+        public DataTable getAuctionbyStatus(string hyId,int status) {
+            return auctionDat.getAuctionbyStatus(hyId,status);
         }
 
         /// <summary>
@@ -300,6 +311,6 @@ namespace BLL
         /// <returns></returns>
         public DataTable getFreeAuctioning() {
             return auctionDat.getFreeAuctioning();
-        }
+        }        
     }
 }
